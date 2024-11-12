@@ -1,7 +1,7 @@
 import React from 'react';
 import BookCardBody from './BookCardBody.jsx';
 import BookCardHeader from './BookCardHeader.jsx';
-import './BookCardMain.css';
+import styles from './BookCardMain.module.css';
 
 export default function BookCardMain({
 	coverImg,
@@ -10,7 +10,7 @@ export default function BookCardMain({
 	quote,
 }) {
 	return (
-		<div className="book-card">
+		<div className={styles.bookCard}>
 			<BookCardHeader coverImg={coverImg} />
 			<BookCardBody
 				title={title}
