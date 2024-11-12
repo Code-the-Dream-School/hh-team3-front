@@ -25,9 +25,8 @@ function App() {
 
 	return (
 		<div className="container">
-			<h1>{message}</h1>
 			{/* <Navbar /> */}
-			{/* <Hero /> */}
+		
 			<section className="cards-list">{cards}</section>
 		</div>
 	);
