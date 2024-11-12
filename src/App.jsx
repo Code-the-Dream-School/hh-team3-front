@@ -1,33 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getAllData } from './util/index';
-import BookCardMain from '/src/components/BookCard/BookCardMain.jsx'
+import BookCardMain from '/src/components/BookCard/BookCardMain.jsx';
+import booksData from '/src/data/booksData.js';
 
 const URL = 'http://localhost:8000/api/v1/';
 
 function App() {
-  
-  const [message, setMessage] = useState(''); 
+	const [message, setMessage] = useState('');
 
-  useEffect(() => {
+	useEffect(() => {
+		(async () => {
+			const myData = await getAllData(URL);
+			setMessage(myData.data);
+		})();
 
-    (async () => {
-      const myData = await getAllData(URL)
-      setMessage(myData.data);
-    })();
-      
-    return () => {
-      console.log('unmounting');
-    }
+		return () => {
+			console.log('unmounting');
+		};
+	}, []);
 
-  }, []);
+	const cards = booksData.map((item) => {
+		return <BookCardMain key={item.id} {...item} />;
+	});
 
-  return (
-    <>
-      <h1>{message}</h1>
-      <BookCardMain />
-    </>
-  );
-
+	return (
+		<div className="container">
+			<h1>{message}</h1>
+			{/* <Navbar /> */}
+			{/* <Hero /> */}
+			<section className="cards-list">{cards}</section>
+		</div>
+	);
 }
 
-export default App
+export default App;
