@@ -2,11 +2,11 @@ import React from 'react';
 
 import './BookCardHeader.css';
 
-export default function BookCardHeader(props) {
+export default function BookCardHeader({ coverImg }) {
 	return (
 		<header>
 			<img
-				src={`../images/${props.coverImg}`}
+				src={`../images/${coverImg}`}
 				className="card-image"
 			/>
 		</header>

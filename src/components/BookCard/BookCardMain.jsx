@@ -3,14 +3,19 @@ import BookCardBody from './BookCardBody.jsx';
 import BookCardHeader from './BookCardHeader.jsx';
 import './BookCardMain.css';
 
-export default function BookCardMain(props) {
+export default function BookCardMain({
+	coverImg,
+	title,
+	publishDate,
+	quote,
+}) {
 	return (
 		<div className="book-card">
-			<BookCardHeader coverImg={props.coverImg} />
+			<BookCardHeader coverImg={coverImg} />
 			<BookCardBody
-				title={props.title}
-				publishDate={props.publishDate}
-				quote={props.quote}
+				title={title}
+				publishDate={publishDate}
+				quote={quote}
 			/>
 		</div>
 	);
