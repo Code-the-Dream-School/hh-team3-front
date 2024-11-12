@@ -1,15 +1,14 @@
-import React from 'react'
+import React from 'react';
 
+import './BookCardHeader.css';
 
-import './BookCardHeader.css'
- 
-
-export default function BookCardHeader() {
-
-
-  return (
-    <>
-   <h2>here is a BookCardHeader brown</h2>
-    </>
-  )
+export default function BookCardHeader(props) {
+	return (
+		<header>
+			<img
+				src={`../images/${props.coverImg}`}
+				className="card-image"
+			/>
+		</header>
+	);
 }
