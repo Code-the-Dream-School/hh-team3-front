@@ -21,14 +21,25 @@ export default function BookDetailsMain({
 				<BookCover coverImg={coverImg} />
 			</div>
 			<div className={styles.bookDetails}>
-				<BookTitle title={title} />
-				<div className={styles.authorAndPublishDate}>
-					<BookAuthor author={author} />
-					<BookPublishDate publishDate={publishDate} />
+				<div className={styles.title}>
+					<BookTitle title={title} />
 				</div>
-				<BookDescription description={description} />
 
-				<BookQuote quote={quote} />
+				<div className={styles.authorAndPublishDate}>
+					<div className={styles.author}>
+						<BookAuthor author={author} />
+					</div>
+					<div className={styles.publishDate}>
+						<BookPublishDate publishDate={publishDate} />
+					</div>
+				</div>
+				<div className={styles.description}>
+					<BookDescription description={description} />
+				</div>
+				<div className={styles.quote}>
+					<BookQuote quote={quote} />
+				</div>
+			
 			</div>
 		</div>
 	);

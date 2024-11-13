@@ -12,3 +12,10 @@
 .authorAndPublishDate {
 	display: flex;
 }
+.author{
+	margin-right:20px;
+}
+.createDiscussionButton{
+	padding:10px 15px;
+	font-size: 14px;
+}
