@@ -6,7 +6,7 @@ export default function BookCover({ coverImg }) {
 		<div>
 			<img
 				src={`../images/${coverImg}`}
-				className="book-page-cover book-card-cover"
+				style={{width:'200px'}}
 			/>
 		</div>
 	);
