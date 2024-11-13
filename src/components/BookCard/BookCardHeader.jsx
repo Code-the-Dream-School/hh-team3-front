@@ -1,14 +1,10 @@
 import React from 'react';
-
-import styles from './BookCardHeader.module.css';
+import BookCover from '/src/components/BookDetails/BookCover.jsx';
 
 export default function BookCardHeader({ coverImg }) {
 	return (
-		<header>
-			<img
-				src={`../images/${coverImg}`}
-				className={styles.bookCardCover}
-			/>
-		</header>
+	
+			<BookCover coverImg={coverImg} />
+		
 	);
 }

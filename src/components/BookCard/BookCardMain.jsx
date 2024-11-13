@@ -8,6 +8,7 @@ export default function BookCardMain({
 	title,
 	publishDate,
 	quote,
+  author
 }) {
 	return (
 		<div className={styles.bookCard}>
@@ -16,6 +17,7 @@ export default function BookCardMain({
 				title={title}
 				publishDate={publishDate}
 				quote={quote}
+        author={author}
 			/>
 		</div>
 	);
