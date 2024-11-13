@@ -4,8 +4,6 @@ import BookQuote from '../BookDetails/BookQuote';
 import BookAuthor from '/src/components/BookDetails/BookAuthor.jsx';
 import BookTitle from '/src/components/BookDetails/BookTitle.jsx';
 
-
-
 export default function BookCardBody({
 	title,
 	publishDate,
