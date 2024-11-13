@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getAllData } from './util/index';
+import { BrowserRouter } from 'react-router-dom';
+import Navbar from './components/NavBar/Navbar'
 
 const URL = 'http://localhost:8000/api/v1/';
 
@@ -22,7 +24,11 @@ function App() {
 
   return (
     <>
+    <BrowserRouter>
+       <Navbar />
+    </BrowserRouter>
       <h1>{message}</h1>
+      
     </>
   );
 
