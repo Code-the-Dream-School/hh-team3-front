@@ -5,6 +5,7 @@ import BookDescription from '../BookDetails/BookDescription.jsx';
 import BookPublishDate from '../BookDetails/BookPublishDate.jsx';
 import BookQuote from '../BookDetails/BookQuote.jsx';
 import BookTitle from '../BookDetails/BookTitle.jsx';
+import styles from './BookDetailsMain.module.css';
 
 export default function BookDetailsMain({
 	title,
@@ -15,13 +16,20 @@ export default function BookDetailsMain({
 	author,
 }) {
 	return (
-		<>
-			<BookAuthor author={author} />
-			<BookCover coverImg={coverImg} />
-			<BookDescription description={description} />
-			<BookPublishDate publishDate={publishDate} />
-			<BookQuote quote={quote} />
-			<BookTitle title={title} />
-		</>
+		<div className={styles.bookDetailsContainer}>
+			<div className={styles.cover}>
+				<BookCover coverImg={coverImg} />
+			</div>
+			<div className={styles.bookDetails}>
+				<BookTitle title={title} />
+				<div className={styles.authorAndPublishDate}>
+					<BookAuthor author={author} />
+					<BookPublishDate publishDate={publishDate} />
+				</div>
+				<BookDescription description={description} />
+
+				<BookQuote quote={quote} />
+			</div>
+		</div>
 	);
 }

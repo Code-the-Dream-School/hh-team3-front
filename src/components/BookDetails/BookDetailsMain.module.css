@@ -1,0 +1,14 @@
+.bookDetailsContainer {
+	display: flex;
+	max-width: 600px;
+	border: 1px solid grey;
+	border-radius: 8px;
+	padding: 20px;
+	margin: 10px;
+}
+.bookDetails {
+	padding-left: 20px;
+}
+.authorAndPublishDate {
+	display: flex;
+}
