@@ -39,7 +39,9 @@ export default function BookDetailsMain({
 				<div className={styles.quote}>
 					<BookQuote quote={quote} />
 				</div>
-			
+				<div >
+					<button className={styles.createDiscussionButton}>Create discussion</button>
+				</div>
 			</div>
 		</div>
 	);
