@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { getAllData } from './util/index';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter ,Routes,Route} from 'react-router-dom';
 import Navbar from './components/NavBar/Navbar'
+import Home from './Pages/home'
 
 const URL = 'http://localhost:8000/api/v1/';
 
@@ -26,8 +27,10 @@ function App() {
     <>
     <BrowserRouter>
        <Navbar />
+       <Routes>
+        <Route path="/" element={<Home />} />
+        </Routes>
     </BrowserRouter>
-      <h1>{message}</h1>
       
     </>
   );
