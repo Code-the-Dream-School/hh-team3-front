@@ -1,6 +1,4 @@
-
-
-.book-details-container{
+.book-details-container {
 	display: flex;
 	max-width: 600px;
 	border: 1px solid grey;
@@ -12,7 +10,7 @@
 	padding-left: 20px;
 }
 
-.create-discussion-btn{
-	padding:10px 15px;
+.create-discussion-btn {
+	padding: 10px 15px;
 	font-size: 14px;
 }

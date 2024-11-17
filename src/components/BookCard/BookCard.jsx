@@ -1,5 +1,5 @@
 import React from 'react';
-import './BookCard.css'
+import './BookCard.css';
 
 export default function BookCard({
 	coverImg,
@@ -9,10 +9,7 @@ export default function BookCard({
 }) {
 	return (
 		<div className="card">
-			<img
-				src={`../images/${coverImg}`}
-			
-			/>
+			<img src={`../images/${coverImg}`} />
 			<div className="card-body">
 				<p className="book-title"> {title}</p>
 				<p className="book-author">By {author} </p>
