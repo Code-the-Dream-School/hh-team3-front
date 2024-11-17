@@ -1,4 +1,6 @@
-.bookDetailsContainer {
+
+
+.book-details-container{
 	display: flex;
 	max-width: 600px;
 	border: 1px solid grey;
@@ -6,16 +8,11 @@
 	padding: 20px;
 	margin: 10px;
 }
-.bookDetails {
+.book-details {
 	padding-left: 20px;
 }
-.authorAndPublishDate {
-	display: flex;
-}
-.author{
-	margin-right:20px;
-}
-.createDiscussionButton{
+
+.create-discussion-btn{
 	padding:10px 15px;
 	font-size: 14px;
 }

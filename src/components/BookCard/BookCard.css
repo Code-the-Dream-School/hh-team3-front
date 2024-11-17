@@ -6,7 +6,7 @@
 	margin: 10px;
 }
 
-.book-card-cover {
-	width: 110px;
-	margin: 10px;
+.card img {
+	max-width: 110px;
+  margin:10px;
 }

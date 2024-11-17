@@ -1,29 +1,22 @@
 import React from 'react';
-import BookPublishDate from '../BookDetails/BookPublishDate';
-import BookQuote from '../BookDetails/BookQuote';
-import BookAuthor from '/src/components/BookDetails/BookAuthor.jsx';
-import BookTitle from '/src/components/BookDetails/BookTitle.jsx';
+import './BookCard.css'
 
-export default function BookCardMain({
+export default function BookCard({
 	coverImg,
+	author,
 	title,
 	publishDate,
-	quote,
-	author,
 }) {
 	return (
 		<div className="card">
-			<header>
-				<img
-					src={`../images/${coverImg}`}
-					className="book-card-cover"
-				/>
-			</header>
+			<img
+				src={`../images/${coverImg}`}
+			
+			/>
 			<div className="card-body">
-				<BookTitle title={title} />
-				<BookAuthor author={author} />
-				<BookPublishDate publishDate={publishDate} />
-				<BookQuote quote={quote} />
+				<p className="book-title"> {title}</p>
+				<p className="book-author">By {author} </p>
+				<p className="book-publish-date">{publishDate}</p>
 			</div>
 		</div>
 	);
