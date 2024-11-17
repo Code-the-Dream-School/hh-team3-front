@@ -37,6 +37,7 @@
 	font-weight: 500;
 	color: var(--author-color);
 	margin-bottom: 10px;
+	font-style: italic;
 }
 
 .day-theme {
