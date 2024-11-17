@@ -12,8 +12,8 @@ export default function BookDetails({
 		<div className="book-details-container">
 			<img src={`../images/${coverImg}`} />
 			<div className="book-details">
-				<p className="book-title"> {title}</p>
-				<p className="book-author">By {author} </p>
+				<p className="book-title">{title}</p>
+				<p className="book-author">By {author}</p>
 				<p className="book-publish-date">{publishDate}</p>
 				<p className="book-description">{description}</p>
 				<button className="create-discussions-btn">
