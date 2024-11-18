@@ -6,6 +6,7 @@ export default function BookCard({
 	author,
 	title,
 	publishDate,
+	stats,
 }) {
 	return (
 		<div className="card day-theme">
@@ -15,6 +16,14 @@ export default function BookCard({
 				<p className="card-author">
 					By {author} ({publishDate})
 				</p>
+				<span>
+					<i className="fa-solid fa-star"></i>
+					<i className="fa-solid fa-star"></i>
+					<i className="fa-solid fa-star"></i>
+					<i className="fa-solid fa-star"></i>
+					<i className="fa-solid fa-star"></i>
+				</span>
+				<span>({stats.reviewCount})</span>
 			</div>
 		</div>
 	);
