@@ -1,0 +1,16 @@
+.book-btn {
+    color: #2D2A55; 
+    background-color: #E6E0FF; 
+    border-color: #E6E0FF;
+    font-weight: bold;
+    padding: 45px 60px !important; 
+    font-size: 18px;    
+    border-radius: 10px;
+  }
+  
+  .book-btn:hover {
+    background-color: #C3B4F3; 
+    color: #2D2A55;
+    border-color: #C3B4F3;
+  }
+  
