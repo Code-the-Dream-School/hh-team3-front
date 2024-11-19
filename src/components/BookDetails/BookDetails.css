@@ -88,6 +88,9 @@
 	color: var(--text-color, #000);
 	text-align: justify;
 	margin: 0;
+	width: 500px;
+	height: 180px;
+	overflow: scroll;
 }
 
 .buttons-container {

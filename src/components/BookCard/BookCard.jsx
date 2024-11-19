@@ -3,10 +3,9 @@ import './BookCard.css';
 
 export default function BookCard({
 	coverImg,
-	author,
+	authors,
 	title,
 	publishDate,
-	stats,
 }) {
 	return (
 		<div className="card day-theme">
@@ -14,16 +13,8 @@ export default function BookCard({
 			<div className="card-content">
 				<p className="card-title"> {title}</p>
 				<p className="card-author">
-					By {author} ({publishDate})
+					By {authors} ({publishDate})
 				</p>
-				<span>
-					<i className="fa-solid fa-star"></i>
-					<i className="fa-solid fa-star"></i>
-					<i className="fa-solid fa-star"></i>
-					<i className="fa-solid fa-star"></i>
-					<i className="fa-solid fa-star"></i>
-				</span>
-				<span>({stats.reviewCount})</span>
 			</div>
 		</div>
 	);
