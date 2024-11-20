@@ -2,8 +2,8 @@ export default [
 	{
 		id: 1,
 		title: 'Pride and Prejustice',
-		authors: ['Jane Austen'],
-		categories: ['Fiction'],
+		authors: ['Jane Austen', 'Pushkin'],
+		categories: ['Fiction', 'Romance'],
 		description:
 			'The romantic clash of two opinionated young people provides the sustaining theme of Pride and Prejudice. Vivacious Elizabeth Bennet is fascinated and repelled by the arrogant Mr. Darcy, whose condescending airs and acrid tongue have alienated her entire family. Their spirited courtship is conducted against a back- ground of assembly-ball flirtations and draw- ing-room intrioues.',
 		publishDate: '1961',
@@ -17,8 +17,8 @@ export default [
 	{
 		id: 2,
 		title: 'Jane Eyre',
-		authors: ['Charlotte Bronte'],
-		categories: ['Fiction'],
+		authors: ['Charlotte Bronte', 'Lermontov'],
+		categories: ['Fiction', 'Non-fiction'],
 		description:
 			"A gothic masterpiece of tempestuous passions and dark secrets, Charlotte Bronte's Jane Eyre is edited with an introduction and notes by Stevie Davis in Penguin Classics. Charlotte Bronte tells the story of orphaned Jane Eyre, who grows up in the home of her heartless aunt, enduring loneliness and cruelty.",
 		publishDate: '2011',

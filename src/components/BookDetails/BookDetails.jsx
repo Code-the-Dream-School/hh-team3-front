@@ -15,10 +15,25 @@ export default function BookDetails({
 			<div className="book-details">
 				<p className="book-title">{title}</p>
 				<p className="book-author">
-					By {authors} ({publishDate})
+					{Array.isArray(authors)
+						? `By ${authors.join(', ')}`
+						: `By ${authors || 'Unknown Author'}`}{' '}
+					{publishDate
+						? `(${publishDate})`
+						: '(No publish date)'}
 				</p>
 				<p className="book-genre">
-					<span>{categories}</span>
+					{Array.isArray(categories)
+						? categories.map((category, index) => (
+								<span key={index}>{category}</span>
+						  ))
+						: typeof categories === 'string'
+						? categories
+								.split(' ')
+								.map((category, index) => (
+									<span key={index}>{category}</span>
+								))
+						: ''}
 				</p>
 				<p className="book-description">{description}</p>
 				<div className="buttons-container">
