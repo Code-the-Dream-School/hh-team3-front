@@ -1,5 +1,5 @@
 .card {
-	width: 320px;
+	width: 300px;
 	height: 350px;
 	border-radius: 20px;
 	overflow: hidden;
@@ -43,14 +43,20 @@
 }
 
 .day-theme {
-	background: linear-gradient(135deg, #ffe4b2, #ff9d76);
+	display: flex;
+    flex-wrap: wrap; 
+    gap: 20px;
+    background: linear-gradient(135deg, #ffe4b2, #ff9d76);
 	color: #333;
 	--title-color: #333;
 	--author-color: #555;
 }
 
 .night-theme {
-	background: linear-gradient(
+	display: flex;
+    flex-wrap: wrap; 
+    gap: 20px;
+    background: linear-gradient(
 		135deg,
 		#2e034c,
 		#483d8b,

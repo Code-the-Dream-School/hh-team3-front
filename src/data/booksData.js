@@ -110,4 +110,19 @@ export default [
 			reviewCount: 2,
 		},
 	},
+	{
+		id: 8,
+		title: 'Pride and Prejustice',
+		authors: ['Jane Austen'],
+		categories: ['Fiction'],
+		description:
+			'The romantic clash of two opinionated young people provides the sustaining theme of Pride and Prejudice. Vivacious Elizabeth Bennet is fascinated and repelled by the arrogant Mr. Darcy, whose condescending airs and acrid tongue have alienated her entire family. Their spirited courtship is conducted against a back- ground of assembly-ball flirtations and draw- ing-room intrioues.',
+		publishDate: '1961',
+
+		coverImg: 'img-1.jpeg',
+		stats: {
+			rating: 5.0,
+			reviewCount: 6,
+		},
+	},
 ];
