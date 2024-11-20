@@ -15,6 +15,7 @@
 	position: relative;
 	overflow: hidden;
 	font-family: 'Poppins', sans-serif;
+	
 }
 
 .book-details-container:hover {
@@ -186,9 +187,11 @@ button:hover {
 	.book-details-container {
 		padding: 1em;
 		gap: 1em;
+		
 	}
 
 	.book-details-container img {
+		margin-top: 1em;
 		width: 50%;
 	}
 
