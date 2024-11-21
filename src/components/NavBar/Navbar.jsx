@@ -1,13 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
 import './Navbar.css'; 
 
 function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark custom-navbar">
       <div className="container">
-        <Link className="navbar-brand" to="/">BookTalk</Link>
+        <Link className="navbar-brand my-text" to="/">BookTalk</Link>
         <button
           className="navbar-toggler"
           type="button"

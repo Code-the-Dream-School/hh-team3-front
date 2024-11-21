@@ -50,6 +50,11 @@
 	color: #333;
 	--title-color: #333;
 	--author-color: #555;
+	height: 100vh;
+    width: 100vw; 
+
+
+
 }
 
 .night-theme {

@@ -1,40 +1,38 @@
-/* Navbar.css */
 
-/* Background color and font styling */
 .custom-navbar {
-    background-color: #2D2A55; /* Dark purple background */
+    background-color: #953f06; 
   }
   
   .navbar-brand {
     font-family: 'Cursive', sans-serif;
-    color: #E6E0FF; /* Light purple color */
+    color: #E6E0FF; 
     font-size: 1.5rem;
     font-weight: bold;
   }
   
-  /* Navbar link styling */
+
   .nav-link {
-    color: #E6E0FF; /* Light purple color */
+    color: #E6E0FF; 
     margin-right: 1rem;
     font-size: 1rem;
   }
   
   .nav-link:hover {
-    color: #C3B4F3; /* Slightly lighter purple on hover */
+    color: #C3B4F3; 
   }
   
-  /* Custom button styling for Sign up and Log in */
+  
   .custom-btn {
-    color: #2D2A55; /* Dark text */
-    background-color: #E6E0FF; /* Light background */
-    border-color: #E6E0FF; /* Light border */
+    color: #2D2A55; 
+    background-color: #E6E0FF; 
+    border-color: #E6E0FF; 
     font-weight: bold;
     padding: 0.4rem 0.8rem;
     border-radius: 10px;
   }
   
   .custom-btn:hover {
-    background-color: #C3B4F3; /* Slightly lighter purple on hover */
+    background-color: #C3B4F3; 
     color: #2D2A55;
     border-color: #C3B4F3;
   }
