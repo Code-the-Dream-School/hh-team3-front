@@ -1,5 +1,5 @@
-import React from 'react';
-import './BookDetails.css';
+import React from "react";
+import "./BookDetails.css";
 
 export default function BookDetails({
 	coverImg,
@@ -32,4 +32,5 @@ export default function BookDetails({
 			</div>
 		</div>
 	);
+
 }

@@ -1,4 +1,5 @@
 .book-details-container {
+
 	display: flex;
 	flex-wrap: wrap;
 	gap: 1.875em;
@@ -16,14 +17,16 @@
 	overflow: hidden;
 	font-family: 'Poppins', sans-serif;
 	
+
 }
 
 .book-details-container:hover {
-	transform: scale(1.02);
-	box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  transform: scale(1.02);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
 }
 
 .book-details-container img {
+
 	width: 300px;
 	height: auto;
 	object-fit: cover;
@@ -52,25 +55,27 @@
 	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 	margin: 0;
 	transition: font-size 0.3s ease;
+
 }
 
 .book-author {
-	font-size: 1.25rem;
-	font-weight: 600;
-	color: var(--author-color, #555);
-	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-	font-style: italic;
-	margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--author-color, #555);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  font-style: italic;
+  margin: 0;
 }
 
 .book-genre {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 0.625em;
-	margin: 0.938em 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625em;
+  margin: 0.938em 0;
 }
 
 .book-genre span {
+
 	padding: 0.5em 0.938em;
 	border-radius: 20px;
 	font-size: 0.88rem;
@@ -78,6 +83,7 @@
 	transition: background-color 0.3s ease, color 0.3s ease,
 		transform 0.3s ease;
 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
 }
 
 .book-genre span:hover {
@@ -85,14 +91,15 @@
 }
 
 .day-theme .book-genre span {
-	background: linear-gradient(135deg, #ffe4b2, #ff9d76);
-	color: #333;
+  background: linear-gradient(135deg, #ffe4b2, #ff9d76);
+  color: #333;
 }
 
 .night-theme .book-genre span {
-	background: linear-gradient(135deg, #240046, #483d8b);
-	color: #d4bfff;
+  background: linear-gradient(135deg, #240046, #483d8b);
+  color: #d4bfff;
 }
+
 
 .book-description {
 	font-size: 1.13rem;
@@ -102,39 +109,43 @@
 	margin: 0;
 	max-width: 500px;
 	transition: font-size 0.3s ease, line-height 0.3s ease;
+
 }
 
 .buttons-container {
-	display: flex;
-	gap: 0.938em;
-	margin-top: 1.25em;
+  display: flex;
+  gap: 0.938em;
+  margin-top: 1.25em;
 }
 
 button {
-	padding: 0.75em 1.563em;
-	border: none;
-	border-radius: 25px;
-	font-size: 1rem;
-	font-weight: 600;
-	cursor: pointer;
-	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-	transition: transform 0.3s ease,
-		background-color 0.3s ease, box-shadow 0.3s ease;
+  padding: 0.75em 1.563em;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 button:hover {
-	transform: translateY(-3px);
-	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 .create-discussions-btn {
-	background: var(--button-bg, #ff9d76);
-	color: var(--button-text-color, #fff);
+  background: var(--button-bg, #ff9d76);
+  color: var(--button-text-color, #fff);
 }
 
 .create-discussions-btn:hover {
-	background: var(--button-bg-hover, #e87d5a);
+  background: var(--button-bg-hover, #e87d5a);
 }
+
 
 .day-theme {
 	--bg-color: #ffe4b2;
@@ -210,4 +221,5 @@ button:hover {
 		padding: 0.5em 1em;
 		margin: 0 auto;
 	}
+
 }

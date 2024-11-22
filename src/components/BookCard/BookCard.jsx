@@ -1,5 +1,5 @@
-import React from 'react';
-import './BookCard.css';
+import React from "react";
+import "./BookCard.css";
 
 export default function BookCard({
 	coverImg,
@@ -18,4 +18,5 @@ export default function BookCard({
 			</div>
 		</div>
 	);
+
 }
