@@ -80,8 +80,8 @@ export default [
 	},
 	{
 		id: 6,
-		title: ['To Kill a Mockingbird'],
-		authors: 'Harper Lee',
+		title: 'To Kill a Mockingbird',
+		authors: ['Harper Lee'],
 		categories: ['Fiction'],
 		description:
 			'A novel before its time, Harper Lee’s Pulitzer-prize winner addresses issues of race, inequality and segregation with both levity and compassion. Told through the eyes of loveable rogues Scout and Jem, it also created one of literature’s most beloved heroes – Atticus Finch, a man determined to right the racial wrongs of the Deep South.',
