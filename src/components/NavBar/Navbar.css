@@ -1,41 +1,38 @@
-/* Navbar.css */
 
-/* Background color and font styling */
 .custom-navbar {
-    background-color: #2D2A55; /* Dark purple background */
-  }
-  
-  .navbar-brand {
-    font-family: 'Cursive', sans-serif;
-    color: #E6E0FF; /* Light purple color */
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-  
-  /* Navbar link styling */
-  .nav-link {
-    color: #E6E0FF; /* Light purple color */
-    margin-right: 1rem;
-    font-size: 1rem;
-  }
-  
-  .nav-link:hover {
-    color: #C3B4F3; /* Slightly lighter purple on hover */
-  }
-  
-  /* Custom button styling for Sign up and Log in */
-  .custom-btn {
-    color: #2D2A55; /* Dark text */
-    background-color: #E6E0FF; /* Light background */
-    border-color: #E6E0FF; /* Light border */
-    font-weight: bold;
-    padding: 0.4rem 0.8rem;
-    border-radius: 10px;
-  }
-  
-  .custom-btn:hover {
-    background-color: #C3B4F3; /* Slightly lighter purple on hover */
-    color: #2D2A55;
-    border-color: #C3B4F3;
-  }
-  
+  background-color: #2d2a55; 
+}
+
+.navbar-brand {
+  font-family: "Cursive", sans-serif;
+  color: #e6e0ff; 
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+
+.nav-link {
+  color: #e6e0ff; 
+  margin-right: 1rem;
+  font-size: 1rem;
+}
+
+.nav-link:hover {
+  color: #c3b4f3; 
+}
+
+
+.custom-btn {
+  color: #2d2a55; 
+  background-color: #e6e0ff; 
+  border-color: #e6e0ff; 
+  font-weight: bold;
+  padding: 0.4rem 0.8rem;
+  border-radius: 10px;
+}
+
+.custom-btn:hover {
+  background-color: #c3b4f3; 
+  color: #2d2a55;
+  border-color: #c3b4f3;
+}

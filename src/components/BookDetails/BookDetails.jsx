@@ -4,23 +4,26 @@ import BookTalks from '../BookTalks/BookTalks.jsx';
 
 export default function BookDetails({
 	coverImg,
-	authors,
+	authors = [],
 	title,
 	publishDate,
 	description,
-	categories,
+	categories = [],
 }) {
 	return (
 		<div className="book-details-page">
 		<div className="book-details-container day-theme">
-			<img src={`../images/${coverImg}`} alt={title} />
+			<img src={`../images/${coverImg}`} alt="book cover" />
 			<div className="book-details">
 				<p className="book-title">{title}</p>
+
 				<p className="book-author">
-					By {authors} ({publishDate})
+					By {authors.join(', ')} {publishDate}
 				</p>
 				<p className="book-genre">
-					<span>{categories}</span>
+					{categories.map((category, index) => (
+						<span key={index}>{category}</span>
+					))}
 				</p>
 				<p className="book-description">{description}</p>
 				<div className="buttons-container">
@@ -34,4 +37,5 @@ export default function BookDetails({
 		<BookTalks />
 		</div>
 	);
+
 }
