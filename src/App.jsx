@@ -7,6 +7,10 @@ import FindABook from "./Pages/FindABook";
 const URL = "http://localhost:8000/api/v1/";
 
 function App() {
+  const cards = booksData.map((item) => {
+		return <BookCard key={item.id} {...item} />;
+	});
+  
   const books = booksData.map((item) => {
     return <BookDetails key={item.id} {...item} />;
   });
@@ -21,5 +25,6 @@ function App() {
       </BrowserRouter>
     </>
   );
+
 }
 export default App;
