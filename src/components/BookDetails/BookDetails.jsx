@@ -1,5 +1,6 @@
 import React from 'react';
 import './BookDetails.css';
+import BookTalks from '../BookTalks/BookTalks.jsx';
 
 export default function BookDetails({
 	coverImg,
@@ -10,6 +11,7 @@ export default function BookDetails({
 	categories,
 }) {
 	return (
+		<div className="book-details-page">
 		<div className="book-details-container day-theme">
 			<img src={`../images/${coverImg}`} alt={title} />
 			<div className="book-details">
@@ -27,6 +29,9 @@ export default function BookDetails({
 					</button>
 				</div>
 			</div>
+			
+		</div>
+		<BookTalks />
 		</div>
 	);
 }
