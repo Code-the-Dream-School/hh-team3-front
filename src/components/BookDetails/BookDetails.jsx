@@ -1,6 +1,6 @@
-import React from "react";
-import BookTalks from "../BookTalks/BookTalks.jsx";
-import "./BookDetails.css";
+import React from 'react';
+import './BookDetails.css';
+import BookTalks from '../BookTalks/BookTalks.jsx';
 
 export default function BookDetails({
 	imageLinks = {},
