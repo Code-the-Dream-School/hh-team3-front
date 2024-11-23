@@ -5,6 +5,7 @@ import Loader from "../Loader/Loader.jsx";
 import "./BookDetails.css";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import BookTalks from '../BookTalks/BookTalks.jsx'
 
 export default function BookDetails() {
 	const { id } = useParams();
@@ -79,6 +80,7 @@ export default function BookDetails() {
 					</div>
 				</div>
 			</div>
+			<BookTalks />
 		</div>
 	);
 }
