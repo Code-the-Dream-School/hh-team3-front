@@ -20,20 +20,20 @@ function Home({ booksData }) {
   if (!randomBook) return <p>Loading...</p>;
 
   return (
-    <div className="day-theme">
+    <div className="day-theme background">
       <div className="book-of-the-month">
         <h3>Book of the Month</h3>
         <p>Quote: {randomBook.quote}</p>
         <div key={randomBook.id} className="card">
           <img
-            src={`../images/${randomBook.coverImg}`}
+            src={`../images/${randomBook.imageLinks.thumbnail}`}
             alt="Books"
             className="img-fluid"
           />
           <div className="card-content">
             <p className="card-title">{randomBook.title}</p>
             <p className="card-author">
-              By {randomBook.author} ({randomBook.publishDate})
+              By {randomBook.authors.join(",")} ({randomBook.publishedDate})
             </p>
           </div>
         </div>

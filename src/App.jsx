@@ -4,22 +4,19 @@ import BookCard from "/src/components/BookCard/BookCard.jsx";
 import BookDetails from "/src/components/BookDetails/BookDetails.jsx";
 import booksData from "/src/data/booksData.js";
 import Home from "./Pages/home";
+import FindABook from "./Pages/FindABook";
 const URL = "http://localhost:8000/api/v1/";
 
 function App() {
   const books = booksData.map((item) => {
     return <BookDetails key={item.id} {...item} />;
   });
-
   return (
     <>
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route
-            path="/find-book"
-            element={<BookCard booksData={booksData} />}
-          />
+          <Route path="/find-book" element={<FindABook />} />
           <Route path="/" element={<Home booksData={booksData} />} />
         </Routes>
       </BrowserRouter>
