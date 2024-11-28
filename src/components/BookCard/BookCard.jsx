@@ -20,7 +20,6 @@ import "./BookCard.css";
   );
 }*/
 }
-
 export default function BookCard({
   imageLinks = {},
   authors = [],

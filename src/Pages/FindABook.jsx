@@ -1,14 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import booksData from "../data/booksData";
-import BookCard from "../components/BookCard/BookCard";
+import Search from "../components/Search/search";
+import SearchList from "../components/Search/searchList";
 
-function FindABook({}) {
-  const cards = booksData.map((item) => {
-    return <BookCard key={item.id} {...item} />;
-  });
+function FindABook() {
+  const [filteredData, setFilteredData] = useState(booksData);
+
+  const handleSearch = (query) => {
+    const lowercasedQuery = query.toLowerCase();
+    const filtered = booksData.filter(
+      (book) =>
+        book.title.toLowerCase().includes(lowercasedQuery) ||
+        book.authors.some((author) =>
+          author.toLowerCase().includes(lowercasedQuery),
+        ) ||
+        book.categories.some((category) =>
+          category.toLowerCase().includes(lowercasedQuery),
+        ),
+    );
+    setFilteredData(filtered);
+  };
+
   return (
     <>
-      <div className="day-theme">{cards}</div>
+      <Search onSearch={handleSearch} />
+      <SearchList filteredData={filteredData} />
     </>
   );
 }
