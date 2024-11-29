@@ -13,8 +13,10 @@ export default function BookTalkReview({
 						<img
 							className="book-talk-user-avatar"
 							src={'../userAvatars/default-avatar.jpg'}
+							alt="user portrait"
 						/>
 						<div className="message">
+						<strong><h5 class="username">User Name</h5></strong>
 							<div className="text">
 								<p className="review-text">
 									{review.review}

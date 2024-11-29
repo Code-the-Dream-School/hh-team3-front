@@ -1,13 +1,16 @@
 import { useState } from 'react';
-import BookTalkForm from '../BookTalks/BookTalksForm.jsx';
 import BookTalkReview from '../BookTalks/BookTalkReview.jsx';
-import './BookTalks.css'
+import BookTalkForm from '../BookTalks/BookTalksForm.jsx';
+import './BookTalks.css';
 
 export default function BookTalks() {
 	const [reviews, setReviews] = useState([]);
 
 	const handleNewBookTalk = (newReview) => {
-		setReviews((prevReviews) => [newReview, ...prevReviews]);
+		setReviews((prevReviews) => [
+			newReview,
+			...prevReviews,
+		]);
 	};
 
 	const handleLikeClick = (reviewId) => {
@@ -30,7 +33,10 @@ export default function BookTalks() {
 		<div>
 			<h1>BookTalk Reviews</h1>
 			<BookTalkForm onBookTalk={handleNewBookTalk} />
-			<BookTalkReview reviews={reviews} onLike={handleLikeClick} />
+			<BookTalkReview
+				reviews={reviews}
+				onLike={handleLikeClick}
+			/>
 		</div>
 	);
 }

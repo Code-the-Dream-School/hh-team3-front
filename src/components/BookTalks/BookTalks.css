@@ -1,11 +1,11 @@
-/* General Reset */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Container for the review input */
+
 .bookTalksContainer {
   display: flex;
   align-items: flex-start;
@@ -47,7 +47,7 @@
   outline: none;
 }
 
-/* Post Button */
+
 .post-book-talk-button {
   padding: 0.7rem 1.5rem;
   font-size: 1rem;
@@ -71,14 +71,14 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Feed container */
+
 .feed {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
-/* Review card */
+
 .review {
   display: flex;
   align-items: flex-start;
@@ -152,7 +152,7 @@
   color: #c9302c;
 }
 
-/* Responsive Adjustments */
+
 @media (max-width: 600px) {
   .bookTalksContainer,
   .review {
