@@ -7,8 +7,8 @@ export default function BookTalksForm({ onBookTalk }) {
 
 	function handleReviewChange(event) {
 		let newBookTalk = event.target.value;
-    setBookTalk(newBookTalk);
-  } 
+		setBookTalk(newBookTalk);
+	}
 
 	function handleBookTalk(event) {
 		event.preventDefault();
@@ -30,7 +30,11 @@ export default function BookTalksForm({ onBookTalk }) {
 					value={bookTalk}
 					onChange={handleReviewChange}
 				/>
-				<button type="submit" id="submit-book-talk-btn">
+				<button
+					type="submit"
+					id="submit-book-talk-btn"
+					title="Post BookTalk"
+				>
 					Post BookTalk
 				</button>
 			</form>
