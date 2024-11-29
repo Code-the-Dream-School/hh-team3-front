@@ -1,0 +1,66 @@
+.card {
+  width: 300px;
+  height: 350px;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  margin: 0.625em;
+}
+
+.card:hover {
+  transform: scale(1.1) rotate(-1deg);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 1.25em;
+  margin-bottom: 0.625em;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0.625em 0;
+  color: var(--title-color);
+}
+
+.card-author {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--author-color);
+  margin-bottom: 1em;
+  font-style: italic;
+}
+
+.day-theme {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  background: linear-gradient(135deg, #ffe4b2, #ff9d76);
+  color: #333;
+  --title-color: #333;
+  --author-color: #555;
+}
+
+.night-theme {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  background: linear-gradient(135deg, #2e034c, #483d8b, #240046);
+  color: #ffffff;
+  border: 2px solid #6a0dad;
+  --title-color: #d4bfff;
+  --author-color: #b89de0;
+}
