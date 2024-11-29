@@ -1,18 +1,19 @@
 export default [
-
 	{
 		id: 1,
 		title: 'Pride and Prejustice',
-		authors: ['Jane Austen', 'Pushkin'],
-		categories: ['Fiction', 'Romance'],
+		googleID: ' ',
+		authors: ['Jane Austen'],
+		publisher: ' ',
 		description:
 			'The romantic clash of two opinionated young people provides the sustaining theme of Pride and Prejudice. Vivacious Elizabeth Bennet is fascinated and repelled by the arrogant Mr. Darcy, whose condescending airs and acrid tongue have alienated her entire family. Their spirited courtship is conducted against a back- ground of assembly-ball flirtations and draw- ing-room intrioues.',
-		publishDate: '1961',
-
-		coverImg: 'img-1.jpeg',
-		stats: {
-			rating: 5.0,
-			reviewCount: 6,
+		categories: ['Fiction', 'Non-fiction'],
+		publishedDate: '1961',
+		quote:
+			'The human beings gathered round me appeared to me not realities but shadows.',
+		imageLinks: {
+			smallThumbnail: '',
+			thumbnail: 'img-1.jpeg',
 		},
 	},
 	{
@@ -53,14 +54,14 @@ export default [
 		authors: ['F. Scott Fitzgerald'],
 		categories: ['Fiction'],
 		description:
-			' Jay Gatsby, the enigmatic millionaire who throws decadent parties but doesn’t attend them, is one of the great characters of American literature. This is F. Scott Fitzgerald at his most sparkling and devastating.',
-		publishDate: '1925',
+			"Jay Gatsby, the enigmatic millionaire who throws decadent parties but doesn't attend them, is one of the great characters of American literature. This is F. Scott Fitzgerald at his most sparkling and devastating.",
+		categories: ['Fiction'],
+		publishedDate: '1925',
 		quote:
 			'It is a truth universally acknowledged of a good fortune, must be in want of a wife.',
-		coverImg: 'img-4.jpg',
-		stats: {
-			rating: 5.0,
-			reviewCount: 17,
+		imageLinks: {
+			smallThumbnail: '',
+			thumbnail: 'img-4.jpg',
 		},
 	},
 	{
@@ -69,14 +70,14 @@ export default [
 		authors: ['Gabriel García Márquez'],
 		categories: ['Fiction'],
 		description:
-			'Gabriel García Márquez’s multi-generational spanning magnum opus was a landmark in Spanish literature.',
-		publishDate: '1967',
+			"Gabriel García Márquez's multi-generational spanning magnum opus was a landmark in Spanish literature",
+		categories: ['Fiction'],
+		publishedDate: '1967',
 		quote:
-			'It is a truth universally acknowledged of a good fortune, must be in want of a wife.',
-		coverImg: 'img-5.jpg',
-		stats: {
-			rating: 5.0,
-			reviewCount: 5,
+			'The human beings gathered round me appeared to me not realities but shadows.',
+		imageLinks: {
+			smallThumbnail: '',
+			thumbnail: 'img-5.jpg',
 		},
 	},
 	{
@@ -85,31 +86,30 @@ export default [
 		authors: ['Harper Lee'],
 		categories: ['Fiction'],
 		description:
-			'A novel before its time, Harper Lee’s Pulitzer-prize winner addresses issues of race, inequality and segregation with both levity and compassion. Told through the eyes of loveable rogues Scout and Jem, it also created one of literature’s most beloved heroes – Atticus Finch, a man determined to right the racial wrongs of the Deep South.',
-		publishDate: '1960',
+			"A novel before its time, Harper Lee's Pulitzer-prize winner addresses issues of race, inequality and segregation with both levity and compassion. Told through the eyes of loveable rogues Scout and Jem, it also created one of literature's most beloved heroes – Atticus Finch, a man determined to right the racial wrongs of the Deep South.",
+		categories: ['Fiction'],
+		publishedDate: '1960',
 		quote:
-			'It is a truth universally acknowledged of a good fortune, must be in want of a wife.',
-		coverImg: 'img-6.jpg',
-		stats: {
-			rating: 5.0,
-			reviewCount: 22,
+			'The human beings gathered round me appeared to me not realities but shadows.',
+		imageLinks: {
+			smallThumbnail: '',
+			thumbnail: 'img-6.jpg',
 		},
 	},
 	{
 		id: 7,
-		title: ' Brave New World',
+		title: 'Brave New World',
+		googleID: ' ',
 		authors: ['Aldous Huxley'],
 		categories: ['Fiction'],
 		description:
 			'The romantic clash of two opinionated young people provides the sustaining theme of Pride and Prejudice. Vivacious Elizabeth Bennet is fascinated and repelled by the arrogant Mr. Darcy, whose condescending airs and acrid tongue have alienated her entire family. Their spirited courtship is conducted against a back- ground of assembly-ball flirtations and draw- ing-room intrioues.',
 		publishDate: '1932',
 		quote:
-			'It is a truth universally acknowledged of a good fortune, must be in want of a wife.',
-		coverImg: 'img-7.jpg',
-		stats: {
-			rating: 5.0,
-			reviewCount: 2,
+			'The human beings gathered round me appeared to me not realities but shadows.',
+		imageLinks: {
+			smallThumbnail: '',
+			thumbnail: 'img-7.jpg',
 		},
 	},
-
 ];

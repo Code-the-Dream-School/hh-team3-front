@@ -1,6 +1,6 @@
 .card {
   width: 300px;
-  height: 350px;
+  height: 380px;
   border-radius: 20px;
   overflow: hidden;
   position: relative;
@@ -27,17 +27,24 @@
 .card-content {
   padding: 1.25em;
   margin-bottom: 0.625em;
+	
 }
 
 .card-title {
-  font-size: 1.1rem;
+  font-size: clamp(28px, 5vw, 24px);
+	white-space: nowrap;
+	overflow:hidden;
+	text-overflow: ellipsis;
   font-weight: 700;
   margin: 0.625em 0;
   color: var(--title-color);
 }
 
 .card-author {
-  font-size: 1rem;
+  font-size: clamp(18px, 5vw, 24px);
+	white-space: nowrap;
+	overflow:hidden;
+	text-overflow: ellipsis;
   font-weight: 500;
   color: var(--author-color);
   margin-bottom: 1em;
