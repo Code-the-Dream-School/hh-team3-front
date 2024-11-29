@@ -8,7 +8,10 @@ export default function BookTalks() {
 	const [reviews, setReviews] = useLocalStorageReviews("bookTalkReviews", []);
 
 	const handleNewBookTalk = (newReview) => {
-		setReviews((prevReviews) => [newReview, ...prevReviews]);
+		setReviews((prevReviews) => [
+			newReview,
+			...prevReviews,
+		]);
 	};
 
 	const handleLikeClick = (reviewId) => {
