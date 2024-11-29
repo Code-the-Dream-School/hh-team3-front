@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import './BookTalks.css'
+import './BookTalks.css';
 
 export default function BookTalksInput({
 	value,
@@ -13,11 +13,11 @@ export default function BookTalksInput({
 
 	return (
 		<div className="bookTalksContainer">
-      <img
-							className="book-talk-user-avatar"
-							src={'../userAvatars/default-avatar.jpg'}
-						/>
-						
+			<img
+				className="book-talk-user-avatar"
+				src={'../userAvatars/default-avatar.jpg'}
+			/>
+
 			<textarea
 				className="inputTextarea"
 				id="input"
@@ -26,7 +26,6 @@ export default function BookTalksInput({
 				onChange={onChange}
 				placeholder="Your review starts here - make it shine!"
 			></textarea>
-      
 		</div>
 	);
 }
