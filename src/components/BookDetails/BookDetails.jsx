@@ -10,7 +10,7 @@ export default function BookDetails({
 	categories = [],
 }) {
 	return (
-		<div className="book-details-container day-theme">
+		<div className="book-details-container">
 			<img src={`../images/${coverImg}`} alt="book cover" />
 			<div className="book-details">
 				<p className="book-title">{title}</p>

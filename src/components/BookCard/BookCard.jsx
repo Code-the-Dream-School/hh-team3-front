@@ -8,7 +8,7 @@ export default function BookCard({
 	publishDate,
 }) {
 	return (
-		<div className="card day-theme">
+		<div className="card">
 			<img src={`../images/${coverImg}`} />
 			<div className="card-content">
 				<p className="card-title"> {title}</p>
