@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap");
+.book-btn {
+  color: #2d2a55;
+  background-color: #e6e0ff;
+  border-color: #e6e0ff;
+  font-weight: bold;
+
+  font-size: 18px;
+  border-radius: 10px;
+}
+
+.book-btn:hover {
+  background-color: #c3b4f3;
+  color: #2d2a55;
+  border-color: #c3b4f3;
+}
+.my-text {
+  font-family: "Irish Grover", cursive;
+}
+.book-of-the-month {
+  position: absolute;
+  top: 80px;
+  right: 25px;
+  max-width: 300px;
+  text-align: left;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .book-of-the-month {
+    position: static;
+    margin: 20px auto;
+    text-align: center;
+    order: 2;
+  }
+
+  .mt-5 {
+    order: 1;
+  }
+}
+.background {
+  background: linear-gradient(135deg, #ffe4b2, #ff9d76);
+  min-height: 100vh;
+  min-width: 100vw;
+}
