@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import LoginPageMain from "../LoginPage/LoginPageMain";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./Navbar.css";
 
@@ -41,10 +42,7 @@ function Navbar() {
             </li>
           </ul>
           <div className="d-flex ms-3">
-            <Link
-              className="btn btn-outline-light custom-btn me-2"
-              to="/signup"
-            >
+            <Link className="btn btn-outline-light custom-btn me-2" to="/login">
               Sign up
             </Link>
             <Link className="btn btn-outline-light custom-btn" to="/login">
@@ -58,3 +56,4 @@ function Navbar() {
 }
 
 export default Navbar;
+
