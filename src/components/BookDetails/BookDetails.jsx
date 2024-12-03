@@ -2,6 +2,7 @@ import React from "react";
 import "./BookDetails.css";
 
 export default function BookDetails({
+
 	coverImg,
 	authors = [],
 	title,
