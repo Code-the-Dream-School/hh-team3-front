@@ -10,7 +10,7 @@ function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark custom-navbar">
       <div className="container">
-        <Link className="navbar-brand" to="/">
+        <Link className="navbar-brand my-text" to="/">
           BookTalk
         </Link>
         <button
