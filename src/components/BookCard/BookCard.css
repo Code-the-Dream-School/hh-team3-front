@@ -11,10 +11,11 @@
   transition:
     transform 0.4s ease,
     box-shadow 0.4s ease;
-  font-family: “Poppins”, sans-serif;
+  font-family: "Poppins", sans-serif;
   text-align: center;
   margin: 0.625em;
 }
+
 .card:hover {
   transform: scale(1.1) rotate(-1deg);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);

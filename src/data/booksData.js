@@ -1,4 +1,5 @@
 export default [
+
   {
     id: 1,
     title: "Pride and Prejustice",
@@ -117,4 +118,5 @@ export default [
       thumbnail: "img-7.jpg",
     },
   },
+
 ];
