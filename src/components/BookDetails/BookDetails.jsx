@@ -8,6 +8,7 @@ export default function BookDetails({
   publishDate,
   description,
   categories = [],
+
 }) {
   return (
     <div className="book-details-container day-theme">
