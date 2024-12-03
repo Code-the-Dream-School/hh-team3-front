@@ -1,26 +1,22 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/NavBar/Navbar";
-import BookDetails from "/src/components/BookDetails/BookDetails.jsx";
 import booksData from "/src/data/booksData.js";
+import Home from "./Pages/home";
+import FindABook from "./Pages/FindABook";
 import Home from "./Pages/home";
 import FindABook from "./Pages/FindABook";
 const URL = "http://localhost:8000/api/v1/";
 
 function App() {
-  const cards = booksData.map((item) => {
-		return <BookCard key={item.id} {...item} />;
-	});
-  
-  const books = booksData.map((item) => {
-    return <BookDetails key={item.id} {...item} />;
-  });
   return (
     <>
       <BrowserRouter>
         <Navbar />
         <Routes>
+
           <Route path="/find-book" element={<FindABook />} />
           <Route path="/" element={<Home booksData={booksData} />} />
+
         </Routes>
       </BrowserRouter>
     </>

@@ -1,22 +1,22 @@
 .book-details-container {
 
-	display: flex;
-	flex-wrap: wrap;
-	gap: 1.875em;
-	align-items: flex-start;
-	padding: 1.875em;
-	border-radius: 20px;
-	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-	background: var(--bg-color, #fff);
-	color: var(--text-color, #000);
-	transition: transform 0.4s ease, box-shadow 0.4s ease,
-		padding 0.3s ease;
-	max-width: 900px;
-	margin: 1.25em auto;
-	position: relative;
-	overflow: hidden;
-	font-family: 'Poppins', sans-serif;
-	
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.875em;
+  align-items: flex-start;
+  padding: 1.875em;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  background: var(--bg-color, #fff);
+  color: var(--text-color, #000);
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+  max-width: 900px;
+  margin: 1.25em auto;
+  position: relative;
+  overflow: hidden;
+  font-family: "Poppins", sans-serif;
 
 }
 
@@ -26,7 +26,6 @@
 }
 
 .book-details-container img {
-
 	width: 300px;
 	height: auto;
 	object-fit: cover;
@@ -55,7 +54,6 @@
 	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 	margin: 0;
 	transition: font-size 0.3s ease;
-
 }
 
 .book-author {
@@ -75,7 +73,6 @@
 }
 
 .book-genre span {
-
 	padding: 0.5em 0.938em;
 	border-radius: 20px;
 	font-size: 0.88rem;
@@ -83,11 +80,11 @@
 	transition: background-color 0.3s ease, color 0.3s ease,
 		transform 0.3s ease;
 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-
 }
 
 .book-genre span:hover {
 	transform: scale(1.1);
+
 }
 
 .day-theme .book-genre span {
@@ -101,6 +98,11 @@
 }
 
 
+.book-publish-date {
+  font-size: 1.13rem;
+  color: var(--text-color-secondary, #666);
+}
+
 .book-description {
 	font-size: 1.13rem;
 	line-height: 1.8;
@@ -109,7 +111,6 @@
 	margin: 0;
 	max-width: 500px;
 	transition: font-size 0.3s ease, line-height 0.3s ease;
-
 }
 
 .buttons-container {
@@ -146,6 +147,15 @@ button:hover {
   background: var(--button-bg-hover, #e87d5a);
 }
 
+
+.join-discussions-btn {
+  background: var(--button-secondary-bg, #240046);
+  color: var(--button-text-color, #fff);
+}
+
+.join-discussions-btn:hover {
+  background: var(--button-secondary-bg-hover, #3c005a);
+}
 
 .day-theme {
 	--bg-color: #ffe4b2;
@@ -221,5 +231,6 @@ button:hover {
 		padding: 0.5em 1em;
 		margin: 0 auto;
 	}
+
 
 }
