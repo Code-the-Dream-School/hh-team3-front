@@ -4,7 +4,7 @@ import Search from "../components/Search/search";
 import SearchList from "../components/Search/searchList";
 
 function FindABook() {
-  const [filteredData, setFilteredData] = useState(booksData);
+ 
 
   const handleSearch = (query) => {
     const lowercasedQuery = query.toLowerCase();
