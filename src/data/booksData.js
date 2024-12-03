@@ -112,4 +112,5 @@ export default [
 			thumbnail: 'img-7.jpg',
 		},
 	},
+
 ];
