@@ -26,9 +26,9 @@ function Navbar() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
           <li className="nav-item">
-              <Link className="nav-link" to="/find-book">
+              <div className="nav-link" >
              <DayNightTheme />
-              </Link>
+              </div>
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/find-book">
