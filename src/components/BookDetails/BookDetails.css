@@ -1,5 +1,4 @@
 .book-details-container {
-
 	display: flex;
 	flex-wrap: wrap;
 	gap: 1.875em;
@@ -16,8 +15,6 @@
 	position: relative;
 	overflow: hidden;
 	font-family: 'Poppins', sans-serif;
-
-
 	--bg-color: #ffe4b2;
 	--text-color: #333;
 	--title-color: #333;
@@ -55,7 +52,7 @@
 }
 
 .book-title {
-	font-size: 1.75rem;
+	font-size: 1.2rem;
 	font-weight: 700;
 	color: var(--title-color, #333);
 	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -87,14 +84,12 @@
 	transition: background-color 0.3s ease, color 0.3s ease,
 		transform 0.3s ease;
 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-
 	background: linear-gradient(135deg, #ffe4b2, #ff9d76);
 	color: #333;
 }
 
 .book-genre span:hover {
 	transform: scale(1.1);
-
 }
 
 .dark .book-genre span {
@@ -102,13 +97,10 @@
 	color: #d4bfff;
 }
 
-
-
 .book-publish-date {
   font-size: 1.13rem;
   color: var(--text-color-secondary, #666);
 }
-
 
 .book-description {
 	font-size: 1.13rem;
@@ -152,9 +144,7 @@ button:hover {
 	background: var(--button-bg-hover, #e87d5a);
 }
 
-
 .dark .book-details-container {
-
 	--bg-color: #2e034c;
 	--text-color: #fff;
 	--title-color: #d4bfff;
