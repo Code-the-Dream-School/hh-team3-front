@@ -1,5 +1,4 @@
 .book-details-container {
-
   display: flex;
   flex-wrap: wrap;
   gap: 1.875em;
@@ -17,7 +16,6 @@
   position: relative;
   overflow: hidden;
   font-family: "Poppins", sans-serif;
-
 }
 
 .book-details-container:hover {
