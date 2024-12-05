@@ -23,25 +23,25 @@
 }
 
 .book-details-container img {
-	width: 300px;
-	height: auto;
-	object-fit: cover;
-	border-radius: 15px;
-	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-	transition: transform 0.4s ease;
+  width: 300px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.4s ease;
 }
 
 .book-details-container img:hover {
-	transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 .book-details {
-	flex: 1;
-	display: flex;
-	flex-direction: column;
-	gap: 0.938em;
-	padding: 0.625em 1.25em;
-	transition: padding 0.3s ease;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.938em;
+  padding: 0.625em 1.25em;
+  transition: padding 0.3s ease;
 }
 
 .book-title {
@@ -133,30 +133,30 @@ button:hover {
 }
 
 @media (max-width: 768px) {
-	.book-details-container {
-		flex-direction: column;
-		align-items: center;
-		padding: 1.5em;
-		gap: 1.5em;
-	}
+  .book-details-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5em;
+    gap: 1.5em;
+  }
 
-	.book-details-container img {
-		width: 60%;
-	}
+  .book-details-container img {
+    width: 60%;
+  }
 
-	.book-details {
-		padding: 1em;
-		text-align: center;
-	}
+  .book-details {
+    padding: 1em;
+    text-align: center;
+  }
 
-	.book-title {
-		font-size: 1.5rem;
-	}
+  .book-title {
+    font-size: 1.5rem;
+  }
 
-	.book-description {
-		font-size: 1rem;
-		line-height: 1.6;
-	}
+  .book-description {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
 }
 
 @media (max-width: 480px) {
@@ -165,19 +165,19 @@ button:hover {
 		gap: 1em;
 	}
 
-	.book-details-container img {
-		margin-top: 1em;
-		width: 50%;
-	}
+  .book-details-container img {
+    margin-top: 1em;
+    width: 50%;
+  }
 
-	.book-title {
-		font-size: 1.25rem;
-	}
+  .book-title {
+    font-size: 1.25rem;
+  }
 
-	.book-description {
-		font-size: 0.9rem;
-		line-height: 1.4;
-	}
+  .book-description {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
 
 	button,
 	.book-genre {
