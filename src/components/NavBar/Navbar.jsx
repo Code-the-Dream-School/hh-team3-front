@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./Navbar.css";
+import DayNightTheme from "../day-night-theme/DayNightTheme";
 
 function Navbar() {
   return (
@@ -24,6 +25,11 @@ function Navbar() {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
+          <li className="nav-item">
+              <div className="nav-link" >
+             <DayNightTheme />
+              </div>
+            </li>
             <li className="nav-item">
               <Link className="nav-link" to="/find-book">
                 Find a book
