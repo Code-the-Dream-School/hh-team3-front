@@ -37,7 +37,7 @@ body.dark {
 	);
 	--button-bg-color: #6a0dad;
 	--button-bg-hover: #4f0975;
-	--border-color: #6a0dad;
+	--border-color: #240046;
 	--book-genre: linear-gradient(135deg, #240046, #483d8b);
 	--toggle-text: #d4bfff;
 }

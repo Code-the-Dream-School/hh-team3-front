@@ -1,39 +1,32 @@
-import { useState } from 'react';
+import React from 'react';
+import { useColorScheme } from '../../hooks/useColorScheme';
 import '../BookCard/BookCard.css';
 import '../BookDetails/BookDetails.css';
 import './DayNightTheme.css';
 
 export default function DayNightTheme() {
-	const [isDarkMode, setIsDarkMode] = useState(false);
-
-	const toggleTheme = () => {
-		setIsDarkMode((prevMode) => !prevMode);
-		document.body.classList.toggle('dark', !isDarkMode);
-	};
+	const { isDark, toggleTheme } = useColorScheme();
 
 	return (
 		<div className="toggle">
 			<p
-				id="lightenText"
 				className={`toggle-text ${
-					isDarkMode ? 'unselected' : ''
+					isDark ? 'unselected' : ''
 				}`}
 			>
 				<i className="fa-regular fa-sun"></i>
 			</p>
 			<div
-				id="toggleButton"
 				className={`toggle-button ${
-					isDarkMode ? 'toggled' : ''
+					isDark ? 'toggled' : ''
 				}`}
 				onClick={toggleTheme}
 			>
 				<div className="inner-circle"></div>
 			</div>
 			<p
-				id="darkenText"
 				className={`toggle-text ${
-					!isDarkMode ? 'unselected' : ''
+					!isDark ? 'unselected' : ''
 				}`}
 			>
 				<i className="fa-solid fa-moon"></i>
