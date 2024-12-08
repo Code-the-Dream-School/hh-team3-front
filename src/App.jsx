@@ -7,6 +7,9 @@ import './App.css'
 const URL = "http://localhost:8000/api/v1/";
 
 function App() {
+  if (typeof global === 'undefined'){
+    window.global = window;
+  }
   return (
     <>
       <BrowserRouter>
