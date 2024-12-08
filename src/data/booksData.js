@@ -7,8 +7,7 @@ export default [
 			"The romantic clash of two opinionated young people provides the sustaining theme of Pride and Prejudice. Vivacious Elizabeth Bennet is fascinated and repelled by the arrogant Mr. Darcy, whose condescending airs and acrid tongue have alienated her entire family. Their spirited courtship is conducted against a back- ground of assembly-ball flirtations and draw- ing-room intrioues.",
 		categories: ["Fiction", "Non-fiction"],
 		publishedDate: "1961",
-		quote:
-			"The human beings gathered round me appeared to me not realities but shadows.",
+		quote: "The human beings gathered round me appeared to me not realities but shadows.",
 		imageLinks: {
 			smallThumbnail: "",
 			thumbnail: "img-1.jpeg",
@@ -22,8 +21,7 @@ export default [
 		description:
 			"A gothic masterpiece of tempestuous passions and dark secrets, Charlotte Bronte's Jane Eyre is edited with an introduction and notes by Stevie Davis in Penguin Classics. Charlotte Bronte tells the story of orphaned Jane Eyre, who grows up in the home of her heartless aunt, enduring loneliness and cruelty.",
 		publishedDate: "2011",
-		quote:
-			"The human beings gathered round me appeared to me not realities but shadows.",
+		quote: "The human beings gathered round me appeared to me not realities but shadows.",
 		imageLinks: {
 			smallThumbnail: "",
 			thumbnail: "img-2.jpeg",
@@ -52,8 +50,7 @@ export default [
 			"Jay Gatsby, the enigmatic millionaire who throws decadent parties but doesn't attend them, is one of the great characters of American literature. This is F. Scott Fitzgerald at his most sparkling and devastating.",
 		categories: ["Fiction"],
 		publishedDate: "1925",
-		quote:
-			"It is a truth universally acknowledged of a good fortune, must be in want of a wife.",
+		quote: "It is a truth universally acknowledged of a good fortune, must be in want of a wife.",
 		imageLinks: {
 			smallThumbnail: "",
 			thumbnail: "img-4.jpg",

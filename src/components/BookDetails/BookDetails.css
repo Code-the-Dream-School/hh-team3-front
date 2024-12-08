@@ -1,28 +1,24 @@
 .book-details-container {
-
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.875em;
-  align-items: flex-start;
-  padding: 1.875em;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  background: var(--bg-color, #fff);
-  color: var(--text-color, #000);
-  transition:
-    transform 0.4s ease,
-    box-shadow 0.4s ease;
-  max-width: 900px;
-  margin: 1.25em auto;
-  position: relative;
-  overflow: hidden;
-  font-family: "Poppins", sans-serif;
-
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1.875em;
+	align-items: flex-start;
+	padding: 1.875em;
+	border-radius: 20px;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+	background: var(--bg-color, #fff);
+	color: var(--text-color, #000);
+	transition: transform 0.4s ease, box-shadow 0.4s ease;
+	max-width: 900px;
+	margin: 1.25em auto;
+	position: relative;
+	overflow: hidden;
+	font-family: "Poppins", sans-serif;
 }
 
 .book-details-container:hover {
-  transform: scale(1.02);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+	transform: scale(1.02);
+	box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
 }
 
 .book-details-container img {
@@ -57,19 +53,19 @@
 }
 
 .book-author {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--author-color, #555);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-  font-style: italic;
-  margin: 0;
+	font-size: 1rem;
+	font-weight: 600;
+	color: var(--author-color, #555);
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+	font-style: italic;
+	margin: 0;
 }
 
 .book-genre {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.625em;
-  margin: 0.938em 0;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.625em;
+	margin: 0.938em 0;
 }
 
 .book-genre span {
@@ -77,30 +73,27 @@
 	border-radius: 20px;
 	font-size: 0.88rem;
 	font-weight: 600;
-	transition: background-color 0.3s ease, color 0.3s ease,
-		transform 0.3s ease;
+	transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .book-genre span:hover {
 	transform: scale(1.1);
-
 }
 
 .day-theme .book-genre span {
-  background: linear-gradient(135deg, #ffe4b2, #ff9d76);
-  color: #333;
+	background: linear-gradient(135deg, #ffe4b2, #ff9d76);
+	color: #333;
 }
 
 .night-theme .book-genre span {
-  background: linear-gradient(135deg, #240046, #483d8b);
-  color: #d4bfff;
+	background: linear-gradient(135deg, #240046, #483d8b);
+	color: #d4bfff;
 }
 
-
 .book-publish-date {
-  font-size: 1.13rem;
-  color: var(--text-color-secondary, #666);
+	font-size: 1.13rem;
+	color: var(--text-color-secondary, #666);
 }
 
 .book-description {
@@ -114,47 +107,44 @@
 }
 
 .buttons-container {
-  display: flex;
-  gap: 0.938em;
-  margin-top: 1.25em;
+	display: flex;
+	gap: 0.938em;
+	margin-top: 1.25em;
 }
 
 button {
-  padding: 0.75em 1.563em;
-  border: none;
-  border-radius: 25px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  transition:
-    transform 0.3s ease,
-    background-color 0.3s ease,
-    box-shadow 0.3s ease;
+	padding: 0.75em 1.563em;
+	border: none;
+	border-radius: 25px;
+	font-size: 1rem;
+	font-weight: 600;
+	cursor: pointer;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+	transition: transform 0.3s ease, background-color 0.3s ease,
+		box-shadow 0.3s ease;
 }
 
 button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+	transform: translateY(-3px);
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 .create-discussions-btn {
-  background: var(--button-bg, #ff9d76);
-  color: var(--button-text-color, #fff);
+	background: var(--button-bg, #ff9d76);
+	color: var(--button-text-color, #fff);
 }
 
 .create-discussions-btn:hover {
-  background: var(--button-bg-hover, #e87d5a);
+	background: var(--button-bg-hover, #e87d5a);
 }
 
-
 .join-discussions-btn {
-  background: var(--button-secondary-bg, #240046);
-  color: var(--button-text-color, #fff);
+	background: var(--button-secondary-bg, #240046);
+	color: var(--button-text-color, #fff);
 }
 
 .join-discussions-btn:hover {
-  background: var(--button-secondary-bg-hover, #3c005a);
+	background: var(--button-secondary-bg-hover, #3c005a);
 }
 
 .day-theme {
@@ -208,7 +198,6 @@ button:hover {
 	.book-details-container {
 		padding: 1em;
 		gap: 1em;
-		
 	}
 
 	.book-details-container img {
@@ -231,6 +220,4 @@ button:hover {
 		padding: 0.5em 1em;
 		margin: 0 auto;
 	}
-
-
 }
