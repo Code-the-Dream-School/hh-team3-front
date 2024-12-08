@@ -6,7 +6,7 @@
 
 .toggle-text {
 	font-size: 18px;
-	color: #f4f4f4;
+	color: var(--toggle-text);
 	margin: 0 10px;
 	display: flex;
 	align-items: center;
@@ -48,17 +48,12 @@
 .unselected {
 	opacity: 0.5;
 }
-
-body.dark {
-	background-color: #1a012f;
-	color: #f4f4f4;
-	transition: background-color 250ms ease-in-out,
-		color 250ms ease-in-out;
+body {
+	background-color: var(--bg-color-container);
+	color: var(--text-color);
 }
 
-body {
-	background-color: #fff7e6;
-	color: #2e2e2e;
-	transition: background-color 250ms ease-in-out,
-		color 250ms ease-in-out;
+body.dark {
+	background-color: var(--bg-color-container);
+	color: var(--text-color);
 }
