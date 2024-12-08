@@ -1,12 +1,12 @@
 .custom-navbar {
-  background-color: #953f06;
+	background-color: #953f06;
 }
 
 .navbar-brand {
-  font-family: "Cursive", sans-serif;
-  color: #e6e0ff;
-  font-size: 1.5rem;
-  font-weight: bold;
+	font-family: "Cursive", sans-serif;
+	color: #e6e0ff;
+	font-size: 1.5rem;
+	font-weight: bold;
 }
 
 .nav-link {
@@ -29,7 +29,7 @@
 }
 
 .custom-btn:hover {
-  background-color: #c3b4f3;
-  color: #2d2a55;
-  border-color: #c3b4f3;
+	background-color: #c3b4f3;
+	color: #2d2a55;
+	border-color: #c3b4f3;
 }

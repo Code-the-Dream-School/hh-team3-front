@@ -1,6 +1,5 @@
-import React from 'react';
-import './BookCard.css';
-
+import React from "react";
+import "./BookCard.css";
 
 export default function BookCard({
 	imageLinks = {},
@@ -10,17 +9,13 @@ export default function BookCard({
 }) {
 	return (
 		<div className="card day-theme">
-			<img
-				src={`../images/${imageLinks.thumbnail}`}
-				alt="Book cover"
-			/>
+			<img src={`../images/${imageLinks.thumbnail}`} alt="Book cover" />
 			<div className="card-content">
 				<p className="book-title">{title}</p>
 				<p className="book-author">
-					By {authors.join(', ')} ({publishedDate})
+					By {authors.join(", ")} ({publishedDate})
 				</p>
 			</div>
 		</div>
 	);
-
 }
