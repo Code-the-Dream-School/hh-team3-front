@@ -1,6 +1,6 @@
-import React from 'react';
-import BookTalks from '../BookTalks/BookTalks.jsx';
-import './BookDetails.css';
+import React from "react";
+import BookTalks from "../BookTalks/BookTalks.jsx";
+import "./BookDetails.css";
 
 export default function BookDetails({
 	imageLinks = {},
@@ -21,7 +21,7 @@ export default function BookDetails({
 					<p className="book-title">{title}</p>
 
 					<p className="book-author">
-						By {authors.join(', ')} ({publishedDate})
+						By {authors.join(", ")} ({publishedDate})
 					</p>
 					<p className="book-genre">
 						{categories.map((categories, index) => (
