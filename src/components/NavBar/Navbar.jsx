@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-
 import "./Navbar.css";
 import DayNightTheme from "../day-night-theme/DayNightTheme";
 
@@ -11,6 +10,7 @@ function Navbar() {
     <nav className="navbar navbar-expand-lg navbar-dark custom-navbar">
       <div className="container">
         <Link className="navbar-brand my-text" to="/">
+
           BookTalk
         </Link>
         <button
