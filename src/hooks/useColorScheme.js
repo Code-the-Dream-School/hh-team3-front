@@ -10,7 +10,7 @@ export function useColorScheme() {
 		const storedValue = localStorage.getItem('colorScheme');
 		return storedValue !== null
 			? JSON.parse(storedValue)
-			: undefined; //
+			: undefined; 
 	});
 
 	const value = useMemo(
