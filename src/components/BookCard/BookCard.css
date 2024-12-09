@@ -28,21 +28,14 @@
 	margin-bottom: 0.625em;
 }
 .card-title {
-<<<<<<< HEAD
-	font-size: medium;
-=======
 	font-size: 22px;
->>>>>>> c3b51c4 (improved day/night theme feature)
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	font-weight: 700;
 	margin: 0.625em 0;
 	color: var(--title-color);
-<<<<<<< HEAD
-=======
 	display: block;
->>>>>>> c3b51c4 (improved day/night theme feature)
 }
 .card-author {
 	font-size: medium;
