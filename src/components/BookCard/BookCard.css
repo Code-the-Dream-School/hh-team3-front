@@ -12,6 +12,7 @@
 	font-family: "Poppins", sans-serif;
 	text-align: center;
 	margin: 0.625em;
+	background: var(--bg-color-card);
 }
 
 .card:hover {
