@@ -47,7 +47,7 @@
 .book-title {
 	font-size: 1.2rem;
 	font-weight: 700;
-	color: var(--title-color, #333);
+	color: var(--title-color);
 	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 	margin: 0;
 	transition: font-size 0.3s ease;
