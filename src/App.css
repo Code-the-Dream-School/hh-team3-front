@@ -1,7 +1,7 @@
 * {
 	transition: all 200ms ease-in-out;
-  margin:0;
-  padding:0;
+	margin: 0;
+	padding: 0;
 }
 
 :root {
@@ -42,4 +42,15 @@ body.dark {
 	--toggle-text: #d4bfff;
 }
 
+.unselected {
+	opacity: 0.5;
+}
+body {
+	background-color: var(--bg-color-container);
+	color: var(--text-color);
+}
 
+body.dark {
+	background-color: var(--bg-color-container);
+	color: var(--text-color);
+}

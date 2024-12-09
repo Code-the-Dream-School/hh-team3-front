@@ -1,16 +1,17 @@
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import createPersistedState from 'use-persisted-state';
-
-const useColorSchemeState =
-	createPersistedState('colorScheme');
 
 export function useColorScheme() {
 	const systemPrefersDark = useMediaQuery({
 		query: '(prefers-color-scheme: dark)',
 	});
 
-	const [isDark, setIsDark] = useColorSchemeState();
+	const [isDark, setIsDark] = useState(() => {
+		const storedValue = localStorage.getItem('colorScheme');
+		return storedValue !== null
+			? JSON.parse(storedValue)
+			: undefined; //
+	});
 
 	const value = useMemo(
 		() =>
@@ -19,11 +20,23 @@ export function useColorScheme() {
 	);
 
 	useEffect(() => {
+		if (isDark !== undefined) {
+			localStorage.setItem(
+				'colorScheme',
+				JSON.stringify(isDark)
+			);
+		}
+	}, [isDark]);
+
+	useEffect(() => {
 		document.body.classList.toggle('dark', value);
 	}, [value]);
 
 	return {
 		isDark: value,
-		toggleTheme: () => setIsDark((prev) => !prev),
+		toggleTheme: () =>
+			setIsDark((prev) =>
+				prev === undefined ? !systemPrefersDark : !prev
+			),
 	};
 }
