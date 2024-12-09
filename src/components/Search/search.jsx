@@ -13,7 +13,7 @@ function Search({ onSearch }) {
           <input
             type="text"
             class="form-control"
-            placeholder="Search a book by title,authors or catagory"
+            placeholder="Search a book by title, authors or catagory"
             onChange={handleChange}
           />
         </div>

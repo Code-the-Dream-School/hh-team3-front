@@ -3,11 +3,9 @@ import BookCard from "../BookCard/BookCard";
 import "./search.css";
 
 function SearchList({ filteredData }) {
-  console.log("Filtered Data: ", filteredData);
-  const filtered = filteredData.map((book) => (
+  return <div className="display">{filteredData.map((book) => (
     <BookCard key={book.id} {...book} />
-  ));
-  return <div className="display">{filtered}</div>;
+  ))}</div>;
 }
 
 export default SearchList;
