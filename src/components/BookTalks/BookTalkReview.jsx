@@ -1,9 +1,11 @@
 import React from 'react';
 import './BookTalks.css';
 
+
 export default function BookTalkReview({
 	reviews,
 	onLike,
+	username,
 }) {
 	return (
 		<div className="feed">
@@ -16,7 +18,7 @@ export default function BookTalkReview({
 							alt="user portrait"
 						/>
 						<div className="message">
-						<strong><h5 class="username">User Name</h5></strong>
+						<strong><h5 class="username">{username}</h5></strong>
 							<div className="text">
 								<p className="review-text">
 									{review.review}

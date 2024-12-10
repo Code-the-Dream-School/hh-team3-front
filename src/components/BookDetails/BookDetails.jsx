@@ -1,6 +1,7 @@
 import React from 'react';
 import './BookDetails.css';
 import BookTalks from '../BookTalks/BookTalks.jsx';
+import bookTalksData from '../../data/bookTalksData.js';
 
 export default function BookDetails({
 	imageLinks = {},
