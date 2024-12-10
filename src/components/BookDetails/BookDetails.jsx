@@ -19,7 +19,6 @@ export default function BookDetails({
 				/>
 				<div className="book-details">
 					<p className="book-title">{title}</p>
-
 					<p className="book-author">
 						By {authors.join(", ")} ({publishedDate})
 					</p>
