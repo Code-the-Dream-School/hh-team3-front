@@ -6,14 +6,15 @@
 	padding: 1.875em;
 	border-radius: 20px;
 	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-	background: var(--bg-color, #fff);
-	color: var(--text-color, #000);
-	transition: transform 0.4s ease, box-shadow 0.4s ease;
+	background: var(--bg-color-book-page);
+	color: var(--text-color-book-page);
+	transition: transform 0.4s ease, box-shadow 0.4s ease,
+		padding 0.3s ease;
 	max-width: 900px;
 	margin: 1.25em auto;
 	position: relative;
 	overflow: hidden;
-	font-family: "Poppins", sans-serif;
+	font-family: 'Poppins', sans-serif;
 }
 
 .book-details-container:hover {
@@ -46,16 +47,16 @@
 .book-title {
 	font-size: 1.2rem;
 	font-weight: 700;
-	color: var(--title-color, #333);
+	color: var(--title-color);
 	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 	margin: 0;
 	transition: font-size 0.3s ease;
 }
 
 .book-author {
-	font-size: 1rem;
+	font-size: 1.25rem;
 	font-weight: 600;
-	color: var(--author-color, #555);
+	color: var(--author-color);
 	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 	font-style: italic;
 	margin: 0;
@@ -73,33 +74,26 @@
 	border-radius: 20px;
 	font-size: 0.88rem;
 	font-weight: 600;
-	transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+	transition: background-color 0.3s ease, color 0.3s ease,
+		transform 0.3s ease;
 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+	background: var(--book-genre);
+	color: var(--title-color);
 }
 
 .book-genre span:hover {
 	transform: scale(1.1);
 }
 
-.day-theme .book-genre span {
-	background: linear-gradient(135deg, #ffe4b2, #ff9d76);
-	color: #333;
-}
-
-.night-theme .book-genre span {
-	background: linear-gradient(135deg, #240046, #483d8b);
-	color: #d4bfff;
-}
-
 .book-publish-date {
 	font-size: 1.13rem;
-	color: var(--text-color-secondary, #666);
+	color: var(--title-color);
 }
 
 .book-description {
 	font-size: 1.13rem;
 	line-height: 1.8;
-	color: var(--text-color, #000);
+	color: var(--text-color);
 	text-align: justify;
 	margin: 0;
 	max-width: 500px;
@@ -120,8 +114,8 @@ button {
 	font-weight: 600;
 	cursor: pointer;
 	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-	transition: transform 0.3s ease, background-color 0.3s ease,
-		box-shadow 0.3s ease;
+	transition: transform 0.3s ease,
+		background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 button:hover {
@@ -130,41 +124,12 @@ button:hover {
 }
 
 .create-discussions-btn {
-	background: var(--button-bg, #ff9d76);
-	color: var(--button-text-color, #fff);
+	background: var(--button-bg-color);
+	color: var(--button-text-color);
 }
 
 .create-discussions-btn:hover {
-	background: var(--button-bg-hover, #e87d5a);
-}
-
-.join-discussions-btn {
-	background: var(--button-secondary-bg, #240046);
-	color: var(--button-text-color, #fff);
-}
-
-.join-discussions-btn:hover {
-	background: var(--button-secondary-bg-hover, #3c005a);
-}
-
-.day-theme {
-	--bg-color: #ffe4b2;
-	--text-color: #333;
-	--title-color: #333;
-	--author-color: #555;
-	--text-color-secondary: #444;
-	--button-bg: #ff9d76;
-	--button-bg-hover: #e87d5a;
-}
-
-.night-theme {
-	--bg-color: #2e034c;
-	--text-color: #fff;
-	--title-color: #d4bfff;
-	--author-color: #b89de0;
-	--text-color-secondary: #b0a1c9;
-	--button-bg: #6a0dad;
-	--button-bg-hover: #4f0975;
+	background: var(--button-bg-hover);
 }
 
 @media (max-width: 768px) {

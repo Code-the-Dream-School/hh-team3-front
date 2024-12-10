@@ -1,17 +1,24 @@
 .card {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 20px;
-	width: 300px;
+	width: 100%;
+	max-width: 300px;
 	height: 380px;
 	border-radius: 20px;
 	overflow: hidden;
 	position: relative;
 	box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-	transition: transform 0.4s ease, box-shadow 0.4s ease;
-	font-family: "Poppins", sans-serif;
+	font-family: 'Poppins', sans-serif;
 	text-align: center;
 	margin: 0.625em;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	background: var(--bg-color-card);
+	color: var(--text-color);
+	border: 2px solid var(--border-color);
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	font-weight: 500;
+	margin-bottom: 1em;
 }
 
 .card:hover {
@@ -28,40 +35,19 @@
 	margin-bottom: 0.625em;
 }
 .card-title {
-	font-size: medium;
+	font-size: 22px;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	font-weight: 700;
 	margin: 0.625em 0;
 	color: var(--title-color);
+	display: block;
 }
 .card-author {
 	font-size: medium;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
 	font-weight: 500;
 	color: var(--author-color);
 	margin-bottom: 1em;
 	font-style: italic;
-}
-.day-theme {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 20px;
-	background: linear-gradient(135deg, #ffe4b2, #ff9d76);
-	color: #333;
-	--title-color: #333;
-	--author-color: #555;
-}
-.night-theme {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 20px;
-	background: linear-gradient(135deg, #2e034c, #483d8b, #240046);
-	color: #ffffff;
-	border: 2px solid #6a0dad;
-	--title-color: #d4bfff;
-	--author-color: #b89de0;
 }
