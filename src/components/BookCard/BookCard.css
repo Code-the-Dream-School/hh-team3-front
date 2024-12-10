@@ -3,7 +3,7 @@
 	flex-wrap: wrap;
 	gap: 20px;
 	width: 300px;
-	height: 430px;
+	height: 380px;
 	border-radius: 20px;
 	overflow: hidden;
 	position: relative;
@@ -11,9 +11,6 @@
 	font-family: "Poppins", sans-serif;
 	text-align: center;
 	margin: 0.625em;
-	display: flex;
-	flex-wrap: wrap;
-	gap: 20px;
 	background: var(--bg-color-card);
 	color: var(--text-color);
 	border: 2px solid var(--border-color);
