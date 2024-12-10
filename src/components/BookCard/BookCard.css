@@ -1,6 +1,8 @@
 .card {
-	width: 100%;
-	max-width: 300px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	width: 300px;
 	height: 380px;
 	border-radius: 20px;
 	overflow: hidden;
@@ -20,7 +22,6 @@
 	font-weight: 500;
 	margin-bottom: 1em;
 }
-
 .card:hover {
 	transform: scale(1.1) rotate(-1deg);
 	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);

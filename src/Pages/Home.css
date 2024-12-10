@@ -38,8 +38,4 @@
 		order: 1;
 	}
 }
-.background {
-	background: linear-gradient(135deg, #ffe4b2, #ff9d76);
-	min-height: 100vh;
-	min-width: 100vw;
-}
+
