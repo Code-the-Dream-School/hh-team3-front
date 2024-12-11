@@ -6,18 +6,17 @@ export default function BookCard({
 	authors = [],
 	title,
 	publishedDate,
+  children,
 }) {
 	return (
 		<div className="card">
-			<img
-				src={`../images/${imageLinks.thumbnail}`}
-				alt="Book cover"
-			/>
+			<img src={imageLinks?.thumbnail} alt="Book cover" />
 			<div className="card-content">
 				<p className="card-title">{title}</p>
-				<p className="card-author">
-					By {authors.join(', ')} ({publishedDate})
-				</p>
+        <p className="card-author">
+          By {authors.join(",")} ({publishedDate.split("-")[0]})
+        </p>
+        {children}
 			</div>
 		</div>
 	);

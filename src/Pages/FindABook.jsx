@@ -1,10 +1,9 @@
 
 import React, { useState } from "react";
-import booksData from "../data/booksData";
 import Search from "../components/Search/search";
 import SearchList from "../components/Search/searchList";
 
-function FindABook() {
+function FindABook({ booksData }) {
   const [filteredData, setFilteredData] = useState(booksData)
 
   const handleSearch = (query) => {
