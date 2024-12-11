@@ -7,10 +7,45 @@ import './App.css';
 import Navbar from './components/NavBar/Navbar';
 import FindABook from './Pages/FindABook';
 import Home from './Pages/home';
-import booksData from '/src/data/booksData.js';
+import React, { useState, useEffect } from "react";
+import BookDetails from "./components/BookDetails/BookDetails";
 const URL = 'http://localhost:8000/api/v1/';
 
 function App() {
+  const [books, setBooks] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const url = "https://hh-team3-back.onrender.com/api/v1/books";
+
+      try {
+        const response = await fetch(url);
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        if (data.books) {
+          const booksData = data.books.map((book) => ({
+            id: book.id,
+            ...book,
+          }));
+          setBooks(booksData);
+        } else {
+          throw new Error("Missing 'books' in API response");
+        }
+      } catch (err) {
+        console.error("Error fetching data:", err.message);
+        setError(err.message);
+      }
+    };
+    fetchData();
+  }, []);
+
+
 	if (typeof global === 'undefined') {
 		window.global = window;
 	}
@@ -21,12 +56,16 @@ function App() {
 				<Routes>
 					<Route
 						path="/find-book"
-						element={<FindABook />}
+						element={<FindABook booksData={books} />}
 					/>
 					<Route
 						path="/"
-						element={<Home booksData={booksData} />}
+						element={<Home booksData={books} />}
 					/>
+          <Route 
+            path="/books/:id" 
+            element={<BookDetails />} 
+          />
 				</Routes>
 			</BrowserRouter>
 		</>

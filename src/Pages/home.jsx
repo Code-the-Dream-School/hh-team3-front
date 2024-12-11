@@ -13,7 +13,7 @@ function Home({ booksData }) {
 		};
 		pickRandomBook();
 
-		const interval = setInterval(pickRandomBook, 5000);
+		const interval = setInterval(pickRandomBook, 50000000);
 
 		return () => clearInterval(interval);
 	}, [booksData]);
@@ -27,7 +27,7 @@ function Home({ booksData }) {
 				<p>Quote: {randomBook.quote}</p>
 				<div key={randomBook.id} className="card">
 					<img
-						src={`../images/${randomBook.imageLinks.thumbnail}`}
+						src={randomBook.imageLinks?.thumbnail}
 						alt="Books"
 						className="img-fluid"
 					/>

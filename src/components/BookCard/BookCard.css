@@ -3,7 +3,7 @@
 	flex-wrap: wrap;
 	gap: 20px;
 	width: 300px;
-	height: 380px;
+	height: 430px;
 	border-radius: 20px;
 	overflow: hidden;
 	position: relative;
@@ -36,9 +36,10 @@
 	margin-bottom: 0.625em;
 }
 .card-title {
-	font-size: 22px;
-	white-space: nowrap;
+	font-size: medium;
+	white-space: normal;
 	overflow: hidden;
+  word-wrap: break-word;
 	text-overflow: ellipsis;
 	font-weight: 700;
 	margin: 0.625em 0;
