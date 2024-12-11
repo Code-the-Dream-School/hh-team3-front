@@ -3,6 +3,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import BookTalks from "../BookTalks/BookTalks.jsx";
 import Loader from "../Loader/Loader.jsx";
 import "./BookDetails.css";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 export default function BookDetails() {
 	const { id } = useParams();
@@ -77,7 +79,6 @@ export default function BookDetails() {
 					</div>
 				</div>
 			</div>
-			<BookTalks />
 		</div>
 	);
 }
