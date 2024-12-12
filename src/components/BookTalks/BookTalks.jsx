@@ -1,18 +1,11 @@
-import { useEffect, useState } from "react";
 import userData from "../../data/bookTalksData.js";
+import useLocalStorageReviews from "../../hooks/useLocalStorageReviews";
 import BookTalkReview from "../BookTalks/BookTalkReview.jsx";
 import BookTalkForm from "../BookTalks/BookTalksForm.jsx";
 import "./BookTalks.css";
 
 export default function BookTalks() {
-	const [reviews, setReviews] = useState(() => {
-		const savedReviews = localStorage.getItem("bookTalkReviews");
-		return savedReviews ? JSON.parse(savedReviews) : [];
-	});
-
-	useEffect(() => {
-		localStorage.setItem("bookTalkReviews", JSON.stringify(reviews));
-	}, [reviews]);
+	const [reviews, setReviews] = useLocalStorageReviews("bookTalkReviews", []);
 
 	const handleNewBookTalk = (newReview) => {
 		setReviews((prevReviews) => [newReview, ...prevReviews]);
