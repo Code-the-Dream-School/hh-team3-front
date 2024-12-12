@@ -1,7 +1,5 @@
 import React from "react";
 import { useColorScheme } from "../../hooks/useColorScheme";
-import "../BookCard/BookCard.css";
-import "../BookDetails/BookDetails.css";
 import "./DayNightTheme.css";
 
 export default function DayNightTheme() {

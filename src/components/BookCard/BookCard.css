@@ -25,6 +25,7 @@
 .card:hover {
 	transform: scale(1.1) rotate(-1deg);
 	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+	transition: all 200ms ease-in-out;
 }
 .card img {
 	width: 100%;
