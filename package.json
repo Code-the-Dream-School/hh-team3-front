@@ -15,7 +15,8 @@
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0",
 		"react-responsive": "^10.0.0",
-		"react-router-dom": "^6.28.0"
+		"react-router-dom": "^6.28.0",
+		"uuidv4": "^6.2.13"
 	},
 	"devDependencies": {
 		"@types/react": "^18.2.56",
