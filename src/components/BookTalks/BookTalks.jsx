@@ -1,16 +1,21 @@
-import { useState } from 'react';
-import BookTalkReview from '../BookTalks/BookTalkReview.jsx';
-import BookTalkForm from '../BookTalks/BookTalksForm.jsx';
-import './BookTalks.css';
+import { useEffect, useState } from "react";
+import userData from "../../data/bookTalksData.js";
+import BookTalkReview from "../BookTalks/BookTalkReview.jsx";
+import BookTalkForm from "../BookTalks/BookTalksForm.jsx";
+import "./BookTalks.css";
 
 export default function BookTalks() {
-	const [reviews, setReviews] = useState([]);
+	const [reviews, setReviews] = useState(() => {
+		const savedReviews = localStorage.getItem("bookTalkReviews");
+		return savedReviews ? JSON.parse(savedReviews) : [];
+	});
+
+	useEffect(() => {
+		localStorage.setItem("bookTalkReviews", JSON.stringify(reviews));
+	}, [reviews]);
 
 	const handleNewBookTalk = (newReview) => {
-		setReviews((prevReviews) => [
-			newReview,
-			...prevReviews,
-		]);
+		setReviews((prevReviews) => [newReview, ...prevReviews]);
 	};
 
 	const handleLikeClick = (reviewId) => {
@@ -24,8 +29,14 @@ export default function BookTalks() {
 								? review.likes - 1
 								: review.likes + 1,
 					  }
-					: review
-			)
+					: review,
+			),
+		);
+	};
+
+	const handleRemoveClick = (reviewId) => {
+		setReviews((prevReviews) =>
+			prevReviews.filter((review) => review.id !== reviewId),
 		);
 	};
 
@@ -36,6 +47,9 @@ export default function BookTalks() {
 			<BookTalkReview
 				reviews={reviews}
 				onLike={handleLikeClick}
+				onRemove={handleRemoveClick}
+				username={userData[0].username}
+				photo={userData[0].photo}
 			/>
 		</div>
 	);

@@ -1,10 +1,7 @@
-import { useEffect, useRef } from 'react';
-import './BookTalks.css';
+import { useEffect, useRef } from "react";
+import "./BookTalks.css";
 
-export default function BookTalksInput({
-	value,
-	onChange,
-}) {
+export default function BookTalksInput({ value, onChange, username, photo }) {
 	const inputRef = useRef();
 
 	useEffect(() => {
@@ -13,11 +10,13 @@ export default function BookTalksInput({
 
 	return (
 		<div className="bookTalksContainer">
-			<img
-				className="book-talk-user-avatar"
-				src={'../userAvatars/default-avatar.jpg'}
-			/>
-
+			<div className="user-input">
+				<img
+					className="book-talk-user-avatar"
+					src={`../userAvatars/${photo}`}
+				/>
+				<h5 className="username">{username}</h5>
+			</div>
 			<textarea
 				className="inputTextarea"
 				id="input"
