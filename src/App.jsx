@@ -5,7 +5,7 @@ import FindABook from "./Pages/FindABook";
 import Home from "./Pages/home";
 import { useState, useEffect } from "react";
 import BookDetails from "./components/BookDetails/BookDetails";
-const URL = "http://localhost:8000/api/v1/";
+
 
 function App() {
 	const [books, setBooks] = useState([]);
