@@ -1,11 +1,12 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/NavBar/Navbar";
 import FindABook from "./Pages/FindABook";
 import Home from "./Pages/home";
 import { useState, useEffect } from "react";
 import BookDetails from "./components/BookDetails/BookDetails";
-
+import Login from "./components/UserLogin/Login";
+import AuthProvider from "../src/components/Context/AuthProvider";
 
 function App() {
 	const [books, setBooks] = useState([]);
@@ -17,7 +18,6 @@ function App() {
 
 			try {
 				const response = await fetch(`${url}/books`);
-
 				if (!response.ok) {
 					throw new Error(`HTTP error! Status: ${response.status}`);
 				}
@@ -44,9 +44,10 @@ function App() {
 	if (typeof global === "undefined") {
 		window.global = window;
 	}
+
 	return (
-		<>
-			<Router>
+		<AuthProvider>
+			<BrowserRouter>
 				<Navbar />
 				<div className="container">
 					<Routes>
@@ -56,10 +57,12 @@ function App() {
 						/>
 						<Route path="/" element={<Home booksData={books} />} />
 						<Route path="/books/:id" element={<BookDetails />} />
+						<Route path="/login" element={<Login />} />
 					</Routes>
 				</div>
-			</Router>
-		</>
+			</BrowserRouter>
+		</AuthProvider>
 	);
 }
+
 export default App;
