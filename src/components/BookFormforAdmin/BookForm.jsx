@@ -146,7 +146,6 @@ const BookForm = ({ onAddBook }) => {
 						}}
 					/>
 				</Form.Group>
-				*
 				<div className="buttons-container">
 					<button className="create-discussions-btn">Save</button>
 				</div>
