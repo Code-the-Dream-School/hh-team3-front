@@ -34,7 +34,7 @@ export default function BookTalks() {
 	};
 
 	return (
-		<div>
+		<div className="book-talks">
 			<h1>BookTalk Reviews</h1>
 			<BookTalkForm onBookTalk={handleNewBookTalk} />
 			<BookTalkReview
