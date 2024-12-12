@@ -1,11 +1,12 @@
-import React from 'react';
-import './BookTalks.css';
-
+import React from "react";
+import "./BookTalks.css";
 
 export default function BookTalkReview({
 	reviews,
 	onLike,
+	onRemove,
 	username,
+	photo,
 }) {
 	return (
 		<div className="feed">
@@ -14,15 +15,16 @@ export default function BookTalkReview({
 					<div className="review-inner">
 						<img
 							className="book-talk-user-avatar"
-							src={'../userAvatars/default-avatar.jpg'}
+							src={`../userAvatars/${photo}`}
 							alt="user portrait"
 						/>
+
 						<div className="message">
-						<strong><h5 class="username">{username}</h5></strong>
+							<strong>
+								<p className="username">{username}</p>
+							</strong>
 							<div className="text">
-								<p className="review-text">
-									{review.review}
-								</p>
+								<p className="review-text">{review.review}</p>
 							</div>
 							<div className="review-details">
 								<span
@@ -31,13 +33,15 @@ export default function BookTalkReview({
 								>
 									<i
 										className={`fa-solid fa-thumbs-up ${
-											review.isLiked ? 'liked' : ''
+											review.isLiked ? "liked" : ""
 										}`}
 									></i>
 									{review.likes}
 								</span>
-
-								<span className="remove detail">
+								<span
+									className="remove detail"
+									onClick={() => onRemove(review.id)}
+								>
 									<i className="fa-regular fa-trash-can"></i>
 								</span>
 							</div>
