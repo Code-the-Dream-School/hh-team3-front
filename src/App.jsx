@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/NavBar/Navbar";
 import FindABook from "./Pages/FindABook";
 import Home from "./Pages/home";
@@ -13,7 +13,7 @@ function App() {
 	}
 	return (
 		<>
-			<BrowserRouter>
+			<Router>
 				<Navbar />
 				<div className="container">
 					<Routes>
@@ -24,7 +24,7 @@ function App() {
 						/>
 					</Routes>
 				</div>
-			</BrowserRouter>
+			</Router>
 		</>
 	);
 }
