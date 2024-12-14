@@ -1,0 +1,78 @@
+.signup-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+.signup-container {
+	width: 300px;
+	padding: 20px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.error {
+	color: red;
+	font-size: 14px;
+}
+
+input {
+	width: 100%;
+	padding: 8px;
+	margin: 10px 0;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+
+button {
+	width: 100%;
+	background-color: #007bff;
+	color: white;
+	padding: 10px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #0056b3;
+}
+
+.password-container {
+	margin-bottom: 10px;
+}
+
+.password-input-wrapper {
+	position: relative;
+	width: 100%;
+}
+
+.password-input-wrapper input {
+	width: 100%;
+	padding-right: 30px;
+}
+
+.password-toggle {
+	position: absolute;
+	top: 50%;
+	right: 8px;
+	transform: translateY(-50%);
+	border: none;
+	background: none;
+	cursor: pointer;
+	font-size: 14px;
+	color: #666;
+	padding: 2px;
+	height: 24px;
+	width: 24px;
+	line-height: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.password-toggle:hover {
+	color: #333;
+}
