@@ -14,6 +14,7 @@ export default function BookTalksInput({ value, onChange, username, photo }) {
 				<img
 					className="book-talk-user-avatar"
 					src={`../userAvatars/${photo}`}
+					alt={`${username || "Anonymous"} avatar`}
 				/>
 				<h5 className="username">{username}</h5>
 			</div>

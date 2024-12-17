@@ -1,5 +1,5 @@
 import userData from "../../data/bookTalksData.js";
-import useLocalStorageReviews from "../../hooks/useLocalStorageReviews";
+import useLocalStorageReviews from "../../hooks/useLocalStorage.js";
 import BookTalkReview from "../BookTalks/BookTalkReview.jsx";
 import BookTalkForm from "../BookTalks/BookTalksForm.jsx";
 import "./BookTalks.css";
