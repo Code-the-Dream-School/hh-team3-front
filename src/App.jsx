@@ -5,14 +5,15 @@ import FindABook from "./Pages/FindABook";
 import Home from "./Pages/home";
 import booksData from "/src/data/booksData.js";
 import Login from "./components/UserLogin/Login";
-const URL = "http://localhost:8000/api/v1/";
+import AuthProvider from "../src/components/Context/AuthProvider";
 
 function App() {
 	if (typeof global === "undefined") {
 		window.global = window;
 	}
+
 	return (
-		<>
+		<AuthProvider>
 			<BrowserRouter>
 				<Navbar />
 				<Routes>
@@ -21,7 +22,8 @@ function App() {
 					<Route path="/login" element={<Login />} />
 				</Routes>
 			</BrowserRouter>
-		</>
+		</AuthProvider>
 	);
 }
+
 export default App;

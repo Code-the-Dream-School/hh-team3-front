@@ -1,32 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../Context/AuthProvider";
 import "./Login.css";
 
 const Login = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState("");
-	const [emailError, setEmailError] = useState("");
 	const [showPassword, setShowPassword] = useState(false);
 	const navigate = useNavigate();
-
-	const validateEmail = (email) => {
-		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-		return emailRegex.test(email);
-	};
+	const { login } = useContext(AuthContext);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setError("");
-		setEmailError("");
-		if (!validateEmail(email)) {
-			setEmailError("Invalid email format");
-			return;
-		}
 
 		try {
 			const response = await fetch(
-				"http://localhost:8000/api/v1/auth/login",
+				`${import.meta.env.VITE_API_BASE_URL}/api/v1/auth/login`,
 				{
 					method: "POST",
 					headers: {
@@ -38,7 +29,7 @@ const Login = () => {
 
 			if (response.ok) {
 				const data = await response.json();
-				localStorage.setItem("token", data.token);
+				login(data.token);
 				navigate("/home");
 			} else {
 				const errorData = await response.json();
@@ -63,7 +54,6 @@ const Login = () => {
 							onChange={(e) => setEmail(e.target.value)}
 							required
 						/>
-						{emailError && <p className="error">{emailError}</p>}
 					</div>
 					<div className="password-container">
 						<label>Password:</label>
