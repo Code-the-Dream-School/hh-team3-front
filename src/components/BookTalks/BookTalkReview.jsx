@@ -16,7 +16,7 @@ export default function BookTalkReview({
 						<img
 							className="book-talk-user-avatar"
 							src={`../userAvatars/${photo}`}
-							alt="user portrait"
+							alt={`${review.username} avatar`}
 						/>
 
 						<div className="message">
@@ -36,7 +36,11 @@ export default function BookTalkReview({
 											review.isLiked ? "liked" : ""
 										}`}
 									></i>
-									{review.likes}
+									{review.likes > 0 && (
+										<span className="like-amount">
+											{review.likes}
+										</span>
+									)}
 								</span>
 								<span
 									className="remove detail"
