@@ -36,7 +36,8 @@
 	height: 20px;
 	border-radius: 50%;
 	background-color: white;
-	transition: transform 250ms ease-in-out,
+	transition:
+		transform 250ms ease-in-out,
 		background-color 250ms ease-in-out;
 }
 
