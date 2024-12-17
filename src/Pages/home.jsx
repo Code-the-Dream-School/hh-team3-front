@@ -27,7 +27,7 @@ function Home({ booksData }) {
 				<p>Quote: {randomBook.quote}</p>
 				<div key={randomBook.id} className="card">
 					<img
-						src={`../images/${randomBook.imageLinks.thumbnail}`}
+						src={randomBook.imageLinks?.thumbnail}
 						alt="Books"
 						className="img-fluid"
 					/>
