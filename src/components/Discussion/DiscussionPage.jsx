@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import useLocalStorage from "../../hooks/useLocalStorage.js";
 import "./DiscussionPage.css";
 
@@ -12,6 +12,11 @@ const bookMap = {
 	"60c5a8e7d9a5a142a02344b3": "To Kill a Mockingbird",
 };
 
+const bookImages = {
+	"60b4bca4f1c64f16d1c1c8e4": "/images/gatsby.jpg",
+	"60c5a8e7d9a5a142a02344b3": "/images/mockingbird.jpg",
+};
+
 export default function DiscussionPage({
 	title,
 	book,
@@ -20,6 +25,7 @@ export default function DiscussionPage({
 	participants = [],
 	meetingLink,
 	createdBy,
+	id,
 }) {
 	const formattedDate = new Date(date).toLocaleString([], {
 		year: "numeric",
@@ -37,18 +43,77 @@ export default function DiscussionPage({
 	const bookName = bookMap[book] || book;
 
 	const [isJoined, setIsJoined] = useLocalStorage(
-		"discussionJoinStatus",
+		`discussion_joined_${id}`,
+		false,
+	);
+	const [isDeleted, setIsDeleted] = useLocalStorage(
+		`discussion_deleted_${id}`,
 		false,
 	);
 
-	const handleJoinToggle = () => {
-		setIsJoined((prevStatus) => !prevStatus);
+	const [loading, setLoading] = useState(false);
+	const [error, setError] = useState("");
+
+	const canJoin = participants.length < 10;
+
+	const handleJoinToggle = async () => {
+		if (participants.length >= 10) {
+			alert(
+				"This discussion is full. You can create your own or join a different one",
+			);
+			return;
+		}
+		setLoading(true);
+		setError("");
+		try {
+			const endpoint = isJoined
+				? `/api/v1/discussions/${id}/unjoin`
+				: `/api/v1/discussions/${id}/join`;
+
+			const response = await fetch(
+				`${import.meta.env.VITE_API_BASE_URL}${endpoint}`,
+				{
+					method: "POST",
+				},
+			);
+
+			if (!response.ok) throw new Error("Failed to update join status");
+
+			setIsJoined(!isJoined);
+			setError("");
+		} catch (err) {
+			setError("Failed to update.");
+		}
+		setLoading(false);
 	};
 
+	const handleDeleteDiscussion = async () => {
+		setLoading(true);
+		setError("");
+		try {
+			const response = await fetch(
+				`${import.meta.env.VITE_API_BASE_URL}/api/v1/discussions/${id}`,
+				{
+					method: "DELETE",
+				},
+			);
+
+			if (!response.ok) throw new Error("Failed to delete discussion");
+
+			setIsDeleted(true);
+		} catch (err) {
+			setError("Failed to delete.");
+		}
+		setLoading(false);
+	};
+
+	if (isDeleted) return <p>This discussion has been deleted.</p>;
+
+	const bookImg = bookImages[book] || "/images/default-book.png";
 	return (
 		<div className="discussion-page">
 			<div className="discussion-container">
-				<img src={'/'} alt="Book cover" />
+				<img src={bookImg} alt={`Cover of ${bookName}`} />
 				<div className="discussion-details">
 					<p className="discussion-title">
 						<strong>Title:</strong> {title}
@@ -65,15 +130,26 @@ export default function DiscussionPage({
 					<p className="discussion-participants">
 						<strong>Participants:</strong>{" "}
 						{participantNames.length > 0
-							? participantNames.join(" ")
+							? participantNames.join(", ")
 							: "No participants yet."}
 					</p>
 					<p className="discussion-created-by">
 						<strong>Created By:</strong> {createdByName}
 					</p>
 					<div className="buttons-container">
-						<button className="join-btn" onClick={handleJoinToggle}>
+						<button
+							className="join-btn"
+							onClick={handleJoinToggle}
+							disabled={!canJoin || loading}
+						>
 							{isJoined ? "Leave" : "Join"}
+						</button>
+						<button
+							className="delete-btn"
+							onClick={handleDeleteDiscussion}
+							disabled={loading}
+						>
+							Delete Discussion
 						</button>
 					</div>
 				</div>
