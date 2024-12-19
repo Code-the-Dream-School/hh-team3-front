@@ -97,6 +97,7 @@
 	max-width: 500px;
 	transition: font-size 0.3s ease, line-height 0.3s ease;
 	overflow: scroll;
+	height:200px;
 }
 
 .buttons-container {
