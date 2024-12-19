@@ -1,11 +1,10 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import  { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/NavBar/Navbar";
 import FindABook from "./Pages/FindABook";
 import Home from "./Pages/home";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import BookDetails from "./components/BookDetails/BookDetails";
-const URL = "http://localhost:8000/api/v1/";
 
 function App() {
 	const [books, setBooks] = useState([]);
@@ -46,17 +45,19 @@ function App() {
 	}
 	return (
 		<>
-			<BrowserRouter>
+			<Router>
 				<Navbar />
-				<Routes>
-					<Route
-						path="/find-book"
-						element={<FindABook booksData={books} />}
-					/>
-					<Route path="/" element={<Home booksData={books} />} />
-					<Route path="/books/:id" element={<BookDetails />} />
-				</Routes>
-			</BrowserRouter>
+				<div className="container">
+					<Routes>
+						<Route
+							path="/find-book"
+							element={<FindABook booksData={books} />}
+						/>
+						<Route path="/" element={<Home booksData={books} />} />
+						<Route path="/books/:id" element={<BookDetails />} />
+					</Routes>
+				</div>
+			</Router>
 		</>
 	);
 }

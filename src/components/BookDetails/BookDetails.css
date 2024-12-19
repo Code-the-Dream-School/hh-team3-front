@@ -8,10 +8,7 @@
 	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 	background: var(--bg-color-book-page);
 	color: var(--text-color-book-page);
-	transition:
-		transform 0.4s ease,
-		box-shadow 0.4s ease,
-		padding 0.3s ease;
+	transition: transform 0.4s ease, box-shadow 0.4s ease, padding 0.3s ease;
 	max-width: 900px;
 	margin: 1.25em auto;
 	position: relative;
@@ -76,10 +73,7 @@
 	border-radius: 20px;
 	font-size: 0.88rem;
 	font-weight: 600;
-	transition:
-		background-color 0.3s ease,
-		color 0.3s ease,
-		transform 0.3s ease;
+	transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 	background: var(--book-genre);
 	color: var(--title-color);
@@ -101,9 +95,9 @@
 	text-align: justify;
 	margin: 0;
 	max-width: 500px;
-	transition:
-		font-size 0.3s ease,
-		line-height 0.3s ease;
+	transition: font-size 0.3s ease, line-height 0.3s ease;
+	overflow: scroll;
+	height:200px;
 }
 
 .buttons-container {
@@ -120,9 +114,7 @@ button {
 	font-weight: 600;
 	cursor: pointer;
 	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-	transition:
-		transform 0.3s ease,
-		background-color 0.3s ease,
+	transition: transform 0.3s ease, background-color 0.3s ease,
 		box-shadow 0.3s ease;
 }
 

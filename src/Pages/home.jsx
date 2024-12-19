@@ -21,7 +21,7 @@ function Home({ booksData }) {
 	if (!randomBook) return <p>Loading...</p>;
 
 	return (
-		<div className="day-theme background">
+		<div className="home">
 			<div className="book-of-the-month">
 				<h3>Book of the Month</h3>
 				<p>Quote: {randomBook.quote}</p>

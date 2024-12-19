@@ -1,26 +1,18 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
+import useLocalStorage from "./useLocalStorage.js";
 
 export function useColorScheme() {
 	const systemPrefersDark = useMediaQuery({
 		query: "(prefers-color-scheme: dark)",
 	});
 
-	const [isDark, setIsDark] = useState(() => {
-		const storedValue = localStorage.getItem("colorScheme");
-		return storedValue !== null ? JSON.parse(storedValue) : undefined;
-	});
+	const [isDark, setIsDark] = useLocalStorage("colorScheme", undefined);
 
 	const value = useMemo(
 		() => (isDark === undefined ? systemPrefersDark : isDark),
 		[isDark, systemPrefersDark],
 	);
-
-	useEffect(() => {
-		if (isDark !== undefined) {
-			localStorage.setItem("colorScheme", JSON.stringify(isDark));
-		}
-	}, [isDark]);
 
 	useEffect(() => {
 		document.body.classList.toggle("dark", value);

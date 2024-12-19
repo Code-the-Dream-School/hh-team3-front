@@ -1,9 +1,9 @@
-import React from "react";
-import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import "./Navbar.css";
+import React from "react";
+import { Link } from "react-router-dom";
 import DayNightTheme from "../day-night-theme/DayNightTheme";
+import "./Navbar.css";
 
 function Navbar() {
 	return (
@@ -12,6 +12,7 @@ function Navbar() {
 				<Link className="navbar-brand my-text" to="/">
 					BookTalk
 				</Link>
+				<DayNightTheme />
 				<button
 					className="navbar-toggler"
 					type="button"
@@ -25,11 +26,6 @@ function Navbar() {
 				</button>
 				<div className="collapse navbar-collapse" id="navbarNav">
 					<ul className="navbar-nav ms-auto">
-						<li className="nav-item">
-							<div className="nav-link">
-								<DayNightTheme />
-							</div>
-						</li>
 						<li className="nav-item">
 							<Link className="nav-link" to="/find-book">
 								Find a book
