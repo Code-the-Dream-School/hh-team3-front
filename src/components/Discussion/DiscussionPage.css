@@ -1,0 +1,163 @@
+.discussion-container {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1.875em;
+	align-items: flex-start;
+	padding: 1.875em;
+	border-radius: 20px;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+	background: var(--bg-color-book-page);
+	color: var(--text-color-book-page);
+	transition: transform 0.4s ease, box-shadow 0.4s ease, padding 0.3s ease;
+	max-width: 900px;
+	margin: 1.25em auto;
+	position: relative;
+	overflow: hidden;
+	font-family: "Poppins", sans-serif;
+}
+
+.discussion-container:hover {
+	transform: scale(1.02);
+	box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.discussion-container img {
+	width: 300px;
+	height: auto;
+	object-fit: cover;
+	border-radius: 15px;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+	transition: transform 0.4s ease;
+}
+
+.discussion-container img:hover {
+	transform: scale(1.05);
+}
+
+.discussion-details {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 0.938em;
+	padding: 0.625em 1.25em;
+	transition: padding 0.3s ease;
+}
+
+.discussion-title {
+	font-size: 1.2rem;
+	font-weight: 700;
+	color: var(--title-color);
+	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	margin: 0;
+	transition: font-size 0.3s ease;
+}
+
+.discussion-book {
+	font-size: 1.25rem;
+	font-weight: 600;
+	color: var(--author-color);
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+	font-style: italic;
+	margin: 0;
+}
+.discussion-date {
+	font-size: 1.13rem;
+	color: var(--title-color);
+}
+
+.book-description {
+	font-size: 1.13rem;
+	line-height: 1.8;
+	color: var(--text-color);
+	text-align: justify;
+	margin: 0;
+	max-width: 500px;
+	transition: font-size 0.3s ease, line-height 0.3s ease;
+}
+
+.buttons-container {
+	display: flex;
+	gap: 0.938em;
+	margin-top: 1.25em;
+}
+
+.buttons-container a {
+	padding: 0.75em 1.563em;
+	border: none;
+	border-radius: 25px;
+	font-size: 1rem;
+	font-weight: 600;
+	cursor: pointer;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+	transition: transform 0.3s ease, background-color 0.3s ease,
+		box-shadow 0.3s ease;
+}
+
+.buttons-container a:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.join-btn {
+	background: var(--button-bg-color);
+	color: var(--button-text-color);
+}
+
+.join-btn:hover {
+	background: var(--button-bg-hover);
+}
+
+@media (max-width: 768px) {
+	.discussion-container {
+		flex-direction: column;
+		align-items: center;
+		padding: 1.5em;
+		gap: 1.5em;
+	}
+
+	.discussion-container img {
+		width: 60%;
+	}
+
+	.discussion-details {
+		padding: 1em;
+		text-align: center;
+	}
+
+	.discussion-title {
+		font-size: 1.5rem;
+	}
+
+	.discussion-content {
+		font-size: 1rem;
+		line-height: 1.6;
+	}
+}
+
+@media (max-width: 480px) {
+	.discussion-container {
+		padding: 1em;
+		gap: 1em;
+	}
+
+	.discussion-container img {
+		margin-top: 1em;
+		width: 50%;
+	}
+
+	.discussion-title {
+		font-size: 1.25rem;
+	}
+
+	.discussion-content {
+		font-size: 0.9rem;
+		line-height: 1.4;
+	}
+
+	.buttons-container a,
+	.book-genre {
+		font-size: 0.9rem;
+		padding: 0.5em 1em;
+		margin: 0 auto;
+	}
+}
