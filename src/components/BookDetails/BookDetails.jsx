@@ -35,7 +35,7 @@ export default function BookDetails() {
 
 	return (
 		<div className="book-details-page">
-			<div className="book-details-container day-theme">
+			<div className="book-details-container">
 				<img src={book.imageLinks?.thumbnail} alt={book.title} />
 				<div className="book-details">
 					<p className="book-title">{book.title}</p>
