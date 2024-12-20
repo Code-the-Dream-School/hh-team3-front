@@ -4,7 +4,6 @@
 	background-color: #e6e0ff;
 	border-color: #e6e0ff;
 	font-weight: bold;
-
 	font-size: 18px;
 	border-radius: 10px;
 }
@@ -17,14 +16,28 @@
 .my-text {
 	font-family: "Irish Grover", cursive;
 }
+
+.welcome-section {
+  width: 75%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
 .book-of-the-month {
 	position: absolute;
+	align-items: flex-end;
 	top: 80px;
-	right: 25px;
-	max-width: 300px;
-	text-align: left;
+	max-width: 400px;
+	text-align: center;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	transform: scale(0.9, 0.9);
+	padding-right: 2rem;
+	right: 2rem;
 	display: block;
 }
+
 
 @media (max-width: 768px) {
 	.book-of-the-month {
@@ -39,3 +52,24 @@
 	}
 }
 
+.d-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  gap: 20px;
+}
+
+.book-btn {
+  flex: 1;
+  max-width: 30%; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.book-btn img {
+  max-width: 100%;
+  height: auto;
+}

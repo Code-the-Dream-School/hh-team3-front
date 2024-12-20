@@ -2,6 +2,7 @@ import React from "react";
 import "./BookDetails.css";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import BookTalks from '../BookTalks/BookTalks.jsx'
 
 export default function BookDetails() {
 	const { id } = useParams();
@@ -34,7 +35,7 @@ export default function BookDetails() {
 
 	return (
 		<div className="book-details-page">
-			<div className="book-details-container day-theme">
+			<div className="book-details-container">
 				<img src={book.imageLinks?.thumbnail} alt={book.title} />
 				<div className="book-details">
 					<p className="book-title">{book.title}</p>
@@ -57,6 +58,7 @@ export default function BookDetails() {
 					</div>
 				</div>
 			</div>
+			<BookTalks />
 		</div>
 	);
 }
