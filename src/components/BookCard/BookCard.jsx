@@ -10,11 +10,13 @@ export default function BookCard({
 }) {
 	return (
 		<div className="card">
+
 			<img src={imageLinks?.thumbnail} alt="Book cover" />
 			<div className="card-content">
 				<p className="card-title">{title}</p>
 				<p className="card-author">
 					By {authors.join(",")} ({publishedDate.split("-")[0]})
+
 				</p>
 				{children}
 			</div>
