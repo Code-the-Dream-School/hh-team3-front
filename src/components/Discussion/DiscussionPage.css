@@ -1,4 +1,4 @@
-.book-details-container {
+.discussion-container {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 1.875em;
@@ -8,10 +8,7 @@
 	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 	background: var(--bg-color-book-page);
 	color: var(--text-color-book-page);
-	transition:
-		transform 0.4s ease,
-		box-shadow 0.4s ease,
-		padding 0.3s ease;
+	transition: transform 0.4s ease, box-shadow 0.4s ease, padding 0.3s ease;
 	max-width: 900px;
 	margin: 1.25em auto;
 	position: relative;
@@ -19,12 +16,12 @@
 	font-family: "Poppins", sans-serif;
 }
 
-.book-details-container:hover {
+.discussion-container:hover {
 	transform: scale(1.02);
 	box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
 }
 
-.book-details-container img {
+.discussion-container img {
 	width: 300px;
 	height: auto;
 	object-fit: cover;
@@ -33,11 +30,11 @@
 	transition: transform 0.4s ease;
 }
 
-.book-details-container img:hover {
+.discussion-container img:hover {
 	transform: scale(1.05);
 }
 
-.book-details {
+.discussion-details {
 	flex: 1;
 	display: flex;
 	flex-direction: column;
@@ -46,7 +43,7 @@
 	transition: padding 0.3s ease;
 }
 
-.book-title {
+.discussion-title {
 	font-size: 1.2rem;
 	font-weight: 700;
 	color: var(--title-color);
@@ -55,7 +52,7 @@
 	transition: font-size 0.3s ease;
 }
 
-.book-author {
+.discussion-book {
 	font-size: 1.25rem;
 	font-weight: 600;
 	color: var(--author-color);
@@ -63,33 +60,7 @@
 	font-style: italic;
 	margin: 0;
 }
-
-.book-genre {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 0.625em;
-	margin: 0.938em 0;
-}
-
-.book-genre span {
-	padding: 0.5em 0.938em;
-	border-radius: 20px;
-	font-size: 0.88rem;
-	font-weight: 600;
-	transition:
-		background-color 0.3s ease,
-		color 0.3s ease,
-		transform 0.3s ease;
-	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-	background: var(--book-genre);
-	color: var(--title-color);
-}
-
-.book-genre span:hover {
-	transform: scale(1.1);
-}
-
-.book-publish-date {
+.discussion-date {
 	font-size: 1.13rem;
 	color: var(--title-color);
 }
@@ -101,9 +72,7 @@
 	text-align: justify;
 	margin: 0;
 	max-width: 500px;
-	transition:
-		font-size 0.3s ease,
-		line-height 0.3s ease;
+	transition: font-size 0.3s ease, line-height 0.3s ease;
 }
 
 .buttons-container {
@@ -112,7 +81,7 @@
 	margin-top: 1.25em;
 }
 
-button {
+.buttons-container a {
 	padding: 0.75em 1.563em;
 	border: none;
 	border-radius: 25px;
@@ -120,74 +89,72 @@ button {
 	font-weight: 600;
 	cursor: pointer;
 	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-	transition:
-		transform 0.3s ease,
-		background-color 0.3s ease,
+	transition: transform 0.3s ease, background-color 0.3s ease,
 		box-shadow 0.3s ease;
 }
 
-button:hover {
+.buttons-container a:hover {
 	transform: translateY(-3px);
 	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
-.create-discussions-btn {
+.join-btn {
 	background: var(--button-bg-color);
 	color: var(--button-text-color);
 }
 
-.create-discussions-btn:hover {
+.join-btn:hover {
 	background: var(--button-bg-hover);
 }
 
 @media (max-width: 768px) {
-	.book-details-container {
+	.discussion-container {
 		flex-direction: column;
 		align-items: center;
 		padding: 1.5em;
 		gap: 1.5em;
 	}
 
-	.book-details-container img {
+	.discussion-container img {
 		width: 60%;
 	}
 
-	.book-details {
+	.discussion-details {
 		padding: 1em;
 		text-align: center;
 	}
 
-	.book-title {
+	.discussion-title {
 		font-size: 1.5rem;
 	}
 
-	.book-description {
+	.discussion-content {
 		font-size: 1rem;
 		line-height: 1.6;
 	}
 }
 
 @media (max-width: 480px) {
-	.book-details-container {
+	.discussion-container {
 		padding: 1em;
 		gap: 1em;
 	}
 
-	.book-details-container img {
+	.discussion-container img {
 		margin-top: 1em;
 		width: 50%;
 	}
 
-	.book-title {
+	.discussion-title {
 		font-size: 1.25rem;
 	}
 
-	.book-description {
+	.discussion-content {
 		font-size: 0.9rem;
 		line-height: 1.4;
 	}
 
-	button,
+	.buttons-container a,
 	.book-genre {
 		font-size: 0.9rem;
 		padding: 0.5em 1em;
