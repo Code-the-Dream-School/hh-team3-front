@@ -5,7 +5,9 @@ import FindABook from "./Pages/FindABook";
 import Home from "./Pages/home";
 import { useState, useEffect } from "react";
 import BookDetails from "./components/BookDetails/BookDetails";
+import booksData from "/src/data/booksData.js";
 import Login from "./components/UserLogin/Login";
+import Signup from "./components/userSignup/Signup";
 import AuthProvider from "../src/components/Context/AuthProvider";
 
 function App() {
@@ -58,6 +60,7 @@ function App() {
 						<Route path="/" element={<Home booksData={books} />} />
 						<Route path="/books/:id" element={<BookDetails />} />
 						<Route path="/login" element={<Login />} />
+						<Route path="/signup" element={<Signup />} />
 					</Routes>
 				</div>
 			</BrowserRouter>
