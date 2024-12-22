@@ -67,8 +67,8 @@ export default function DiscussionPage({
 		setError("");
 		try {
 			const endpoint = isJoined
-				? `/api/v1/discussions/${id}/unjoin`
-				: `/api/v1/discussions/${id}/join`;
+				? `/discussions/${id}/unjoin`
+				: `/discussions/${id}/join`;
 
 			const response = await fetch(
 				`${import.meta.env.VITE_API_BASE_URL}${endpoint}`,
@@ -92,7 +92,7 @@ export default function DiscussionPage({
 		setError("");
 		try {
 			const response = await fetch(
-				`${import.meta.env.VITE_API_BASE_URL}/api/v1/discussions/${id}`,
+				`${import.meta.env.VITE_API_BASE_URL}/discussions/${id}`,
 				{
 					method: "DELETE",
 				},
