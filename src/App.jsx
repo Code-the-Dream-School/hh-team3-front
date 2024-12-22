@@ -3,12 +3,10 @@ import "./App.css";
 import Navbar from "./components/NavBar/Navbar";
 import FindABook from "./Pages/FindABook";
 import Home from "./Pages/home";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import BookDetails from "./components/BookDetails/BookDetails";
-import booksData from "/src/data/booksData.js";
-import Login from "./components/UserLogin/Login";
-import Signup from "./components/userSignup/Signup";
-import AuthProvider from "../src/components/Context/AuthProvider";
+import Logout from "./components/UserLogout/Logout";
+const URL = "http://localhost:8000/api/v1/";
 
 function App() {
 	const [books, setBooks] = useState([]);
@@ -20,6 +18,7 @@ function App() {
 
 			try {
 				const response = await fetch(`${url}/books`);
+
 				if (!response.ok) {
 					throw new Error(`HTTP error! Status: ${response.status}`);
 				}
@@ -46,26 +45,21 @@ function App() {
 	if (typeof global === "undefined") {
 		window.global = window;
 	}
-
 	return (
-		<AuthProvider>
+		<>
 			<BrowserRouter>
 				<Navbar />
-				<div className="container">
-					<Routes>
-						<Route
-							path="/find-book"
-							element={<FindABook booksData={books} />}
-						/>
-						<Route path="/" element={<Home booksData={books} />} />
-						<Route path="/books/:id" element={<BookDetails />} />
-						<Route path="/login" element={<Login />} />
-						<Route path="/signup" element={<Signup />} />
-					</Routes>
-				</div>
+				<Routes>
+					<Route
+						path="/find-book"
+						element={<FindABook booksData={books} />}
+					/>
+					<Route path="/" element={<Home booksData={books} />} />
+					<Route path="/books/:id" element={<BookDetails />} />
+					<Route path="/logout" element={<Logout />} />
+				</Routes>
 			</BrowserRouter>
-		</AuthProvider>
+		</>
 	);
 }
-
 export default App;
