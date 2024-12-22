@@ -30,7 +30,7 @@ const Login = () => {
 			if (response.ok) {
 				const data = await response.json();
 				login(data.token);
-				navigate("/home");
+				navigate("/");
 			} else {
 				const errorData = await response.json();
 				setError(errorData.message || "Invalid email or password");
