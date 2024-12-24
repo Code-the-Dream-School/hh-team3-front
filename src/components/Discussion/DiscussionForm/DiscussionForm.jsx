@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Form from "react-bootstrap/Form";
 import { useLocation } from "react-router-dom";
 import "./DiscussionForm.css";
-import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 function DiscussionForm({ onSubmit }) {
 	const navigate = useNavigate(); 
