@@ -7,10 +7,11 @@ function SearchList({ filteredData }) {
 	return (
 		<div className="display">
 			{filteredData.map((book) => (
-				<Link to={`/books/${book.id}`}>
-					<BookCard key={book.id} {...book}>
-						{" "}
-					</BookCard>
+				<Link
+					to={`/books/${book.id}`}
+					style={{ textDecoration: "none" }}
+				>
+					<BookCard key={book.id || book._id} {...book}></BookCard>
 				</Link>
 			))}
 		</div>

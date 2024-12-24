@@ -44,68 +44,62 @@ function App() {
 		fetchData();
 	}, []);
 
-	const handleFormSubmit = (formData) => {
-		console.log("Form Submitted:", formData);
-		async function addDiscussion(newDiscussionItem) {
-			const options = {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({
-					title: newDiscussionItem.title,
-					book: newDiscussionItem.book,
-					content: newDiscussionItem.content,
-					date: newDiscussionItem.date,
-					participants: newDiscussionItem.participants,
-					meetingLink: newDiscussionItem.meetingLink,
-					createdBy: newDiscussionItem.createdBy,
-				}),
-			};
+	async function addDiscussion(newDiscussionItem) {
+		const options = {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(newDiscussionItem),
+		};
 
-			const url = import.meta.env.VITE_API_BASE_URL;
+		const url = import.meta.env.VITE_API_BASE_URL;
 
-			try {
-				const response = await fetch(
-					`${url}/books/discussions`,
-					options,
-				);
+		try {
+			const response = await fetch(`${url}/discussions`, options);
 
-				if (!response.ok) {
-					const errorDetails = await response.json();
+			if (!response.ok) {
+				const errorDetails = await response.json();
 
-					switch (errorDetails.message) {
-						case "Invalid input data":
-							throw new Error(
-								"The input data provided is invalid. Please check the fields and try again.",
-							);
-						case "User is not authenticated":
-							throw new Error(
-								"You are not authenticated. Please log in and try again.",
-							);
-						case "An unexpected error occurred. Please try again later.":
-							throw new Error(
-								"Something went wrong on the server. Please try again later.",
-							);
-						default:
-							throw new Error(
-								errorDetails.message ||
-									"An unknown error occurred.",
-							);
-					}
+				switch (errorDetails.message) {
+					case "Invalid input data":
+						throw new Error(
+							"The input data provided is invalid. Please check the fields and try again.",
+						);
+					case "User is not authenticated":
+						throw new Error(
+							"You are not authenticated. Please log in and try again.",
+						);
+					case "An unexpected error occurred. Please try again later.":
+						throw new Error(
+							"Something went wrong on the server. Please try again later.",
+						);
+					default:
+						throw new Error(
+							errorDetails.message ||
+								"An unknown error occurred.",
+						);
 				}
-
-				const data = await response.json();
-
-				console.log("Added Discussion:", data);
-				return data;
-			} catch (error) {
-				console.error("Error adding discussion:", error.message);
-				alert(error.message);
 			}
-		}
-	};
 
+			const data = await response.json();
+			console.log("Added Discussion:", data);
+			return data;
+		} catch (error) {
+			console.error("Error adding discussion:", error.message);
+			alert(error.message);
+		}
+	}
+
+	const handleFormSubmit = (formData) => {
+		const newDiscussionItem = {
+			...formData,
+			participants: [],
+			createdBy: " ",
+		};
+
+		addDiscussion(newDiscussionItem);
+	};
 	if (typeof global === "undefined") {
 		window.global = window;
 	}
