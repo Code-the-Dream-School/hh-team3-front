@@ -80,6 +80,7 @@ const Signup = () => {
 					<div>
 						<label>Name:</label>
 						<input
+							className="input"
 							type="text"
 							value={name}
 							onChange={(e) => setName(e.target.value)}
@@ -90,6 +91,7 @@ const Signup = () => {
 					<div>
 						<label>Email:</label>
 						<input
+							className="input"
 							type="email"
 							value={email}
 							onChange={(e) => setEmail(e.target.value)}
@@ -100,8 +102,9 @@ const Signup = () => {
 
 					<div className="password-container">
 						<label>Password:</label>
-						<div className="password-input-wrapper">
+						<div className="password-input-wrapper  ">
 							<input
+								className="input"
 								type={showPassword ? "text" : "password"}
 								value={password}
 								onChange={(e) => setPassword(e.target.value)}
@@ -109,7 +112,7 @@ const Signup = () => {
 							/>
 							<button
 								type="button"
-								className="password-toggle"
+								className="password-toggle  "
 								onClick={() => setShowPassword(!showPassword)}
 							>
 								{showPassword ? "👁️" : "👁️‍🗨️"}
@@ -117,7 +120,7 @@ const Signup = () => {
 						</div>
 					</div>
 
-					<button type="submit" disabled={loading}>
+					<button className="button" type="submit" disabled={loading}>
 						{loading ? "Signing up..." : "Signup"}
 					</button>
 				</form>

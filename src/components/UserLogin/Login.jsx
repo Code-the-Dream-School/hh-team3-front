@@ -42,13 +42,14 @@ const Login = () => {
 
 	return (
 		<div className="login-wrapper">
-			<div className="login-container">
+			<div className="login-container ">
 				<form onSubmit={handleSubmit}>
 					<h2>Login</h2>
 					{error && <p className="error">{error}</p>}
 					<div>
 						<label>Email:</label>
 						<input
+							className="input"
 							type="email"
 							value={email}
 							onChange={(e) => setEmail(e.target.value)}
@@ -57,8 +58,9 @@ const Login = () => {
 					</div>
 					<div className="password-container">
 						<label>Password:</label>
-						<div className="password-input-wrapper">
+						<div className="password-input-wrapper ">
 							<input
+								className="input"
 								type={showPassword ? "text" : "password"}
 								value={password}
 								onChange={(e) => setPassword(e.target.value)}
@@ -73,7 +75,9 @@ const Login = () => {
 							</button>
 						</div>
 					</div>
-					<button type="submit">Login</button>
+					<button className=" button " type="submit">
+						Login
+					</button>
 				</form>
 			</div>
 		</div>
