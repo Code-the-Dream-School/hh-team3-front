@@ -17,7 +17,7 @@ const Login = () => {
 
 		try {
 			const response = await fetch(
-				`${import.meta.env.VITE_API_BASE_URL}/api/v1/auth/login`,
+				`${import.meta.env.VITE_API_BASE_URL}/auth/login`,
 				{
 					method: "POST",
 					headers: {
@@ -30,7 +30,7 @@ const Login = () => {
 			if (response.ok) {
 				const data = await response.json();
 				login(data.token);
-				navigate("/home");
+				navigate("/");
 			} else {
 				const errorData = await response.json();
 				setError(errorData.message || "Invalid email or password");
