@@ -5,7 +5,7 @@ import FindABook from "./Pages/FindABook";
 import Home from "./Pages/home";
 import { useState, useEffect } from "react";
 import BookDetails from "./components/BookDetails/BookDetails";
-import booksData from "/src/data/booksData.js";
+import DiscussionForm from "./components/Discussion/DiscussionForm/DiscussionForm";
 import Login from "./components/UserLogin/Login";
 import Signup from "./components/userSignup/Signup";
 import AuthProvider from "../src/components/Context/AuthProvider";
@@ -43,6 +43,68 @@ function App() {
 		fetchData();
 	}, []);
 
+	const handleFormSubmit = (formData) => {
+		console.log("Form Submitted:", formData);
+		async function addDiscussion(newDiscussionItem) {
+			const options = {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					title: newDiscussionItem.title,
+					book: newDiscussionItem.book,
+					content: newDiscussionItem.content,
+					date: newDiscussionItem.date,
+					participants: newDiscussionItem.participants,
+					meetingLink: newDiscussionItem.meetingLink,
+					createdBy: newDiscussionItem.createdBy,
+				}),
+			};
+
+			const url = import.meta.env.VITE_API_BASE_URL;
+
+			try {
+				const response = await fetch(
+					`${url}/books/discussions`,
+					options,
+				);
+
+				if (!response.ok) {
+					const errorDetails = await response.json();
+
+					switch (errorDetails.message) {
+						case "Invalid input data":
+							throw new Error(
+								"The input data provided is invalid. Please check the fields and try again.",
+							);
+						case "User is not authenticated":
+							throw new Error(
+								"You are not authenticated. Please log in and try again.",
+							);
+						case "An unexpected error occurred. Please try again later.":
+							throw new Error(
+								"Something went wrong on the server. Please try again later.",
+							);
+						default:
+							throw new Error(
+								errorDetails.message ||
+									"An unknown error occurred.",
+							);
+					}
+				}
+
+				const data = await response.json();
+
+				console.log("Added Discussion:", data);
+				return data;
+			} catch (error) {
+				console.error("Error adding discussion:", error.message);
+				alert(error.message);
+			}
+		}
+	};
+
 	if (typeof global === "undefined") {
 		window.global = window;
 	}
@@ -59,6 +121,10 @@ function App() {
 						/>
 						<Route path="/" element={<Home booksData={books} />} />
 						<Route path="/books/:id" element={<BookDetails />} />
+					<Route
+						path="/create-discussion"
+						element={<DiscussionForm onSubmit={handleFormSubmit} />}
+					/>
 						<Route path="/login" element={<Login />} />
 						<Route path="/signup" element={<Signup />} />
 					</Routes>

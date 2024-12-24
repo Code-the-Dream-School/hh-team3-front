@@ -52,9 +52,11 @@ export default function BookDetails() {
 					</p>
 					<p className="book-description">{book.description}</p>
 					<div className="buttons-container">
-						<button className="create-discussions-btn">
-							Create Discussion
-						</button>
+						<Link to="/create-discussion">
+							<button className="create-discussions-btn">
+								Create Discussion
+							</button>
+						</Link>
 					</div>
 				</div>
 			</div>
