@@ -4,24 +4,17 @@
     gap: 20px;
 }
 
-.discussion-form .form-group {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
 .form-group label {
-    flex: 1;
+    flex: 0 0 150px;
     font-weight: bold;
     color: #333;
-    text-align: right;
+    text-align: left;
+    margin-bottom: 0;
 }
-
 .form-group input,
 .form-group textarea {
-    flex: 2;
+    flex: 1;
     width: 100%;
-    max-width: none;
     box-sizing: border-box;
     padding: 10px;
     border: 1px solid #ddd;
@@ -31,9 +24,16 @@
     transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-.form-group textarea {
-    resize: none;
+.form-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
 
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
 }
 
 .form-group input:focus,
@@ -45,9 +45,8 @@
 
 .discussion-container {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 1.875em;
-    align-items: flex-start;
     padding: 1.875em;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -55,8 +54,14 @@
     color: var(--text-color-book-page);
     max-width: 700px;
     margin: 1.25em auto;
-    
+    width: 100%;
 }
+.buttons-container {
+    display: flex;
+    gap: 0.938em;
+    margin-top: 1.25em;
+}
+
 .create-discussions-btn {
     background: var(--button-bg-color);
     color: var(--button-text-color);
@@ -66,6 +71,7 @@
     background: var(--button-bg-hover);
 }
 
+
 @media (max-width: 768px) {
     .discussion-container {
         flex-direction: column;
@@ -73,16 +79,18 @@
         padding: 1.5em;
         gap: 1.5em;
     }
+    
 }
+
 @media (max-width: 480px) {
     .discussion-container {
         padding: 1em;
         gap: 1em;
     }
-        button
-         {
-            font-size: 0.9rem;
-            padding: 0.5em 1em;
-            margin: 0 auto;
-        }
-    }
+   button {
+       font-size: 0.9rem;
+       padding: 0.5em 1em;
+       margin: 0 auto;
+   }
+    
+}

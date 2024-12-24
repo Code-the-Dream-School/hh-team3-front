@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 import "./DiscussionForm.css";
+import { useLocation } from "react-router-dom";
 
 function DiscussionForm({ onSubmit }) {
+	const location = useLocation();
+	const { bookId } = location.state || {};
+
 	const [formData, setFormData] = useState({
 		title: "",
-		book: "",
 		content: "",
 		date: "",
-		participants: "",
 		meetingLink: "",
-		createdBy: "",
 	});
 
 	const handleChange = (e) => {
@@ -24,7 +24,13 @@ function DiscussionForm({ onSubmit }) {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		onSubmit(formData);
+		if (!bookId) {
+			alert(
+				"Please navigate from a book details page to create a discussion.",
+			);
+			return;
+		}
+		onSubmit({ ...formData, book: bookId });
 	};
 
 	return (
@@ -67,9 +73,7 @@ function DiscussionForm({ onSubmit }) {
 				</Form.Group>
 
 				<Form.Group className="form-group">
-					<Form.Label htmlFor="meetingLink">
-						Zoom Meeting Link
-					</Form.Label>
+					<Form.Label htmlFor="meetingLink">Meeting Link</Form.Label>
 					<Form.Control
 						id="meetingLink"
 						type="text"
@@ -79,9 +83,11 @@ function DiscussionForm({ onSubmit }) {
 						placeholder="Zoom Meeting Link"
 					/>
 				</Form.Group>
-				<button className="create-discussions-btn">
-					Create Discussion
-				</button>
+				<div className="buttons-container">
+					<button className="create-discussions-btn">
+						Create Discussion
+					</button>
+				</div>
 			</Form>
 		</div>
 	);
