@@ -117,7 +117,7 @@ const Signup = () => {
 
 					<div className="password-container">
 						<label>Password:</label>
-						<div className="password-input-wrapper">
+						<div className="password-input-wrapper  ">
 							<input
 								className="input"
 								type={showPassword ? "text" : "password"}
@@ -127,7 +127,7 @@ const Signup = () => {
 							/>
 							<button
 								type="button"
-								className="password-toggle"
+								className="password-toggle  "
 								onClick={() => setShowPassword(!showPassword)}
 							>
 								{showPassword ? "👁️" : "👁️‍🗨️"}

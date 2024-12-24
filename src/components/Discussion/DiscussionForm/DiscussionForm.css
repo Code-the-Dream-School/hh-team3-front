@@ -38,6 +38,13 @@
 	width: 100%;
 }
 
+.form-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
 .form-group textarea {
 	resize: vertical;
 	min-height: 80px;
@@ -87,6 +94,7 @@
 	background: var(--button-bg-hover);
 	transform: translateY(-2px);
 }
+
 
 @media (max-width: 768px) {
 	.discussion-container {
