@@ -138,14 +138,14 @@ export default function DiscussionPage({
 					</p>
 					<div className="buttons-container">
 						<button
-							className="join-btn"
+							className="join-btn button"
 							onClick={handleJoinToggle}
 							disabled={!canJoin || loading}
 						>
 							{isJoined ? "Leave" : "Join"}
 						</button>
 						<button
-							className="delete-btn"
+							className="delete-btn button"
 							onClick={handleDeleteDiscussion}
 							disabled={loading}
 						>

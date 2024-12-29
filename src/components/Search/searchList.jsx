@@ -1,7 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import BookCard from "../BookCard/BookCard";
 import "./search.css";
-import { Link } from "react-router-dom";
 
 function SearchList({ filteredData }) {
 	return (

@@ -109,7 +109,7 @@ const Signup = () => {
 							/>
 							<button
 								type="button"
-								className="password-toggle"
+								className="password-toggle button"
 								onClick={() => setShowPassword(!showPassword)}
 							>
 								{showPassword ? "👁️" : "👁️‍🗨️"}
@@ -117,7 +117,7 @@ const Signup = () => {
 						</div>
 					</div>
 
-					<button type="submit" disabled={loading}>
+					<button className="button" type="submit" disabled={loading}>
 						{loading ? "Signing up..." : "Signup"}
 					</button>
 				</form>

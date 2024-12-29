@@ -66,14 +66,14 @@ const Login = () => {
 							/>
 							<button
 								type="button"
-								className="password-toggle"
+								className="password-toggle button"
 								onClick={() => setShowPassword(!showPassword)}
 							>
 								{showPassword ? "👁️" : "👁️‍🗨️"}
 							</button>
 						</div>
 					</div>
-					<button type="submit">Login</button>
+					<button className="button" type="submit">Login</button>
 				</form>
 			</div>
 		</div>

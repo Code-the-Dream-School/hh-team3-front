@@ -1,9 +1,9 @@
 .display {
-	display: flex;
+  display: flex;
 	flex-wrap: wrap;
 	gap: 20px;
+ 
 }
-
 .btn-secondary,
 .btn-secondary:focus,
 .btn-secondary:active {
