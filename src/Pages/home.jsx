@@ -84,7 +84,7 @@ function Home({ booksData }) {
 						className="btn btn-outline-light book-btn d-flex flex-column align-items-center me-3"
 						to="/find-discussion"
 					>
-						<h3>Find a discussion to Join</h3>
+						<h3>Find a discussion to join</h3>
 						<img
 							src="/images/find_discussion.jpeg"
 							alt="Discussion Icon"
@@ -96,7 +96,7 @@ function Home({ booksData }) {
 
 					<Link
 						className="btn btn-outline-light book-btn d-flex flex-column align-items-center"
-						to="/discover-books"
+						to="/find-book"
 					>
 						<h3>Discover new books</h3>
 						<img
@@ -110,7 +110,7 @@ function Home({ booksData }) {
 
 					<Link
 						className="btn btn-outline-light book-btn d-flex flex-column align-items-center"
-						to="/discover-books"
+						to="/create-discussion"
 					>
 						<h3>Create discussion</h3>
 						<img

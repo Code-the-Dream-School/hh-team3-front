@@ -10,9 +10,8 @@ function SearchList({ filteredData }) {
 				<Link
 					to={`/books/${book.id}`}
 					style={{ textDecoration: "none" }}
-					key={book.id || book._id}
 				>
-					<BookCard  {...book}></BookCard>
+					<BookCard key={book.id || book._id} {...book}></BookCard>
 				</Link>
 			))}
 		</div>

@@ -2,13 +2,24 @@ import React from "react";
 import "./BookDetails.css";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import BookTalks from '../BookTalks/BookTalks.jsx'
+import BookTalks from "../BookTalks/BookTalks.jsx";
+import { useNavigate } from "react-router-dom";
 
 export default function BookDetails() {
 	const { id } = useParams();
 	const [book, setBook] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
+
+	const navigate = useNavigate();
+
+	const handleCreateDiscussion = () => {
+		if (!book || !book.id) {
+			alert("Book ID is missing!");
+			return;
+		}
+		navigate("/create-discussion", { state: { bookId: book.id } });
+	};
 
 	useEffect(() => {
 		async function fetchBookDetails() {
@@ -53,7 +64,10 @@ export default function BookDetails() {
 					</p>
 					<p className="book-description">{book.description}</p>
 					<div className="buttons-container">
-						<button className="create-discussions-btn button">
+						<button
+							onClick={handleCreateDiscussion}
+							className="create-discussions-btn"
+						>
 							Create Discussion
 						</button>
 					</div>
