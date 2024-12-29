@@ -40,7 +40,8 @@ export default function BookDetails() {
 				<div className="book-details">
 					<p className="book-title">{book.title}</p>
 					<p className="book-author">
-						By {book.authors?.join(", ")} ({book.publishedDate})
+						By {book.authors?.join(", ")} (
+						{publishedDate.split("-")[0]})
 					</p>
 					<p className="book-publisher">
 						Published by: {book.publisher}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
 
@@ -25,7 +25,6 @@ function Home({ booksData }) {
 			<div className="book-of-the-month">
 				<h4>What’s Behind the Pages?</h4>
 				<h4>Let’s Discuss!</h4>
-				{/* <p>Quote: {randomBook.quote}</p> */}
 				<div key={randomBook.id} className="card">
 					<img
 						src={randomBook.imageLinks?.thumbnail}
@@ -36,7 +35,7 @@ function Home({ booksData }) {
 						<p className="card-title">{randomBook.title}</p>
 						<p className="card-author">
 							By {randomBook.authors.join(",")} (
-							{randomBook.publishedDate})
+							{randomBook.publishedDate.split("-")[0]})
 						</p>
 					</div>
 				</div>

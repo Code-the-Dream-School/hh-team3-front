@@ -1,14 +1,15 @@
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import "./App.css";
+import AuthProvider from "../src/components/Context/AuthProvider";
+import BookDetails from "./components/BookDetails/BookDetails";
+import DiscussionForm from "./components/Discussion/DiscussionForm/DiscussionForm";
 import Navbar from "./components/NavBar/Navbar";
+import Login from "./components/UserLogin/Login";
+import Logout from "./components/UserLogout/Logout";
+import Signup from "./components/userSignup/Signup";
 import FindABook from "./Pages/FindABook";
 import Home from "./Pages/home";
-import { useState, useEffect } from "react";
-import BookDetails from "./components/BookDetails/BookDetails";
-import booksData from "/src/data/booksData.js";
-import Login from "./components/UserLogin/Login";
-import Signup from "./components/userSignup/Signup";
-import AuthProvider from "../src/components/Context/AuthProvider";
+import "./App.css";
 
 function App() {
 	const [books, setBooks] = useState([]);
