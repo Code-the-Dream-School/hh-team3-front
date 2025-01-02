@@ -1,7 +1,8 @@
-import React, { useContext, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Signup.css";
 import { AuthContext } from "../Context/AuthProvider";
+import Loader from "../Loader/Loader";
+import "./Signup.css";
 
 const Signup = () => {
 	const [email, setEmail] = useState("");
@@ -14,6 +15,12 @@ const Signup = () => {
 
 	const navigate = useNavigate();
 	const { login } = useContext(AuthContext);
+
+	const inputRef = useRef();
+
+	useEffect(() => {
+		inputRef.current.focus();
+	}, []);
 
 	const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
@@ -70,16 +77,24 @@ const Signup = () => {
 		}
 	};
 
+	if (loading)
+		return (
+			<h2>
+				<Loader />
+			</h2>
+		);
+
 	return (
 		<div className="signup-wrapper">
 			<div className="signup-container">
 				<form onSubmit={handleSubmit}>
-					<h2>Signup</h2>
+					<h2 className="text-center mb-3">Signup</h2>
 					{error && <p className="error">{error}</p>}
 
 					<div>
 						<label>Name:</label>
 						<input
+							ref={inputRef}
 							className="input"
 							type="text"
 							value={name}
@@ -102,7 +117,7 @@ const Signup = () => {
 
 					<div className="password-container">
 						<label>Password:</label>
-						<div className="password-input-wrapper  ">
+						<div className="password-input-wrapper">
 							<input
 								className="input"
 								type={showPassword ? "text" : "password"}
@@ -112,7 +127,7 @@ const Signup = () => {
 							/>
 							<button
 								type="button"
-								className="password-toggle  "
+								className="password-toggle"
 								onClick={() => setShowPassword(!showPassword)}
 							>
 								{showPassword ? "👁️" : "👁️‍🗨️"}

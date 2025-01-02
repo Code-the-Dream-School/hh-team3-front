@@ -1,13 +1,7 @@
-import { useEffect, useRef } from "react";
+import React from "react";
 import "./BookTalks.css";
 
 export default function BookTalksInput({ value, onChange, username, photo }) {
-	const inputRef = useRef();
-
-	useEffect(() => {
-		inputRef.current.focus();
-	}, []);
-
 	return (
 		<div className="bookTalksContainer">
 			<div className="user-input">
@@ -21,7 +15,6 @@ export default function BookTalksInput({ value, onChange, username, photo }) {
 			<textarea
 				className="inputTextarea"
 				id="input"
-				ref={inputRef}
 				value={value}
 				onChange={onChange}
 				placeholder="Your review starts here - make it shine!"

@@ -5,6 +5,7 @@
 }
 .book-talks {
 	margin-top: 3rem;
+	color: var(--text-color);
 }
 
 .bookTalksContainer {
@@ -14,8 +15,9 @@
 	padding: 1.5rem;
 	border: 1px solid #e0e0e0;
 	border-radius: 12px;
-	background: var(--book-genre);
-	box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.05),
+	background: var(--bg-color-book-page);
+	box-shadow:
+		6px 6px 12px rgba(0, 0, 0, 0.05),
 		-6px -6px 12px rgba(255, 255, 255, 0.7);
 	margin-bottom: 1.5rem;
 	margin-top: 1.5rem;
@@ -42,10 +44,11 @@
 	font-size: 1rem;
 	color: #333;
 	background: #f8f8fc;
-	box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.1),
+	box-shadow:
+		inset 3px 3px 6px rgba(0, 0, 0, 0.1),
 		inset -3px -3px 6px rgba(255, 255, 255, 0.5);
 	font-family: "Poppins", sans-serif;
-	resize: vertical; 
+	resize: vertical;
 }
 
 .inputTextarea:focus {
@@ -89,8 +92,9 @@
 	padding: 1.5rem;
 	margin: 1.5rem;
 	border-radius: 12px;
-	background: var(--book-genre);
-	box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.05),
+	background: var(--bg-color-book-page);
+	box-shadow:
+		6px 6px 12px rgba(0, 0, 0, 0.05),
 		-6px -6px 12px rgba(255, 255, 255, 0.7);
 }
 
@@ -150,27 +154,19 @@
 .liked {
 	color: #fff;
 }
-.like-amount{
-color:#ffffff;
-}
-
-.remove {
-	color: #d9534f;
-}
-
-.remove:hover {
-	color: #c9302c;
+.like-amount {
+	color: #ffffff;
 }
 
 @media (max-width: 600px) {
 	.bookTalksContainer,
 	.review {
 		flex-direction: column;
-		align-items: center;	 
+		align-items: center;
 	}
-.book-talks{
-	text-align: center;
-}
+	.book-talks {
+		text-align: center;
+	}
 	.book-talk-user-avatar {
 		width: 40px;
 		height: 40px;

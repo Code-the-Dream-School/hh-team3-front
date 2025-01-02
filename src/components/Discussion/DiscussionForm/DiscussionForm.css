@@ -1,96 +1,137 @@
 .discussion-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
 }
 
 .form-group label {
-    flex: 0 0 150px;
-    font-weight: bold;
-    color: #333;
-    text-align: left;
-    margin-bottom: 0;
+	flex: 0 0 150px;
+	font-weight: bold;
+	color: var(--text-color);
+	text-align: left;
+	margin-bottom: 0;
 }
 .form-group input,
 .form-group textarea {
-    flex: 1;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 20px;
-    font-size: 14px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-    transition: border-color 0.3s, box-shadow 0.3s;
+	flex: 1;
+	border: none;
+	border-radius: 20px;
+	padding: 1rem;
+	font-size: 1rem;
+	color: #333;
+	background: #f8f8fc;
+	box-shadow:
+		inset 3px 3px 6px rgba(0, 0, 0, 0.1),
+		inset -3px -3px 6px rgba(255, 255, 255, 0.5);
+	font-family: "Poppins", sans-serif;
+	transition:
+		background 0.3s ease,
+		box-shadow 0.3s ease;
 }
 
 .form-group {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 10px;
+	width: 100%;
 }
 
 .form-group textarea {
-    resize: vertical;
-    min-height: 80px;
+	resize: vertical;
+	min-height: 80px;
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
-    border-color: #007BFF;
-    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
-    outline: none;
+.form-control:focus {
+	background: #ffffff;
+	box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+	outline: none;
 }
 
 .discussion-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1.875em;
-    padding: 1.875em;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    background: var(--bg-color-book-page);
-    color: var(--text-color-book-page);
-    max-width: 700px;
-    margin: 1.25em auto;
-    width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 1.875em;
+	padding: 2.5em 1.875em;
+	border-radius: 20px;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+	background: var(--bg-color-book-page);
+	color: var(--text-color-book-page);
+	max-width: 700px;
+	margin: 120px auto;
+	width: 100%;
 }
 .buttons-container {
-    display: flex;
-    gap: 0.938em;
-    margin-top: 1.25em;
+	display: flex;
+	justify-content: center;
+	gap: 0.938em;
+	margin-top: 1.25em;
 }
 
 .create-discussions-btn {
-    background: var(--button-bg-color);
-    color: var(--button-text-color);
+	background: var(--button-bg-color);
+	color: var(--button-text-color);
+	border: none;
+	border-radius: 20px;
+	padding: 10px 20px;
+	font-weight: bold;
+	transition:
+		background 0.3s ease,
+		transform 0.2s ease;
+	margin-bottom: 20px;
 }
 
 .create-discussions-btn:hover {
-    background: var(--button-bg-hover);
+	background: var(--button-bg-hover);
+	transform: translateY(-2px);
 }
 
-
 @media (max-width: 768px) {
-    .discussion-container {
-        flex-direction: column;
-        align-items: center;
-        padding: 1.5em;
-        gap: 1.5em;
-    }
-    
+	.discussion-container {
+		/* flex-direction: column;
+        align-items: center; */
+		padding: 1.5em;
+		gap: 1.5em;
+	}
+	.form-group {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+	label {
+		max-height: 10px;
+		margin-left: 16px;
+	}
+	.form-group label {
+		width: 100%;
+		margin-bottom: 0.5em;
+		text-align: left;
+	}
+
+	button {
+		font-size: 0.9rem;
+		padding: 0.5em 1em;
+	}
 }
 
 @media (max-width: 480px) {
-    .discussion-container {
-        padding: 1em;
-        gap: 1em;
-    }
-   button {
-       font-size: 0.9rem;
-       padding: 0.5em 1em;
-       margin: 0 auto;
-   }
-    
+	.discussion-container {
+		padding: 1em;
+		gap: 1em;
+	}
+
+	.form-group label {
+		font-size: 1rem;
+	}
+
+	.form-group input,
+	.form-group textarea {
+		font-size: 1rem;
+		padding: 12px;
+	}
+
+	.create-discussions-btn {
+		width: 100%;
+		font-size: 1rem;
+		padding: 0.7em;
+	}
 }

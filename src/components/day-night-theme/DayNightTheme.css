@@ -12,7 +12,7 @@
 	align-items: center;
 	justify-content: center;
 }
-
+/* 
 .toggle-button {
 	position: relative;
 	height: 24px;
@@ -44,4 +44,75 @@
 .toggle-button.toggled .inner-circle {
 	transform: translateX(26px);
 	background-color: #333;
+} */
+/* 
+.toggle-button {
+	position: relative;
+	height: 24px;
+	width: 50px;
+	background: linear-gradient(90deg, #7a0177, #c51b8a);
+	border-radius: 50px;
+	padding: 3px;
+	cursor: pointer;
+	transition: background 250ms ease-in-out;
+}
+
+.toggle-button:hover {
+	background: linear-gradient(90deg, #4b2991, #872ca2);
+}
+
+.inner-circle {
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background: radial-gradient(circle, #fff, #fcc5cd);
+	transition: transform 250ms ease-in-out, background 250ms ease-in-out;
+}
+
+.toggle-button.toggled {
+	background: linear-gradient(90deg, #4b2991, #872ca2);
+}
+
+.toggle-button.toggled .inner-circle {
+	transform: translateX(26px);
+	background: radial-gradient(circle, #fff, #fa9fb5);
+} */
+
+.toggle-button {
+	position: relative;
+	height: 30px;
+	width: 60px;
+	border-radius: 30px;
+	background: linear-gradient(90deg, #fa9fb5, #feebe2);
+	cursor: pointer;
+	transition: background 250ms ease-in-out;
+}
+
+.inner-circle {
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	background: radial-gradient(circle, #fff, #fcc5cd);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+	transition: transform 250ms ease-in-out, background 250ms ease-in-out, box-shadow 250ms;
+}
+
+.toggle-button:hover .inner-circle {
+	box-shadow: 0 0 15px rgba(0, 123, 255, 0.5);
+}
+
+.toggle-button.toggled {
+	background: linear-gradient(90deg, #4b2991, #872ca2);
+}
+
+.toggle-button.toggled .inner-circle {
+	transform: translateX(30px);
+	background: radial-gradient(circle, #fff, #fa9fb5);
+	box-shadow: 0 0 15px rgba(255, 69, 58, 0.7);
 }

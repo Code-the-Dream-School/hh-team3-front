@@ -1,9 +1,8 @@
-import React from "react";
-import "./BookDetails.css";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import BookTalks from "../BookTalks/BookTalks.jsx";
-import { useNavigate } from "react-router-dom";
+import Loader from "../Loader/Loader.jsx";
+import "./BookDetails.css";
 
 export default function BookDetails() {
 	const { id } = useParams();
@@ -40,7 +39,12 @@ export default function BookDetails() {
 		fetchBookDetails();
 	}, [id]);
 
-	if (loading) return <h2>Loading...</h2>;
+	if (loading)
+		return (
+			<h2>
+				<Loader />
+			</h2>
+		);
 	if (error) return <h2>Error: {error}</h2>;
 	if (!book) return <h2>Book not found.</h2>;
 
@@ -52,10 +56,7 @@ export default function BookDetails() {
 					<p className="book-title">{book.title}</p>
 					<p className="book-author">
 						By {book.authors?.join(", ")} (
-						{publishedDate.split("-")[0]})
-					</p>
-					<p className="book-publisher">
-						Published by: {book.publisher}
+						{book.publishedDate.split("-")[0]})
 					</p>
 					<p className="book-genre">
 						{book.categories.map((categories, index) => (
@@ -63,6 +64,9 @@ export default function BookDetails() {
 						))}
 					</p>
 					<p className="book-description">{book.description}</p>
+					<p className="book-publisher">
+						Published by: {book.publisher}
+					</p>
 					<div className="buttons-container">
 						<button
 							onClick={handleCreateDiscussion}

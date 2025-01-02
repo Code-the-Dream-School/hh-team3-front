@@ -1,22 +1,27 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import AuthProvider from "../src/components/Context/AuthProvider";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import "./App.css";
 import BookDetails from "./components/BookDetails/BookDetails";
+import AuthProvider from "./components/Context/AuthProvider";
 import DiscussionForm from "./components/Discussion/DiscussionForm/DiscussionForm";
+import Footer from "./components/Footer/Footer.jsx";
+import Loader from "./components/Loader/Loader.jsx";
 import Navbar from "./components/NavBar/Navbar";
 import Login from "./components/UserLogin/Login";
 import Logout from "./components/UserLogout/Logout";
 import Signup from "./components/userSignup/Signup";
 import FindABook from "./Pages/FindABook";
-import Home from "./Pages/home";
-import "./App.css";
+import Home from "./Pages/Home.jsx";
 
 function App() {
 	const [books, setBooks] = useState([]);
 	const [error, setError] = useState(null);
+	const [loading, setLoading] = useState(false);
+	books;
 
 	useEffect(() => {
 		const fetchData = async () => {
+			setLoading(true);
 			const url = import.meta.env.VITE_API_BASE_URL;
 
 			try {
@@ -40,12 +45,15 @@ function App() {
 			} catch (err) {
 				console.error("Error fetching data:", err.message);
 				setError(err.message);
+			} finally {
+				setLoading(false);
 			}
 		};
 		fetchData();
 	}, []);
 
 	async function addDiscussion(newDiscussionItem) {
+		setLoading(true);
 		const options = {
 			method: "POST",
 			headers: {
@@ -89,6 +97,8 @@ function App() {
 		} catch (error) {
 			console.error("Error adding discussion:", error.message);
 			alert(error.message);
+		} finally {
+			setLoading(false);
 		}
 	}
 
@@ -101,12 +111,16 @@ function App() {
 
 		addDiscussion(newDiscussionItem);
 	};
+
+	if (loading) return <Loader />;
+
 	if (typeof global === "undefined") {
 		window.global = window;
 	}
+
 	return (
 		<AuthProvider>
-			<BrowserRouter>
+			<Router>
 				<Navbar />
 				<div className="container">
 					<Routes>
@@ -127,8 +141,10 @@ function App() {
 						<Route path="/logout" element={<Logout />} />
 					</Routes>
 				</div>
-			</BrowserRouter>
+				<Footer />
+			</Router>
 		</AuthProvider>
 	);
 }
+
 export default App;

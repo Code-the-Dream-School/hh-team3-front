@@ -13,11 +13,10 @@
 	margin: 0.625em;
 	background: var(--bg-color-card);
 	color: var(--text-color);
-	border: 2px solid var(--border-color);
 	white-space: nowrap;
 	text-overflow: ellipsis;
 	font-weight: 500;
-	
+	border: none;
 }
 .card:hover {
 	transform: scale(1.1) rotate(-1deg);
@@ -31,7 +30,6 @@
 }
 .card-content {
 	padding: 1.25em;
-
 }
 .card-title {
 	font-size: medium;

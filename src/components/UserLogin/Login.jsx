@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/AuthProvider";
 import "./Login.css";
@@ -10,6 +10,12 @@ const Login = () => {
 	const [showPassword, setShowPassword] = useState(false);
 	const navigate = useNavigate();
 	const { login } = useContext(AuthContext);
+
+	const inputRef = useRef();
+
+	useEffect(() => {
+		inputRef.current.focus();
+	}, []);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -44,11 +50,12 @@ const Login = () => {
 		<div className="login-wrapper">
 			<div className="login-container ">
 				<form onSubmit={handleSubmit}>
-					<h2>Login</h2>
+					<h2 className="text-center mb-3">Login</h2>
 					{error && <p className="error">{error}</p>}
 					<div>
 						<label>Email:</label>
 						<input
+							ref={inputRef}
 							className="input"
 							type="email"
 							value={email}

@@ -33,7 +33,6 @@ export default function BookTalksForm({ onBookTalk }) {
 					value={bookTalk}
 					onChange={handleReviewChange}
 					photo={userData[0].photo}
-					
 				/>
 				<button
 					className="post-book-talk-button"

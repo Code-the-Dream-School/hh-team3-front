@@ -1,54 +1,144 @@
 @import url("https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap");
-.book-btn {
-	color: #2d2a55;
-	background-color: #e6e0ff;
-	border-color: #e6e0ff;
-	font-weight: bold;
+
+.home {
+	margin-top: 80px;
+}
+
+main {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	justify-content: center;
+}
+
+.welcome {
+	flex: 1 1 50%;
+	margin-right: 50px;
+	padding: 50px 0;
 	font-size: 18px;
-	border-radius: 10px;
-}
-
-.book-btn:hover {
-	background-color: #c3b4f3;
-	color: #2d2a55;
-	border-color: #c3b4f3;
-}
-.my-text {
-	font-family: "Irish Grover", cursive;
-}
-
-.welcome-section {
-  width: 75%;
-  margin-left: 0;
-  margin-right: 0;
 }
 
 .book-of-the-month {
-	position: absolute;
-	align-items: flex-end;
-	top: 80px;
+	flex: 1 1 45%;
 	max-width: 400px;
-	text-align: center;
+	padding: 20px;
+	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	transform: scale(0.9, 0.9);
-	padding-right: 2rem;
-	right: 2rem;
-	display: block;
 }
 
+.book-of-the-month-card {
+	width: 100%;
+	padding: 40px;
+	background:  #fcc5cd;
+	border-radius: 15px;
+	box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	transition:
+		transform 0.3s ease,
+		box-shadow 0.3s ease;
+}
 
-@media (max-width: 768px) {
+.book-of-the-month-card:hover {
+	transform: scale(1.05);
+	box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+}
+
+.book-of-the-month-card-img {
+	width: 90%;
+	max-height: 300px;
+	object-fit: contain;
+	margin-bottom: 20px;
+}
+
+.book-of-the-month-card-title {
+	font-size: 1.2rem;
+	font-weight: 700;
+	color: var(--author-color);
+	margin: 10px 0;
+	text-align: center;
+}
+
+.book-of-the-month-card-author {
+	font-size: 1rem;
+	color: var(--links-color);
+	font-style: italic;
+	text-align: center;
+	margin-bottom: 0;
+}
+
+.links .book-btn {
+	transition: all 200ms ease-in-out;
+	border-radius: 20px;
+	overflow: hidden;
+	background-color: rgba(255, 255, 255, 0.3);
+	border: none;
+	margin-bottom: 70px;
+	
+}
+
+.links .book-btn:hover {
+	transform: scale(1.1) rotate(-1deg);
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0);
+	border-radius: 20px;
+	background-color: rgba(255, 255, 255, 0.6);
+}
+.link-text {
+	color: var(--text-color);
+}
+a{
+	color:var(--links-color);
+}
+
+@media (max-width: 575px) {
+	main {
+		flex-direction: column;
+		align-items: center;
+	}
+	.welcome,
 	.book-of-the-month {
-		position: static;
-		margin: 20px auto;
-		text-align: center;
-		order: 2;
+		flex: 1 1 100%;
+		max-width: 90%;
+		padding: 20px 0;
 	}
 
-	.mt-5 {
-		order: 1;
+	.book-of-the-month-card {
+		padding: 20px;
+	}
+
+	.book-of-the-month-card-title {
+		font-size: 1rem;
+	}
+
+	.book-of-the-month-card-author {
+		font-size: 0.9rem;
+	}
+
+	.links .book-btn {
+		width: 100%;
+		max-width: 300px;
 	}
 }
 
+@media (max-width: 765px) {
+	.welcome,
+	.book-of-the-month {
+		flex: 1 1 100%;
+		max-width: 100%;
+		text-align: center;
+		margin: 0;
+	}
+
+	.book-of-the-month-card {
+		padding: 30px;
+		width: 350px;
+	}
+
+	.links .book-btn {
+		width: 100%;
+		max-width: 300px;
+	}
+}

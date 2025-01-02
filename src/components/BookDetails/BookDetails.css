@@ -13,15 +13,10 @@
 		box-shadow 0.4s ease,
 		padding 0.3s ease;
 	max-width: 900px;
-	margin: 1.25em auto;
+	margin: 100px auto;
 	position: relative;
 	overflow: hidden;
 	font-family: "Poppins", sans-serif;
-}
-
-.book-details-container:hover {
-	transform: scale(1.02);
-	box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
 }
 
 .book-details-container img {
@@ -68,7 +63,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	gap: 0.625em;
-	margin: 0.938em 0;
+	margin: 0;
 }
 
 .book-genre span {
@@ -82,11 +77,13 @@
 		transform 0.3s ease;
 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 	background: var(--book-genre);
-	color: var(--title-color);
+	color: var(--text-color);
 }
 
 .book-genre span:hover {
 	transform: scale(1.1);
+	cursor: pointer;
+	background: var(--button-bg-hover);
 }
 
 .book-publish-date {
@@ -94,10 +91,17 @@
 	color: var(--title-color);
 }
 
+.book-publisher {
+	margin: 0;
+	color: var(--title-color);
+	font-size: middle;
+	font-weight: bold;
+}
+
 .book-description {
 	font-size: 1.13rem;
 	line-height: 1.8;
-	color: var(--text-color);
+	color: var(--author-color);
 	text-align: justify;
 	margin: 0;
 	max-width: 500px;
@@ -105,6 +109,7 @@
 		font-size 0.3s ease,
 		line-height 0.3s ease;
 	overflow: scroll;
+	height: 200px;
 }
 
 .buttons-container {
@@ -113,7 +118,9 @@
 	margin-top: 1.25em;
 }
 
-.button {
+.create-discussions-btn {
+	background: var(--button-bg-color);
+	color: var(--button-text-color);
 	padding: 0.75em 1.563em;
 	border: none;
 	border-radius: 25px;
@@ -127,18 +134,10 @@
 		box-shadow 0.3s ease;
 }
 
-.button:hover {
-	transform: translateY(-3px);
-	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-}
-
-.create-discussions-btn {
-	background: var(--button-bg-color);
-	color: var(--button-text-color);
-}
-
 .create-discussions-btn:hover {
 	background: var(--button-bg-hover);
+	transform: translateY(-3px);
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 @media (max-width: 768px) {
@@ -168,10 +167,11 @@
 	}
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
 	.book-details-container {
 		padding: 1em;
 		gap: 1em;
+		text-align: center;
 	}
 
 	.book-details-container img {
@@ -188,10 +188,11 @@
 		line-height: 1.4;
 	}
 
-	.button,
+	.create-discussions-btn,
 	.book-genre {
 		font-size: 0.9rem;
 		padding: 0.5em 1em;
 		margin: 0 auto;
+		text-align: center;
 	}
 }
