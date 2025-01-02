@@ -1,9 +1,13 @@
-import React, { useState } from "react";
-import Search from "../components/Search/search";
-import SearchList from "../components/Search/searchList";
+import React, { useEffect, useState } from "react";
+import Search from "../components/Search/Search.jsx";
+import SearchList from "../components/Search/SearchList.jsx";
 
 function FindABook({ booksData }) {
 	const [filteredData, setFilteredData] = useState(booksData);
+
+	useEffect(() => {
+		setFilteredData(booksData);
+	}, [booksData]);
 
 	const handleSearch = (query) => {
 		const lowercasedQuery = query.toLowerCase();

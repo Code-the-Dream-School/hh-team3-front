@@ -1,14 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import BookTalks from "../BookTalks/BookTalks.jsx";
+import Loader from "../Loader/Loader.jsx";
 import "./BookDetails.css";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import BookTalks from '../BookTalks/BookTalks.jsx'
 
 export default function BookDetails() {
 	const { id } = useParams();
 	const [book, setBook] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
+
+	const navigate = useNavigate();
+
+	const handleCreateDiscussion = () => {
+		if (!book || !book.id) {
+			alert("Book ID is missing!");
+			return;
+		}
+		navigate("/create-discussion", { state: { bookId: book.id } });
+	};
 
 	useEffect(() => {
 		async function fetchBookDetails() {
@@ -29,7 +39,12 @@ export default function BookDetails() {
 		fetchBookDetails();
 	}, [id]);
 
-	if (loading) return <h2>Loading...</h2>;
+	if (loading)
+		return (
+			<h2>
+				<Loader />
+			</h2>
+		);
 	if (error) return <h2>Error: {error}</h2>;
 	if (!book) return <h2>Book not found.</h2>;
 
@@ -40,10 +55,8 @@ export default function BookDetails() {
 				<div className="book-details">
 					<p className="book-title">{book.title}</p>
 					<p className="book-author">
-						By {book.authors?.join(", ")} ({book.publishedDate})
-					</p>
-					<p className="book-publisher">
-						Published by: {book.publisher}
+						By {book.authors?.join(", ")} (
+						{book.publishedDate.split("-")[0]})
 					</p>
 					<p className="book-genre">
 						{book.categories.map((categories, index) => (
@@ -51,8 +64,14 @@ export default function BookDetails() {
 						))}
 					</p>
 					<p className="book-description">{book.description}</p>
+					<p className="book-publisher">
+						Published by: {book.publisher}
+					</p>
 					<div className="buttons-container">
-						<button className="create-discussions-btn">
+						<button
+							onClick={handleCreateDiscussion}
+							className="create-discussions-btn"
+						>
 							Create Discussion
 						</button>
 					</div>

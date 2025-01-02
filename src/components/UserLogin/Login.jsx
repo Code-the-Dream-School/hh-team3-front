@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/AuthProvider";
 import "./Login.css";
@@ -10,6 +10,12 @@ const Login = () => {
 	const [showPassword, setShowPassword] = useState(false);
 	const navigate = useNavigate();
 	const { login } = useContext(AuthContext);
+
+	const inputRef = useRef();
+
+	useEffect(() => {
+		inputRef.current.focus();
+	}, []);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -42,13 +48,15 @@ const Login = () => {
 
 	return (
 		<div className="login-wrapper">
-			<div className="login-container">
+			<div className="login-container ">
 				<form onSubmit={handleSubmit}>
-					<h2>Login</h2>
+					<h2 className="text-center mb-3">Login</h2>
 					{error && <p className="error">{error}</p>}
 					<div>
 						<label>Email:</label>
 						<input
+							ref={inputRef}
+							className="input"
 							type="email"
 							value={email}
 							onChange={(e) => setEmail(e.target.value)}
@@ -57,8 +65,9 @@ const Login = () => {
 					</div>
 					<div className="password-container">
 						<label>Password:</label>
-						<div className="password-input-wrapper">
+						<div className="password-input-wrapper ">
 							<input
+								className="input"
 								type={showPassword ? "text" : "password"}
 								value={password}
 								onChange={(e) => setPassword(e.target.value)}
@@ -66,14 +75,16 @@ const Login = () => {
 							/>
 							<button
 								type="button"
-								className="password-toggle"
+								className="password-toggle button"
 								onClick={() => setShowPassword(!showPassword)}
 							>
 								{showPassword ? "👁️" : "👁️‍🗨️"}
 							</button>
 						</div>
 					</div>
-					<button type="submit">Login</button>
+					<button className=" button " type="submit">
+						Login
+					</button>
 				</form>
 			</div>
 		</div>

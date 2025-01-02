@@ -1,9 +1,3 @@
-* {
-	margin: 0;
-	padding: 0;
-	transition: all 150ms ease-in-out;
-}
-
 :root {
 	--bg-color-container: #fff7e6;
 	--bg-color-book-page: #ffe4b2;
@@ -17,11 +11,7 @@
 	--border-color: #ff9d76;
 	--book-genre: linear-gradient(135deg, #ffe4b2, #ff9d76);
 	--toggle-text: #ff9d76;
-	--post-book-talk-button-bg:linear-gradient(
-		135deg,
-		#ffe4b2,
-		#ff9d76
-	);
+	--post-book-talk-button-bg: linear-gradient(135deg, #ffe4b2, #ff9d76);
 }
 
 body.dark {
@@ -36,18 +26,18 @@ body.dark {
 	--border-color: #240046;
 	--book-genre: linear-gradient(135deg, #240046, #483d8b);
 	--toggle-text: #d4bfff;
-	--post-book-talk-button-bg:linear-gradient(135deg, #6a11cb, #2575fc);
+	--post-book-talk-button-bg: linear-gradient(135deg, #6a11cb, #2575fc);
 }
 
 .unselected {
 	opacity: 0.5;
 }
-body {
-	background-color: var(--bg-color-container);
-	color: var(--text-color);
+html body {
+	background: var(--bg-color-container) !important;
+	color: var(--text-color) !important;
 }
 
-body.dark {
-	background-color: var(--bg-color-container);
-	color: var(--text-color);
+html body.dark {
+	background: var(--bg-color-container) !important;
+	color: var(--text-color) !important;
 }

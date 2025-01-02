@@ -9,7 +9,7 @@ export default function BookCard({
 	children,
 }) {
 	return (
-		<div className="card">
+		<div className="card shadow btn-outline-light">
 			<img src={imageLinks?.thumbnail} alt="Book cover" />
 			<div className="card-content">
 				<p className="card-title">{title}</p>

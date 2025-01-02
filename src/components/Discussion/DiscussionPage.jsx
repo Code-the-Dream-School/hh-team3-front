@@ -1,5 +1,6 @@
 import { useState } from "react";
 import useLocalStorage from "../../hooks/useLocalStorage.js";
+import Loader from "../Loader/Loader.jsx";
 import "./DiscussionPage.css";
 
 const userMap = {
@@ -27,6 +28,18 @@ export default function DiscussionPage({
 	createdBy,
 	id,
 }) {
+	const [isJoined, setIsJoined] = useLocalStorage(
+		`discussion_joined_${id}`,
+		false,
+	);
+	const [isDeleted, setIsDeleted] = useLocalStorage(
+		`discussion_deleted_${id}`,
+		false,
+	);
+
+	const [loading, setLoading] = useState(false);
+	const [error, setError] = useState("");
+
 	const formattedDate = new Date(date).toLocaleString([], {
 		year: "numeric",
 		month: "numeric",
@@ -41,18 +54,6 @@ export default function DiscussionPage({
 	const createdByName = userMap[createdBy] || createdBy;
 
 	const bookName = bookMap[book] || book;
-
-	const [isJoined, setIsJoined] = useLocalStorage(
-		`discussion_joined_${id}`,
-		false,
-	);
-	const [isDeleted, setIsDeleted] = useLocalStorage(
-		`discussion_deleted_${id}`,
-		false,
-	);
-
-	const [loading, setLoading] = useState(false);
-	const [error, setError] = useState("");
 
 	const canJoin = participants.length < 10;
 
@@ -107,9 +108,17 @@ export default function DiscussionPage({
 		setLoading(false);
 	};
 
+	if (loading)
+		return (
+			<h2>
+				<Loader />
+			</h2>
+		);
+
 	if (isDeleted) return <p>This discussion has been deleted.</p>;
 
 	const bookImg = bookImages[book] || "/images/default-book.png";
+
 	return (
 		<div className="discussion-page">
 			<div className="discussion-container">
@@ -138,14 +147,14 @@ export default function DiscussionPage({
 					</p>
 					<div className="buttons-container">
 						<button
-							className="join-btn"
+							className="join-btn button"
 							onClick={handleJoinToggle}
 							disabled={!canJoin || loading}
 						>
 							{isJoined ? "Leave" : "Join"}
 						</button>
 						<button
-							className="delete-btn"
+							className="delete-btn button"
 							onClick={handleDeleteDiscussion}
 							disabled={loading}
 						>

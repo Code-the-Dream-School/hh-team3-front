@@ -1,7 +1,8 @@
-import React, { useContext, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Signup.css";
 import { AuthContext } from "../Context/AuthProvider";
+import Loader from "../Loader/Loader";
+import "./Signup.css";
 
 const Signup = () => {
 	const [email, setEmail] = useState("");
@@ -14,6 +15,12 @@ const Signup = () => {
 
 	const navigate = useNavigate();
 	const { login } = useContext(AuthContext);
+
+	const inputRef = useRef();
+
+	useEffect(() => {
+		inputRef.current.focus();
+	}, []);
 
 	const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
@@ -70,16 +77,25 @@ const Signup = () => {
 		}
 	};
 
+	if (loading)
+		return (
+			<h2>
+				<Loader />
+			</h2>
+		);
+
 	return (
 		<div className="signup-wrapper">
 			<div className="signup-container">
 				<form onSubmit={handleSubmit}>
-					<h2>Signup</h2>
+					<h2 className="text-center mb-3">Signup</h2>
 					{error && <p className="error">{error}</p>}
 
 					<div>
 						<label>Name:</label>
 						<input
+							ref={inputRef}
+							className="input"
 							type="text"
 							value={name}
 							onChange={(e) => setName(e.target.value)}
@@ -90,6 +106,7 @@ const Signup = () => {
 					<div>
 						<label>Email:</label>
 						<input
+							className="input"
 							type="email"
 							value={email}
 							onChange={(e) => setEmail(e.target.value)}
@@ -102,6 +119,7 @@ const Signup = () => {
 						<label>Password:</label>
 						<div className="password-input-wrapper">
 							<input
+								className="input"
 								type={showPassword ? "text" : "password"}
 								value={password}
 								onChange={(e) => setPassword(e.target.value)}
@@ -117,7 +135,7 @@ const Signup = () => {
 						</div>
 					</div>
 
-					<button type="submit" disabled={loading}>
+					<button className="button" type="submit" disabled={loading}>
 						{loading ? "Signing up..." : "Signup"}
 					</button>
 				</form>

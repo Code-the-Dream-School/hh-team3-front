@@ -1,6 +1,7 @@
 .discussion-container {
 	display: flex;
 	flex-wrap: wrap;
+	justify-content: space-between;
 	gap: 1.875em;
 	align-items: flex-start;
 	padding: 1.875em;
@@ -8,9 +9,12 @@
 	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 	background: var(--bg-color-book-page);
 	color: var(--text-color-book-page);
-	transition: transform 0.4s ease, box-shadow 0.4s ease, padding 0.3s ease;
+	transition:
+		transform 0.4s ease,
+		box-shadow 0.4s ease,
+		padding 0.3s ease;
 	max-width: 900px;
-	margin: 1.25em auto;
+	margin: 100px auto;
 	position: relative;
 	overflow: hidden;
 	font-family: "Poppins", sans-serif;
@@ -72,7 +76,9 @@
 	text-align: justify;
 	margin: 0;
 	max-width: 500px;
-	transition: font-size 0.3s ease, line-height 0.3s ease;
+	transition:
+		font-size 0.3s ease,
+		line-height 0.3s ease;
 }
 
 .buttons-container {
@@ -89,7 +95,9 @@
 	font-weight: 600;
 	cursor: pointer;
 	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-	transition: transform 0.3s ease, background-color 0.3s ease,
+	transition:
+		transform 0.3s ease,
+		background-color 0.3s ease,
 		box-shadow 0.3s ease;
 }
 
@@ -101,10 +109,39 @@
 .join-btn {
 	background: var(--button-bg-color);
 	color: var(--button-text-color);
+	padding: 0.75em 1.563em;
+	border: none;
+	border-radius: 25px;
+	font-size: 1rem;
+	font-weight: 600;
+	cursor: pointer;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+	transition:
+		transform 0.3s ease,
+		background-color 0.3s ease,
+		box-shadow 0.3s ease;
 }
 
 .join-btn:hover {
 	background: var(--button-bg-hover);
+	transform: translateY(-3px);
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.delete-btn {
+	background: var(--button-bg-color);
+	color: var(--button-text-color);
+	padding: 0.75em 1.563em;
+	border: none;
+	border-radius: 25px;
+	font-size: 1rem;
+	font-weight: 600;
+	cursor: pointer;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+	transition:
+		transform 0.3s ease,
+		background-color 0.3s ease,
+		box-shadow 0.3s ease;
 }
 
 @media (max-width: 768px) {

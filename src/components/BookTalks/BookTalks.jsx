@@ -21,7 +21,7 @@ export default function BookTalks() {
 							likes: review.isLiked
 								? review.likes - 1
 								: review.likes + 1,
-					  }
+						}
 					: review,
 			),
 		);

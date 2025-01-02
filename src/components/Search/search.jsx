@@ -1,26 +1,39 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import { useEffect, useRef } from "react";
+import "./SearchList.css";
 
 function Search({ onSearch }) {
 	const handleChange = (event) => {
-		onSearch(event.target.value);
+		const inputValue = event.target.value;
+		if (!inputValue.trim()) {
+			alert("Please type something");
+			return;
+		}
+		onSearch(inputValue);
 	};
+	const inputRef = useRef();
+
+	useEffect(() => {
+		inputRef.current.focus();
+	}, []);
 
 	return (
-		<div className="container mt-3">
-			<div className="row g-3 mt-2">
-				<div className="col-md-6">
-					<input
-						type="text"
-						className="form-control"
-						placeholder="Search a book by title, authors or catagory"
-						onChange={handleChange}
-					/>
-				</div>
-				<div className="col-md-3">
-					<button className="btn btn-secondary btn-block">
-						Search
-					</button>
+		<div className="container" style={{ marginTop: "80px" }}>
+			<div className="row justify-content-center">
+				<div className="col-12 col-md-8">
+					<div className="d-flex align-items-center">
+						<input
+							ref={inputRef}
+							type="text"
+							className="form-control me-2 placeholder-sm mt-5 mb-5"
+							placeholder="Search a book by title, authors, or category"
+							onChange={handleChange}
+						/>
+						<button className="btn btn-secondary d-none d-md-block">
+							Search
+						</button>
+					</div>
 				</div>
 			</div>
 		</div>
