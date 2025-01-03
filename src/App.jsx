@@ -7,7 +7,8 @@ import Footer from "./components/Footer/Footer.jsx";
 import FindABook from "./Pages/FindABook.jsx";
 import BookDetails from "./components/BookDetails/BookDetails.jsx";
 import DiscussionForm from "./components/Discussion/DiscussionForm/DiscussionForm.jsx";
-import BookForm from "./components/BookFromForAdmin/BookForm.jsx";
+import BookForm from "./components/BookFormForAdmin";
+import FindADiscusssion from "./Pages/FIndADiscussion";
 import Loader from "./components/Loader/Loader.jsx";
 import AuthProvider from "./components/Context/AuthProvider.jsx";
 import Login from "./components/UserLogin/Login.jsx";
@@ -20,6 +21,7 @@ function App() {
 	const [error, setError] = useState(null);
 	const [loading, setLoading] = useState(false);
 	books;
+	const [discussions, setDiscussions] = useState([]);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -52,6 +54,35 @@ function App() {
 			}
 		};
 		fetchData();
+	}, []);
+
+	useEffect(() => {
+		const fetchDiscussions = async () => {
+			const url = import.meta.env.VITE_API_BASE_URL;
+			try {
+				const response = await fetch(`${url}/discussions`);
+				if (!response.ok) {
+					throw new Error("Failed to fetch discussions");
+				}
+				const data = await response.json();
+
+				if (data.discussions) {
+					const discussionsData = data.discussions.map(
+						(discussion) => ({
+							id: discussion.id,
+							...discussion,
+						}),
+					);
+					setDiscussions(discussionsData);
+				} else {
+					throw new Error("Missing 'discussions' in API response");
+				}
+			} catch (err) {
+				console.error("Error fetching data:", err.message);
+				setError(err.message);
+			}
+		};
+		fetchDiscussions();
 	}, []);
 
 	async function addDiscussion(newDiscussionItem) {
@@ -250,7 +281,6 @@ function App() {
 	}
 
 	if (loading) return <Loader />;
-
 	if (typeof global === "undefined") {
 		window.global = window;
 	}
@@ -266,20 +296,20 @@ function App() {
 								element={<FindABook booksData={books} />}
 							/>
 							<Route
+							path="/find-discussion"
+							element={
+								<FindADiscusssion
+									discussionsData={discussions}
+								/>
+							}
+						/>
+						<Route
 								path="/"
 								element={<Home booksData={books} />}
 							/>
 							<Route
 								path="/books/:id"
 								element={<BookDetails />}
-							/>
-							<Route
-								path="/create-discussion"
-								element={
-									<DiscussionForm
-										onSubmit={handleFormSubmit}
-									/>
-								}
 							/>
 							<Route
 								path="/create-discussion"

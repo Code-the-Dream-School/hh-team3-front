@@ -23,7 +23,6 @@ function FindABook({ booksData }) {
 		);
 		setFilteredData(filtered);
 	};
-
 	return (
 		<>
 			<Search onSearch={handleSearch} />

@@ -7,21 +7,35 @@
 .form-group label {
     flex: 0 0 150px;
     font-weight: bold;
-    color: #333;
+    color: var(--text-color);
     text-align: left;
     margin-bottom: 0;
 }
+
 .form-group input,
 .form-group textarea {
     flex: 1;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 10px;
-    border: 1px solid #ddd;
+    border: none;
     border-radius: 20px;
-    font-size: 14px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-    transition: border-color 0.3s, box-shadow 0.3s;
+    padding: 1rem;
+    font-size: 1rem;
+    color: #333;
+    background: #f8f8fc;
+    box-shadow:
+        inset 3px 3px 6px rgba(0, 0, 0, 0.1),
+        inset -3px -3px 6px rgba(255, 255, 255, 0.5);
+    font-family: "Poppins", sans-serif;
+    transition:
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
 }
 
 .form-group {
@@ -36,9 +50,8 @@
     min-height: 80px;
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
-    border-color: #007BFF;
+.form-control:focus {
+    background: #ffffff;
     box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
     outline: none;
 }
@@ -67,10 +80,19 @@
 .create-discussions-btn {
     background: var(--button-bg-color);
     color: var(--button-text-color);
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-weight: bold;
+    transition:
+        background 0.3s ease,
+        transform 0.2s ease;
+    margin-bottom: 20px;
 }
 
 .create-discussions-btn:hover {
     background: var(--button-bg-hover);
+    transform: translateY(-2px);
 }
 
 
