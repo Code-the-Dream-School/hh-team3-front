@@ -12,6 +12,7 @@ import Logout from "./components/UserLogout/Logout";
 import Signup from "./components/userSignup/Signup";
 import FindABook from "./Pages/FindABook";
 import Home from "./Pages/Home.jsx";
+import BookForm from "./components/BookFormforAdmin/BookForm.jsx";
 
 function App() {
 	const [books, setBooks] = useState([]);
@@ -112,6 +113,45 @@ function App() {
 		addDiscussion(newDiscussionItem);
 	};
 
+	async function addBook(newBookItem) {
+		const formData = new FormData();
+		formData.append("title", newBookItem.title);
+		formData.append("authors", JSON.stringify(newBookItem.authors));
+		formData.append("content", newBookItem.description);
+		formData.append("publisher", newBookItem.publisher);
+		formData.append("date", newBookItem.publishedDate);
+		formData.append("categories", JSON.stringify(newBookItem.categories));
+		if (newBookItem.cover) {
+			formData.append("cover", newBookItem.cover);
+		}
+
+		const options = {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: formData,
+		};
+
+		const url = `${import.meta.env.VITE_API_BASE_URL}/books`;
+
+		try {
+			const response = await fetch(url, options);
+
+			if (!response.ok) {
+				throw new Error(`Failed to add book: ${response.status}`);
+			}
+
+			const addedBook = await response.json();
+
+			console.log("Added Book:", addedBook);
+			return addedBook;
+		} catch (error) {
+			console.error("Error adding book:", error);
+			throw error;
+		}
+	}
+
 	if (loading) return <Loader />;
 
 	if (typeof global === "undefined") {
@@ -139,6 +179,10 @@ function App() {
 						<Route path="/login" element={<Login />} />
 						<Route path="/signup" element={<Signup />} />
 						<Route path="/logout" element={<Logout />} />
+						<Route
+							path="/Admin"
+							element={<BookForm onAddBook={addBook} />}
+						/>
 					</Routes>
 				</div>
 				<Footer />
