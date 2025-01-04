@@ -11,7 +11,7 @@ export default function BookTalkReview({
 	return (
 		<div className="feed">
 			{reviews.map((review) => (
-				<div key={review.id} className="review">
+				<div key={review.reviewId} className="review">
 					<div className="review-inner">
 						<img
 							className="book-talk-user-avatar"
@@ -29,7 +29,7 @@ export default function BookTalkReview({
 							<div className="review-details">
 								<span
 									className="review-detail like detail"
-									onClick={() => onLike(review.id)}
+									onClick={() => onLike(review.reviewId)}
 								>
 									<i
 										className={`fa-solid fa-thumbs-up ${
@@ -44,7 +44,7 @@ export default function BookTalkReview({
 								</span>
 								<span
 									className="remove detail"
-									onClick={() => onRemove(review.id)}
+									onClick={() => onRemove(review.reviewId)}
 								>
 									<i className="fa-regular fa-trash-can"></i>
 								</span>

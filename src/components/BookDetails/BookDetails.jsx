@@ -77,7 +77,7 @@ export default function BookDetails() {
 					</div>
 				</div>
 			</div>
-			<BookTalks />
+			<BookTalks bookId={book.id} />
 		</div>
 	);
 }

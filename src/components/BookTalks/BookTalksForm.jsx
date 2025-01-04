@@ -1,28 +1,68 @@
 import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 import userData from "../../data/bookTalksData.js";
 import BookTalksInput from "../BookTalks/BookTalksInput.jsx";
+import { useNavigate } from "react-router-dom";
 
-export default function BookTalksForm({ onBookTalk }) {
+export default function BookTalksForm({ onBookTalk, bookId }) {
 	const [bookTalk, setBookTalk] = useState("");
+	const navigate = useNavigate();
 
 	function handleReviewChange(event) {
 		let newBookTalk = event.target.value;
 		setBookTalk(newBookTalk);
 	}
 
-	function handleBookTalk(event) {
+	async function handleBookTalk(event) {
 		event.preventDefault();
 		if (bookTalk.trim()) {
-			onBookTalk({
+			const reviewData = {
 				review: bookTalk.trim(),
-				id: uuidv4(),
-				likes: 0,
-				isLiked: false,
+				userId: userData[0].id,
 				username: userData[0].username,
 				photo: userData[0].photo || "default-avatar.jpg",
-			});
-			setBookTalk("");
+			};
+
+			const token = localStorage.getItem("token");
+			if (!token) {
+				navigate("/login");
+				return null;
+			}
+
+			const url = import.meta.env.VITE_API_BASE_URL;
+
+			try {
+				const response = await fetch(`${url}/comments`, {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: `Bearer ${token}`,
+					},
+					body: JSON.stringify({
+						text: reviewData.review,
+						book: bookId,
+					}),
+				});
+
+				if (!response.ok) {
+					throw new Error(
+						`Request failed with status ${response.status}`,
+					);
+				}
+
+				const jsonResponse = await response.json();
+				const comment = jsonResponse.comment;
+				console.log(comment);
+				const newReviewData = {
+					reviewId: comment.id,
+					review: comment.text || "",
+					username: userData[0].username,
+					photo: userData[0].photo || "default-avatar.jpg"
+				};
+				onBookTalk(newReviewData);
+				setBookTalk("");
+			} catch (error) {
+				console.error("Error occurred:", error.message);
+			}
 		}
 	}
 
@@ -32,6 +72,7 @@ export default function BookTalksForm({ onBookTalk }) {
 				<BookTalksInput
 					value={bookTalk}
 					onChange={handleReviewChange}
+					username={userData[0].username}
 					photo={userData[0].photo}
 				/>
 				<button
