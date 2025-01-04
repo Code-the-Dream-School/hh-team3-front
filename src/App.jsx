@@ -2,16 +2,16 @@ import React, { useEffect, useState } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
 import BookDetails from "./components/BookDetails/BookDetails";
-import AuthProvider from "./components/Context/AuthProvider";
 import DiscussionForm from "./components/Discussion/DiscussionForm/DiscussionForm";
 import Footer from "./components/Footer/Footer.jsx";
 import Loader from "./components/Loader/Loader.jsx";
 import Navbar from "./components/NavBar/Navbar";
+import Signup from "./components/userSignup/Signup";
 import Login from "./components/UserLogin/Login";
 import Logout from "./components/UserLogout/Logout";
-import Signup from "./components/userSignup/Signup";
 import FindABook from "./Pages/FindABook";
 import Home from "./Pages/Home.jsx";
+import BookForm from "./components/BookFromForAdmin/BookForm.jsx";
 
 function App() {
 	const [books, setBooks] = useState([]);
@@ -112,6 +112,45 @@ function App() {
 		addDiscussion(newDiscussionItem);
 	};
 
+	async function addBook(newBookItem) {
+		const formData = new FormData();
+		formData.append("title", newBookItem.title);
+		formData.append("authors", JSON.stringify(newBookItem.authors));
+		formData.append("content", newBookItem.description);
+		formData.append("publisher", newBookItem.publisher);
+		formData.append("date", newBookItem.publishedDate);
+		formData.append("categories", JSON.stringify(newBookItem.categories));
+		if (newBookItem.cover) {
+			formData.append("cover", newBookItem.cover);
+		}
+
+		const options = {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: formData,
+		};
+
+		const url = `${import.meta.env.VITE_API_BASE_URL}/books`;
+
+		try {
+			const response = await fetch(url, options);
+
+			if (!response.ok) {
+				throw new Error(`Failed to add book: ${response.status}`);
+			}
+
+			const addedBook = await response.json();
+
+			console.log("Added Book:", addedBook);
+			return addedBook;
+		} catch (error) {
+			console.error("Error adding book:", error);
+			throw error;
+		}
+	}
+
 	if (loading) return <Loader />;
 
 	if (typeof global === "undefined") {
@@ -119,7 +158,7 @@ function App() {
 	}
 
 	return (
-		<AuthProvider>
+		<>
 			<Router>
 				<Navbar />
 				<div className="container">
@@ -136,14 +175,24 @@ function App() {
 								<DiscussionForm onSubmit={handleFormSubmit} />
 							}
 						/>
+						<Route
+							path="/create-discussion"
+							element={
+								<DiscussionForm onSubmit={handleFormSubmit} />
+							}
+						/>
 						<Route path="/login" element={<Login />} />
 						<Route path="/signup" element={<Signup />} />
 						<Route path="/logout" element={<Logout />} />
+						<Route
+							path="/Admin"
+							element={<BookForm onAddBook={addBook} />}
+						/>
 					</Routes>
 				</div>
 				<Footer />
 			</Router>
-		</AuthProvider>
+		</>
 	);
 }
 

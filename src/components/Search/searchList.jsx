@@ -4,11 +4,10 @@ import BookCard from "../BookCard/BookCard";
 import "./SearchList.css";
 
 function SearchList({ filteredData }) {
-
 	const navigate = useNavigate();
 
 	const handleScrollToTop = (e) => {
-		e.preventDefault(); 
+		e.preventDefault();
 		navigate("/find-book");
 		window.scrollTo({
 			top: 0,
