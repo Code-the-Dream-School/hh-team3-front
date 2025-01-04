@@ -11,6 +11,7 @@
 	text-align: left;
 	margin-bottom: 0;
 }
+
 .form-group input,
 .form-group textarea {
 	flex: 1;
@@ -61,6 +62,7 @@
 	margin: 120px auto;
 	width: 100%;
 }
+
 .buttons-container {
 	display: flex;
 	justify-content: center;
@@ -93,14 +95,17 @@
 		padding: 1.5em;
 		gap: 1.5em;
 	}
+
 	.form-group {
 		flex-direction: column;
 		align-items: flex-start;
 	}
+
 	label {
 		max-height: 10px;
 		margin-left: 16px;
 	}
+
 	.form-group label {
 		width: 100%;
 		margin-bottom: 0.5em;
