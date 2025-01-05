@@ -7,11 +7,11 @@ export function useColorScheme() {
 		query: "(prefers-color-scheme: dark)",
 	});
 
-	const [isDark, setIsDark] = useLocalStorage("colorScheme", undefined);
+	const [isDark, setIsDark] = useLocalStorage("colorScheme", null);
 
 	const value = useMemo(
-		() => (isDark === undefined ? systemPrefersDark : isDark),
-		[isDark, systemPrefersDark],
+		() => (isDark === null ? systemPrefersDark : isDark),
+		[isDark, systemPrefersDark]
 	);
 
 	useEffect(() => {
@@ -22,7 +22,7 @@ export function useColorScheme() {
 		isDark: value,
 		toggleTheme: () =>
 			setIsDark((prev) =>
-				prev === undefined ? !systemPrefersDark : !prev,
+				prev === null ? !systemPrefersDark : !prev
 			),
 	};
 }
