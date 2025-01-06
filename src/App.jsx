@@ -7,7 +7,7 @@ import Footer from "./components/Footer/Footer.jsx";
 import FindABook from "./Pages/FindABook.jsx";
 import BookDetails from "./components/BookDetails/BookDetails.jsx";
 import DiscussionForm from "./components/Discussion/DiscussionForm/DiscussionForm.jsx";
-import BookForm from "./components/BookFormForAdmin";
+import BookForm from "./components/BookFormForAdmin/BookForm.jsx";
 import FindADiscusssion from "./Pages/FIndADiscussion";
 import Loader from "./components/Loader/Loader.jsx";
 import AuthProvider from "./components/Context/AuthProvider.jsx";
@@ -20,7 +20,6 @@ function App() {
 	const [books, setBooks] = useState([]);
 	const [error, setError] = useState(null);
 	const [loading, setLoading] = useState(false);
-	books;
 	const [discussions, setDiscussions] = useState([]);
 
 	useEffect(() => {
@@ -36,7 +35,6 @@ function App() {
 				}
 
 				const data = await response.json();
-
 				if (data.books) {
 					const booksData = data.books.map((book) => ({
 						id: book.id,
@@ -66,29 +64,79 @@ function App() {
 				}
 				const data = await response.json();
 
-				if (data.discussions) {
-					const discussionsData = data.discussions.map(
-						(discussion) => ({
-							id: discussion.id,
-							...discussion,
-						}),
-					);
-					setDiscussions(discussionsData);
-				} else {
+				if (!data.discussions) {
 					throw new Error("Missing 'discussions' in API response");
 				}
+
+				const discussions = await Promise.all(
+					data.discussions.map(async (discussion) => {
+						try {
+							const bookResponse = await fetch(
+								`${url}/books/${discussion.book}`,
+							);
+							const bookData = bookResponse.ok
+								? await bookResponse.json()
+								: { title: "Unknown Book" };
+
+							const creatorResponse = await fetch(
+								`${url}/auth/${discussion.createdBy}`,
+							);
+							const creatorData = creatorResponse.ok
+								? await creatorResponse.json()
+								: { name: "Unknown Creator" };
+
+							const participantsData = await Promise.all(
+								discussion.participants.map(
+									async (participantId) => {
+										const participantResponse = await fetch(
+											`${url}/auth/${participantId}`,
+										);
+										return participantResponse.ok
+											? await participantResponse.json()
+											: { name: "Unknown Participant" };
+									},
+								),
+							);
+
+							return {
+								...discussion,
+								book: bookData.title,
+								createdBy: creatorData.name,
+								participants: participantsData.map(
+									(participant) => participant.name,
+								),
+							};
+						} catch (err) {
+							console.error(
+								"Error processing discussion:",
+								err.message,
+							);
+							return {
+								...discussion,
+								book: "Unknown Book",
+								createdBy: "Unknown Creator",
+								participants: [],
+							};
+						}
+					}),
+				);
+
+				setDiscussions(discussions);
 			} catch (err) {
 				console.error("Error fetching data:", err.message);
 				setError(err.message);
 			}
 		};
+
 		fetchDiscussions();
 	}, []);
 
 	async function addDiscussion(newDiscussionItem) {
 		const token = localStorage.getItem("token");
 		if (!token) {
-			throw new Error("Failed to add a discussion. Please log in to continue.");
+			throw new Error(
+				"Failed to add a discussion. Please log in to continue.",
+			);
 		}
 		setLoading(true);
 		const options = {
@@ -296,14 +344,14 @@ function App() {
 								element={<FindABook booksData={books} />}
 							/>
 							<Route
-							path="/find-discussion"
-							element={
-								<FindADiscusssion
-									discussionsData={discussions}
-								/>
-							}
-						/>
-						<Route
+								path="/find-discussion"
+								element={
+									<FindADiscusssion
+										discussionsData={discussions}
+									/>
+								}
+							/>
+							<Route
 								path="/"
 								element={<Home booksData={books} />}
 							/>
@@ -328,7 +376,9 @@ function App() {
 							/>
 							<Route
 								path="/userPage"
-								element={<UserPage onUploadAvatar={uploadAvatar} />}
+								element={
+									<UserPage onUploadAvatar={uploadAvatar} />
+								}
 							/>
 						</Routes>
 					</div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Loader from "../components/Loader/Loader";
 import "./Home.css";
 
@@ -24,8 +24,8 @@ function Home({ booksData }) {
 			setRandomBook(book);
 		};
 		pickRandomBook();
-		const interval = setInterval(pickRandomBook, 15000);
-		return () => clearInterval(interval);
+
+	
 	}, [booksData]);
 
 	if (!randomBook)
@@ -80,7 +80,7 @@ function Home({ booksData }) {
 				<section className="book-of-the-month">
 					<h4>What&apos;s Behind the Pages?</h4>
 					<h4 className="mb-4">Let&apos;s Discuss!</h4>
-					<div className="book-of-the-month-card">
+					<Link className="book-of-the-month-card" to="/find-book">
 						<img
 							src={randomBook.imageLinks?.thumbnail}
 							alt={randomBook.title}
@@ -95,7 +95,7 @@ function Home({ booksData }) {
 								{randomBook.publishedDate.split("-")[0]})
 							</p>
 						</div>
-					</div>
+					</Link>
 				</section>
 			</main>
 
@@ -125,21 +125,6 @@ function Home({ booksData }) {
 					<img
 						src="/images/find_book.jpeg"
 						alt="Book Icon"
-						className="rounded"
-						width="100%"
-					/>
-				</Link>
-
-				<Link
-					className="btn btn-outline-light book-btn d-flex flex-column align-items-center p-4 shadow"
-					to="/create-discussion"
-					style={{ width: "300px" }}
-					rel="noopener noreferrer"
-				>
-					<h3 className="link-text mb-3">Create discussion</h3>
-					<img
-						src="/images/create_discussion.jpeg"
-						alt="Create discussion Icon"
 						className="rounded"
 						width="100%"
 					/>

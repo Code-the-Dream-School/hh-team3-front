@@ -4,16 +4,23 @@ import { Link } from "react-router-dom";
 
 function DiscussionList({ filteredData }) {
 	return (
-		<div className="display">
-			{filteredData.map((discussion) => (
-				<Link
-					to={`/discussions/${discussion.id}`}
-					style={{ textDecoration: "none" }}
-					key={discussion.id}
-				>
-					<DiscussionCard {...discussion}> </DiscussionCard>
-				</Link>
-			))}
+		<div className="discussion-list">
+			{filteredData && filteredData.length > 0 ? (
+				filteredData.map((discussion) => (
+					<DiscussionCard
+						key={discussion.id}
+						title={discussion.title}
+						book={discussion.book}
+						content={discussion.content}
+						date={discussion.date}
+						participants={discussion.participants}
+						meetingLink={discussion.meetingLink}
+						createdBy={discussion.createdBy}
+					/>
+				))
+			) : (
+				<p>No discussions found.</p>
+			)}
 		</div>
 	);
 }
