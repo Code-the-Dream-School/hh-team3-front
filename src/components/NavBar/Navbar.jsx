@@ -1,11 +1,13 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import DayNightTheme from "../day-night-theme/DayNightTheme";
+import { AuthContext } from "../Context/AuthProvider";
 import "./Navbar.css";
 
 function Navbar() {
+	const { isAuthenticated, logout } = useContext(AuthContext);
 	return (
 		<nav className="navbar navbar-expand-lg navbar-dark custom-navbar  fixed-top">
 			<div className="container-fluid">
@@ -43,6 +45,23 @@ function Navbar() {
 						</li>
 					</ul>
 					<div className="d-flex ms-3">
+						{isAuthenticated ? (
+							<>
+								<Link
+									className="btn btn-outline-light custom-btn me-2"
+									to="/userPage"
+								>
+									Profile
+								</Link>
+								<button
+									className="btn btn-outline-light custom-btn me-2"
+									onClick={logout}
+								>
+									Log Out
+								</button>
+							</>
+						) : (
+							<>
 						<Link
 							className="btn btn-outline-light custom-btn me-2"
 							to="/signup"
@@ -55,6 +74,8 @@ function Navbar() {
 						>
 							Log in
 						</Link>
+							</>
+						)}
 					</div>
 				</div>
 			</div>

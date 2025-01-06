@@ -1,17 +1,19 @@
-import React, { useEffect, useState } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import "./App.css";
+import Home from "./Pages/home";
+import Navbar from "./components/NavBar/Navbar";
+import Footer from "./components/Footer/Footer.jsx";
+import FindABook from "./Pages/FindABook";
 import BookDetails from "./components/BookDetails/BookDetails";
 import DiscussionForm from "./components/Discussion/DiscussionForm/DiscussionForm";
-import Footer from "./components/Footer/Footer.jsx";
-import Loader from "./components/Loader/Loader.jsx";
-import Navbar from "./components/NavBar/Navbar";
-import Signup from "./components/userSignup/Signup";
-import Login from "./components/UserLogin/Login";
-import Logout from "./components/UserLogout/Logout";
-import FindABook from "./Pages/FindABook";
-import Home from "./Pages/Home.jsx";
 import BookForm from "./components/BookFromForAdmin/BookForm.jsx";
+import Loader from "./components/Loader/Loader.jsx";
+import AuthProvider from "./components/Context/AuthProvider";
+import Login from "./components/UserLogin/Login";
+import Signup from "./components/userSignup/Signup";
+import Logout from "./components/UserLogout/Logout";
+import UserPage from "./components/UserPage/userPage";
 
 function App() {
 	const [books, setBooks] = useState([]);
@@ -156,10 +158,10 @@ function App() {
 	if (typeof global === "undefined") {
 		window.global = window;
 	}
-
 	return (
 		<>
-			<Router>
+			<BrowserRouter>
+				<AuthProvider>
 				<Navbar />
 				<div className="container">
 					<Routes>
@@ -167,18 +169,28 @@ function App() {
 							path="/find-book"
 							element={<FindABook booksData={books} />}
 						/>
-						<Route path="/" element={<Home booksData={books} />} />
-						<Route path="/books/:id" element={<BookDetails />} />
+							<Route
+								path="/"
+								element={<Home booksData={books} />}
+							/>
+							<Route
+								path="/books/:id"
+								element={<BookDetails />}
+							/>
 						<Route
 							path="/create-discussion"
 							element={
-								<DiscussionForm onSubmit={handleFormSubmit} />
+									<DiscussionForm
+										onSubmit={handleFormSubmit}
+									/>
 							}
 						/>
 						<Route
 							path="/create-discussion"
 							element={
-								<DiscussionForm onSubmit={handleFormSubmit} />
+									<DiscussionForm
+										onSubmit={handleFormSubmit}
+									/>
 							}
 						/>
 						<Route path="/login" element={<Login />} />
@@ -188,12 +200,13 @@ function App() {
 							path="/Admin"
 							element={<BookForm onAddBook={addBook} />}
 						/>
+							<Route path="/userPage" element={<UserPage />} />
 					</Routes>
 				</div>
 				<Footer />
-			</Router>
+				</AuthProvider>
+			</BrowserRouter>
 		</>
 	);
 }
-
 export default App;

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/AuthProvider";
 import "./Login.css";
@@ -36,7 +36,7 @@ const Login = () => {
 			if (response.ok) {
 				const data = await response.json();
 				login(data.token);
-				navigate("/");
+				navigate("/userPage");
 			} else {
 				const errorData = await response.json();
 				setError(errorData.message || "Invalid email or password");
