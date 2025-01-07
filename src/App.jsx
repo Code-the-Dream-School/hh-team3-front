@@ -55,11 +55,16 @@ function App() {
 	}, []);
 
 	async function addDiscussion(newDiscussionItem) {
+		const token = localStorage.getItem("token");
+		if (!token) {
+			throw new Error("Failed to add a discussion. Please log in to continue.");
+		}
 		setLoading(true);
 		const options = {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
+				Authorization: `Bearer ${token}`,
 			},
 			body: JSON.stringify(newDiscussionItem),
 		};
@@ -104,14 +109,14 @@ function App() {
 		}
 	}
 
-	const handleFormSubmit = (formData) => {
+	const handleFormSubmit = async (formData) => {
 		const newDiscussionItem = {
 			...formData,
 			participants: [],
 			createdBy: " ",
 		};
 
-		addDiscussion(newDiscussionItem);
+		await addDiscussion(newDiscussionItem);
 	};
 
 	async function addBook(newBookItem) {

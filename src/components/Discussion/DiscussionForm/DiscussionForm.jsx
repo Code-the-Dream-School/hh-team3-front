@@ -2,8 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import Form from "react-bootstrap/Form";
 import { useLocation } from "react-router-dom";
 import "./DiscussionForm.css";
+import { useNavigate } from "react-router-dom";
 
 function DiscussionForm({ onSubmit }) {
+	const navigate = useNavigate(); 
 	const location = useLocation();
 	const { bookId } = location.state || {};
 
@@ -28,7 +30,7 @@ function DiscussionForm({ onSubmit }) {
 		}));
 	};
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
 
 		if (!bookId) {
@@ -55,7 +57,8 @@ function DiscussionForm({ onSubmit }) {
 			return;
 		}
 
-		onSubmit({ ...formData, book: bookId });
+		await onSubmit({ ...formData, book: bookId });
+		navigate("/find-book");
 	};
 
 	return (
