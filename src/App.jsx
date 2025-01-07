@@ -1,17 +1,19 @@
-import React, { useEffect, useState } from "react";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Route, BrowserRouter, Routes } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import "./App.css";
+import Home from "./Pages/home.jsx";
+import Navbar from "./components/NavBar/Navbar";
+import Footer from "./components/Footer/Footer.jsx";
+import FindABook from "./Pages/FindABook";
 import BookDetails from "./components/BookDetails/BookDetails";
 import DiscussionForm from "./components/Discussion/DiscussionForm/DiscussionForm";
-import Footer from "./components/Footer/Footer.jsx";
-import Loader from "./components/Loader/Loader.jsx";
-import Navbar from "./components/NavBar/Navbar";
-import Signup from "./components/userSignup/Signup";
-import Login from "./components/UserLogin/Login";
-import Logout from "./components/UserLogout/Logout";
-import FindABook from "./Pages/FindABook";
-import Home from "./Pages/Home.jsx";
 import BookForm from "./components/BookFromForAdmin/BookForm.jsx";
+import Loader from "./components/Loader/Loader.jsx";
+import AuthProvider from "./components/Context/AuthProvider";
+import Login from "./components/UserLogin/Login";
+import Signup from "./components/userSignup/Signup";
+import Logout from "./components/UserLogout/Logout";
+import UserPage from "./components/UserPage/userPage";
 
 function App() {
 	const [books, setBooks] = useState([]);
@@ -53,11 +55,16 @@ function App() {
 	}, []);
 
 	async function addDiscussion(newDiscussionItem) {
+		const token = localStorage.getItem("token");
+		if (!token) {
+			throw new Error("Failed to add a discussion. Please log in to continue.");
+		}
 		setLoading(true);
 		const options = {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
+				Authorization: `Bearer ${token}`,
 			},
 			body: JSON.stringify(newDiscussionItem),
 		};
@@ -102,51 +109,142 @@ function App() {
 		}
 	}
 
-	const handleFormSubmit = (formData) => {
+	const handleFormSubmit = async (formData) => {
 		const newDiscussionItem = {
 			...formData,
 			participants: [],
 			createdBy: " ",
 		};
 
-		addDiscussion(newDiscussionItem);
+		await addDiscussion(newDiscussionItem);
 	};
 
 	async function addBook(newBookItem) {
-		const formData = new FormData();
-		formData.append("title", newBookItem.title);
-		formData.append("authors", JSON.stringify(newBookItem.authors));
-		formData.append("content", newBookItem.description);
-		formData.append("publisher", newBookItem.publisher);
-		formData.append("date", newBookItem.publishedDate);
-		formData.append("categories", JSON.stringify(newBookItem.categories));
-		if (newBookItem.cover) {
-			formData.append("cover", newBookItem.cover);
+		const token = localStorage.getItem("token");
+		if (!token) {
+			throw new Error("Failed to add a book. Please log in to continue.");
+		}
+
+		const bookData = {
+			title: newBookItem.title,
+			description: newBookItem.description,
+			publisher: newBookItem.publisher,
+			authors: newBookItem.authors
+				.split(",")
+				.map((author) => author.trim()),
+			categories: newBookItem.categories
+				.split(",")
+				.map((category) => category.trim()),
+		};
+		let publishedDate = new Date(newBookItem.publishedDate);
+		if (isNaN(publishedDate)) {
+			console.error("Invalid date format:", newBookItem.publishedDate);
+		} else {
+			bookData.publishedDate = publishedDate.toISOString();
 		}
 
 		const options = {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
+				Authorization: `Bearer ${token}`,
 			},
-			body: formData,
+			body: JSON.stringify(bookData),
 		};
 
 		const url = `${import.meta.env.VITE_API_BASE_URL}/books`;
 
 		try {
 			const response = await fetch(url, options);
-
 			if (!response.ok) {
 				throw new Error(`Failed to add book: ${response.status}`);
 			}
-
 			const addedBook = await response.json();
-
 			console.log("Added Book:", addedBook);
+
+			if (newBookItem.cover) {
+				const coverFormData = new FormData();
+				coverFormData.append("file", newBookItem.cover);
+				coverFormData.append("bookId", addedBook.book._id);
+				const coverUploadUrl = `${
+					import.meta.env.VITE_API_BASE_URL
+				}/photo/cover`;
+
+				const coverUploadOptions = {
+					method: "POST",
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+					body: coverFormData,
+				};
+
+				const coverResponse = await fetch(
+					coverUploadUrl,
+					coverUploadOptions,
+				);
+				if (!coverResponse.ok) {
+					const errorBody = await coverResponse.text();
+					throw new Error(
+						`Failed to upload cover: ${coverResponse.status}, ${errorBody}`,
+					);
+				}
+
+				const coverData = await coverResponse.json();
+				console.log("Cover uploaded:", coverData);
+
+				addedBook.imageUrl = coverData.imageUrl;
+				addedBook.optimizedUrl = coverData.optimizedUrl;
+				addedBook.autoCroppedUrl = coverData.autoCroppedUrl;
+				console.log("Cover uploaded!!!:", addedBook.imageUrl);
+			}
 			return addedBook;
 		} catch (error) {
 			console.error("Error adding book:", error);
+			throw error;
+		}
+	}
+
+	async function uploadAvatar(userItem) {
+		const token = localStorage.getItem("token");
+		if (!token) {
+			throw new Error("Failed to add a book. Please log in to continue.");
+		}
+
+		try {
+			if (userItem.avatar) {
+				const avatarFormData = new FormData();
+				avatarFormData.append("file", userItem.avatar);
+				avatarFormData.append("userId", userItem.user._id);
+				const avatarUploadUrl = `${
+					import.meta.env.VITE_API_BASE_URL
+				}/photo/avatar`;
+
+				const avatarUploadOptions = {
+					method: "POST",
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+					body: avatarFormData,
+				};
+
+				const avatarResponse = await fetch(
+					avatarUploadUrl,
+					avatarUploadOptions,
+				);
+				if (!avatarResponse.ok) {
+					const errorBody = await avatarResponse.text();
+					throw new Error(
+						`Failed to upload avatar: ${avatarResponse.status}, ${errorBody}`,
+					);
+				}
+
+				const avatarData = await avatarResponse.json();
+				console.log("Avatar uploaded:", avatarData);
+
+				return avatarData;
+			}
+		} catch (error) {
+			console.error("Error uploading avatar:", error);
 			throw error;
 		}
 	}
@@ -156,44 +254,58 @@ function App() {
 	if (typeof global === "undefined") {
 		window.global = window;
 	}
-
 	return (
 		<>
-			<Router>
-				<Navbar />
-				<div className="container">
-					<Routes>
-						<Route
-							path="/find-book"
-							element={<FindABook booksData={books} />}
-						/>
-						<Route path="/" element={<Home booksData={books} />} />
-						<Route path="/books/:id" element={<BookDetails />} />
-						<Route
-							path="/create-discussion"
-							element={
-								<DiscussionForm onSubmit={handleFormSubmit} />
-							}
-						/>
-						<Route
-							path="/create-discussion"
-							element={
-								<DiscussionForm onSubmit={handleFormSubmit} />
-							}
-						/>
-						<Route path="/login" element={<Login />} />
-						<Route path="/signup" element={<Signup />} />
-						<Route path="/logout" element={<Logout />} />
-						<Route
-							path="/Admin"
-							element={<BookForm onAddBook={addBook} />}
-						/>
-					</Routes>
-				</div>
-				<Footer />
-			</Router>
+			<BrowserRouter>
+				<AuthProvider>
+					<Navbar />
+					<div className="container">
+						<Routes>
+							<Route
+								path="/find-book"
+								element={<FindABook booksData={books} />}
+							/>
+							<Route
+								path="/"
+								element={<Home booksData={books} />}
+							/>
+							<Route
+								path="/books/:id"
+								element={<BookDetails />}
+							/>
+							<Route
+								path="/create-discussion"
+								element={
+									<DiscussionForm
+										onSubmit={handleFormSubmit}
+									/>
+								}
+							/>
+							<Route
+								path="/create-discussion"
+								element={
+									<DiscussionForm
+										onSubmit={handleFormSubmit}
+									/>
+								}
+							/>
+							<Route path="/login" element={<Login />} />
+							<Route path="/signup" element={<Signup />} />
+							<Route path="/logout" element={<Logout />} />
+							<Route
+								path="/create-book"
+								element={<BookForm onAddBook={addBook} />}
+							/>
+							<Route
+								path="/userPage"
+								element={<UserPage onUploadAvatar={uploadAvatar} />}
+							/>
+						</Routes>
+					</div>
+					<Footer />
+				</AuthProvider>
+			</BrowserRouter>
 		</>
 	);
 }
-
 export default App;

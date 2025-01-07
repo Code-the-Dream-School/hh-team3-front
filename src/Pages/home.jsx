@@ -24,9 +24,7 @@ function Home({ booksData }) {
 			setRandomBook(book);
 		};
 		pickRandomBook();
-
 		const interval = setInterval(pickRandomBook, 15000);
-
 		return () => clearInterval(interval);
 	}, [booksData]);
 
