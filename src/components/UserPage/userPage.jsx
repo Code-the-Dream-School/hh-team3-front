@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Context/AuthProvider";
 import { useNavigate } from "react-router-dom";
-import "./UserPage.css";
+import "./userPage.css";
 
 const UserPage = ({ onUploadAvatar }) => {
 	const { token, user, fetchUserProfile, logout } = useContext(AuthContext);
