@@ -18,6 +18,11 @@ const AuthProvider = ({ children }) => {
 
 	const fetchUserProfile = async () => {
 		const url = import.meta.env.VITE_API_BASE_URL;
+		const token = localStorage.getItem("token");
+		if (!token) {
+			console.error("No authentication token found.");
+			return;
+		}
 
 		try {
 			const response = await fetch(
@@ -39,7 +44,7 @@ const AuthProvider = ({ children }) => {
 				);
 			}
 		} catch (error) {
-			console.error("Failed to fetch user profile:", error);
+			console.error("Failed to fetch user profile:", error.message);
 		}
 	};
 

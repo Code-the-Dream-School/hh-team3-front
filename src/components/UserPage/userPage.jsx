@@ -3,7 +3,7 @@ import { AuthContext } from "../Context/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import "./UserPage.css";
 
-const UserPage = () => {
+const UserPage = ({ onUploadAvatar }) => {
 	const { token, user, fetchUserProfile, logout } = useContext(AuthContext);
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
@@ -18,6 +18,7 @@ const UserPage = () => {
 			setName(user.name);
 			setEmail(user.email);
 			setIsAdmin(user.role === "admin");
+			console.log(user.photo);
 
 			const fetchProfile = async () => {
 				try {
@@ -61,6 +62,7 @@ const UserPage = () => {
 		const formData = { name, email };
 
 		try {
+			const url = import.meta.env.VITE_API_BASE_URL;
 			const response = await fetch(`${url}/auth/profile`, {
 				method: "POST",
 				headers: {
@@ -73,10 +75,8 @@ const UserPage = () => {
 
 			if (response.ok) {
 				alert("Profile updated successfully!");
-				fetchUserProfile();
-				logout();
-				navigate("./login");
 			} else {
+				console.error("Error updating profile:", error); 
 				alert("Failed to update profile.");
 			}
 		} catch (error) {
@@ -84,8 +84,31 @@ const UserPage = () => {
 		}
 	};
 
+	const handleCreateBook = () => {
+		navigate("/create-book");
+	};
+
+	const handleAvatarUpload = async () => {
+		if (photo) {
+			try {
+				const avatarData = await onUploadAvatar({
+					avatar: photo,
+					user: user,
+				});
+				console.log("Avatar uploaded successfully:", avatarData);
+				alert("Avatar uploaded successfully!"); 
+			} catch (error) {
+				console.error("Error uploading avatar:", error);
+				alert("Failed to upload avatar.");
+			}
+		} else {
+			alert("Please select a photo to upload.");
+		}
+	};
+
+
 	return (
-		<div className="user-page">
+		<div className="user-page" style={{ marginTop: "80px" }}>
 			<div className="user-profile">
 				<div className="photo-upload">
 					<label htmlFor="photoInput">
@@ -93,7 +116,8 @@ const UserPage = () => {
 							src={
 								photo
 									? URL.createObjectURL(photo)
-									: "/default-avatar.png"
+									: user?.photo ||
+									  "/userAvatars/default-avatar.jpg"
 							}
 							alt="User Avatar"
 							className="user-photo"
@@ -106,7 +130,7 @@ const UserPage = () => {
 						style={{ display: "none" }}
 						onChange={handlePhotoUpload}
 					/>
-					<button>Upload Photo</button>
+					<button onClick={handleAvatarUpload}>Upload Photo</button>
 				</div>
 				<div className="user-details">
 					<label>
@@ -130,19 +154,13 @@ const UserPage = () => {
 					</button>
 				</div>
 			</div>
-			<div className="user-discussions">
-				<h3>Your Discussions</h3>
-				<ul>
-					<li>Discussion 1</li>
-					<li>Discussion 2</li>
-				</ul>
+
+			<div className="admin-actions" style={{ marginTop: "80px" }}>
+				{isAdmin && (
+					<button onClick={handleCreateBook}>Create Book</button>
+				)}
+				<button>My Discussions</button>
 			</div>
-			{isAdmin && (
-				<div className="admin-actions">
-					<button>Create Book</button>
-					<button>Create Discussion</button>
-				</div>
-			)}
 		</div>
 	);
 };
