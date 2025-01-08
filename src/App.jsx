@@ -14,6 +14,7 @@ import Login from "./components/UserLogin/Login.jsx";
 import Signup from "./components/userSignup/Signup.jsx";
 import Logout from "./components/UserLogout/Logout.jsx";
 import UserPage from "./components/UserPage/userPage.jsx";
+import MyDiscussions from "./components/Discussion/MyDiscussions.jsx";
 
 function App() {
 	const [books, setBooks] = useState([]);
@@ -293,12 +294,19 @@ function App() {
 							<Route path="/signup" element={<Signup />} />
 							<Route path="/logout" element={<Logout />} />
 							<Route
+								path="/my-discussions"
+								element={<MyDiscussions />}
+							/>
+
+							<Route
 								path="/create-book"
 								element={<BookForm onAddBook={addBook} />}
 							/>
 							<Route
 								path="/userPage"
-								element={<UserPage onUploadAvatar={uploadAvatar} />}
+								element={
+									<UserPage onUploadAvatar={uploadAvatar} />
+								}
 							/>
 						</Routes>
 					</div>
