@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Search from "../components/Search/Search";
+import Search from "../components/Search/search.jsx";
 import DiscussionList from "../components/Discussion/DiscussionList/DiscussionList";
 
 function FindADiscussion({ discussionsData }) {

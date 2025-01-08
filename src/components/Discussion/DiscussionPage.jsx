@@ -48,9 +48,7 @@ export default function DiscussionPage({
 		minute: "2-digit",
 	});
 
-	const participantNames = participants.map(
-		(participantId) => userMap[participantId] || participantId,
-	);
+
 	const createdByName = userMap[createdBy] || createdBy;
 
 	const bookName = bookMap[book] || book;
@@ -58,6 +56,14 @@ export default function DiscussionPage({
 	const canJoin = participants.length < 10;
 
 	const handleJoinToggle = async () => {
+		const token = localStorage.getItem("token");
+		console.log("!!! " + token);
+		if (!token) {
+			throw new Error(
+				"Failed to add a discussion. Please log in to continue.",
+			);
+		}
+
 		if (participants.length >= 10) {
 			alert(
 				"This discussion is full. You can create your own or join a different one",
@@ -67,22 +73,26 @@ export default function DiscussionPage({
 		setLoading(true);
 		setError("");
 		try {
-			const endpoint = isJoined
-				? `/discussions/${id}/unjoin`
-				: `/discussions/${id}/join`;
-
 			const response = await fetch(
 				`${import.meta.env.VITE_API_BASE_URL}${endpoint}`,
 				{
 					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: `Bearer ${token}`,
+					},
 				},
 			);
 
-			if (!response.ok) throw new Error("Failed to update join status");
+			if (!response.ok) {
+				throw new Error(
+					`Failed to update join status: ${response.statusText}`,
+				);
+			}
 
-			setIsJoined(!isJoined);
+			setIsJoined((prevState) => !prevState);
 			setError("");
-		} catch (err) {
+		} catch (error) {
 			setError("Failed to update.");
 		}
 		setLoading(false);
@@ -138,10 +148,13 @@ export default function DiscussionPage({
 					</p>
 					<p className="discussion-participants">
 						<strong>Participants:</strong>{" "}
-						{participantNames.length > 0
-							? participantNames.join(", ")
+						{participants.length > 0
+							? `${participants.length} participant${
+									participants.length > 1 ? "s" : ""
+							  }`
 							: "No participants yet."}
 					</p>
+
 					<p className="discussion-created-by">
 						<strong>Created By:</strong> {createdByName}
 					</p>
