@@ -2,18 +2,18 @@ import { Route, BrowserRouter, Routes } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import Home from "./Pages/home.jsx";
-import Navbar from "./components/NavBar/Navbar";
+import Navbar from "./components/NavBar/Navbar.jsx";
 import Footer from "./components/Footer/Footer.jsx";
-import FindABook from "./Pages/FindABook";
-import BookDetails from "./components/BookDetails/BookDetails";
-import DiscussionForm from "./components/Discussion/DiscussionForm/DiscussionForm";
+import FindABook from "./Pages/FindABook.jsx";
+import BookDetails from "./components/BookDetails/BookDetails.jsx";
+import DiscussionForm from "./components/Discussion/DiscussionForm/DiscussionForm.jsx";
 import BookForm from "./components/BookFromForAdmin/BookForm.jsx";
 import Loader from "./components/Loader/Loader.jsx";
-import AuthProvider from "./components/Context/AuthProvider";
-import Login from "./components/UserLogin/Login";
-import Signup from "./components/userSignup/Signup";
-import Logout from "./components/UserLogout/Logout";
-import UserPage from "./components/UserPage/userPage";
+import AuthProvider from "./components/Context/AuthProvider.jsx";
+import Login from "./components/UserLogin/Login.jsx";
+import Signup from "./components/userSignup/Signup.jsx";
+import Logout from "./components/UserLogout/Logout.jsx";
+import UserPage from "./components/UserPage/userPage.jsx";
 
 function App() {
 	const [books, setBooks] = useState([]);
