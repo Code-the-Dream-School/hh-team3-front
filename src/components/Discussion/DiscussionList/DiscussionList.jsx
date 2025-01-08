@@ -12,6 +12,7 @@ function DiscussionList({ filteredData }) {
 						id={discussion.id}
 						title={discussion.title}
 						book={discussion.book}
+						bookImg={discussion.bookImg}
 						content={discussion.content}
 						date={discussion.date}
 						participants={discussion.participants}

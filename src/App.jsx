@@ -76,36 +76,34 @@ function App() {
 								`${url}/books/${discussion.book}`,
 							);
 							const bookData = bookResponse.ok
-								? await bookResponse.json()
+								? await bookResponse.json().then(
+										(data) =>
+											data.book || {
+												title: "Unknown Book",
+											},
+								  )
 								: { title: "Unknown Book" };
 
 							const creatorResponse = await fetch(
-								`${url}/auth/${discussion.createdBy}`,
+								`${url}/auth/profile/public?id=${discussion.createdBy}`,
 							);
+							const creatorResponseJson =
+								await creatorResponse.json();
+				
 							const creatorData = creatorResponse.ok
-								? await creatorResponse.json()
-								: { name: "Unknown Creator" };
-
-							const participantsData = await Promise.all(
-								discussion.participants.map(
-									async (participantId) => {
-										const participantResponse = await fetch(
-											`${url}/auth/${participantId}`,
-										);
-										return participantResponse.ok
-											? await participantResponse.json()
-											: { name: "Unknown Participant" };
-									},
-								),
-							);
+									? {
+											name:
+												creatorResponseJson.name ||
+												"Unknown Creator",
+									}
+									: { name: "Unknown Creator" };
+							const participantsData = data.discussions;;
 
 							return {
 								...discussion,
 								book: bookData.title,
+								bookImg: bookData.imageLinks.thumbnail,
 								createdBy: creatorData.name,
-								participants: participantsData.map(
-									(participant) => participant.name,
-								),
 							};
 						} catch (err) {
 							console.error(

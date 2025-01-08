@@ -1,29 +1,53 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { AuthContext } from "../../Context/AuthProvider";
+import "./Discussion.css";
 export default function DiscussionCard({
 	title,
 	book,
+	bookImg,
 	content,
 	date,
 	participants = [],
 	meetingLink,
 	createdBy,
 	id,
-	canJoin = true, 
+	canJoin = true,
 }) {
+	const { token, user } = useContext(AuthContext);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState("");
 	const [isDeleted, setIsDeleted] = useState(false);
 	const [isJoined, setIsJoined] = useState(false);
+	const [participantsCount, setParticipantsCount] = useState(
+		participants.length,
+	);
+
+	useEffect(() => {
+		if (user) {
+			const isUserJoined = participants.some((participant) => {
+				return participant === user.id;
+			});
+			setIsJoined(isUserJoined);
+			console.log("@@@" + isUserJoined);
+		}
+	}, [participants, user]);
 
 	const handleJoinToggle = async () => {
-		if (participants.length >= 10) {
+		if (!token) {
+			alert("Please log in to join / leave the discussion.");
+			return;
+		}
+
+		if (participantsCount >= 10) {
 			alert(
 				"This discussion is full. You can create your own or join a different one",
 			);
 			return;
 		}
+
 		setLoading(true);
 		setError("");
+		console.log("!!!" + isJoined);
 		try {
 			const endpoint = isJoined
 				? `/discussions/${id}/unjoin`
@@ -33,10 +57,18 @@ export default function DiscussionCard({
 				`${import.meta.env.VITE_API_BASE_URL}${endpoint}`,
 				{
 					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: `Bearer ${token}`,
+					},
 				},
 			);
 
 			if (!response.ok) throw new Error("Failed to update join status");
+
+			setParticipantsCount((prevCount) =>
+				isJoined ? prevCount - 1 : prevCount + 1,
+			);
 
 			setIsJoined(!isJoined);
 			setError("");
@@ -47,6 +79,12 @@ export default function DiscussionCard({
 	};
 
 	const handleDeleteDiscussion = async () => {
+		const token = localStorage.getItem("token");
+		if (!token) {
+			throw new Error(
+				"Failed to delete a discussion. Please log in to continue.",
+			);
+		}
 		setLoading(true);
 		setError("");
 		try {
@@ -54,12 +92,20 @@ export default function DiscussionCard({
 				`${import.meta.env.VITE_API_BASE_URL}/discussions/${id}`,
 				{
 					method: "DELETE",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: `Bearer ${token}`,
+					},
 				},
 			);
 
 			if (!response.ok) throw new Error("Failed to delete discussion");
 
 			setIsDeleted(true);
+
+			alert("Discussion has been successfully deleted.");
+
+			window.location.reload();
 		} catch (err) {
 			setError("Failed to delete.");
 		}
@@ -69,7 +115,8 @@ export default function DiscussionCard({
 	if (loading)
 		return (
 			<h2>
-				<Loader />
+				{" "}
+				<Loader />{" "}
 			</h2>
 		);
 
@@ -78,6 +125,12 @@ export default function DiscussionCard({
 	return (
 		<div className="discussion-container">
 			<div className="discussion-details">
+				<img
+					src={bookImg}
+					alt={`Cover of ${book}`}
+					width="200"
+					height="300"
+				/>
 				<p className="discussion-title">
 					<strong>Title:</strong> {title}
 				</p>
@@ -91,10 +144,12 @@ export default function DiscussionCard({
 					<strong>Date:</strong> {new Date(date).toLocaleDateString()}{" "}
 				</p>
 				<p className="discussion-participants">
-					<strong>Participants:</strong>
-					{participants && participants.length > 0
-						? participants.join(", ")
-						: "No participants yet"}{" "}
+					<strong>Participants:</strong>{" "}
+					{participantsCount > 0
+						? `${participantsCount} participant${
+								participantsCount > 1 ? "s" : ""
+						  }`
+						: "No participants yet"}
 				</p>
 				<p className="discussion-created-by">
 					<strong>Created By:</strong>{" "}
