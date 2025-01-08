@@ -76,7 +76,7 @@ const UserPage = ({ onUploadAvatar }) => {
 			if (response.ok) {
 				alert("Profile updated successfully!");
 			} else {
-				console.error("Error updating profile:", error); 
+				console.error("Error updating profile:", error);
 				alert("Failed to update profile.");
 			}
 		} catch (error) {
@@ -96,7 +96,7 @@ const UserPage = ({ onUploadAvatar }) => {
 					user: user,
 				});
 				console.log("Avatar uploaded successfully:", avatarData);
-				alert("Avatar uploaded successfully!"); 
+				alert("Avatar uploaded successfully!");
 			} catch (error) {
 				console.error("Error uploading avatar:", error);
 				alert("Failed to upload avatar.");
@@ -105,7 +105,61 @@ const UserPage = ({ onUploadAvatar }) => {
 			alert("Please select a photo to upload.");
 		}
 	};
+	const handleMyDiscussions = async () => {
+		try {
+			if (!user?.id) {
+				console.error("User ID is missing.");
+				alert("User ID is required to fetch discussions.");
+				return;
+			}
 
+			console.log("User ID:", user.id);
+
+			const url = import.meta.env.VITE_API_BASE_URL;
+			const fullUrl = `${url}/discussions`;
+			console.log("Fetching all discussions from:", fullUrl);
+
+			const response = await fetch(fullUrl, {
+				headers: {
+					Authorization: `Bearer ${token}`,
+					"Content-Type": "application/json",
+				},
+			});
+
+			if (!response.ok) {
+				console.error(
+					`Failed to fetch discussions: ${response.status} ${response.statusText}`,
+				);
+				alert(`Failed to fetch discussions: ${response.statusText}`);
+				return;
+			}
+
+			const allDiscussions = await response.json();
+			console.log("All Discussions Response:", allDiscussions);
+
+			const discussionsArray = allDiscussions.discussions || [];
+			if (!Array.isArray(discussionsArray)) {
+				console.error(
+					"Discussions data is not an array:",
+					discussionsArray,
+				);
+				alert("Unexpected response format from the server.");
+				return;
+			}
+			
+			const userDiscussions = discussionsArray.filter(
+				(discussion) => discussion.createdBy === user.id,
+			);
+			console.log("User Discussions:", userDiscussions);
+
+			navigate("/my-discussions", {
+				state: { discussions: userDiscussions },
+			});
+		} catch (error) {
+			console.error("Error fetching discussions:", error);
+			alert("An error occurred while fetching discussions.");
+		}
+	};
 
 	return (
 		<div className="user-page" style={{ marginTop: "80px" }}>
@@ -159,7 +213,7 @@ const UserPage = ({ onUploadAvatar }) => {
 				{isAdmin && (
 					<button onClick={handleCreateBook}>Create Book</button>
 				)}
-				<button>My Discussions</button>
+				<button onClick={handleMyDiscussions}>My Discussions</button>
 			</div>
 		</div>
 	);

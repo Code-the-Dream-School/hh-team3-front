@@ -9,6 +9,7 @@ function DiscussionList({ filteredData }) {
 				filteredData.map((discussion) => (
 					<DiscussionCard
 						key={discussion.id}
+						id={discussion.id}
 						title={discussion.title}
 						book={discussion.book}
 						content={discussion.content}
