@@ -7,7 +7,7 @@ import Footer from "./components/Footer/Footer.jsx";
 import FindABook from "./Pages/FindABook.jsx";
 import BookDetails from "./components/BookDetails/BookDetails.jsx";
 import DiscussionForm from "./components/Discussion/DiscussionForm/DiscussionForm.jsx";
-import BookForm from "./components/BookFormForAdmin/BookForm.jsx";
+import BookForm from "./components/BookFormforAdmin/BookForm.jsx";
 import FindADiscusssion from "./Pages/FIndADiscussion";
 import Loader from "./components/Loader/Loader.jsx";
 import AuthProvider from "./components/Context/AuthProvider.jsx";
@@ -380,7 +380,9 @@ function App() {
 							/>
 							<Route
 								path="/userPage"
-								element={<UserPage onUploadAvatar={uploadAvatar} />}
+								element={
+									<UserPage onUploadAvatar={uploadAvatar} />
+								}
 							/>
 						</Routes>
 					</div>
