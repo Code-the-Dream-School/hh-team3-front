@@ -1,48 +1,49 @@
-import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
-import userData from "../../data/bookTalksData.js";
-import BookTalksInput from "../BookTalks/BookTalksInput.jsx";
+import React, { useState, useContext } from "react";
+import { AuthContext } from "../Context/AuthProvider";
+import { useNavigate } from "react-router-dom";
+import BookTalksInput from "./BookTalksInput";
+import "./BookTalks.css";
 
 export default function BookTalksForm({ onBookTalk }) {
-	const [bookTalk, setBookTalk] = useState("");
+  const [bookTalk, setBookTalk] = useState("");
+  const { user, isAuthenticated } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-	function handleReviewChange(event) {
-		let newBookTalk = event.target.value;
-		setBookTalk(newBookTalk);
-	}
+  function handleChange(e) {
+    setBookTalk(e.target.value);
+  }
 
-	function handleBookTalk(event) {
-		event.preventDefault();
-		if (bookTalk.trim()) {
-			onBookTalk({
-				review: bookTalk.trim(),
-				id: uuidv4(),
-				likes: 0,
-				isLiked: false,
-				username: userData[0].username,
-				photo: userData[0].photo || "default-avatar.jpg",
-			});
-			setBookTalk("");
-		}
-	}
+  function handleSubmit(e) {
+    e.preventDefault();
 
-	return (
-		<div>
-			<form className="form" onSubmit={handleBookTalk}>
-				<BookTalksInput
-					value={bookTalk}
-					onChange={handleReviewChange}
-					photo={userData[0].photo}
-				/>
-				<button
-					className="post-book-talk-button"
-					type="submit"
-					id="submit-book-talk-btn"
-					title="Post BookTalk"
-				>
-					Post BookTalk
-				</button>
-			</form>
-		</div>
-	);
+    if (!isAuthenticated) {
+      alert("Please log in to post a comment!");
+      navigate("/login");
+      return;
+    }
+
+    if (!bookTalk.trim()) {
+      alert("Please type something!");
+      return;
+    }
+
+    const newComment = {
+      review: bookTalk.trim(),
+      userId: user?._id || "",
+      username: user?.name || "Anonymous",
+      photo: user?.photo || "",
+    };
+
+    onBookTalk(newComment);
+    setBookTalk("");
+  }
+
+  return (
+    <form className="bookTalksForm" onSubmit={handleSubmit}>
+      <BookTalksInput value={bookTalk} onChange={handleChange} />
+      <button className="post-book-talk-button" type="submit">
+        Post BookTalk
+      </button>
+    </form>
+  );
 }
