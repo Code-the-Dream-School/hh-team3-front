@@ -24,8 +24,6 @@ function Home({ booksData }) {
 			setRandomBook(book);
 		};
 		pickRandomBook();
-
-	
 	}, [booksData]);
 
 	if (!randomBook)
@@ -125,6 +123,21 @@ function Home({ booksData }) {
 					<img
 						src="/images/find_book.jpeg"
 						alt="Book Icon"
+						className="rounded"
+						width="100%"
+					/>
+				</Link>
+				<Link
+					className="btn btn-outline-light book-btn d-flex flex-column align-items-center p-4 shadow"
+					to="/create-discussion"
+					style={{ width: "300px" }}
+					rel="noopener noreferrer"
+				>
+					<h3 className="link-text mb-3">Create discussion</h3>
+					<img
+						src="/images/create_discussion.jpeg"
+						S
+						alt="Create discussion Icon"
 						className="rounded"
 						width="100%"
 					/>

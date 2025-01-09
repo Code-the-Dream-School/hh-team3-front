@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
-import "./Discussion.css";
 export default function DiscussionCard({
 	title,
 	book,
