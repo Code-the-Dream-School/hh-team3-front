@@ -45,6 +45,7 @@
 	gap: 0.938em;
 	padding: 0.625em 1.25em;
 	transition: padding 0.3s ease;
+	color: var(--title-color);
 }
 
 .discussion-title {
@@ -67,18 +68,6 @@
 .discussion-date {
 	font-size: 1.13rem;
 	color: var(--title-color);
-}
-
-.book-description {
-	font-size: 1.13rem;
-	line-height: 1.8;
-	color: var(--text-color);
-	text-align: justify;
-	margin: 0;
-	max-width: 500px;
-	transition:
-		font-size 0.3s ease,
-		line-height 0.3s ease;
 }
 
 .buttons-container {
