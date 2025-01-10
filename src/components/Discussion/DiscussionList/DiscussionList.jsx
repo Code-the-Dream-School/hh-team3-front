@@ -1,6 +1,5 @@
 import React from "react";
 import DiscussionCard from "./DiscussionCard";
-import { Link } from "react-router-dom";
 
 function DiscussionList({ filteredData }) {
 	return (
