@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
+import './DiscussionCard.css'
+
 export default function DiscussionCard({
 	title,
 	book,
@@ -124,12 +126,12 @@ export default function DiscussionCard({
 	return (
 		<div className="discussion-container">
 			<div className="discussion-details">
+				<div>
 				<img
 					src={bookImg}
 					alt={`Cover of ${book}`}
-					width="200"
-					height="300"
-				/>
+				/></div>
+				<div>
 				<p className="discussion-title">
 					<strong>Title:</strong> {title}
 				</p>
@@ -180,6 +182,7 @@ export default function DiscussionCard({
 						Delete Discussion
 					</button>
 				</div>
+			</div>
 			</div>
 		</div>
 	);

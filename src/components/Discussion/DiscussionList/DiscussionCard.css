@@ -26,12 +26,13 @@
 }
 
 .discussion-container img {
-	width: 300px;
+	width: 200px;
 	height: auto;
 	object-fit: cover;
 	border-radius: 15px;
 	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 	transition: transform 0.4s ease;
+	margin-right: 20px;
 }
 
 .discussion-container img:hover {
@@ -41,7 +42,7 @@
 .discussion-details {
 	flex: 1;
 	display: flex;
-	flex-direction: column;
+	width:100%;
 	gap: 0.938em;
 	padding: 0.625em 1.25em;
 	transition: padding 0.3s ease;
