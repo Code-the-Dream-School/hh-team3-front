@@ -11,6 +11,7 @@ export default function DiscussionCard({
 	participants = [],
 	meetingLink,
 	createdBy,
+	createdById,
 	id,
 	canJoin = true,
 }) {
@@ -116,8 +117,8 @@ export default function DiscussionCard({
 	if (loading)
 		return (
 			<h2>
-				{" "}
-				<Loader />{" "}
+				{/* {" "}
+				<Loader />{" "} */}
 			</h2>
 		);
 
@@ -127,10 +128,8 @@ export default function DiscussionCard({
 		<div className="discussion-container">
 			<div className="discussion-details">
 				<div>
-				<img
-					src={bookImg}
-					alt={`Cover of ${book}`}
-				/></div>
+					<img src={bookImg} alt={`Cover of ${book}`} />
+				</div>
 				<div>
 				<p className="discussion-title">
 					<strong>Title:</strong> {title}
@@ -174,13 +173,15 @@ export default function DiscussionCard({
 					>
 						{isJoined ? "Leave" : "Join"}
 					</button>
-					<button
-						className="delete-btn button"
-						onClick={handleDeleteDiscussion}
-						disabled={loading}
-					>
-						Delete Discussion
-					</button>
+					{createdById === user.id && (
+						<button
+							className="delete-btn button"
+							onClick={handleDeleteDiscussion}
+							disabled={loading}
+						>
+							Delete Discussion
+						</button>
+					)}
 				</div>
 			</div>
 			</div>

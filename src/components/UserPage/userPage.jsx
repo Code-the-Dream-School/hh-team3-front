@@ -138,16 +138,14 @@ const UserPage = ({ onUploadAvatar }) => {
 			console.log("All Discussions Response:", allDiscussions);
 
 			const discussionsArray = allDiscussions.discussions || [];
-			// if (!Array.isArray(discussionsArray)) {
-			// 	console.error(
-			// 		"Discussions data is not an array:",
-			// 		discussionsArray,
-			// 	);
-			// 	alert("Unexpected response format from the server.");
-			// 	return;
-			// }
-
-			
+			if (!Array.isArray(discussionsArray)) {
+				console.error(
+					"Discussions data is not an array:",
+					discussionsArray,
+				);
+				alert("Unexpected response format from the server.");
+				return;
+			}			
 			const userDiscussions = discussionsArray.filter(
 				(discussion) => discussion.createdBy === user.id,
 			);
