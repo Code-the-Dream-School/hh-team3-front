@@ -92,19 +92,21 @@ function App() {
 								await creatorResponse.json();
 				
 							const creatorData = creatorResponse.ok
-									? {
-											name:
-												creatorResponseJson.name ||
-												"Unknown Creator",
-									}
-									: { name: "Unknown Creator" };
-							const participantsData = data.discussions;;
+								? {
+										id: creatorResponseJson.id,
+										name:
+											creatorResponseJson.name ||
+											"Unknown Creator",
+								  }
+								: { id: "unknown", name: "Unknown Creator" };
+							const participantsData = data.discussions;
 
 							return {
 								...discussion,
 								book: bookData.title,
 								bookImg: bookData.imageLinks.thumbnail,
 								createdBy: creatorData.name,
+								createdById: creatorData.id,
 							};
 						} catch (err) {
 							console.error(

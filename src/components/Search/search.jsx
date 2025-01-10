@@ -30,7 +30,7 @@ function Search({ onSearch }) {
 							placeholder="Search a book by title, authors, or category"
 							onChange={handleChange}
 						/>
-						<button className="btn btn-secondary d-none d-md-block">
+						<button className="btn btn-secondary d-block d-md-inline-block">
 							Search
 						</button>
 					</div>

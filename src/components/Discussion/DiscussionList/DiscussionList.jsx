@@ -17,6 +17,7 @@ function DiscussionList({ filteredData }) {
 						participants={discussion.participants}
 						meetingLink={discussion.meetingLink}
 						createdBy={discussion.createdBy}
+						createdById={discussion.createdById}
 					/>
 				))
 			) : (
