@@ -7,19 +7,21 @@ import Footer from "./components/Footer/Footer.jsx";
 import FindABook from "./Pages/FindABook.jsx";
 import BookDetails from "./components/BookDetails/BookDetails.jsx";
 import DiscussionForm from "./components/Discussion/DiscussionForm/DiscussionForm.jsx";
-import BookForm from "./components/BookFromForAdmin/BookForm.jsx";
+import BookForm from "./components/BookFormforAdmin/BookForm.jsx";
+import FindADiscusssion from "./Pages/FIndADiscussion";
 import Loader from "./components/Loader/Loader.jsx";
 import AuthProvider from "./components/Context/AuthProvider.jsx";
 import Login from "./components/UserLogin/Login.jsx";
 import Signup from "./components/userSignup/Signup.jsx";
 import Logout from "./components/UserLogout/Logout.jsx";
 import UserPage from "./components/UserPage/userPage.jsx";
+import MyDiscussions from "./components/Discussion/MyDiscussions.jsx";
 
 function App() {
 	const [books, setBooks] = useState([]);
 	const [error, setError] = useState(null);
 	const [loading, setLoading] = useState(false);
-	books;
+	const [discussions, setDiscussions] = useState([]);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -52,6 +54,81 @@ function App() {
 			}
 		};
 		fetchData();
+	}, []);
+
+	useEffect(() => {
+		const fetchDiscussions = async () => {
+			const url = import.meta.env.VITE_API_BASE_URL;
+			try {
+				const response = await fetch(`${url}/discussions`);
+				if (!response.ok) {
+					throw new Error("Failed to fetch discussions");
+				}
+				const data = await response.json();
+
+				if (!data.discussions) {
+					throw new Error("Missing 'discussions' in API response");
+				}
+
+				const discussions = await Promise.all(
+					data.discussions.map(async (discussion) => {
+						try {
+							const bookResponse = await fetch(
+								`${url}/books/${discussion.book}`,
+							);
+							const bookData = bookResponse.ok
+								? await bookResponse.json().then(
+										(data) =>
+											data.book || {
+												title: "Unknown Book",
+											},
+								  )
+								: { title: "Unknown Book" };
+
+							const creatorResponse = await fetch(
+								`${url}/auth/profile/public?id=${discussion.createdBy}`,
+							);
+							const creatorResponseJson =
+								await creatorResponse.json();
+				
+							const creatorData = creatorResponse.ok
+									? {
+											name:
+												creatorResponseJson.name ||
+												"Unknown Creator",
+									}
+									: { name: "Unknown Creator" };
+							const participantsData = data.discussions;;
+
+							return {
+								...discussion,
+								book: bookData.title,
+								bookImg: bookData.imageLinks.thumbnail,
+								createdBy: creatorData.name,
+							};
+						} catch (err) {
+							console.error(
+								"Error processing discussion:",
+								err.message,
+							);
+							return {
+								...discussion,
+								book: "Unknown Book",
+								createdBy: "Unknown Creator",
+								participants: [],
+							};
+						}
+					}),
+				);
+
+				setDiscussions(discussions);
+			} catch (err) {
+				console.error("Error fetching data:", err.message);
+				setError(err.message);
+			}
+		};
+
+		fetchDiscussions();
 	}, []);
 
 	async function addDiscussion(newDiscussionItem) {
@@ -266,6 +343,14 @@ function App() {
 								element={<FindABook booksData={books} />}
 							/>
 							<Route
+								path="/find-discussion"
+								element={
+									<FindADiscusssion
+										discussionsData={discussions}
+									/>
+								}
+							/>
+							<Route
 								path="/"
 								element={<Home booksData={books} />}
 							/>
@@ -281,24 +366,23 @@ function App() {
 									/>
 								}
 							/>
-							<Route
-								path="/create-discussion"
-								element={
-									<DiscussionForm
-										onSubmit={handleFormSubmit}
-									/>
-								}
-							/>
 							<Route path="/login" element={<Login />} />
 							<Route path="/signup" element={<Signup />} />
 							<Route path="/logout" element={<Logout />} />
+							<Route
+								path="/my-discussions"
+								element={<MyDiscussions />}
+							/>
+
 							<Route
 								path="/create-book"
 								element={<BookForm onAddBook={addBook} />}
 							/>
 							<Route
 								path="/userPage"
-								element={<UserPage onUploadAvatar={uploadAvatar} />}
+								element={
+									<UserPage onUploadAvatar={uploadAvatar} />
+								}
 							/>
 						</Routes>
 					</div>
