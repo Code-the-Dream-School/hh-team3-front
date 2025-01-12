@@ -16,6 +16,7 @@ import Signup from "./components/userSignup/Signup.jsx";
 import Logout from "./components/UserLogout/Logout.jsx";
 import UserPage from "./components/UserPage/userPage.jsx";
 import MyDiscussions from "./components/Discussion/MyDiscussions.jsx";
+import ResetPassword from "./components/ForgotPassword/ResetPassword.jsx";
 
 function App() {
 	const [books, setBooks] = useState([]);
@@ -90,7 +91,7 @@ function App() {
 							);
 							const creatorResponseJson =
 								await creatorResponse.json();
-				
+
 							const creatorData = creatorResponse.ok
 								? {
 										id: creatorResponseJson.id,
@@ -136,7 +137,9 @@ function App() {
 	async function addDiscussion(newDiscussionItem) {
 		const token = localStorage.getItem("token");
 		if (!token) {
-			throw new Error("Failed to add a discussion. Please log in to continue.");
+			throw new Error(
+				"Failed to add a discussion. Please log in to continue.",
+			);
 		}
 		setLoading(true);
 		const options = {
@@ -385,6 +388,10 @@ function App() {
 								element={
 									<UserPage onUploadAvatar={uploadAvatar} />
 								}
+							/>
+							<Route
+								path="/reset-password"
+								element={<ResetPassword />}
 							/>
 						</Routes>
 					</div>
