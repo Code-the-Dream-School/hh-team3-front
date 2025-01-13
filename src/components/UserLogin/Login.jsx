@@ -23,7 +23,6 @@ const Login = () => {
 		setError("");
 
 		if (isResetMode) {
-			// Request reset link
 			try {
 				const response = await fetch(
 					`${import.meta.env.VITE_API_BASE_URL}/auth/request`,
@@ -35,7 +34,6 @@ const Login = () => {
 						body: JSON.stringify({ email }),
 					},
 				);
-
 				if (response.ok) {
 					alert("A reset password link has been sent to your email.");
 					setIsResetMode(false);
@@ -49,7 +47,6 @@ const Login = () => {
 			return;
 		}
 
-		// Login process
 		try {
 			const response = await fetch(
 				`${import.meta.env.VITE_API_BASE_URL}/auth/login`,
