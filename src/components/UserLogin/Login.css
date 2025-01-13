@@ -27,19 +27,31 @@
 	font-size: 1rem;
 	color: #333;
 	background: #f8f8fc;
-	box-shadow:
-		inset 3px 3px 6px rgba(0, 0, 0, 0.1),
+	box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.1),
 		inset -3px -3px 6px rgba(255, 255, 255, 0.5);
 	font-family: "Poppins", sans-serif;
-	transition:
-		box-shadow 0.3s ease,
-		background 0.3s ease;
+	transition: box-shadow 0.3s ease, background 0.3s ease;
 }
 
 .input:focus {
 	background: #ffffff;
 	box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
 	outline: none;
+}
+.link-text {
+	display: block;
+	text-align: center;
+	margin-top: 1rem;
+	font-size: 1rem;
+	color: #007bff;
+	cursor: pointer;
+	text-decoration: none;
+	transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.link-text:hover {
+	color: #0056b3;
+	text-decoration: underline;
 }
 
 .button {
@@ -53,10 +65,7 @@
 	border-radius: 10px;
 	cursor: pointer;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	transition:
-		transform 0.2s ease,
-		box-shadow 0.3s ease,
-		background 0.3s ease;
+	transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.3s ease;
 	font-family: "Poppins", sans-serif;
 }
 
