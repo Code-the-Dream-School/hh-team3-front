@@ -108,19 +108,20 @@ function DiscussionForm({ onSubmit }) {
 				</Form.Group>
 				<Form.Group className="form-group row">
 					<Form.Label
-						htmlFor="date"
+						htmlFor="datetime"
 						className="col-12 col-md-4 form-label"
 					>
-						Date
+						Date and Time
 					</Form.Label>
 					<div className="col-12 col-md-8">
 						<Form.Control
-							id="date"
-							type="date"
+							id="datetime"
+							type="datetime-local"
 							name="date"
 							value={formData.date}
 							onChange={handleChange}
 							className="form-control"
+							min={new Date().toISOString().slice(0, 16)}
 						/>
 					</div>
 				</Form.Group>
