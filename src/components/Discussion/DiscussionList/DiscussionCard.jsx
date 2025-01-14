@@ -24,6 +24,11 @@ export default function DiscussionCard({
 		participants.length,
 	);
 	const userId = user?.id || null;
+	const isDateInFuture = (discussionDate) => {
+		const discussionDateTime = new Date(discussionDate).getTime();
+		const currentTime = new Date().getTime();
+		return discussionDateTime >= currentTime;
+	};
 
 	useEffect(() => {
 		if (user) {
@@ -126,12 +131,12 @@ export default function DiscussionCard({
 	if (isDeleted) return <p>This discussion has been deleted.</p>;
 
 	return (
-		<div className="discussion-container">
-			<div className="discussion-details">
+		<div className="discussion-page">
+			<div className="discussion-container">
 				<div>
 					<img src={bookImg} alt={`Cover of ${book}`} />
 				</div>
-				<div>
+				<div className="discussion-details">
 					<p className="discussion-title">
 						<strong>Title:</strong> {title}
 					</p>
@@ -142,9 +147,9 @@ export default function DiscussionCard({
 						<strong>Content:</strong> {content}
 					</p>
 					<p className="discussion-date">
-						<strong>Date:</strong>{" "}
-						{new Date(date).toLocaleDateString()}{" "}
+						<strong>Date:</strong> {new Date(date).toLocaleString()}{" "}
 					</p>
+
 					<p className="discussion-participants">
 						<strong>Participants:</strong>{" "}
 						{participantsCount > 0
@@ -168,13 +173,16 @@ export default function DiscussionCard({
 						</a>
 					</p>
 					<div className="buttons-container">
-						<button
-							className="join-btn button"
-							onClick={handleJoinToggle}
-							disabled={!canJoin || loading}
-						>
-							{isJoined ? "Leave" : "Join"}
-						</button>
+						{isDateInFuture(date) && (
+							<button
+								className="join-btn button"
+								onClick={handleJoinToggle}
+								disabled={!canJoin || loading}
+							>
+								{isJoined ? "Leave" : "Join"}
+							</button>
+						)}
+
 						{createdById === userId && (
 							<button
 								className="delete-btn button"
