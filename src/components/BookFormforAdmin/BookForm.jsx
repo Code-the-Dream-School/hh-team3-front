@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
+import { useNavigate } from "react-router-dom";
+
 const BookForm = ({ onAddBook }) => {
+	const navigate = useNavigate();
 	const [formData, setFormData] = useState({
 		title: "",
 		authors: "",
@@ -38,6 +41,9 @@ const BookForm = ({ onAddBook }) => {
 				cover: "",
 			});
 		}
+	};
+	const handleClose = () => {
+		navigate("/UserPage");
 	};
 
 	return (
@@ -148,6 +154,12 @@ const BookForm = ({ onAddBook }) => {
 				</Form.Group>
 				<div className="buttons-container">
 					<button className="create-discussions-btn">Save</button>
+					<button
+						className="create-discussions-btn"
+						onClick={handleClose}
+					>
+						Close
+					</button>
 				</div>
 			</Form>
 		</div>

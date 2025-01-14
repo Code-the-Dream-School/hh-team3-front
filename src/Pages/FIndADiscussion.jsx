@@ -2,16 +2,33 @@ import React, { useState, useEffect, useContext } from "react";
 import SearchForm from "../components/Search/SearchForm";
 import DiscussionList from "../components/Discussion/DiscussionList/DiscussionList";
 import { AuthContext } from "../components/Context/AuthProvider";
+import { useLocation } from "react-router-dom";
 
 function FindADiscussion({ discussionsData }) {
-	console.log(discussionsData);
-	const [filteredData, setFilteredData] = useState(discussionsData || []);
+	const now = new Date();
+	const location = useLocation();
+	const { defaultDiscussionType = "all" } = location.state || {};
+
+	const [filteredData, setFilteredData] = useState([]);
 	const [sortOrder, setSortOrder] = useState("a-z");
 	const { user } = useContext(AuthContext);
+	const userId = user?.id || null;
 
 	useEffect(() => {
-		setFilteredData(discussionsData);
-	}, [discussionsData]);
+		let initialFilteredData;
+
+		if (defaultDiscussionType === "my") {
+			initialFilteredData = discussionsData.filter(
+				(discussion) => discussion.createdById === userId,
+			);
+		} else {
+			initialFilteredData = discussionsData.filter(
+				(discussion) => new Date(discussion.date) > now,
+			);
+		}
+
+		setFilteredData(initialFilteredData);
+	}, [discussionsData, defaultDiscussionType, userId]);
 
 	const handleSearch = (query) => {
 		const lowercasedQuery = query.toLowerCase();
@@ -57,9 +74,14 @@ function FindADiscussion({ discussionsData }) {
 		setFilteredData(sorted);
 	};
 	const handleDiscussionTypeChange = (type) => {
-		console.log("User ID:", user.id);
+		console.log("User ID:", userId);
 
 		let filtered;
+		if (!userId) {
+			alert("Please log in to join / leave the discussion.");
+			setFilteredData(discussionsData);
+			return;
+		}
 
 		if (type === "my") {
 			filtered = discussionsData.filter((discussion) => {
@@ -67,11 +89,11 @@ function FindADiscussion({ discussionsData }) {
 					"Checking discussion.createdBy:",
 					discussion.createdById,
 				);
-				return discussion.createdById === user.id;
+				return discussion.createdById === userId;
 			});
 		} else if (type === "joined") {
 			filtered = discussionsData.filter((discussion) =>
-				discussion.participants.includes(user.id),
+				discussion.participants.includes(userId),
 			);
 		} else {
 			filtered = discussionsData;
