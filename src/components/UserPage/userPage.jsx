@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Context/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import "./userPage.css";
+import SearchForm from "../Search/SearchForm";
 
 const UserPage = ({ onUploadAvatar }) => {
 	const { token, user, fetchUserProfile, logout } = useContext(AuthContext);
@@ -10,6 +11,10 @@ const UserPage = ({ onUploadAvatar }) => {
 	const [photo, setPhoto] = useState(null);
 	const [isAdmin, setIsAdmin] = useState(false);
 	const navigate = useNavigate();
+	const [showSearchForm, setShowSearchForm] = useState(true);
+
+	const defaultDiscussionType =
+		location.state?.defaultDiscussionType || "all";
 
 	useEffect(() => {
 		if (!token) {
@@ -105,114 +110,79 @@ const UserPage = ({ onUploadAvatar }) => {
 			alert("Please select a photo to upload.");
 		}
 	};
-	const handleMyDiscussions = async () => {
-		try {
-			if (!user?.id) {
-				console.error("User ID is missing.");
-				alert("User ID is required to fetch discussions.");
-				return;
-			}
-
-			console.log("User ID:", user.id);
-
-			const url = import.meta.env.VITE_API_BASE_URL;
-			const fullUrl = `${url}/discussions`;
-			console.log("Fetching all discussions from:", fullUrl);
-
-			const response = await fetch(fullUrl, {
-				headers: {
-					Authorization: `Bearer ${token}`,
-					"Content-Type": "application/json",
-				},
-			});
-
-			if (!response.ok) {
-				console.error(
-					`Failed to fetch discussions: ${response.status} ${response.statusText}`,
-				);
-				alert(`Failed to fetch discussions: ${response.statusText}`);
-				return;
-			}
-
-			const allDiscussions = await response.json();
-			console.log("All Discussions Response:", allDiscussions);
-
-			const discussionsArray = allDiscussions.discussions || [];
-			if (!Array.isArray(discussionsArray)) {
-				console.error(
-					"Discussions data is not an array:",
-					discussionsArray,
-				);
-				alert("Unexpected response format from the server.");
-				return;
-			}			
-			const userDiscussions = discussionsArray.filter(
-				(discussion) => discussion.createdBy === user.id,
-			);
-			console.log("User Discussions:", userDiscussions);
-
-			navigate("/my-discussions", {
-				state: { discussions: userDiscussions },
-			});
-		} catch (error) {
-			console.error("Error fetching discussions:", error);
-			alert("An error occurred while fetching discussions.");
-		}
+	const handleMyDiscussionsClick = () => {
+		setShowSearchForm(false);
+		navigate("/find-discussion", {
+			state: { defaultDiscussionType: "my" },
+		});
 	};
 
 	return (
-		<div className="user-page" style={{ marginTop: "80px" }}>
-			<div className="user-profile">
-				<div className="photo-upload">
-					<label htmlFor="photoInput">
-						<img
-							src={
-								photo
-									? URL.createObjectURL(photo)
-									: user?.photo ||
-									  "/userAvatars/default-avatar.jpg"
-							}
-							alt="User Avatar"
-							className="user-photo"
+		<div className="user-container">
+			<div className="user-page" style={{ marginTop: "80px" }}>
+				<div className="user-profile">
+					<div className="photo-upload">
+						<label htmlFor="photoInput">
+							<img
+								src={
+									photo
+										? URL.createObjectURL(photo)
+										: user?.photo ||
+										  "/userAvatars/default-avatar.jpg"
+								}
+								alt="User Avatar"
+								className="user-photo"
+							/>
+						</label>
+						<input
+							type="file"
+							id="photoInput"
+							accept="image/*"
+							style={{ display: "none" }}
+							onChange={handlePhotoUpload}
 						/>
-					</label>
-					<input
-						type="file"
-						id="photoInput"
-						accept="image/*"
-						style={{ display: "none" }}
-						onChange={handlePhotoUpload}
-					/>
-					<button onClick={handleAvatarUpload}>Upload Photo</button>
+						<button onClick={handleAvatarUpload}>
+							Upload Photo
+						</button>
+					</div>
+					<div className="user-details">
+						<label>
+							Name:
+							<input
+								type="text"
+								value={name}
+								onChange={(e) => setName(e.target.value)}
+							/>
+						</label>
+						<label>
+							Email:
+							<input
+								type="email"
+								value={email}
+								onChange={(e) => setEmail(e.target.value)}
+							/>
+						</label>
+						<div className="buttons-container">
+							<button className="user-btn" onClick={handleSave}>
+								Save
+							</button>
+						</div>
+					</div>
 				</div>
-				<div className="user-details">
-					<label>
-						Name:
-						<input
-							type="text"
-							value={name}
-							onChange={(e) => setName(e.target.value)}
-						/>
-					</label>
-					<label>
-						Email:
-						<input
-							type="email"
-							value={email}
-							onChange={(e) => setEmail(e.target.value)}
-						/>
-					</label>
-					<button className="save-button" onClick={handleSave}>
-						Save
+
+				<div className="buttons-container">
+					{isAdmin && (
+						<button className="user-btn" onClick={handleCreateBook}>
+							Create Book
+						</button>
+					)}
+					<button
+						className="user-btn"
+						onClick={handleMyDiscussionsClick}
+					>
+						My Discussions
 					</button>
 				</div>
-			</div>
-
-			<div className="admin-actions" style={{ marginTop: "80px" }}>
-				{isAdmin && (
-					<button onClick={handleCreateBook}>Create Book</button>
-				)}
-				<button onClick={handleMyDiscussions}>My Discussions</button>
 			</div>
 		</div>
 	);

@@ -59,6 +59,9 @@ function DiscussionForm({ onSubmit }) {
 		await onSubmit({ ...formData, book: bookId });
 		navigate("/find-book");
 	};
+	const handleClose = () => {
+		navigate("/find-book");
+	};
 
 	return (
 		<div className="discussion-container">
@@ -143,6 +146,13 @@ function DiscussionForm({ onSubmit }) {
 				<div className="buttons-container text-center">
 					<button className="create-discussions-btn">
 						Create Discussion
+					</button>
+					<button
+						className="create-discussions-btn"
+						type="button"
+						onClick={handleClose}
+					>
+						Close
 					</button>
 				</div>
 			</Form>

@@ -34,37 +34,83 @@
 }
 
 .user-details input {
-	padding: 5px;
-	border: 1px solid #ccc;
-	border-radius: 5px;
-	width: 300px;
+	flex: 1;
+	width: 100%;
+	box-sizing: border-box;
+	padding: 10px;
+	border: 1px solid #ddd;
+	border-radius: 20px;
+	font-size: 14px;
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+	transition: border-color 0.3s, box-shadow 0.3s;
+}
+.user-details input:focus{
+	border-color: #007BFF;
+	box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+	outline: none;
 }
 
-.save-button {
-	background-color: orange;
-	color: white;
-	padding: 10px 20px;
+.user-container {
+	display: flex;
+	flex-direction: column;
+	gap: 1.875em;
+	padding: 1.875em;
+	border-radius: 20px;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+	background: var(--bg-color-book-page);
+	color: var(--text-color-book-page);
+	max-width: 700px;
+	margin: 1.25em auto;
+	width: 100%;
+}
+.buttons-container {
+	display: flex;
+	gap: 0.938em;
+	margin-top: 1.25em;
+}
+
+.user-btn {
+	background: var(--button-bg-color);
+	color: var(--button-text-color);
+	padding: 0.75em 1.563em;
 	border: none;
-	border-radius: 5px;
+	border-radius: 25px;
+	font-size: 1rem;
+	font-weight: 600;
 	cursor: pointer;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+	transition:
+		transform 0.3s ease,
+		background-color 0.3s ease,
+		box-shadow 0.3s ease;
 }
 
-.user-discussions {
-	width: 80%;
-	margin-top: 20px;
+.user-btn:hover {
+	background: var(--button-bg-hover);
+	transform: translateY(-3px);
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
-.user-discussions ul {
-	list-style: none;
-	padding: 0;
+@media (max-width: 768px) {
+	.user-container {
+		flex-direction: column;
+		align-items: center;
+		padding: 1.5em;
+		gap: 1.5em;
+	}
+
 }
 
-.admin-actions button {
-	background-color: orange;
-	color: white;
-	padding: 10px 15px;
-	border: none;
-	border-radius: 5px;
-	margin-right: 10px;
-	cursor: pointer;
+@media (max-width: 480px) {
+	.user-container {
+		padding: 1em;
+		gap: 1em;
+	}
+
+	.buttons-container {
+		font-size: 0.9rem;
+		padding: 0.5em 1em;
+		margin: 0 auto;
+	}
+
 }

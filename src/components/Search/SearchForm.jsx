@@ -1,6 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { useEffect, useRef, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 function SearchForm({
 	onSearch,
@@ -9,15 +10,15 @@ function SearchForm({
 	onDiscussionTypeChange,
 	onClearFilters,
 }) {
-	//const inputRef = useRef();
-	const [searchQuery, setSearchQuery] = useState("");
-	const [timeFrame, setTimeFrame] = useState("all");
-	const [sortOrder, setSortOrder] = useState("a-z");
-	const [discussionType, setDiscussionType] = useState("all");
+	const location = useLocation();
 
-	// useEffect(() => {
-	// 	inputRef.current.focus();
-	// }, []);
+	const initialDiscussionType =
+		location.state?.defaultDiscussionType || "all";
+
+	const [searchQuery, setSearchQuery] = useState("");
+	const [timeFrame, setTimeFrame] = useState("future");
+	const [sortOrder, setSortOrder] = useState("a-z");
+	const [discussionType, setDiscussionType] = useState(initialDiscussionType);
 
 	const handleSearchChange = (event) => {
 		const value = event.target.value;
@@ -44,7 +45,7 @@ function SearchForm({
 
 	const handleClearFilters = () => {
 		setSearchQuery("");
-		setTimeFrame("all");
+		setTimeFrame("future");
 		setSortOrder("a-z");
 		setDiscussionType("all");
 		onClearFilters();
