@@ -15,7 +15,6 @@ import Login from "./components/UserLogin/Login.jsx";
 import Signup from "./components/userSignup/Signup.jsx";
 import Logout from "./components/UserLogout/Logout.jsx";
 import UserPage from "./components/UserPage/userPage.jsx";
-import MyDiscussions from "./components/Discussion/MyDiscussions.jsx";
 import ResetPassword from "./components/ForgotPassword/ResetPassword.jsx";
 
 function App() {
@@ -100,7 +99,6 @@ function App() {
 											"Unknown Creator",
 								  }
 								: { id: "unknown", name: "Unknown Creator" };
-							const participantsData = data.discussions;
 
 							return {
 								...discussion,
@@ -181,7 +179,6 @@ function App() {
 			}
 
 			const data = await response.json();
-			console.log("Added Discussion:", data);
 			return data;
 		} catch (error) {
 			console.error("Error adding discussion:", error.message);
@@ -242,7 +239,6 @@ function App() {
 				throw new Error(`Failed to add book: ${response.status}`);
 			}
 			const addedBook = await response.json();
-			console.log("Added Book:", addedBook);
 
 			if (newBookItem.cover) {
 				const coverFormData = new FormData();
@@ -272,12 +268,9 @@ function App() {
 				}
 
 				const coverData = await coverResponse.json();
-				console.log("Cover uploaded:", coverData);
-
 				addedBook.imageUrl = coverData.imageUrl;
 				addedBook.optimizedUrl = coverData.optimizedUrl;
 				addedBook.autoCroppedUrl = coverData.autoCroppedUrl;
-				console.log("Cover uploaded!!!:", addedBook.imageUrl);
 			}
 			return addedBook;
 		} catch (error) {
@@ -321,8 +314,6 @@ function App() {
 				}
 
 				const avatarData = await avatarResponse.json();
-				console.log("Avatar uploaded:", avatarData);
-
 				return avatarData;
 			}
 		} catch (error) {
@@ -374,11 +365,6 @@ function App() {
 							<Route path="/login" element={<Login />} />
 							<Route path="/signup" element={<Signup />} />
 							<Route path="/logout" element={<Logout />} />
-							<Route
-								path="/my-discussions"
-								element={<MyDiscussions />}
-							/>
-
 							<Route
 								path="/create-book"
 								element={<BookForm onAddBook={addBook} />}

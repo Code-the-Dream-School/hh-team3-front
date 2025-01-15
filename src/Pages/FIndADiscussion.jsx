@@ -74,8 +74,6 @@ function FindADiscussion({ discussionsData }) {
 		setFilteredData(sorted);
 	};
 	const handleDiscussionTypeChange = (type) => {
-		console.log("User ID:", userId);
-
 		let filtered;
 		if (!userId) {
 			alert("Please log in to join / leave the discussion.");
@@ -85,10 +83,6 @@ function FindADiscussion({ discussionsData }) {
 
 		if (type === "my") {
 			filtered = discussionsData.filter((discussion) => {
-				console.log(
-					"Checking discussion.createdBy:",
-					discussion.createdById,
-				);
 				return discussion.createdById === userId;
 			});
 		} else if (type === "joined") {

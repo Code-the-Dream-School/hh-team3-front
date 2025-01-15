@@ -7,7 +7,6 @@ function DiscussionForm({ onSubmit }) {
 	const navigate = useNavigate(); 
 	const location = useLocation();
 	const { bookId } = location.state || {};
-
 	const inputRef = useRef();
 
 	useEffect(() => {
