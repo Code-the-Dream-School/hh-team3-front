@@ -36,7 +36,6 @@ export default function DiscussionCard({
 				return participant === userId;
 			});
 			setIsJoined(isUserJoined);
-			console.log("@@@" + isUserJoined);
 		}
 	}, [participants, user]);
 
@@ -55,7 +54,6 @@ export default function DiscussionCard({
 
 		setLoading(true);
 		setError("");
-		console.log("!!!" + isJoined);
 		try {
 			const endpoint = isJoined
 				? `/discussions/${id}/unjoin`

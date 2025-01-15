@@ -52,16 +52,23 @@
 
 .user-container {
 	display: flex;
-	flex-direction: column;
+	flex-wrap: wrap;
 	gap: 1.875em;
+	align-items: flex-start;
 	padding: 1.875em;
 	border-radius: 20px;
 	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 	background: var(--bg-color-book-page);
 	color: var(--text-color-book-page);
-	max-width: 700px;
-	margin: 1.25em auto;
-	width: 100%;
+	transition:
+		transform 0.4s ease,
+		box-shadow 0.4s ease,
+		padding 0.3s ease;
+	max-width: 500px;
+	margin: 100px auto;
+	position: relative;
+	overflow: hidden;
+	font-family: "Poppins", sans-serif;
 }
 .buttons-container {
 	display: flex;
