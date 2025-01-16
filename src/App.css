@@ -40,7 +40,12 @@ html body {
 	color: var(--text-color) !important;
 }
 
+
 html body.dark {
 	background: var(--bg-color-container) !important;
 	color: var(--text-color) !important;
+}
+
+*{
+	font-family: var(--text-font);
 }

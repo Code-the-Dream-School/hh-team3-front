@@ -12,7 +12,7 @@ export default function BookCard({
     <div className="card shadow btn-outline-light">
       <img src={imageLinks?.thumbnail} alt="Book cover" />
       <div className="card-content">
-        <p className="card-title">{title}</p>
+        <p className={`card-title ${title.length > 18 ? "long-name" : ""}`}>{title}</p>
         <p className="card-author">
           By {authors.join(", ")} ({publishedDate?.split("-")[0]})
         </p>

@@ -16,9 +16,11 @@
 	margin: 100px auto;
 	position: relative;
 	overflow: hidden;
-	font-family: "Poppins", sans-serif;
+	font-family: var(--text-font);
 }
-
+p{
+	margin:0;
+}
 .discussion-container:hover {
 	transform: scale(1.02);
 	box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
@@ -26,6 +28,7 @@
 
 .discussion-container img {
 	width: 200px;
+	margin:20px;
 	height: auto;
 	object-fit: cover;
 	border-radius: 15px;
@@ -47,7 +50,8 @@
 }
 
 .discussion-title {
-	font-size: 1.2rem;
+	font-family: var(--heading-font);
+	font-size: 1.6rem;
 	font-weight: 700;
 	color: var(--title-color);
 	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -58,7 +62,7 @@
 .discussion-book {
 	font-size: 1.13rem;
 	color: var(--title-color);
-	font-style: italic;
+	
 }
 .discussion-date {
 	font-size: 1.13rem;
@@ -78,7 +82,15 @@
 }
 .discussion-meetingLink {
 	font-size: 1.13rem;
+}
+.discussion-meetingLink a{
+	
 	color: var(--title-color);
+	text-decoration: none;
+	transition: all 150ms ease-in-out;
+}
+.discussion-meetingLink a:hover{
+	text-decoration: underline;
 }
 
 .buttons-container {
@@ -87,18 +99,17 @@
 	margin-top: 1.25em;
 }
 .join-btn {
-	background: var(--button-bg-color);
-	color: var(--button-text-color);
-	padding: 0.75em 1.563em;
-	border: none;
-	border-radius: 25px;
+	padding: 1rem 1.5rem;
 	font-size: 1rem;
 	font-weight: 600;
+	color: #ffffff;
+	background: var(--book-genre);
+	border: none;
+	border-radius: 20px;
 	cursor: pointer;
-	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 	transition:
 		transform 0.3s ease,
-		background-color 0.3s ease,
 		box-shadow 0.3s ease;
 }
 

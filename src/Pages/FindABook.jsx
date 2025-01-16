@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Search from "../components/Search/search.jsx";
-import SearchList from "../components/Search/searchList.jsx";
+import Search from "../components/Search/Search.jsx";
+import SearchList from "../components/Search/SearchList.jsx";
 
 function FindABook({ booksData }) {
 	const [filteredData, setFilteredData] = useState(booksData);

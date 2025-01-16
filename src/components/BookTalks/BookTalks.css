@@ -2,12 +2,15 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	font-family: var(--text-font);
 }
 .book-talks {
 	margin-top: 3rem;
 	color: var(--text-color);
 }
-
+h2{
+	font-family:var(--heading-font)
+}
 .bookTalksContainer {
 	display: flex;
 	align-items: flex-start;
@@ -67,16 +70,12 @@
 	border-radius: 12px;
 	cursor: pointer;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	transition:all 150ms ease-in-out;
 }
 
 .post-book-talk-button:hover {
 	transform: translateY(-3px);
 	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.post-book-talk-button:active {
-	transform: translateY(1px);
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .feed {

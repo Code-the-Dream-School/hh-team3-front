@@ -38,7 +38,7 @@ function Home({ booksData }) {
 			<main className="d-flex flex-column-reverse flex-md-row justify-content-between align-items-center">
 				<section className="welcome">
 					<h1 className="mb-4">Welcome to BookTalk</h1>
-					<h4 className="mb-3">
+					<h4 className="mb-3 fst-italic fw-bolder">
 						Dive Into a World of Books and Conversations!
 					</h4>
 					<p>
@@ -50,12 +50,12 @@ function Home({ booksData }) {
 						create or join engaging book discussions.
 					</p>
 					<p>
-						<strong>Create your own discussions</strong> and invite
+						<strong className="fst-italic">Create your own discussions</strong> and invite
 						fellow readers to dive deep into the themes, characters,
 						and plots that intrigue you most.
 					</p>
 					<p>
-						<strong>Join ongoing conversations</strong> to share
+						<strong className="fst-italic">Join ongoing conversations</strong> to share
 						your thoughts, ask questions, and connect with
 						like-minded individuals who share your love for
 						literature.
@@ -65,21 +65,22 @@ function Home({ booksData }) {
 						or mystery, there's a place for you here.
 					</p>
 					<p>
-						<strong>Connect with new friends</strong>, exchange
+						<strong className="fst-italic">Connect with new friends</strong>, exchange
 						recommendations, and explore books in ways you never
 						have before.
 					</p>
-					<h4 className="mt-4">
+					<h4 className="mt-4 fst-italic fw-bolder">
 						Start talking, start reading, start connecting — all in
 						one place.
 					</h4>
 				</section>
 
 				<section className="book-of-the-month">
-					<h4>What&apos;s Behind the Pages?</h4>
-					<h4 className="mb-4">Let&apos;s Discuss!</h4>
+					<h4 className="fst-italic fw-bolder">What&apos;s Behind the Pages?</h4>
+					<h4 className="mb-4 fst-italic fw-bolder">Let&apos;s Discuss!</h4>
 					<Link
 						className="book-of-the-month-card"
+						style={{ textDecoration: "none" }}
 						to={`/books/${randomBook.id || randomBook._id}`}
 					>
 						<img

@@ -119,7 +119,8 @@ const UserPage = ({ onUploadAvatar }) => {
 
 	return (
 		<div className="user-container">
-			<div className="user-page" style={{ marginTop: "80px" }}>
+			<h1 className="mt-4">Profile</h1>
+			<div className="user-page">
 				<div className="user-profile">
 					<div className="photo-upload">
 						<label htmlFor="photoInput">
@@ -132,6 +133,7 @@ const UserPage = ({ onUploadAvatar }) => {
 								}
 								alt="User Avatar"
 								className="user-photo"
+								title="Click here to choose your photo"
 							/>
 						</label>
 						<input
@@ -141,7 +143,11 @@ const UserPage = ({ onUploadAvatar }) => {
 							style={{ display: "none" }}
 							onChange={handlePhotoUpload}
 						/>
-						<button onClick={handleAvatarUpload}>
+						<button
+							className="user-btn mt-3"
+							title="Upload your photo"
+							onClick={handleAvatarUpload}
+						>
 							Upload Photo
 						</button>
 					</div>
@@ -163,7 +169,7 @@ const UserPage = ({ onUploadAvatar }) => {
 							/>
 						</label>
 						<div className="buttons-container">
-							<button className="user-btn" onClick={handleSave}>
+							<button className="user-btn" title="Save your information" onClick={handleSave}>
 								Save
 							</button>
 						</div>
@@ -172,12 +178,13 @@ const UserPage = ({ onUploadAvatar }) => {
 
 				<div className="buttons-container">
 					{isAdmin && (
-						<button className="user-btn" onClick={handleCreateBook}>
+						<button className="user-btn" title="Create a new book" onClick={handleCreateBook}>
 							Create Book
 						</button>
 					)}
 					<button
 						className="user-btn"
+						title="My discussions"
 						onClick={handleMyDiscussionsClick}
 					>
 						My Discussions

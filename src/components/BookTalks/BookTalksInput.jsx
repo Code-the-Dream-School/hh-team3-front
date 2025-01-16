@@ -24,7 +24,6 @@ export default function BookTalksInput({ value, onChange }) {
           src={userPhoto}
           alt={`${username} avatar`}
         />
-        <h5 className="username">{username}</h5>
       </div>
 
       <textarea

@@ -8,7 +8,8 @@
 .signup-container {
 	width: 300px;
 	padding: 40px;
-	border: 1px solid #ccc;
+	border: none;
+	background-color: rgba(255, 255, 255, 0.4);
 	border-radius: 20px;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
