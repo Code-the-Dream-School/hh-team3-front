@@ -2,7 +2,13 @@
 
 .home {
 	margin-top: 80px;
+	font-family: var(--text-font);
 }
+
+h1{
+	font-family: var(--heading-font);
+}
+
 
 main {
 	display: flex;
@@ -55,7 +61,8 @@ main {
 }
 
 .book-of-the-month-card-title {
-	font-size: 1.2rem;
+	font-family:var(--heading-font);
+	font-size: 1.3rem;
 	font-weight: 700;
 	color: var(--author-color);
 	margin: 10px 0;
@@ -63,7 +70,7 @@ main {
 }
 
 .book-of-the-month-card-author {
-	font-size: 1rem;
+	font-size: 1.1rem;
 	color: var(--links-color);
 	font-style: italic;
 	text-align: center;

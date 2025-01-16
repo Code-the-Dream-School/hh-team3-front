@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
-import './DiscussionCard.css'
+import "./DiscussionCard.css";
 
 export default function DiscussionCard({
 	title,
@@ -135,21 +135,21 @@ export default function DiscussionCard({
 					<img src={bookImg} alt={`Cover of ${book}`} />
 				</div>
 				<div className="discussion-details">
-					<p className="discussion-title">
-						<strong>Title:</strong> {title}
-					</p>
+					<p className="discussion-title fst-italic">{title}</p>
 					<p className="discussion-book">
-						<strong>Book:</strong> {book}{" "}
+						<strong className="fst-italic">Book:</strong> {book}{" "}
 					</p>
 					<p className="discussion-content">
-						<strong>Content:</strong> {content}
+						<strong className="fst-italic">Content:</strong>{" "}
+						{content}
 					</p>
 					<p className="discussion-date">
-						<strong>Date:</strong> {new Date(date).toLocaleString()}{" "}
+						<strong className="fst-italic">Date:</strong>{" "}
+						{new Date(date).toLocaleString()}{" "}
 					</p>
 
 					<p className="discussion-participants">
-						<strong>Participants:</strong>{" "}
+						<strong className="fst-italic">Participants:</strong>{" "}
 						{participantsCount > 0
 							? `${participantsCount} participant${
 									participantsCount > 1 ? "s" : ""
@@ -157,11 +157,13 @@ export default function DiscussionCard({
 							: "No participants yet"}
 					</p>
 					<p className="discussion-created-by">
-						<strong>Created By:</strong>{" "}
+						<strong className="fst-italic">Created By:</strong>{" "}
 						{createdBy || "Unknown Creator"}{" "}
 					</p>
 					<p className="discussion-meetingLink">
-						<strong>Join us using this link:</strong>{" "}
+						<strong className="fst-italic">
+							Join us using this link:
+						</strong>{" "}
 						<a
 							href={meetingLink}
 							target="_blank"
@@ -173,7 +175,7 @@ export default function DiscussionCard({
 					<div className="buttons-container">
 						{isDateInFuture(date) && (
 							<button
-								className="join-btn button"
+								className="join-btn "
 								onClick={handleJoinToggle}
 								disabled={!canJoin || loading}
 							>
@@ -183,7 +185,7 @@ export default function DiscussionCard({
 
 						{createdById === userId && (
 							<button
-								className="delete-btn button"
+								className="delete-btn "
 								onClick={handleDeleteDiscussion}
 								disabled={loading}
 							>

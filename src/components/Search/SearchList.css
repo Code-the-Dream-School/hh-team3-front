@@ -9,7 +9,7 @@
 	box-shadow:
 		inset 3px 3px 6px rgba(0, 0, 0, 0.1),
 		inset -3px -3px 6px rgba(255, 255, 255, 0.5);
-	font-family: "Poppins", sans-serif;
+	font-family: var(--text-font);
 	transition:
 		background 0.3s ease,
 		box-shadow 0.3s ease;
@@ -41,14 +41,9 @@
 		box-shadow 0.3s ease;
 }
 
-.btn-secondary:hover {
+.btn-secondary:hover{
 	transform: translateY(-3px);
 	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.btn-secondary:active {
-	transform: translateY(1px);
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .container {
@@ -57,11 +52,42 @@
 }
 
 .display {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 40px;
-	justify-content: center;
-	margin-bottom: 70px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+  margin-bottom: 70px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.my-button-pagination{
+	padding: 1rem 1.5rem;
+	font-size: 1rem;
+	font-weight: 600;
+	color: #ffffff;
+	background: var(--book-genre);
+	border: none;
+	border-radius: 20px;
+	cursor: pointer;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	transition:all 200ms ease-in-out;
+}
+
+.my-button-pagination:hover {
+  background: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.my-button-pagination:active {
+	color:green;
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 a {

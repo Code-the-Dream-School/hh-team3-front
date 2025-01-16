@@ -2,21 +2,21 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import BookDetails from "./components/BookDetails/BookDetails.jsx";
-import BookForm from "./components/BookFormforAdmin/BookForm.jsx";
+import BookForm from "./components/BookFormForAdmin/BookForm.jsx";
 import AuthProvider from "./components/Context/AuthProvider.jsx";
 import DiscussionForm from "./components/Discussion/DiscussionForm/DiscussionForm.jsx";
 import Footer from "./components/Footer/Footer.jsx";
+import ResetPassword from "./components/ForgotPassword/ResetPassword.jsx";
 import Loader from "./components/Loader/Loader.jsx";
 import Navbar from "./components/NavBar/Navbar.jsx";
 import Login from "./components/UserLogin/Login.jsx";
 import Logout from "./components/UserLogout/Logout.jsx";
-import UserPage from "./components/UserPage/userPage.jsx";
+import UserPage from "./components/UserPage/UserPage.jsx";
 import Signup from "./components/userSignup/Signup.jsx";
 import AboutUs from './Pages/AboutUs.jsx';
 import FindABook from "./Pages/FindABook.jsx";
 import FindADiscussion from "./Pages/FIndADiscussion";
-import Home from "./Pages/home.jsx";
-import ResetPassword from "./components/ForgotPassword/ResetPassword.jsx";
+import Home from "./Pages/Home.jsx";
 
 
 function App() {

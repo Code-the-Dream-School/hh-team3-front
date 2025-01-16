@@ -1,7 +1,8 @@
-.discussion-form {
+.form-group {
     display: flex;
-    flex-direction: column;
-    gap: 20px;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
 }
 
 .form-group label {
@@ -13,7 +14,8 @@
 }
 
 .form-group input,
-.form-group textarea {
+.form-group textarea,
+.form-group select {
     flex: 1;
     width: 100%;
     box-sizing: border-box;
@@ -25,88 +27,29 @@
     transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-.form-group {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    width: 100%;
-}
-
 .form-group textarea {
     resize: vertical;
     min-height: 80px;
 }
 
 .form-group input:focus,
-.form-group textarea:focus {
+.form-group textarea:focus,
+.form-group select:focus {
     border-color: #007BFF;
     box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
     outline: none;
 }
 
-.discussion-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1.875em;
-    padding: 1.875em;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    background: var(--bg-color-book-page);
-    color: var(--text-color-book-page);
-    max-width: 700px;
-    margin: 1.25em auto;
-    width: 100%;
-}
-
-.buttons-container {
-    display: flex;
-    gap: 0.938em;
-    margin-top: 1.25em;
-}
-
-.create-discussions-btn {
-    background: var(--button-bg-color);
-    color: var(--button-text-color);
-    padding: 0.75em 1.563em;
-    border: none;
-    border-radius: 25px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    transition:
-        transform 0.3s ease,
-        background-color 0.3s ease,
-        box-shadow 0.3s ease;
-}
-
-.create-discussions-btn:hover {
-    background: var(--button-bg-hover);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-}
-
-
 @media (max-width: 768px) {
-    .discussion-container {
-        flex-direction: column;
-        align-items: center;
-        padding: 1.5em;
-        gap: 1.5em;
+    .form-group {
+        flex-direction: column; 
+        align-items: flex-start; 
+        gap: 5px;
     }
 
-}
-
-@media (max-width: 480px) {
-    .discussion-container {
-        padding: 1em;
-        gap: 1em;
+    .form-group label {
+        flex: none; 
+        margin-bottom: 5px; 
+        text-align: left;
     }
-
-    .buttons-container {
-        font-size: 0.9rem;
-        padding: 0.5em 1em;
-        margin: 0 auto;
-    }
-
 }
