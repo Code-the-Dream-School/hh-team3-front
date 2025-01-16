@@ -1,0 +1,114 @@
+.team-member-card {
+	width: 100%;
+	max-width: 230px;
+	background: rgba(255, 255, 255, 0.3);
+	border-radius: 16px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	font-family: var(--text-font);
+	text-align: center;
+	color: var(--text-color, #333);
+	padding: 20px;
+	margin: 0 auto;
+}
+
+.team-member-card-img {
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+	margin: 10px auto;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+	transition: width 0.3s ease, height 0.3s ease;
+}
+
+.team-member-card-title {
+	font-size: 1.1rem;
+	font-weight: 600;
+	margin: 5px 0;
+}
+
+.team-member-card-title.long-name {
+	font-size: 0.85rem;
+}
+
+.team-member-card-subtitle {
+	color: #666;
+	font-style: italic;
+	font-size: 0.85rem;
+	margin-bottom: 10px;
+}
+
+.team-member-card-footer {
+	display: flex;
+	justify-content: center;
+	gap: 15px;
+	margin-top: 10px;
+}
+
+.team-member-card-footer a {
+	color: #666;
+	font-size: 1.2rem;
+	transition: all 150ms ease-in-out;
+}
+
+.team-member-card-footer a:hover {
+	color: var(--links-color);
+	transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+	.team-member-card {
+		max-width: 200px;
+		padding: 15px;
+	}
+
+	.team-member-card-img {
+		width: 100px;
+		height: 100px;
+	}
+
+	.team-member-card-title {
+		font-size: 0.9rem;
+	}
+
+	.team-member-card-title.long-name {
+		font-size: 0.75rem;
+	}
+
+	.team-member-card-subtitle {
+		font-size: 0.8rem;
+	}
+
+	.team-member-card-footer a {
+		font-size: 1rem;
+	}
+}
+
+@media (max-width: 576px) {
+	.team-member-card {
+		max-width: 180px;
+		padding: 10px;
+	}
+
+	.team-member-card-img {
+		width: 80px;
+		height: 80px;
+	}
+
+	.team-member-card-title {
+		font-size: 0.85rem;
+	}
+
+	.team-member-card-title.long-name {
+		font-size: 0.7rem;
+	}
+
+	.team-member-card-subtitle {
+		font-size: 0.75rem;
+	}
+
+	.team-member-card-footer a {
+		font-size: 0.9rem;
+	}
+}

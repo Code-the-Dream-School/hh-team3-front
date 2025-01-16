@@ -1,21 +1,22 @@
-import { Route, BrowserRouter, Routes } from "react-router-dom";
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Home from "./Pages/home.jsx";
-import Navbar from "./components/NavBar/Navbar.jsx";
-import Footer from "./components/Footer/Footer.jsx";
-import FindABook from "./Pages/FindABook.jsx";
 import BookDetails from "./components/BookDetails/BookDetails.jsx";
-import DiscussionForm from "./components/Discussion/DiscussionForm/DiscussionForm.jsx";
 import BookForm from "./components/BookFormforAdmin/BookForm.jsx";
-import FindADiscussion from "./Pages/FIndADiscussion";
-import Loader from "./components/Loader/Loader.jsx";
 import AuthProvider from "./components/Context/AuthProvider.jsx";
+import DiscussionForm from "./components/Discussion/DiscussionForm/DiscussionForm.jsx";
+import MyDiscussions from "./components/Discussion/MyDiscussions.jsx";
+import Footer from "./components/Footer/Footer.jsx";
+import Loader from "./components/Loader/Loader.jsx";
+import Navbar from "./components/NavBar/Navbar.jsx";
 import Login from "./components/UserLogin/Login.jsx";
-import Signup from "./components/userSignup/Signup.jsx";
 import Logout from "./components/UserLogout/Logout.jsx";
 import UserPage from "./components/UserPage/userPage.jsx";
-import MyDiscussions from "./components/Discussion/MyDiscussions.jsx";
+import Signup from "./components/userSignup/Signup.jsx";
+import AboutUs from './Pages/AboutUs.jsx';
+import FindABook from "./Pages/FindABook.jsx";
+import FindADiscussion from "./Pages/FIndADiscussion";
+import Home from "./Pages/home.jsx";
 
 function App() {
 	const [books, setBooks] = useState([]);
@@ -384,6 +385,13 @@ function App() {
 									<UserPage onUploadAvatar={uploadAvatar} />
 								}
 							/>
+							<Route
+								path="/about"
+								element={
+									<AboutUs onUploadAvatar={uploadAvatar} />
+								}
+							/>
+							
 						</Routes>
 					</div>
 					<Footer />

@@ -12,6 +12,8 @@
 	--book-genre: linear-gradient(135deg, #ffe4b2, #ff9d76);
 	--toggle-text: #ff9d76;
 	--post-book-talk-button-bg: linear-gradient(135deg, #ffe4b2, #ff9d76);
+	--heading-font:"Yeseva One", serif;;
+	--text-font: "Lato", serif;
 }
 
 body.dark {
@@ -27,6 +29,7 @@ body.dark {
 	--book-genre: linear-gradient(135deg, #240046, #483d8b);
 	--toggle-text: #d4bfff;
 	--post-book-talk-button-bg: linear-gradient(135deg, #6a11cb, #2575fc);
+	--bg-navbar:purple;
 }
 
 .unselected {
