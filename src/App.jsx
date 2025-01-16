@@ -5,7 +5,6 @@ import BookDetails from "./components/BookDetails/BookDetails.jsx";
 import BookForm from "./components/BookFormforAdmin/BookForm.jsx";
 import AuthProvider from "./components/Context/AuthProvider.jsx";
 import DiscussionForm from "./components/Discussion/DiscussionForm/DiscussionForm.jsx";
-import MyDiscussions from "./components/Discussion/MyDiscussions.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import Loader from "./components/Loader/Loader.jsx";
 import Navbar from "./components/NavBar/Navbar.jsx";
