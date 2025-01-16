@@ -8,6 +8,7 @@ const Login = () => {
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState("");
 	const [showPassword, setShowPassword] = useState(false);
+	const [isResetMode, setIsResetMode] = useState(false);
 	const navigate = useNavigate();
 	const { login } = useContext(AuthContext);
 
@@ -20,6 +21,31 @@ const Login = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setError("");
+
+		if (isResetMode) {
+			try {
+				const response = await fetch(
+					`${import.meta.env.VITE_API_BASE_URL}/auth/request`,
+					{
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+						},
+						body: JSON.stringify({ email }),
+					},
+				);
+				if (response.ok) {
+					alert("A reset password link has been sent to your email.");
+					setIsResetMode(false);
+				} else {
+					const errorData = await response.json();
+					setError(errorData.message || "Failed to send reset link.");
+				}
+			} catch (err) {
+				setError("Something went wrong. Please try again.");
+			}
+			return;
+		}
 
 		try {
 			const response = await fetch(
@@ -48,9 +74,11 @@ const Login = () => {
 
 	return (
 		<div className="login-wrapper">
-			<div className="login-container ">
+			<div className="login-container">
 				<form onSubmit={handleSubmit}>
-					<h2 className="text-center mb-3">Login</h2>
+					<h2 className="text-center mb-3">
+						{isResetMode ? "Reset Password" : "Login"}
+					</h2>
 					{error && <p className="error">{error}</p>}
 					<div>
 						<label>Email:</label>
@@ -63,28 +91,43 @@ const Login = () => {
 							required
 						/>
 					</div>
-					<div className="password-container">
-						<label>Password:</label>
-						<div className="password-input-wrapper ">
-							<input
-								className="input"
-								type={showPassword ? "text" : "password"}
-								value={password}
-								onChange={(e) => setPassword(e.target.value)}
-								required
-							/>
-							<button
-								type="button"
-								className="password-toggle button"
-								onClick={() => setShowPassword(!showPassword)}
-							>
-								{showPassword ? "👁️" : "👁️‍🗨️"}
-							</button>
+					{!isResetMode && (
+						<div className="password-container">
+							<label>Password:</label>
+							<div className="password-input-wrapper">
+								<input
+									className="input"
+									type={showPassword ? "text" : "password"}
+									value={password}
+									onChange={(e) =>
+										setPassword(e.target.value)
+									}
+									required
+								/>
+								<button
+									type="button"
+									className="password-toggle button"
+									onClick={() =>
+										setShowPassword(!showPassword)
+									}
+								>
+									{showPassword ? "👁️" : "👁️‍🗨️"}
+								</button>
+							</div>
 						</div>
-					</div>
-					<button className=" button " type="submit">
-						Login
+					)}
+					<button className="button" type="submit">
+						{isResetMode ? "Request Reset Link" : "Login"}
 					</button>
+					<p
+						className="link-text"
+						onClick={() => {
+							setIsResetMode(!isResetMode);
+							setError("");
+						}}
+					>
+						{isResetMode ? "Back to Login" : "Forgot Password?"}
+					</p>
 				</form>
 			</div>
 		</div>

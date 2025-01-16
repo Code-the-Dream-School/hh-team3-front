@@ -11,6 +11,7 @@ export default function DiscussionCard({
 	participants = [],
 	meetingLink,
 	createdBy,
+	createdById,
 	id,
 	canJoin = true,
 }) {
@@ -22,14 +23,19 @@ export default function DiscussionCard({
 	const [participantsCount, setParticipantsCount] = useState(
 		participants.length,
 	);
+	const userId = user?.id || null;
+	const isDateInFuture = (discussionDate) => {
+		const discussionDateTime = new Date(discussionDate).getTime();
+		const currentTime = new Date().getTime();
+		return discussionDateTime >= currentTime;
+	};
 
 	useEffect(() => {
 		if (user) {
 			const isUserJoined = participants.some((participant) => {
-				return participant === user.id;
+				return participant === userId;
 			});
 			setIsJoined(isUserJoined);
-			console.log("@@@" + isUserJoined);
 		}
 	}, [participants, user]);
 
@@ -48,7 +54,6 @@ export default function DiscussionCard({
 
 		setLoading(true);
 		setError("");
-		console.log("!!!" + isJoined);
 		try {
 			const endpoint = isJoined
 				? `/discussions/${id}/unjoin`
@@ -116,73 +121,77 @@ export default function DiscussionCard({
 	if (loading)
 		return (
 			<h2>
-				{" "}
-				<Loader />{" "}
+				{/* {" "}
+				<Loader />{" "} */}
 			</h2>
 		);
 
 	if (isDeleted) return <p>This discussion has been deleted.</p>;
 
 	return (
-		<div className="discussion-container">
-			<div className="discussion-details">
+		<div className="discussion-page">
+			<div className="discussion-container">
 				<div>
-				<img
-					src={bookImg}
-					alt={`Cover of ${book}`}
-				/></div>
-				<div>
-				<p className="discussion-title">
-					<strong>Title:</strong> {title}
-				</p>
-				<p className="discussion-book">
-					<strong>Book:</strong> {book}{" "}
-				</p>
-				<p className="discussion-content">
-					<strong>Content:</strong> {content}
-				</p>
-				<p className="discussion-date">
-					<strong>Date:</strong> {new Date(date).toLocaleDateString()}{" "}
-				</p>
-				<p className="discussion-participants">
-					<strong>Participants:</strong>{" "}
-					{participantsCount > 0
-						? `${participantsCount} participant${
-								participantsCount > 1 ? "s" : ""
-						  }`
-						: "No participants yet"}
-				</p>
-				<p className="discussion-created-by">
-					<strong>Created By:</strong>{" "}
-					{createdBy || "Unknown Creator"}{" "}
-				</p>
-				<p className="discussion-meetingLink">
-					<strong>Join us using this link:</strong>{" "}
-					<a
-						href={meetingLink}
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						{meetingLink}
-					</a>
-				</p>
-				<div className="buttons-container">
-					<button
-						className="join-btn button"
-						onClick={handleJoinToggle}
-						disabled={!canJoin || loading}
-					>
-						{isJoined ? "Leave" : "Join"}
-					</button>
-					<button
-						className="delete-btn button"
-						onClick={handleDeleteDiscussion}
-						disabled={loading}
-					>
-						Delete Discussion
-					</button>
+					<img src={bookImg} alt={`Cover of ${book}`} />
 				</div>
-			</div>
+				<div className="discussion-details">
+					<p className="discussion-title">
+						<strong>Title:</strong> {title}
+					</p>
+					<p className="discussion-book">
+						<strong>Book:</strong> {book}{" "}
+					</p>
+					<p className="discussion-content">
+						<strong>Content:</strong> {content}
+					</p>
+					<p className="discussion-date">
+						<strong>Date:</strong> {new Date(date).toLocaleString()}{" "}
+					</p>
+
+					<p className="discussion-participants">
+						<strong>Participants:</strong>{" "}
+						{participantsCount > 0
+							? `${participantsCount} participant${
+									participantsCount > 1 ? "s" : ""
+							  }`
+							: "No participants yet"}
+					</p>
+					<p className="discussion-created-by">
+						<strong>Created By:</strong>{" "}
+						{createdBy || "Unknown Creator"}{" "}
+					</p>
+					<p className="discussion-meetingLink">
+						<strong>Join us using this link:</strong>{" "}
+						<a
+							href={meetingLink}
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							{meetingLink}
+						</a>
+					</p>
+					<div className="buttons-container">
+						{isDateInFuture(date) && (
+							<button
+								className="join-btn button"
+								onClick={handleJoinToggle}
+								disabled={!canJoin || loading}
+							>
+								{isJoined ? "Leave" : "Join"}
+							</button>
+						)}
+
+						{createdById === userId && (
+							<button
+								className="delete-btn button"
+								onClick={handleDeleteDiscussion}
+								disabled={loading}
+							>
+								Delete Discussion
+							</button>
+						)}
+					</div>
+				</div>
 			</div>
 		</div>
 	);

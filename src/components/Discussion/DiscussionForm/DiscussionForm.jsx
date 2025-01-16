@@ -7,7 +7,6 @@ function DiscussionForm({ onSubmit }) {
 	const navigate = useNavigate(); 
 	const location = useLocation();
 	const { bookId } = location.state || {};
-
 	const inputRef = useRef();
 
 	useEffect(() => {
@@ -59,6 +58,9 @@ function DiscussionForm({ onSubmit }) {
 		await onSubmit({ ...formData, book: bookId });
 		navigate("/find-book");
 	};
+	const handleClose = () => {
+		navigate("/find-book");
+	};
 
 	return (
 		<div className="discussion-container">
@@ -105,19 +107,20 @@ function DiscussionForm({ onSubmit }) {
 				</Form.Group>
 				<Form.Group className="form-group row">
 					<Form.Label
-						htmlFor="date"
+						htmlFor="datetime"
 						className="col-12 col-md-4 form-label"
 					>
-						Date
+						Date and Time
 					</Form.Label>
 					<div className="col-12 col-md-8">
 						<Form.Control
-							id="date"
-							type="date"
+							id="datetime"
+							type="datetime-local"
 							name="date"
 							value={formData.date}
 							onChange={handleChange}
 							className="form-control"
+							min={new Date().toISOString().slice(0, 16)}
 						/>
 					</div>
 				</Form.Group>
@@ -143,6 +146,13 @@ function DiscussionForm({ onSubmit }) {
 				<div className="buttons-container text-center">
 					<button className="create-discussions-btn">
 						Create Discussion
+					</button>
+					<button
+						className="create-discussions-btn"
+						type="button"
+						onClick={handleClose}
+					>
+						Close
 					</button>
 				</div>
 			</Form>

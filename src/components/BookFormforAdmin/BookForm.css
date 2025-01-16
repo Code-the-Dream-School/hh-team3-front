@@ -67,10 +67,23 @@
 .create-discussions-btn {
     background: var(--button-bg-color);
     color: var(--button-text-color);
+    padding: 0.75em 1.563em;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition:
+        transform 0.3s ease,
+        background-color 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 .create-discussions-btn:hover {
     background: var(--button-bg-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 
@@ -90,7 +103,7 @@
         gap: 1em;
     }
 
-    button {
+    .buttons-container {
         font-size: 0.9rem;
         padding: 0.5em 1em;
         margin: 0 auto;

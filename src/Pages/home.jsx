@@ -24,8 +24,6 @@ function Home({ booksData }) {
 			setRandomBook(book);
 		};
 		pickRandomBook();
-
-	
 	}, [booksData]);
 
 	if (!randomBook)
@@ -80,7 +78,10 @@ function Home({ booksData }) {
 				<section className="book-of-the-month">
 					<h4>What&apos;s Behind the Pages?</h4>
 					<h4 className="mb-4">Let&apos;s Discuss!</h4>
-					<Link className="book-of-the-month-card" to="/find-book">
+					<Link
+						className="book-of-the-month-card"
+						to={`/books/${randomBook.id || randomBook._id}`}
+					>
 						<img
 							src={randomBook.imageLinks?.thumbnail}
 							alt={randomBook.title}

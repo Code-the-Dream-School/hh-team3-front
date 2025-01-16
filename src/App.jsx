@@ -17,6 +17,8 @@ import AboutUs from './Pages/AboutUs.jsx';
 import FindABook from "./Pages/FindABook.jsx";
 import FindADiscussion from "./Pages/FIndADiscussion";
 import Home from "./Pages/home.jsx";
+import ResetPassword from "./components/ForgotPassword/ResetPassword.jsx";
+
 
 function App() {
 	const [books, setBooks] = useState([]);
@@ -91,21 +93,22 @@ function App() {
 							);
 							const creatorResponseJson =
 								await creatorResponse.json();
-				
+
 							const creatorData = creatorResponse.ok
-									? {
-											name:
-												creatorResponseJson.name ||
-												"Unknown Creator",
-									}
-									: { name: "Unknown Creator" };
-							const participantsData = data.discussions;;
+								? {
+										id: creatorResponseJson.id,
+										name:
+											creatorResponseJson.name ||
+											"Unknown Creator",
+								  }
+								: { id: "unknown", name: "Unknown Creator" };
 
 							return {
 								...discussion,
 								book: bookData.title,
 								bookImg: bookData.imageLinks.thumbnail,
 								createdBy: creatorData.name,
+								createdById: creatorData.id,
 							};
 						} catch (err) {
 							console.error(
@@ -135,7 +138,9 @@ function App() {
 	async function addDiscussion(newDiscussionItem) {
 		const token = localStorage.getItem("token");
 		if (!token) {
-			throw new Error("Failed to add a discussion. Please log in to continue.");
+			throw new Error(
+				"Failed to add a discussion. Please log in to continue.",
+			);
 		}
 		setLoading(true);
 		const options = {
@@ -177,7 +182,6 @@ function App() {
 			}
 
 			const data = await response.json();
-			console.log("Added Discussion:", data);
 			return data;
 		} catch (error) {
 			console.error("Error adding discussion:", error.message);
@@ -238,7 +242,6 @@ function App() {
 				throw new Error(`Failed to add book: ${response.status}`);
 			}
 			const addedBook = await response.json();
-			console.log("Added Book:", addedBook);
 
 			if (newBookItem.cover) {
 				const coverFormData = new FormData();
@@ -268,12 +271,9 @@ function App() {
 				}
 
 				const coverData = await coverResponse.json();
-				console.log("Cover uploaded:", coverData);
-
 				addedBook.imageUrl = coverData.imageUrl;
 				addedBook.optimizedUrl = coverData.optimizedUrl;
 				addedBook.autoCroppedUrl = coverData.autoCroppedUrl;
-				console.log("Cover uploaded!!!:", addedBook.imageUrl);
 			}
 			return addedBook;
 		} catch (error) {
@@ -317,8 +317,6 @@ function App() {
 				}
 
 				const avatarData = await avatarResponse.json();
-				console.log("Avatar uploaded:", avatarData);
-
 				return avatarData;
 			}
 		} catch (error) {
@@ -371,11 +369,6 @@ function App() {
 							<Route path="/signup" element={<Signup />} />
 							<Route path="/logout" element={<Logout />} />
 							<Route
-								path="/my-discussions"
-								element={<MyDiscussions />}
-							/>
-
-							<Route
 								path="/create-book"
 								element={<BookForm onAddBook={addBook} />}
 							/>
@@ -391,7 +384,10 @@ function App() {
 									<AboutUs onUploadAvatar={uploadAvatar} />
 								}
 							/>
-							
+						  <Route
+								path="/reset-password"
+								element={<ResetPassword />}
+							/>
 						</Routes>
 					</div>
 					<Footer />
