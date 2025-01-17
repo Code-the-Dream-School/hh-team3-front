@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Context/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import "./userPage.css";
-import SearchForm from "../Search/SearchForm";
 
 const UserPage = ({ onUploadAvatar }) => {
 	const { token, user, fetchUserProfile, logout } = useContext(AuthContext);
@@ -12,9 +11,6 @@ const UserPage = ({ onUploadAvatar }) => {
 	const [isAdmin, setIsAdmin] = useState(false);
 	const navigate = useNavigate();
 	const [showSearchForm, setShowSearchForm] = useState(true);
-
-	const defaultDiscussionType =
-		location.state?.defaultDiscussionType || "all";
 
 	useEffect(() => {
 		if (!token) {
@@ -119,7 +115,7 @@ const UserPage = ({ onUploadAvatar }) => {
 
 	return (
 		<div className="user-container">
-			<h1 className="mt-4">Profile</h1>
+			<h1 className="mt-4 text-center">Profile</h1>
 			<div className="user-page">
 				<div className="user-profile">
 					<div className="photo-upload">

@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap");
-
 .home {
 	margin-top: 80px;
 	font-family: var(--text-font);
@@ -17,21 +15,21 @@ main {
 	justify-content: center;
 }
 
-.welcome {
-	flex: 1 1 50%;
-	margin-right: 50px;
-	padding: 50px 0;
-	font-size: 18px;
+.book-of-the-month {
+    flex: 1 1 45%;
+    max-width: 400px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.book-of-the-month {
-	flex: 1 1 45%;
-	max-width: 400px;
-	padding: 20px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
+.welcome {
+    flex: 1 1 50%;
+    margin-right: 50px;
+    padding: 50px 0;
+    font-size: 18px;
 }
 
 .book-of-the-month-card {
@@ -148,4 +146,12 @@ a{
 		width: 100%;
 		max-width: 300px;
 	}
+}
+@media (max-width: 575px) {
+    .welcome,
+    .book-of-the-month {
+        max-width: 100%;
+        text-align: center;
+        margin: 0;
+    }
 }
