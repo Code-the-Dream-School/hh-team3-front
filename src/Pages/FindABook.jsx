@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Search from "../components/Search/Search.jsx";
+import Search from "../components/Search/search.jsx";
 import SearchList from "../components/Search/searchList.jsx";
 
 function FindABook({ booksData }) {
