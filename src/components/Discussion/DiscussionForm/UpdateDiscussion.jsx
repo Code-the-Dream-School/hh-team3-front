@@ -13,7 +13,9 @@ function UpdateDiscussion() {
 	const [formData, setFormData] = useState({
 		title: existingDiscussion ? existingDiscussion.title : "",
 		content: existingDiscussion ? existingDiscussion.content : "",
-		date: existingDiscussion ? existingDiscussion.date : "",
+		date: existingDiscussion
+			? new Date(existingDiscussion.date).toISOString().slice(0, 16)
+			: "",
 		meetingLink: existingDiscussion ? existingDiscussion.meetingLink : "",
 	});
 	useEffect(() => {
@@ -81,7 +83,7 @@ function UpdateDiscussion() {
 	};
 
 	const handleClose = () => {
-		navigate("/find-book");
+		navigate("/find-discussion");
 	};
 
 	return (
@@ -142,9 +144,8 @@ function UpdateDiscussion() {
 							type="datetime-local"
 							name="date"
 							value={formData.date}
-							onChange={handleChange}
 							className="form-control"
-							min={new Date().toISOString().slice(0, 16)}
+							readOnly 
 						/>
 					</div>
 				</Form.Group>
