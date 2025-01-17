@@ -70,7 +70,7 @@ function SearchList({ filteredData }) {
         >
           <strong>
             <small>
-              <i className="fa-solid fa-angles-up"></i>
+              <i className="fa-solid fa-angles-up mt-5"></i>
             </small>
           </strong>
         </a>

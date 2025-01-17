@@ -20,10 +20,12 @@
 .nav-item a {
 	font-size: 18px;
 	transition: all 150ms ease-in-out;
+
 }
 .nav-item a:hover {
 	color: var(--links-hover-color);
 	transform: scale(1.07);
+	
 }
 .my-text {
 	transition: all 150ms ease-in-out;
@@ -34,7 +36,7 @@
 
 .custom-btn {
 	color: var(--bg-navbar);
-	background-color: var(--navbar-font-color);
+	background-color: rgba(255, 255, 255, 0.6);
 	font-size: 1.1rem;
 	border: none;
 	font-family:var(--text-font);
@@ -45,7 +47,7 @@
 }
 
 .custom-btn:hover {
-	background-color: var(--links-hover-color);
-	color: var(--bg-navbar);
+	background: var(--links-hover-color);
+	color: white;
 	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }

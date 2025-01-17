@@ -16,7 +16,6 @@
 	margin: 100px auto;
 	position: relative;
 	overflow: hidden;
-	font-family: "Poppins", sans-serif;
 }
 .discussion-form {
 	display: flex;
@@ -53,7 +52,6 @@
 	box-shadow:
 		inset 3px 3px 6px rgba(0, 0, 0, 0.1),
 		inset -3px -3px 6px rgba(255, 255, 255, 0.5);
-	font-family: "Poppins", sans-serif;
 	transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 

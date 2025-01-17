@@ -1,5 +1,5 @@
 :root {
-	--bg-color-container: #fff7e6;
+	--bg-color-container: #ffe8d6;
 	--bg-color-book-page: #ffe4b2;
 	--title-color: #444;
 	--author-color: #555;
@@ -10,14 +10,16 @@
 	--button-text-color: #fff;
 	--border-color: #ff9d76;
 	--book-genre: linear-gradient(135deg, #ffe4b2, #ff9d76);
-	--toggle-text: #ff9d76;
+	--toggle-text: #f07167;
 	--post-book-talk-button-bg: linear-gradient(135deg, #ffe4b2, #ff9d76);
 	--heading-font:"Yeseva One", serif;;
 	--text-font: "Lato", serif;
+	--bg-navbar:linear-gradient(135deg, #ffe4b2, #ff9d76);
+	
 }
 
 body.dark {
-	--bg-color-container: #1a012f;
+	--bg-color-container: #240046;
 	--bg-color-book-page: #2e034c;
 	--title-color: #d4bfff;
 	--author-color: #b89de0;
@@ -38,15 +40,12 @@ body.dark {
 html body {
 	background: var(--bg-color-container) !important;
 	color: var(--text-color) !important;
+	font-family: var(--text-font);
+	font-weight: 300;
 }
 
 
 html body.dark {
 	background: var(--bg-color-container) !important;
 	color: var(--text-color) !important;
-}
-
-*{
-	font-family: var(--text-font);
-	font-weight: 300;
 }

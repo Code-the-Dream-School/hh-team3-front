@@ -8,8 +8,8 @@
 	margin-top: 3rem;
 	color: var(--text-color);
 }
-h2{
-	font-family:var(--heading-font)
+h2 {
+	font-family: var(--heading-font);
 }
 .bookTalksContainer {
 	display: flex;
@@ -19,8 +19,7 @@ h2{
 	border: 1px solid #e0e0e0;
 	border-radius: 12px;
 	background: var(--bg-color-book-page);
-	box-shadow:
-		6px 6px 12px rgba(0, 0, 0, 0.05),
+	box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.05),
 		-6px -6px 12px rgba(255, 255, 255, 0.7);
 	margin-bottom: 1.5rem;
 	margin-top: 1.5rem;
@@ -47,10 +46,9 @@ h2{
 	font-size: 1rem;
 	color: #333;
 	background: #f8f8fc;
-	box-shadow:
-		inset 3px 3px 6px rgba(0, 0, 0, 0.1),
+	box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.1),
 		inset -3px -3px 6px rgba(255, 255, 255, 0.5);
-	font-family: "Poppins", sans-serif;
+	font-family: "", sans-serif;
 	resize: vertical;
 }
 
@@ -70,7 +68,7 @@ h2{
 	border-radius: 12px;
 	cursor: pointer;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	transition:all 150ms ease-in-out;
+	transition: all 150ms ease-in-out;
 }
 
 .post-book-talk-button:hover {
@@ -92,8 +90,7 @@ h2{
 	margin: 1.5rem;
 	border-radius: 12px;
 	background: var(--bg-color-book-page);
-	box-shadow:
-		6px 6px 12px rgba(0, 0, 0, 0.05),
+	box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.05),
 		-6px -6px 12px rgba(255, 255, 255, 0.7);
 }
 

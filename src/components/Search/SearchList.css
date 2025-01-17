@@ -80,16 +80,20 @@
 }
 
 .my-button-pagination:hover {
-  background: #0056b3;
+  background: var(--toggle-text);
   transform: translateY(-2px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
-.my-button-pagination:active {
-	color:green;
-  transform: translateY(1px);
+.my-button-pagination.active {
+	background: var(--toggle-text);
+  transform: translateY(-6px);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
+.my-button-pagination.active:hover{
+ color:var(--author-color);
+ background:var(--book-genre);
+ transform: translateY(-2px);
+}
 a {
 	color: var(--links-color);
 }

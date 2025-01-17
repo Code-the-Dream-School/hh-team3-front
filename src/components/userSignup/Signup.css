@@ -28,13 +28,10 @@
 	font-size: 1rem;
 	color: #333;
 	background: #f8f8fc;
-	box-shadow:
-		inset 3px 3px 6px rgba(0, 0, 0, 0.1),
+	box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.1),
 		inset -3px -3px 6px rgba(255, 255, 255, 0.5);
-	font-family: "Poppins", sans-serif;
-	transition:
-		box-shadow 0.3s ease,
-		background 0.3s ease;
+	font-family: "", sans-serif;
+	transition: box-shadow 0.3s ease, background 0.3s ease;
 }
 
 .input:focus {
@@ -54,11 +51,8 @@
 	border-radius: 10px;
 	cursor: pointer;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	transition:
-		transform 0.2s ease,
-		box-shadow 0.3s ease,
-		background 0.3s ease;
-	font-family: "Poppins", sans-serif;
+	transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.3s ease;
+	font-family: "", sans-serif;
 }
 
 .button:hover {

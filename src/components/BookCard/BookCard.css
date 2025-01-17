@@ -8,7 +8,6 @@
 	overflow: hidden;
 	position: relative;
 	box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-	font-family: "Poppins", sans-serif;
 	text-align: center;
 	margin: 0.625em;
 	background: var(--bg-color-card);
