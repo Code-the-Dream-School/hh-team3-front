@@ -4,7 +4,6 @@ import { AuthContext } from "../Context/AuthProvider";
 import BookTalkReview from "./BookTalkReview";
 import "./BookTalks.css";
 import BookTalksForm from "./BookTalksForm";
-import Loader from "../Loader/Loader";
 
 export default function BookTalks({ bookId }) {
   const { token, user, isAuthenticated } = useContext(AuthContext);
@@ -190,7 +189,6 @@ export default function BookTalks({ bookId }) {
   return (
     <div className="book-talks">
       <h2>BookTalk Reviews</h2>
-      {isLoading && <Loader />}
       <BookTalksForm onBookTalk={addNewComment} />
       <BookTalkReview
         reviews={reviews}
