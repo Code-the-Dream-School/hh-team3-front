@@ -1,19 +1,28 @@
 import React, { useEffect, useState } from "react";
 import Search from "../components/Search/search.jsx";
 import SearchList from "../components/Search/searchList.jsx";
+import { useLocation } from "react-router-dom";
 
 function FindABook({ booksData }) {
 	const [filteredData, setFilteredData] = useState(booksData);
+	const location = useLocation();
 
 	useEffect(() => {
-		setFilteredData(booksData);
-	}, [booksData]);
+		const queryParams = new URLSearchParams(location.search);
+		const category = queryParams.get("category");
+
+		if (category) {
+			handleSearch(category);
+		} else {
+			setFilteredData(booksData);
+		}
+	}, [location.search, booksData]);
 
 	const handleSearch = (query) => {
 		const lowercasedQuery = query.toLowerCase();
 		const filtered = booksData.filter(
 			(book) =>
-				book.title.toLowerCase().includes(lowercasedQuery) ||
+				book.title.trim().toLowerCase().includes(lowercasedQuery) ||
 				book.authors.some((author) =>
 					author.toLowerCase().includes(lowercasedQuery),
 				) ||

@@ -14,6 +14,16 @@ function FindADiscussion({ discussionsData }) {
 	const { user } = useContext(AuthContext);
 	const userId = user?.id || null;
 
+	const sortData = (data, order) => {
+		return [...data].sort((a, b) => {
+			const titleA = (a.title || "").trim().toLowerCase();
+			const titleB = (b.title || "").trim().toLowerCase();
+			return order === "a-z"
+				? titleA.localeCompare(titleB)
+				: titleB.localeCompare(titleA);
+		});
+	};
+
 	useEffect(() => {
 		let initialFilteredData;
 
@@ -27,9 +37,9 @@ function FindADiscussion({ discussionsData }) {
 			);
 		}
 
-		setFilteredData(initialFilteredData);
-	}, [discussionsData, defaultDiscussionType, userId]);
-
+		const sortedData = sortData(initialFilteredData, sortOrder);
+		setFilteredData(sortedData);
+	}, [discussionsData, defaultDiscussionType, userId, sortOrder]);
 	const handleSearch = (query) => {
 		const lowercasedQuery = query.toLowerCase();
 		const filtered = discussionsData.filter((discussion) => {
@@ -37,12 +47,19 @@ function FindADiscussion({ discussionsData }) {
 				discussion.date,
 			).toLocaleDateString();
 			return (
-				discussion.title.toLowerCase().includes(lowercasedQuery) ||
-				discussion.book.toLowerCase().includes(lowercasedQuery) ||
+				discussion.title
+					.trim()
+					.toLowerCase()
+					.includes(lowercasedQuery) ||
+				discussion.book
+					.trim()
+					.toLowerCase()
+					.includes(lowercasedQuery) ||
 				formattedDate.includes(lowercasedQuery)
 			);
 		});
-		setFilteredData(filtered);
+		const sortedFiltered = sortData(filtered, sortOrder);
+		setFilteredData(sortedFiltered);
 	};
 
 	const handleFilter = (timeFrame) => {
@@ -59,18 +76,14 @@ function FindADiscussion({ discussionsData }) {
 		} else {
 			filtered = discussionsData;
 		}
-		setFilteredData(filtered);
+		const sortedFiltered = sortData(filtered, sortOrder);
+		setFilteredData(sortedFiltered);
 	};
 
 	const handleSort = (order) => {
-		const sorted = [...filteredData].sort((a, b) => {
-			if (order === "a-z") {
-				return a.title.localeCompare(b.title);
-			} else {
-				return b.title.localeCompare(a.title);
-			}
-		});
+		console.log("Sorting Order:", order);
 		setSortOrder(order);
+		const sorted = sortData(filteredData, order);
 		setFilteredData(sorted);
 	};
 	const handleDiscussionTypeChange = (type) => {
@@ -92,7 +105,8 @@ function FindADiscussion({ discussionsData }) {
 		} else {
 			filtered = discussionsData;
 		}
-		setFilteredData(filtered);
+		const sortedFiltered = sortData(filtered, sortOrder);
+		setFilteredData(sortedFiltered);
 	};
 
 	const handleClearFilters = () => {

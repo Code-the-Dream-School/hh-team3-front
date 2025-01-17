@@ -118,25 +118,7 @@
 }
 
 @media (max-width: 480px) {
-	.discussion-container {
-			padding: 1em;
-			gap: 1em;
-			text-align: center;
-		}
-
 	.form-group label {
-		font-size: 1rem;
+			flex: 0 0 20px;
+		}
 	}
-
-	.form-group input,
-	.form-group textarea {
-		font-size: 1rem;
-		padding: 12px;
-	}
-
-	.create-discussions-btn {
-		width: 100%;
-		font-size: 1rem;
-		padding: 0.7em;
-	}
-}

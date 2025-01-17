@@ -36,38 +36,52 @@ export default function BookDetails() {
       }
     }
 
-    fetchBookDetails();
-  }, [id]);
+		fetchBookDetails();
+	}, [id]);
+
+	const handleCategoryClick = (category) => {
+		navigate(`/find-book?category=${category}`);
+	};
 
   if (loading) return <Loader />;
   if (error) return <h2>Error: {error}</h2>;
   if (!book) return <h2>Book not found.</h2>;
 
-  return (
-    <div className="book-details-page">
-      <div className="book-details-container">
-        <img src={book.imageLinks?.thumbnail} alt={book.title} />
-        <div className="book-details">
-          <p className="book-title">{book.title}</p>
-          <p className="book-author">
-            By {book.authors?.join(", ")} (
-            {book.publishedDate?.split("-")[0]})
-          </p>
-          <p className="book-genre">
-            {book.categories?.map((cat, idx) => (
-              <span key={idx}>{cat}</span>
-            ))}
-          </p>
-          <p className="book-description">{book.description}</p>
-          <p className="book-publisher">Published by: {book.publisher}</p>
-          <div className="buttons-container">
-            <button onClick={handleCreateDiscussion} className="create-discussions-btn">
-              Create Discussion
-            </button>
-          </div>
-        </div>
-      </div>
-      <BookTalks bookId={book._id} />
-    </div>
-  );
+	return (
+		<div className="book-details-page">
+			<div className="book-details-container">
+				<img src={book.imageLinks?.thumbnail} alt={book.title} />
+				<div className="book-details">
+					<p className="book-title">{book.title}</p>
+					<p className="book-author">
+						By {book.authors?.join(", ")} (
+						{book.publishedDate?.split("-")[0]})
+					</p>
+					<p className="book-genre">
+						{book.categories?.map((cat, idx) => (
+							<span
+								key={idx}
+								onClick={() => handleCategoryClick(cat)}
+							>
+								{cat}
+							</span>
+						))}
+					</p>
+					<p className="book-description">{book.description}</p>
+					<p className="book-publisher">
+						Published by: {book.publisher}
+					</p>
+					<div className="buttons-container">
+						<button
+							onClick={handleCreateDiscussion}
+							className="create-discussions-btn"
+						>
+							Create Discussion
+						</button>
+					</div>
+				</div>
+			</div>
+			<BookTalks bookId={book._id} />
+		</div>
+	);
 }
