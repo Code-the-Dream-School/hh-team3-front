@@ -2,7 +2,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 100vh;
+	height: 80vh;
 }
 
 .signup-container {
@@ -62,7 +62,7 @@
 }
 
 .button:hover {
-	background-color: #0056b3;
+	background: var(--button-bg-hover);
 	transform: translateY(-3px);
 	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
