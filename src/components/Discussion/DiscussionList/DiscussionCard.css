@@ -120,18 +120,17 @@ p{
 }
 
 .delete-btn {
-	background: var(--button-bg-color);
-	color: var(--button-text-color);
-	padding: 0.75em 1.563em;
-	border: none;
-	border-radius: 25px;
+	padding: 1rem 1.5rem;
 	font-size: 1rem;
 	font-weight: 600;
+	color: #ffffff;
+	background: var(--book-genre);
+	border: none;
+	border-radius: 20px;
 	cursor: pointer;
-	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 	transition:
 		transform 0.3s ease,
-		background-color 0.3s ease,
 		box-shadow 0.3s ease;
 }
 .delete-btn:hover {

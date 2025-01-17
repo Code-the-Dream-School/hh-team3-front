@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
 import "./DiscussionCard.css";
+import { useNavigate } from "react-router-dom";
 
 export default function DiscussionCard({
 	title,
@@ -24,6 +25,8 @@ export default function DiscussionCard({
 		participants.length,
 	);
 	const userId = user?.id || null;
+	const navigate = useNavigate();
+
 	const isDateInFuture = (discussionDate) => {
 		const discussionDateTime = new Date(discussionDate).getTime();
 		const currentTime = new Date().getTime();
@@ -78,6 +81,7 @@ export default function DiscussionCard({
 
 			setIsJoined(!isJoined);
 			setError("");
+			window.location.reload();
 		} catch (err) {
 			setError("Failed to update.");
 		}
@@ -116,6 +120,13 @@ export default function DiscussionCard({
 			setError("Failed to delete.");
 		}
 		setLoading(false);
+	};
+	const handleUpdateDiscussion = () => {
+		navigate("/update-discussion", {
+			state: {
+				existingDiscussion: { title, content, date, meetingLink, id },
+			},
+		});
 	};
 
 	if (loading)
@@ -190,6 +201,15 @@ export default function DiscussionCard({
 								disabled={loading}
 							>
 								Delete Discussion
+							</button>
+						)}
+						{createdById === userId && (
+							<button
+								className="delete-btn "
+								onClick={handleUpdateDiscussion}
+								disabled={loading}
+							>
+								Update Discussion
 							</button>
 						)}
 					</div>

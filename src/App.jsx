@@ -18,7 +18,7 @@ import FindABook from "./Pages/FindABook.jsx";
 import FindADiscussion from "./Pages/FIndADiscussion";
 import BookTalkQuestions from './Pages/BookTalkQuestions.jsx'
 import Home from "./Pages/home.jsx";
-
+import UpdateDiscussion from "./components/Discussion/DiscussionForm/UpdateDiscussion.jsx";
 
 function App() {
 	const [books, setBooks] = useState([]);
@@ -364,6 +364,10 @@ function App() {
 										onSubmit={handleFormSubmit}
 									/>
 								}
+							/>
+							<Route
+								path="/update-discussion"
+								element={<UpdateDiscussion />}
 							/>
 							<Route path="/login" element={<Login />} />
 							<Route path="/signup" element={<Signup />} />
