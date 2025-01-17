@@ -48,4 +48,5 @@ html body.dark {
 
 *{
 	font-family: var(--text-font);
+	font-weight: 300;
 }

@@ -16,6 +16,7 @@ import Signup from "./components/userSignup/Signup.jsx";
 import AboutUs from './Pages/AboutUs.jsx';
 import FindABook from "./Pages/FindABook.jsx";
 import FindADiscussion from "./Pages/FIndADiscussion";
+import BookTalkQuestions from './Pages/BookTalkQuestions.jsx'
 import Home from "./Pages/home.jsx";
 
 
@@ -383,9 +384,13 @@ function App() {
 									<AboutUs onUploadAvatar={uploadAvatar} />
 								}
 							/>
-						  <Route
+							<Route
 								path="/reset-password"
 								element={<ResetPassword />}
+							/>
+							<Route
+								path="/discussion-questions-guide"
+								element={<BookTalkQuestions />}
 							/>
 						</Routes>
 					</div>

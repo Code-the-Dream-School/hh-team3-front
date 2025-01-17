@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Loader from "../components/Loader/Loader";
+
 import "./Home.css";
 
 function Home({ booksData }) {
@@ -127,11 +128,11 @@ function Home({ booksData }) {
 				</Link>
 				<Link
 					className="btn btn-outline-light book-btn d-flex flex-column align-items-center p-4 shadow"
-					to="/create-discussion"
+					to="/discussion-questions-guide"
 					style={{ width: "300px" }}
 					rel="noopener noreferrer"
 				>
-					<h3 className="link-text mb-3">Create discussion</h3>
+					<h3 className="link-text mb-3">Discussion Guide</h3>
 					<img
 						src="/images/create_discussion.jpeg"
 						alt="Create discussion Icon"
