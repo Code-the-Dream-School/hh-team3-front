@@ -1,18 +1,35 @@
 import React, { useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import "./ResetPassword.css";
+
+import "../userSignup/Signup.css";
 
 const ResetPassword = () => {
 	const [searchParams] = useSearchParams();
 	const [newPassword, setNewPassword] = useState("");
+	const [showPassword, setShowPassword] = useState(false);
 	const [error, setError] = useState("");
+	const [passwordError, setPasswordError] = useState("");
 	const [success, setSuccess] = useState(false);
 
 	const token = searchParams.get("token");
 
+	const validatePassword = (password) => {
+		const passwordRegex =
+			/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
+		return passwordRegex.test(password);
+	};
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setError("");
+		setPasswordError("");
+
+		if (!validatePassword(newPassword)) {
+			setPasswordError(
+				"Password must include at least one letter, one number, one special character, and be at least 6 characters long.",
+			);
+			return;
+		}
 
 		try {
 			const response = await fetch(
@@ -42,26 +59,45 @@ const ResetPassword = () => {
 
 	if (success) {
 		return (
-			<div id="reset-password-container">
-				<p>Your password has been successfully reset!</p>
+			<div className="signup-wrapper">
+				<div className="login-container">
+					<p>Your password has been successfully reset!</p>
+				</div>
 			</div>
 		);
 	}
 
 	return (
-		<div id="reset-password-container">
-			<form id="reset-password-form" onSubmit={handleSubmit}>
-				<h2 className="form-title">Reset Password</h2>
-				{error && <p className="error">{error}</p>}
-				<input
-					type="password"
-					value={newPassword}
-					onChange={(e) => setNewPassword(e.target.value)}
-					placeholder="New Password"
-					required
-				/>
-				<button type="submit">Submit</button>
-			</form>
+		<div className="signup-wrapper">
+			<div className="signup-container">
+				<form id="reset-password-form" onSubmit={handleSubmit}>
+					<h2>Reset Password</h2>
+					{error && <p className="error">{error}</p>}
+					{passwordError && <p className="error">{passwordError}</p>}
+					<div className="password-input-wrapper">
+						<input
+							type={showPassword ? "text" : "password"}
+							className="input"
+							value={newPassword}
+							onChange={(e) => setNewPassword(e.target.value)}
+							placeholder="New Password"
+							required
+						/>
+						<button
+							type="button"
+							className="password-toggle"
+							onClick={() => {
+								setShowPassword(!showPassword);
+							}}
+						>
+							{showPassword ? "🙈" : "👁"}
+						</button>
+					</div>
+					<button type="submit" className="button">
+						Submit
+					</button>
+				</form>
+			</div>
 		</div>
 	);
 };
