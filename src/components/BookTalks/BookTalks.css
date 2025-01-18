@@ -16,20 +16,24 @@ h2 {
 	align-items: flex-start;
 	gap: 1rem;
 	padding: 1.5rem;
-	border: 1px solid #e0e0e0;
+	box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 	border-radius: 12px;
-	background: var(--bg-color-book-page);
-	box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.05),
-		-6px -6px 12px rgba(255, 255, 255, 0.7);
+	background: var(--bg-color-card);
 	margin-bottom: 1.5rem;
 	margin-top: 1.5rem;
 }
 .user-input {
 	display: flex;
 	flex-direction: column;
+	align-self: center;
 }
 
-.book-talk-user-avatar {
+.review-inner img {
+	width: 60px;
+	height: 60px;
+}
+
+.user-input img {
 	width: 60px;
 	height: 60px;
 	border-radius: 50%;
@@ -39,7 +43,6 @@ h2 {
 
 .inputTextarea {
 	flex: 1;
-	min-height: 100px;
 	border: none;
 	border-radius: 10px;
 	padding: 1rem;
@@ -59,13 +62,14 @@ h2 {
 }
 
 .post-book-talk-button {
-	padding: 0.7rem 1.5rem;
+	align-self: center;
+	padding: 19px 16px;
 	font-size: 1rem;
 	font-weight: 600;
 	color: #ffffff;
 	background: var(--post-book-talk-button-bg);
 	border: none;
-	border-radius: 12px;
+	border-radius: 50px;
 	cursor: pointer;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 	transition: all 150ms ease-in-out;
@@ -89,9 +93,8 @@ h2 {
 	padding: 1.5rem;
 	margin: 1.5rem;
 	border-radius: 12px;
-	background: var(--bg-color-book-page);
-	box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.05),
-		-6px -6px 12px rgba(255, 255, 255, 0.7);
+	background: var(--bg-color-card);
+	box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
 .review-inner {
@@ -133,8 +136,8 @@ h2 {
 .detail {
 	display: flex;
 	align-items: center;
-	font-size: 0.9rem;
-	color: #555;
+	font-size: 1rem;
+	color: var(--like);
 	cursor: pointer;
 }
 
@@ -151,7 +154,7 @@ h2 {
 	color: #fff;
 }
 .like-amount {
-	color: #ffffff;
+	color: var(--like);
 }
 
 @media (max-width: 600px) {

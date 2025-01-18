@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Form from "react-bootstrap/Form";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./DiscussionForm.css";
 
 function UpdateDiscussion() {
@@ -145,7 +145,7 @@ function UpdateDiscussion() {
 							name="date"
 							value={formData.date}
 							className="form-control"
-							readOnly 
+							readOnly
 						/>
 					</div>
 				</Form.Group>

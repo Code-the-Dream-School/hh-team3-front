@@ -19,14 +19,6 @@ footer a:hover {
 	color: var(--links-hover-color);
 }
 
-.text-shadow:hover {
-	text-shadow:
-		rgba(255, 214, 143, 0.986) 0px 0px 87px,
-		rgba(219, 146, 20, 1) 0px 0px 243px,
-		rgba(255, 245, 227, 0.893) 0px 0px 28px,
-		rgba(255, 253, 250, 1) 0px 0px 23px;
-}
-
 .open-sourced {
 	margin-left: 5px;
 	margin-right: 5px;

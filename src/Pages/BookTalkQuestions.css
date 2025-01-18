@@ -28,7 +28,8 @@ h4 {
 	display: flex;
 	align-items: flex-start;
 	justify-content: space-between;
-	margin: 50px 0;
+	padding: 60px;
+	align-items: center;
 }
 
 .content {
@@ -39,9 +40,6 @@ h4 {
 
 .content.open {
 	height: auto;
-}
-.questions {
-	padding: 20px 0;
 }
 
 img {
@@ -56,7 +54,12 @@ li {
 		flex-direction: column;
 		align-items: center;
 	}
-
+	.img {
+		margin-bottom: 30px;
+	}
+	.main-content {
+		padding: 10px;
+	}
 	img {
 		width: 100%;
 		margin-bottom: 50px;

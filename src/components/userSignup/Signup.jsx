@@ -88,7 +88,7 @@ const Signup = () => {
 		<div className="signup-wrapper">
 			<div className="signup-container">
 				<form onSubmit={handleSubmit}>
-					<h2 className="text-center mb-3">Signup</h2>
+					<h2 className="text-center mb-3 form-title">Signup</h2>
 					{error && <p className="error">{error}</p>}
 
 					<div>
@@ -135,7 +135,7 @@ const Signup = () => {
 						</div>
 					</div>
 
-					<button className="button" type="submit" disabled={loading}>
+					<button className="signup-button" type="submit" disabled={loading}>
 						{loading ? "Signing up..." : "Signup"}
 					</button>
 				</form>

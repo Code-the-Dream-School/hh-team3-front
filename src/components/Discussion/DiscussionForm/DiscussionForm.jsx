@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import "./DiscussionForm.css";
 
 function DiscussionForm({ onSubmit }) {
-	const navigate = useNavigate(); 
+	const navigate = useNavigate();
 	const location = useLocation();
 	const { bookId } = location.state || {};
 	const inputRef = useRef();

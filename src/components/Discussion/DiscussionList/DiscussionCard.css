@@ -8,18 +8,15 @@
 	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 	background: var(--bg-color-book-page);
 	color: var(--text-color-book-page);
-	transition:
-		transform 0.4s ease,
-		box-shadow 0.4s ease,
-		padding 0.3s ease;
+	transition: transform 0.4s ease, box-shadow 0.4s ease, padding 0.3s ease;
 	max-width: 900px;
 	margin: 100px auto;
 	position: relative;
 	overflow: hidden;
 	font-family: var(--text-font);
 }
-p{
-	margin:0;
+p {
+	margin: 0;
 }
 .discussion-container:hover {
 	transform: scale(1.02);
@@ -28,7 +25,7 @@ p{
 
 .discussion-container img {
 	width: 200px;
-	margin:20px;
+	margin: 20px;
 	height: auto;
 	object-fit: cover;
 	border-radius: 15px;
@@ -61,35 +58,33 @@ p{
 
 .discussion-book {
 	font-size: 1.13rem;
-	color: var(--title-color);
-	
+	color: var(--author-color);
 }
 .discussion-date {
 	font-size: 1.13rem;
-	color: var(--title-color);
+	color: var(--text-color);
 }
 .discussion-content {
 	font-size: 1.13rem;
-	color: var(--title-color);
+	color: var(--text-color);
 }
 .discussion-participants {
 	font-size: 1.13rem;
-	color: var(--title-color);
+	color: var(--text-color);
 }
 .discussion-created-by {
 	font-size: 1.13rem;
-	color: var(--title-color);
+	color: var(--text-color);
 }
 .discussion-meetingLink {
 	font-size: 1.13rem;
 }
-.discussion-meetingLink a{
-	
+.discussion-meetingLink a {
 	color: var(--title-color);
 	text-decoration: none;
 	transition: all 150ms ease-in-out;
 }
-.discussion-meetingLink a:hover{
+.discussion-meetingLink a:hover {
 	text-decoration: underline;
 }
 
@@ -103,18 +98,16 @@ p{
 	font-size: 1rem;
 	font-weight: 600;
 	color: #ffffff;
-	background: var(--book-genre);
+	background: var(--post-book-talk-button-bg);
 	border: none;
 	border-radius: 20px;
 	cursor: pointer;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	transition:
-		transform 0.3s ease,
-		box-shadow 0.3s ease;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .join-btn:hover {
-	background: var(--button-bg-hover);
+	background: var(--bg-color-container);
 	transform: translateY(-3px);
 	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
@@ -129,9 +122,7 @@ p{
 	border-radius: 20px;
 	cursor: pointer;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	transition:
-		transform 0.3s ease,
-		box-shadow 0.3s ease;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .delete-btn:hover {
 	background: var(--button-bg-hover);
@@ -159,18 +150,18 @@ p{
 	.discussion-title {
 		font-size: 1.5rem;
 	}
-	.discussion-book{
+	.discussion-book {
 		font-size: 1.5rem;
 	}
 	.discussion-date {
-	   font-size: 1.5rem;
+		font-size: 1.5rem;
 	}
 	.discussion-content {
 		font-size: 1rem;
-		line-height: 1.6;;		
+		line-height: 1.6;
 	}
 	.discussion-participants {
-		font-size: 1.5rem;		
+		font-size: 1.5rem;
 	}
 	.discussion-created-by {
 		font-size: 1.5rem;
@@ -205,7 +196,7 @@ p{
 		font-size: 0.9rem;
 		line-height: 1.4;
 	}
- 	.discussion-participants {
+	.discussion-participants {
 		font-size: 1rem;
 	}
 	.discussion-created-by {

@@ -30,7 +30,7 @@ const BookTalkQuestions = () => {
 			</div>
 
 			<div className="row main-content">
-				<div className="col-md-5 text-center p-4">
+				<div className="col-md-6 text-center img">
 					<img
 						src="../images/opened-book2.jpeg"
 						alt="Book Discussion"

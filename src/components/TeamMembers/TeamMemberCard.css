@@ -33,7 +33,7 @@
 }
 
 .team-member-card-subtitle {
-	color: var(--author-color);
+	color: var(--title-color);
 	font-style: italic;
 	font-size: 0.85rem;
 	margin-bottom: 10px;
@@ -53,6 +53,6 @@
 }
 
 .team-member-card-footer a:hover {
-	color: var(--text-color);
+	color: var(--like);
 	transform: scale(1.2);
 }

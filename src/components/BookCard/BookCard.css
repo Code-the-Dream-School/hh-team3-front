@@ -36,7 +36,7 @@
 	overflow: hidden;
 	word-wrap: break-word;
 	text-overflow: ellipsis;
-		font-family: var(--heading-font);
+	font-family: var(--heading-font);
 	font-weight: 700;
 	margin: 0.625em 0;
 	color: var(--title-color);
@@ -49,6 +49,6 @@
 	margin-bottom: 1em;
 	font-style: italic;
 }
-.long-name{
+.long-name {
 	font-size: 16px;
 }

@@ -8,42 +8,60 @@
 	--button-bg-color: #ff9d76;
 	--button-bg-hover: #e87d5a;
 	--button-text-color: #fff;
-	--border-color: #ff9d76;
 	--book-genre: linear-gradient(135deg, #ffe4b2, #ff9d76);
 	--toggle-text: #f07167;
 	--post-book-talk-button-bg: linear-gradient(135deg, #ffe4b2, #ff9d76);
-	--heading-font:"Yeseva One", serif;;
+	--heading-font: "Yeseva One", serif;
 	--text-font: "Lato", serif;
-	--bg-navbar:linear-gradient(135deg, #ffe4b2, #ff9d76);
-	
+	--bg-navbar: linear-gradient(135deg, #ffe4b2, #ff9d76);
+	--pagination-color: #fff;
+	--form-button-bg: #e87d5a;
+	--like: #ffe8d6;
 }
 
 body.dark {
-	--bg-color-container: #240046;
-	--bg-color-book-page: #2e034c;
-	--title-color: #d4bfff;
-	--author-color: #b89de0;
-	--text-color: #f4f4f4;
-	--bg-color-card: linear-gradient(135deg, #2e034c, #483d8b, #240046);
-	--button-bg-color: #6a0dad;
-	--button-bg-hover: #4f0975;
-	--border-color: #240046;
-	--book-genre: linear-gradient(135deg, #240046, #483d8b);
-	--toggle-text: #d4bfff;
-	--post-book-talk-button-bg: linear-gradient(135deg, #6a11cb, #2575fc);
-	--bg-navbar:purple;
+	--bg-color-container: #46644e;
+	--bg-color-book-page: #163832;
+	--title-color: #cfee9e;
+	--author-color: #6d8777;
+	--text-color: #daf1de;
+	--bg-color-card: linear-gradient(135deg, #235347, #051f20);
+	--button-bg-color: #163832;
+	--button-bg-hover: #daf1de;
+
+	--book-genre: linear-gradient(135deg, #051f20, #cfee9e);
+	--toggle-text: #cfee9e;
+	--post-book-talk-button-bg: linear-gradient(135deg, #cfee9e, #6d8777);
+	--bg-navbar: #163832;
+	--pagination-color: #163832;
+	--button-text-color: #163832;
+	--form-button-bg: #235347;
+	--like: #cfee9e;
 }
 
 .unselected {
 	opacity: 0.5;
 }
+
+.text-shadow {
+	color: var(--toggle-text);
+	font-size: 26px;
+}
+
+.text-shadow:hover {
+	text-shadow: rgba(255, 214, 143, 0.986) 0px 0px 87px,
+		rgba(219, 146, 20, 1) 0px 0px 243px,
+		rgba(255, 245, 227, 0.893) 0px 0px 28px,
+		rgba(255, 253, 250, 1) 0px 0px 23px;
+	color: white;
+}
+
 html body {
 	background: var(--bg-color-container) !important;
 	color: var(--text-color) !important;
 	font-family: var(--text-font);
 	font-weight: 300;
 }
-
 
 html body.dark {
 	background: var(--bg-color-container) !important;

@@ -30,21 +30,16 @@
 	width: 24px;
 	height: 24px;
 	border-radius: 50%;
-	background: radial-gradient(circle, #fff, #e87d5a);
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-	transition: transform 250ms ease-in-out, background 250ms ease-in-out, box-shadow 250ms;
-}
-
-.toggle-button:hover .inner-circle {
-	box-shadow: 0 0 15px rgba(0, 123, 255, 0.5);
+	background: radial-gradient(circle, #ffe4b2, #e87d5a);
+	transition: transform 250ms ease-in-out, background 250ms ease-in-out,
+		box-shadow 250ms;
 }
 
 .toggle-button.toggled {
-	background: linear-gradient(90deg, #4b2991, #872ca2);
+	background: #235347;
 }
 
 .toggle-button.toggled .inner-circle {
 	transform: translateX(30px);
-	background: radial-gradient(circle, #fff, var(--button-bg-hover));
-	box-shadow: 0 0 15px rgba(255, 69, 58, 0.7);
+	background: radial-gradient(circle, #cfee9e, #163832);
 }

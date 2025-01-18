@@ -51,7 +51,7 @@ const ResetPassword = () => {
 	return (
 		<div id="reset-password-container">
 			<form id="reset-password-form" onSubmit={handleSubmit}>
-				<h2>Reset Password</h2>
+				<h2 className="form-title">Reset Password</h2>
 				{error && <p className="error">{error}</p>}
 				<input
 					type="password"

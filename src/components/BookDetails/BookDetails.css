@@ -8,10 +8,7 @@
 	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 	background: var(--bg-color-book-page);
 	color: var(--text-color-book-page);
-	transition:
-		transform 0.4s ease,
-		box-shadow 0.4s ease,
-		padding 0.3s ease;
+	transition: transform 0.4s ease, box-shadow 0.4s ease, padding 0.3s ease;
 	max-width: 900px;
 	margin: 100px auto;
 	position: relative;
@@ -70,13 +67,10 @@
 	border-radius: 20px;
 	font-size: 0.88rem;
 	font-weight: 600;
-	transition:
-		background-color 0.3s ease,
-		color 0.3s ease,
-		transform 0.3s ease;
+	transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 	background: var(--book-genre);
-	color: var(--text-color);
+	color: var(--form-button-bg);
 }
 
 .book-genre span:hover {
@@ -100,13 +94,11 @@
 .book-description {
 	font-size: 1.13rem;
 	line-height: 1.8;
-	color: var(--author-color);
+	color: var(--text-color);
 	text-align: justify;
 	margin: 0;
 	max-width: 500px;
-	transition:
-		font-size 0.3s ease,
-		line-height 0.3s ease;
+	transition: font-size 0.3s ease, line-height 0.3s ease;
 	overflow: scroll;
 	height: 200px;
 }
@@ -118,7 +110,7 @@
 }
 
 .create-discussions-btn {
-	background: var(--button-bg-color);
+	background: var(--post-book-talk-button-bg);
 	color: var(--button-text-color);
 	padding: 0.75em 1.563em;
 	border: none;
@@ -127,9 +119,7 @@
 	font-weight: 600;
 	cursor: pointer;
 	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-	transition:
-		transform 0.3s ease,
-		background-color 0.3s ease,
+	transition: transform 0.3s ease, background-color 0.3s ease,
 		box-shadow 0.3s ease;
 }
 

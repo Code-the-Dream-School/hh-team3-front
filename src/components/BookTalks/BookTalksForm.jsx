@@ -1,49 +1,46 @@
-import React, { useState, useContext } from "react";
-import { AuthContext } from "../Context/AuthProvider";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import BookTalksInput from "./BookTalksInput";
+import { AuthContext } from "../Context/AuthProvider";
 import "./BookTalks.css";
+import BookTalksInput from "./BookTalksInput";
 
 export default function BookTalksForm({ onBookTalk }) {
-  const [bookTalk, setBookTalk] = useState("");
-  const { user, isAuthenticated } = useContext(AuthContext);
-  const navigate = useNavigate();
+	const [bookTalk, setBookTalk] = useState("");
+	const { user, isAuthenticated } = useContext(AuthContext);
+	const navigate = useNavigate();
 
-  function handleChange(e) {
-    setBookTalk(e.target.value);
-  }
+	function handleChange(e) {
+		setBookTalk(e.target.value);
+	}
 
-  function handleSubmit(e) {
-    e.preventDefault();
+	function handleSubmit(e) {
+		e.preventDefault();
 
-    if (!isAuthenticated) {
-      alert("Please log in to post a comment!");
-      navigate("/login");
-      return;
-    }
+		if (!isAuthenticated) {
+			alert("Please log in to post a comment!");
+			navigate("/login");
+			return;
+		}
 
-    if (!bookTalk.trim()) {
-      alert("Please type something!");
-      return;
-    }
+		if (!bookTalk.trim()) {
+			alert("Please type something!");
+			return;
+		}
 
-    const newComment = {
-      review: bookTalk.trim(),
-      userId: user?._id || "",
-      username: user?.name || "Anonymous",
-      photo: user?.photo || "",
-    };
+		const newComment = {
+			review: bookTalk.trim(),
+			userId: user?._id || "",
+			username: user?.name || "Anonymous",
+			photo: user?.photo || "",
+		};
 
-    onBookTalk(newComment);
-    setBookTalk("");
-  }
+		onBookTalk(newComment);
+		setBookTalk("");
+	}
 
-  return (
-    <form className="bookTalksForm" onSubmit={handleSubmit}>
-      <BookTalksInput value={bookTalk} onChange={handleChange} />
-      <button className="post-book-talk-button" type="submit">
-        Post BookTalk
-      </button>
-    </form>
-  );
+	return (
+		<form className="bookTalksForm" onSubmit={handleSubmit}>
+			<BookTalksInput value={bookTalk} onChange={handleChange} />
+		</form>
+	);
 }

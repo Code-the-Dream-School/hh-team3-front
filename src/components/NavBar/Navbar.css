@@ -14,21 +14,20 @@
 	color: var(--navbar-font-color);
 	margin-right: 1rem;
 	font-size: 1rem;
-	font-family:var(--text-font);
+	font-family: var(--text-font)
+	transition: all 150ms ease-in-out;
 }
 
 .nav-item a {
 	font-size: 18px;
 	transition: all 150ms ease-in-out;
-
 }
+
 .nav-item a:hover {
-	color: var(--links-hover-color);
-	transform: scale(1.07);
-	
+	color: var(--toggle-text);
 }
 .my-text {
-	transition: all 150ms ease-in-out;
+	color: var(--title-color);
 }
 .my-text:hover {
 	color: var(--links-hover-color);
@@ -36,10 +35,10 @@
 
 .custom-btn {
 	color: var(--bg-navbar);
-	background-color: rgba(255, 255, 255, 0.6);
+	background: var(--toggle-text);
 	font-size: 1.1rem;
 	border: none;
-	font-family:var(--text-font);
+	font-family: var(--text-font);
 	font-weight: bold;
 	padding: 0.4rem 0.8rem;
 	border-radius: 10px;
@@ -47,7 +46,7 @@
 }
 
 .custom-btn:hover {
-	background: var(--links-hover-color);
+	background: var(--form-button-bg);
 	color: white;
 	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }

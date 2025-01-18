@@ -7,8 +7,8 @@
 h1 {
 	font-family: var(--heading-font);
 }
-h4{
-	color:var(--toggle-text);
+h4 {
+	color: var(--toggle-text);
 }
 main {
 	max-width: 100%;
@@ -16,7 +16,7 @@ main {
 	flex-wrap: wrap;
 	gap: 20px;
 	justify-content: center;
-	padding:80px;
+	padding: 80px;
 }
 
 .book-of-the-month {
@@ -55,7 +55,7 @@ main {
 
 .book-of-the-month-card-img {
 	width: 90%;
-	max-height: 300px;
+	max-height: 250px;
 	object-fit: contain;
 	margin-bottom: 20px;
 }
@@ -77,34 +77,39 @@ main {
 	margin-bottom: 0;
 }
 
-.links .book-btn {
+.book-btn {
 	transition: all 200ms ease-in-out;
 	border-radius: 20px;
 	overflow: hidden;
-	background: var(--book-genre);
 	border: none;
 	margin-bottom: 70px;
+	background: var(--bg-color-card);
 }
 
-.links .book-btn:hover {
+.book-btn a {
+	text-decoration: none;
+	background: none;
+}
+.links h3 {
+	background: none;
+}
+.book-btn:hover {
 	transform: scale(1.1) rotate(-1deg);
 	box-shadow: 0 10px 25px rgba(0, 0, 0, 0);
 	border-radius: 20px;
-	background-color: rgba(255, 255, 255, 0.6);
+	border: none;
 }
 .link-text {
-	color: var(--author-color);
+	color: var(--title-color);
 	font-family: var(--heading-font);
-	font-size:22px;
-}
-a {
-	color: var(--links-color);
+	font-size: 22px;
 }
 
 @media (max-width: 575px) {
 	main {
 		flex-direction: column;
 		align-items: center;
+		padding: 0;
 	}
 	.welcome,
 	.book-of-the-month {
@@ -131,7 +136,11 @@ a {
 	}
 }
 
-@media (max-width: 765px) {
+@media (max-width: 820px) {
+	main {
+		padding: 0;
+	}
+
 	.welcome,
 	.book-of-the-month {
 		flex: 1 1 100%;
@@ -148,6 +157,7 @@ a {
 	.links .book-btn {
 		width: 100%;
 		max-width: 300px;
+		margin-bottom: 10px;
 	}
 }
 @media (max-width: 575px) {

@@ -2,16 +2,19 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 80vh;
+	height: 86vh;
 }
 
 .signup-container {
 	width: 300px;
 	padding: 40px;
 	border: none;
-	background-color: rgba(255, 255, 255, 0.4);
+	background: var(--bg-color-card);
 	border-radius: 20px;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.form-title{
+	color:var(--title-color);
 }
 
 .error {
@@ -40,23 +43,23 @@
 	outline: none;
 }
 
-.button {
+.signup-button {
 	width: 100%;
 	padding: 0.7rem;
 	font-size: 1rem;
 	font-weight: 600;
 	color: #ffffff;
-	background: var(--button-bg-color);
+	background: var(--form-button-bg);
 	border: none;
 	border-radius: 10px;
 	cursor: pointer;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 	transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.3s ease;
-	font-family: "", sans-serif;
 }
 
-.button:hover {
-	background: var(--button-bg-hover);
+.signup-button:hover {
+  color:var(--button-bg-color);
+	background: var(--title-color);
 	transform: translateY(-3px);
 	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }

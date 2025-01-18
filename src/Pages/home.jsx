@@ -158,7 +158,7 @@ function Home({ booksData }) {
 			<div className="text-center">
 				<a
 					href="/"
-					className="text-shadow up-link"
+					className="text-shadow"
 					rel="noopener noreferrer"
 					onClick={handleScrollToTop}
 				>

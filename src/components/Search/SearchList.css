@@ -6,13 +6,10 @@
 	font-size: 1rem;
 	color: #333;
 	background: #f8f8fc;
-	box-shadow:
-		inset 3px 3px 6px rgba(0, 0, 0, 0.1),
+	box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.1),
 		inset -3px -3px 6px rgba(255, 255, 255, 0.5);
 	font-family: var(--text-font);
-	transition:
-		background 0.3s ease,
-		box-shadow 0.3s ease;
+	transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .form-control:focus {
@@ -30,18 +27,17 @@
 	padding: 1rem 1.5rem;
 	font-size: 1rem;
 	font-weight: 600;
-	color: #ffffff;
-	background: var(--book-genre);
+	color: fff;
+	background: var(--post-book-talk-button-bg);
 	border: none;
 	border-radius: 20px;
 	cursor: pointer;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	transition:
-		transform 0.3s ease,
-		box-shadow 0.3s ease;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.btn-secondary:hover{
+.btn-secondary:hover {
+	background: var(--form-button-bg);
 	transform: translateY(-3px);
 	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
@@ -52,47 +48,47 @@
 }
 
 .display {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 40px;
-  justify-content: center;
-  margin-bottom: 70px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 40px;
+	justify-content: center;
+	margin-bottom: 70px;
 }
 
 .pagination {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-bottom: 20px;
+	display: flex;
+	justify-content: center;
+	gap: 15px;
+	margin-bottom: 20px;
 }
 
-.my-button-pagination{
+.my-button-pagination {
 	padding: 1rem 1.5rem;
 	font-size: 1rem;
 	font-weight: 600;
-	color: #ffffff;
+	color: var(--button-text-color);
 	background: var(--book-genre);
 	border: none;
 	border-radius: 20px;
 	cursor: pointer;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	transition:all 200ms ease-in-out;
+	transition: all 200ms ease-in-out;
 }
 
 .my-button-pagination:hover {
-  background: var(--toggle-text);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+	background: var(--toggle-text);
+	transform: translateY(-2px);
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 .my-button-pagination.active {
 	background: var(--toggle-text);
-  transform: translateY(-6px);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	transform: translateY(-6px);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-.my-button-pagination.active:hover{
- color:var(--author-color);
- background:var(--book-genre);
- transform: translateY(-2px);
+.my-button-pagination.active:hover {
+	color: var(--author-color);
+	background: var(--book-genre);
+	transform: translateY(-2px);
 }
 a {
 	color: var(--links-color);

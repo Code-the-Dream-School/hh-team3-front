@@ -76,7 +76,7 @@ const Login = () => {
 		<div className="login-wrapper">
 			<div className="login-container">
 				<form onSubmit={handleSubmit}>
-					<h2 className="text-center mb-3">
+					<h2 className="text-center mb-3 form-title">
 						{isResetMode ? "Reset Password" : "Login"}
 					</h2>
 					{error && <p className="error">{error}</p>}

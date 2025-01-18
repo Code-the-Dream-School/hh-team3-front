@@ -5,36 +5,36 @@ import Loader from "../Loader/Loader.jsx";
 import "./BookDetails.css";
 
 export default function BookDetails() {
-  const { id } = useParams();
-  const [book, setBook] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const navigate = useNavigate();
+	const { id } = useParams();
+	const [book, setBook] = useState(null);
+	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState(null);
+	const navigate = useNavigate();
 
-  const handleCreateDiscussion = () => {
-    if (!book || !book._id) {
-      alert("Book ID is missing!");
-      return;
-    }
-    navigate("/create-discussion", { state: { bookId: book._id } });
-  };
+	const handleCreateDiscussion = () => {
+		if (!book || !book._id) {
+			alert("Book ID is missing!");
+			return;
+		}
+		navigate("/create-discussion", { state: { bookId: book._id } });
+	};
 
-  useEffect(() => {
-    async function fetchBookDetails() {
-      try {
-        const url = import.meta.env.VITE_API_BASE_URL;
-        const response = await fetch(`${url}/books/${id}`);
-        if (!response.ok) {
-          throw new Error("Failed to fetch book details.");
-        }
-        const data = await response.json();
-        setBook(data.book);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    }
+	useEffect(() => {
+		async function fetchBookDetails() {
+			try {
+				const url = import.meta.env.VITE_API_BASE_URL;
+				const response = await fetch(`${url}/books/${id}`);
+				if (!response.ok) {
+					throw new Error("Failed to fetch book details.");
+				}
+				const data = await response.json();
+				setBook(data.book);
+			} catch (err) {
+				setError(err.message);
+			} finally {
+				setLoading(false);
+			}
+		}
 
 		fetchBookDetails();
 	}, [id]);
@@ -43,9 +43,9 @@ export default function BookDetails() {
 		navigate(`/find-book?category=${category}`);
 	};
 
-  if (loading) return <Loader />;
-  if (error) return <h2>Error: {error}</h2>;
-  if (!book) return <h2>Book not found.</h2>;
+	if (loading) return <Loader />;
+	if (error) return <h2>Error: {error}</h2>;
+	if (!book) return <h2>Book not found.</h2>;
 
 	return (
 		<div className="book-details-page">

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../Context/AuthProvider";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../Context/AuthProvider";
 import "./userPage.css";
 
 const UserPage = ({ onUploadAvatar }) => {
@@ -77,7 +77,7 @@ const UserPage = ({ onUploadAvatar }) => {
 			if (response.ok) {
 				alert("Profile updated successfully!");
 			} else {
-				console.error("Error updating profile:", error); 
+				console.error("Error updating profile:", error);
 				alert("Failed to update profile.");
 			}
 		} catch (error) {
@@ -97,7 +97,7 @@ const UserPage = ({ onUploadAvatar }) => {
 					user: user,
 				});
 				console.log("Avatar uploaded successfully:", avatarData);
-				alert("Avatar uploaded successfully!"); 
+				alert("Avatar uploaded successfully!");
 			} catch (error) {
 				console.error("Error uploading avatar:", error);
 				alert("Failed to upload avatar.");
@@ -115,7 +115,7 @@ const UserPage = ({ onUploadAvatar }) => {
 
 	return (
 		<div className="user-container">
-			<h1 className="mt-4 text-center">Profile</h1>
+			<h1 className="mt-4 text-center form-title">Profile</h1>
 			<div className="user-page">
 				<div className="user-profile">
 					<div className="photo-upload">
@@ -165,7 +165,11 @@ const UserPage = ({ onUploadAvatar }) => {
 							/>
 						</label>
 						<div className="buttons-container">
-							<button className="user-btn" title="Save your information" onClick={handleSave}>
+							<button
+								className="user-btn"
+								title="Save your information"
+								onClick={handleSave}
+							>
 								Save
 							</button>
 						</div>
@@ -174,7 +178,11 @@ const UserPage = ({ onUploadAvatar }) => {
 
 				<div className="buttons-container">
 					{isAdmin && (
-						<button className="user-btn" title="Create a new book" onClick={handleCreateBook}>
+						<button
+							className="user-btn"
+							title="Create a new book"
+							onClick={handleCreateBook}
+						>
 							Create Book
 						</button>
 					)}
