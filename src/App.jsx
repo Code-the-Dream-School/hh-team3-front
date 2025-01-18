@@ -5,6 +5,7 @@ import BookDetails from "./components/BookDetails/BookDetails.jsx";
 import BookForm from "./components/BookFormforAdmin/BookForm.jsx";
 import AuthProvider from "./components/Context/AuthProvider.jsx";
 import DiscussionForm from "./components/Discussion/DiscussionForm/DiscussionForm.jsx";
+import UpdateDiscussion from "./components/Discussion/DiscussionForm/UpdateDiscussion.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import ResetPassword from "./components/ForgotPassword/ResetPassword.jsx";
 import Loader from "./components/Loader/Loader.jsx";
@@ -13,12 +14,11 @@ import Login from "./components/UserLogin/Login.jsx";
 import Logout from "./components/UserLogout/Logout.jsx";
 import UserPage from "./components/UserPage/userPage.jsx";
 import Signup from "./components/userSignup/Signup.jsx";
-import AboutUs from './Pages/AboutUs.jsx';
+import AboutUs from "./Pages/AboutUs.jsx";
+import BookTalkQuestions from "./Pages/BookTalkQuestions.jsx";
 import FindABook from "./Pages/FindABook.jsx";
 import FindADiscussion from "./Pages/FIndADiscussion";
-import BookTalkQuestions from './Pages/BookTalkQuestions.jsx'
 import Home from "./Pages/home.jsx";
-import UpdateDiscussion from "./components/Discussion/DiscussionForm/UpdateDiscussion.jsx";
 
 function App() {
 	const [books, setBooks] = useState([]);

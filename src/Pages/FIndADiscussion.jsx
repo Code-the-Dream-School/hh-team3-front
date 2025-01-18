@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useContext } from "react";
-import SearchForm from "../components/Search/SearchForm";
-import DiscussionList from "../components/Discussion/DiscussionList/DiscussionList";
-import { AuthContext } from "../components/Context/AuthProvider";
+import React, { useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { AuthContext } from "../components/Context/AuthProvider";
+import DiscussionList from "../components/Discussion/DiscussionList/DiscussionList";
+import SearchForm from "../components/Search/SearchForm";
 
 function FindADiscussion({ discussionsData }) {
 	const now = new Date();

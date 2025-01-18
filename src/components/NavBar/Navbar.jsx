@@ -2,8 +2,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import DayNightTheme from "../day-night-theme/DayNightTheme";
 import { AuthContext } from "../Context/AuthProvider";
+import DayNightTheme from "../day-night-theme/DayNightTheme";
 import "./Navbar.css";
 
 function Navbar() {
@@ -11,7 +11,7 @@ function Navbar() {
 	return (
 		<nav className="navbar navbar-expand-lg navbar-dark custom-navbar  fixed-top">
 			<div className="container-fluid">
-				<Link className="navbar-brand my-text"  to="/">
+				<Link className="navbar-brand my-text" to="/">
 					BookTalk
 				</Link>
 				<DayNightTheme />
@@ -62,18 +62,18 @@ function Navbar() {
 							</>
 						) : (
 							<>
-						<Link
-							className="btn btn-outline-light custom-btn me-2"
-							to="/signup"
-						>
-							Sign up
-						</Link>
-						<Link
-							className="btn btn-outline-light custom-btn"
-							to="/login"
-						>
-							Log in
-						</Link>
+								<Link
+									className="btn btn-outline-light custom-btn me-2"
+									to="/signup"
+								>
+									Sign up
+								</Link>
+								<Link
+									className="btn btn-outline-light custom-btn"
+									to="/login"
+								>
+									Log in
+								</Link>
 							</>
 						)}
 					</div>
