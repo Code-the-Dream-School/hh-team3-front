@@ -107,7 +107,7 @@ p {
 }
 
 .join-btn:hover {
-	background: var(--bg-color-container);
+	background: var(--form-button-bg);
 	transform: translateY(-3px);
 	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
