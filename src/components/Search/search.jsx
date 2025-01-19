@@ -1,6 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { useEffect, useRef } from "react";
+import PropTypes from "prop-types";
 import "./SearchList.css";
 
 function Search({ onSearch }) {
@@ -39,5 +40,9 @@ function Search({ onSearch }) {
 		</div>
 	);
 }
+
+Search.propTypes = {
+	onSearch: PropTypes.func.isRequired,
+};
 
 export default Search;

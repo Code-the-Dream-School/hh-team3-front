@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Search from "../components/Search/search.jsx";
 import SearchList from "../components/Search/searchList.jsx";
+import PropTypes from "prop-types"; 
 
 function FindABook({ booksData }) {
 	const [filteredData, setFilteredData] = useState(booksData);
@@ -40,5 +41,21 @@ function FindABook({ booksData }) {
 		</>
 	);
 }
+
+FindABook.propTypes = {
+	booksData: PropTypes.arrayOf(
+		PropTypes.shape({
+			id: PropTypes.string.isRequired,
+			title: PropTypes.string.isRequired,
+			authors: PropTypes.arrayOf(PropTypes.string).isRequired,
+			categories: PropTypes.arrayOf(PropTypes.string).isRequired,
+			description: PropTypes.string,
+			publishedDate: PropTypes.string,
+			imageLinks: PropTypes.shape({
+				thumbnail: PropTypes.string,
+			}),
+		}),
+	).isRequired,
+};
 
 export default FindABook;

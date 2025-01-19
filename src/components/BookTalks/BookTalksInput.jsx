@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../Context/AuthProvider";
+import PropTypes from "prop-types";
 import "./BookTalks.css";
 
-export default function BookTalksInput({ value, onChange }) {
+function BookTalksInput({ value, onChange }) {
 	const { user } = useContext(AuthContext);
 
 	let userPhoto = "/userAvatars/default-avatar.jpg";
@@ -38,3 +39,5 @@ export default function BookTalksInput({ value, onChange }) {
 		</div>
 	);
 }
+
+export default BookTalksInput;

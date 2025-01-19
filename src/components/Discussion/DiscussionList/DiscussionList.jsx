@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import DiscussionCard from "./DiscussionCard";
+import PropTypes from "prop-types";
 
 function DiscussionList({ filteredData }) {
 	const navigate = useNavigate();
@@ -42,5 +43,22 @@ function DiscussionList({ filteredData }) {
 		</>
 	);
 }
+
+DiscussionList.propTypes = {
+	filteredData: PropTypes.arrayOf(
+		PropTypes.shape({
+			id: PropTypes.string.isRequired,
+			title: PropTypes.string.isRequired,
+			book: PropTypes.string.isRequired,
+			bookImg: PropTypes.string.isRequired,
+			content: PropTypes.string.isRequired,
+			date: PropTypes.string.isRequired,
+			participants: PropTypes.array,
+			meetingLink: PropTypes.string.isRequired,
+			createdBy: PropTypes.string,
+			createdById: PropTypes.string.isRequired,
+		}),
+	).isRequired, 
+};
 
 export default DiscussionList;

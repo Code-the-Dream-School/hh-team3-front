@@ -1,10 +1,10 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/AuthProvider";
-import "./BookTalks.css";
+import PropTypes from "prop-types";
 import BookTalksInput from "./BookTalksInput";
-
-export default function BookTalksForm({ onBookTalk }) {
+import "./BookTalks.css";
+function BookTalksForm({ onBookTalk }) {
 	const [bookTalk, setBookTalk] = useState("");
 	const { user, isAuthenticated } = useContext(AuthContext);
 	const navigate = useNavigate();
@@ -44,3 +44,9 @@ export default function BookTalksForm({ onBookTalk }) {
 		</form>
 	);
 }
+
+BookTalksForm.propTypes = {
+	onBookTalk: PropTypes.func.isRequired,
+};
+
+export default BookTalksForm;

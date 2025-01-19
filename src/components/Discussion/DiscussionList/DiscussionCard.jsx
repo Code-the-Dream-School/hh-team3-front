@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
+import PropTypes from "prop-types";
 import "./DiscussionCard.css";
 
-export default function DiscussionCard({
+function DiscussionCard({
 	title,
 	book,
 	bookImg,
@@ -218,3 +219,25 @@ export default function DiscussionCard({
 		</div>
 	);
 }
+
+DiscussionCard.propTypes = {
+	title: PropTypes.string.isRequired,
+	book: PropTypes.string.isRequired,
+	bookImg: PropTypes.string.isRequired,
+	content: PropTypes.string.isRequired,
+	date: PropTypes.string.isRequired,
+	participants: PropTypes.array,
+	meetingLink: PropTypes.string.isRequired,
+	createdBy: PropTypes.string,
+	createdById: PropTypes.string.isRequired,
+	id: PropTypes.string.isRequired,
+	canJoin: PropTypes.bool,
+};
+
+DiscussionCard.defaultProps = {
+	participants: [],
+	createdBy: "Unknown Creator",
+	canJoin: true,
+};
+
+export default DiscussionCard;
