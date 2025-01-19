@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types"; 
 import "./TeamMemberCard.css";
 
 function TeamMemberCard({ photo, name, title, socialLinks, email }) {
@@ -49,5 +50,16 @@ function TeamMemberCard({ photo, name, title, socialLinks, email }) {
 		</div>
 	);
 }
+
+TeamMemberCard.propTypes = {
+	photo: PropTypes.string.isRequired,
+	name: PropTypes.string.isRequired,
+	title: PropTypes.string.isRequired,
+	socialLinks: PropTypes.shape({
+		linkedin: PropTypes.string,
+		github: PropTypes.string,
+	}).isRequired,
+	email: PropTypes.string,
+};
 
 export default TeamMemberCard;

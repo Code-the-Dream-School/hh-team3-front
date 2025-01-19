@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Form from "react-bootstrap/Form";
 import { useLocation, useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 import "./DiscussionForm.css";
 
 function DiscussionForm({ onSubmit }) {
@@ -159,5 +160,10 @@ function DiscussionForm({ onSubmit }) {
 		</div>
 	);
 }
+
+DiscussionForm.propTypes = {
+	onSubmit: PropTypes.func.isRequired,
+};
+
 
 export default DiscussionForm;

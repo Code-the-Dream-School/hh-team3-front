@@ -2,6 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
+import PropTypes from "prop-types";
 
 function SearchForm({
 	onSearch,
@@ -129,5 +130,13 @@ function SearchForm({
 		</div>
 	);
 }
+
+SearchForm.propTypes = {
+	onSearch: PropTypes.func.isRequired,
+	onFilter: PropTypes.func.isRequired,
+	onSort: PropTypes.func.isRequired,
+	onDiscussionTypeChange: PropTypes.func.isRequired,
+	onClearFilters: PropTypes.func.isRequired,
+};
 
 export default SearchForm;

@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { AuthContext } from "../components/Context/AuthProvider";
 import DiscussionList from "../components/Discussion/DiscussionList/DiscussionList";
 import SearchForm from "../components/Search/SearchForm";
+import PropTypes from "prop-types";
 
 function FindADiscussion({ discussionsData }) {
 	const now = new Date();
@@ -127,5 +128,18 @@ function FindADiscussion({ discussionsData }) {
 		</>
 	);
 }
+
+FindADiscussion.propTypes = {
+	discussionsData: PropTypes.arrayOf(
+		PropTypes.shape({
+			id: PropTypes.string.isRequired,
+			title: PropTypes.string.isRequired,
+			book: PropTypes.string.isRequired,
+			date: PropTypes.string.isRequired,
+			createdById: PropTypes.string.isRequired,
+			participants: PropTypes.arrayOf(PropTypes.string).isRequired,
+		}),
+	).isRequired,
+};
 
 export default FindADiscussion;

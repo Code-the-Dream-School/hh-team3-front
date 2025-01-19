@@ -1,7 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./BookCard.css";
 
-export default function BookCard({
+function BookCard({
 	imageLinks = {},
 	authors = [],
 	title,
@@ -27,3 +28,15 @@ export default function BookCard({
 		</div>
 	);
 }
+
+BookCard.propTypes = {
+	imageLinks: PropTypes.shape({
+		thumbnail: PropTypes.string,
+	}),
+	authors: PropTypes.arrayOf(PropTypes.string),
+	title: PropTypes.string.isRequired,
+	publishedDate: PropTypes.string,
+	children: PropTypes.node,
+};
+
+export default BookCard;

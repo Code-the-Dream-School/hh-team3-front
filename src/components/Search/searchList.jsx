@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import BookCard from "../BookCard/BookCard";
+import PropTypes from "prop-types";
 import "./SearchList.css";
 
 function SearchList({ filteredData }) {
@@ -78,5 +79,13 @@ function SearchList({ filteredData }) {
 		</>
 	);
 }
+
+SearchList.propTypes = {
+  filteredData: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+};
 
 export default SearchList;

@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Loader from "../components/Loader/Loader";
-
+import PropTypes from "prop-types"; 
 import "./Home.css";
-
 function Home({ booksData }) {
 	const [randomBook, setRandomBook] = useState(null);
 
@@ -172,5 +171,20 @@ function Home({ booksData }) {
 		</div>
 	);
 }
+
+Home.propTypes = {
+	booksData: PropTypes.arrayOf(
+		PropTypes.shape({
+			id: PropTypes.string.isRequired,
+			_id: PropTypes.string.isRequired,
+			title: PropTypes.string.isRequired,
+			authors: PropTypes.arrayOf(PropTypes.string).isRequired,
+			publishedDate: PropTypes.string.isRequired,
+			imageLinks: PropTypes.shape({
+				thumbnail: PropTypes.string.isRequired,
+			}).isRequired,
+		}),
+	).isRequired,
+};
 
 export default Home;

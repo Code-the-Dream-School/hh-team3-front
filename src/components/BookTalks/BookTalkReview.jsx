@@ -1,7 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./BookTalks.css";
 
-export default function BookTalkReview({ reviews, onLike, onRemove }) {
+function BookTalkReview({ reviews, onLike, onRemove }) {
 	return (
 		<div className="feed">
 			{reviews.map((review) => {
@@ -71,3 +72,20 @@ export default function BookTalkReview({ reviews, onLike, onRemove }) {
 		</div>
 	);
 }
+
+BookTalkReview.propTypes = {
+	reviews: PropTypes.arrayOf(
+		PropTypes.shape({
+			id: PropTypes.string.isRequired,
+			username: PropTypes.string,
+			photo: PropTypes.string,
+			review: PropTypes.string.isRequired,
+			likes: PropTypes.number,
+			isLiked: PropTypes.bool,
+		}),
+	).isRequired,
+	onLike: PropTypes.func,
+	onRemove: PropTypes.func,
+};
+
+export default BookTalkReview;

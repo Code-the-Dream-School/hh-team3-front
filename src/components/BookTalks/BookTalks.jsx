@@ -2,10 +2,10 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/AuthProvider";
 import BookTalkReview from "./BookTalkReview";
-import "./BookTalks.css";
+import PropTypes from "prop-types";
 import BookTalksForm from "./BookTalksForm";
-
-export default function BookTalks({ bookId }) {
+import "./BookTalks.css";
+function BookTalks({ bookId }) {
 	const { token, user, isAuthenticated } = useContext(AuthContext);
 	const [reviews, setReviews] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
@@ -228,3 +228,9 @@ export default function BookTalks({ bookId }) {
 		</div>
 	);
 }
+
+BookTalks.propTypes = {
+	bookId: PropTypes.string.isRequired,
+};
+
+export default BookTalks;

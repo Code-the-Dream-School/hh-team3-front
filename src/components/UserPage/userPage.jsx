@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/AuthProvider";
+import PropTypes from "prop-types"; 
 import "./userPage.css";
 
 const UserPage = ({ onUploadAvatar }) => {
@@ -197,6 +198,10 @@ const UserPage = ({ onUploadAvatar }) => {
 			</div>
 		</div>
 	);
+};
+
+UserPage.propTypes = {
+	onUploadAvatar: PropTypes.func.isRequired,
 };
 
 export default UserPage;
