@@ -1,9 +1,9 @@
+import PropTypes from "prop-types";
 import React, { useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { AuthContext } from "../components/Context/AuthProvider";
 import DiscussionList from "../components/Discussion/DiscussionList/DiscussionList";
 import SearchForm from "../components/Search/SearchForm";
-import PropTypes from "prop-types";
 
 function FindADiscussion({ discussionsData }) {
 	const now = new Date();

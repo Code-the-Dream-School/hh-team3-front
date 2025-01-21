@@ -1,39 +1,67 @@
 .home {
-	max-width: 1400px;
-	margin-top: 80px;
 	font-family: var(--text-font);
+	margin-top: 100px;
 }
 
 h1 {
 	font-family: var(--heading-font);
+	font-size: 2.5rem;
+	text-align: center;
+	margin-bottom: 20px;
 }
+
+.book-talk {
+	font-size: 5rem;
+}
+
+.home-buttons-container {
+	display: flex;
+	margin-top: 40px;
+	gap: 10px;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.home-find-book-button {
+	background: var(--post-book-talk-button-bg);
+	color: var(--button-text-color);
+	padding: 0.75em 1.563em;
+	border: none;
+	border-radius: 25px;
+	font-size: 1rem;
+	font-weight: 600;
+	cursor: pointer;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+	transition: transform 0.3s ease, background-color 0.3s ease,
+		box-shadow 0.3s ease;
+}
+
+.home-find-book-button:hover {
+	background: var(--bg-color-container);
+	transform: translateY(-3px);
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
 h4 {
 	color: var(--toggle-text);
 }
+
 main {
-	max-width: 100%;
+	max-width: 1400px;
 	display: flex;
 	flex-wrap: wrap;
 	gap: 20px;
+	align-items: center;
 	justify-content: center;
-	padding: 80px;
+	padding: 50px;
 }
 
 .book-of-the-month {
-	flex: 1 1 45%;
 	max-width: 400px;
-	padding: 20px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
-}
-
-.welcome {
-	flex: 1 1 50%;
-	margin-right: 50px;
-	padding: 50px 0;
-	font-size: 18px;
+	text-align: center;
 }
 
 .book-of-the-month-card {
@@ -77,6 +105,53 @@ main {
 	margin-bottom: 0;
 }
 
+.paragraph {
+	margin: 55px 0 50px;
+}
+
+.paragraph p {
+	font-size: 22px;
+}
+
+.book-slider {
+	background: var(--slider-bg);
+	color: var(--button-bg-hover);
+	text-align: center;
+	padding: 3rem;
+	margin-top: 40px;
+	border-radius: 14px;
+}
+
+.swiper {
+	width: 100%;
+	padding: 1rem 0;
+}
+
+.swiper-slide {
+	display: flex;
+	justify-content: center;
+}
+
+.swiper-slide .card {
+	width: 90%;
+	max-width: 300px;
+	margin-bottom: 40px;
+}
+
+.swiper-button-prev {
+	left: -2px;
+	color: var(--button-bg-hover);
+}
+
+.swiper-button-next {
+	right: 2px;
+	color: var(--button-bg-hover);
+}
+
+.swiper-pagination-bullet {
+	background: var(--button-bg-hover);
+}
+
 .book-btn {
 	transition: all 200ms ease-in-out;
 	border-radius: 20px;
@@ -90,15 +165,18 @@ main {
 	text-decoration: none;
 	background: none;
 }
+
 .links h3 {
 	background: none;
 }
+
 .book-btn:hover {
 	transform: scale(1.1) rotate(-1deg);
 	box-shadow: 0 10px 25px rgba(0, 0, 0, 0);
 	border-radius: 20px;
 	border: none;
 }
+
 .link-text {
 	color: var(--title-color);
 	font-family: var(--heading-font);
@@ -106,16 +184,26 @@ main {
 }
 
 @media (max-width: 575px) {
+	h1 {
+		font-size: 2rem;
+		padding: 0 10px;
+	}
+
+	.book-talk {
+		font-size: 2rem;
+	}
+
 	main {
 		flex-direction: column;
 		align-items: center;
 		padding: 0;
 	}
+
 	.welcome,
 	.book-of-the-month {
-		flex: 1 1 100%;
-		max-width: 90%;
-		padding: 20px 0;
+		max-width: 100%;
+		text-align: center;
+		margin: 0;
 	}
 
 	.book-of-the-month-card {
@@ -134,16 +222,20 @@ main {
 		width: 100%;
 		max-width: 300px;
 	}
+
+	.swiper-slide .card {
+		width: 100%;
+		max-width: 300px;
+	}
 }
 
 @media (max-width: 820px) {
-	main {
-		padding: 0;
+	h1 {
+		font-size: 1.8rem;
 	}
 
 	.welcome,
 	.book-of-the-month {
-		flex: 1 1 100%;
 		max-width: 100%;
 		text-align: center;
 		margin: 0;
@@ -159,12 +251,43 @@ main {
 		max-width: 300px;
 		margin-bottom: 10px;
 	}
+	.slider {
+		overflow-x: scroll;
+		display: flex;
+		gap: 10px;
+	}
+
+	.slider-item {
+		min-width: 100%;
+		flex-shrink: 0;
+		padding: 10px;
+	}
 }
-@media (max-width: 575px) {
+
+@media (max-width: 768px) {
+	h1 {
+		font-size: 1.6rem;
+		text-align: center;
+		padding: 0 10px;
+	}
+
 	.welcome,
 	.book-of-the-month {
+		flex: 1 1 100%;
 		max-width: 100%;
 		text-align: center;
 		margin: 0;
+	}
+
+	.slider {
+		overflow-x: scroll;
+		display: flex;
+		gap: 10px;
+	}
+
+	.slider-item {
+		min-width: 100%;
+		flex-shrink: 0;
+		padding: 10px;
 	}
 }

@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
+import { useEffect, useRef } from "react";
 import "./SearchList.css";
 
 function Search({ onSearch }) {
@@ -22,16 +22,16 @@ function Search({ onSearch }) {
 	return (
 		<div className="container" style={{ marginTop: "80px" }}>
 			<div className="row justify-content-center">
-				<div className="col-12 col-md-8">
+				<div className="col-lg-8 col-md-12 mt-4 mb-4">
 					<div className="d-flex align-items-center">
 						<input
 							ref={inputRef}
 							type="text"
-							className="form-control me-2 placeholder-sm mt-5 mb-5"
+							className="form-control placeholder-sm"
 							placeholder="Search a book by title, authors, or category"
 							onChange={handleChange}
 						/>
-						<button className="btn btn-secondary d-block d-md-inline-block">
+						<button className="btn btn-secondary ms-3  d-md-inline-block ">
 							Search
 						</button>
 					</div>

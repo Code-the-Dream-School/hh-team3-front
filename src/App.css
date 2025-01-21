@@ -17,6 +17,7 @@
 	--pagination-color: #fff;
 	--form-button-bg: #e87d5a;
 	--like: #ffe8d6;
+	--slider-bg: #444;
 }
 
 body.dark {
@@ -28,7 +29,7 @@ body.dark {
 	--bg-color-card: linear-gradient(135deg, #235347, #051f20);
 	--button-bg-color: #163832;
 	--button-bg-hover: #daf1de;
-
+	--slider-bg: #444;
 	--book-genre: linear-gradient(135deg, #051f20, #cfee9e);
 	--toggle-text: #cfee9e;
 	--post-book-talk-button-bg: linear-gradient(135deg, #cfee9e, #6d8777);
@@ -61,6 +62,8 @@ html body {
 	color: var(--text-color) !important;
 	font-family: var(--text-font);
 	font-weight: 300;
+	margin: 0;
+	padding: 0;
 }
 
 html body.dark {

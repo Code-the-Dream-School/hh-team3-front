@@ -1,5 +1,4 @@
 .form-control {
-	flex: 1;
 	border: none;
 	border-radius: 20px;
 	padding: 1rem;
@@ -9,7 +8,7 @@
 	box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.1),
 		inset -3px -3px 6px rgba(255, 255, 255, 0.5);
 	font-family: var(--text-font);
-	transition: background 0.3s ease, box-shadow 0.3s ease;
+	transition: all 200ms ease-in-out;
 }
 
 .form-control:focus {
@@ -92,4 +91,80 @@
 }
 a {
 	color: var(--links-color);
+}
+@media (max-width: 768px) {
+	.form-control {
+		width: 100%;
+		font-size: 0.9rem;
+	}
+
+	.container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 0.5rem;
+	}
+
+	.display {
+		flex-direction: column;
+		gap: 20px;
+		align-items: center;
+		justify-content: center;
+		margin-bottom: 40px;
+	}
+
+	.pagination {
+		flex-wrap: wrap;
+		gap: 10px;
+		margin: 20px 0;
+		align-items: center;
+	}
+
+	.my-button-pagination {
+		width: auto;
+		padding: 0.8rem 1rem;
+		font-size: 0.9rem;
+		margin: 0 auto;
+	}
+
+	.my-button-pagination.active {
+		width: auto;
+		transform: translateY(-2px);
+		font-size: 0.9rem;
+	}
+
+	a {
+		font-size: 0.9rem;
+		text-align: center;
+	}
+}
+
+@media (max-width: 575px) {
+	.form-control {
+		width: 100%;
+		margin: 0;
+		font-size: 0.9rem;
+	}
+	.container {
+		padding: 0.5rem;
+	}
+
+	.display {
+		gap: 15px;
+		margin-bottom: 30px;
+	}
+
+	.pagination {
+		gap: 8px;
+		margin: 15px 0;
+	}
+
+	.my-button-pagination {
+		font-size: 0.85rem;
+		padding: 0.7rem 1rem;
+	}
+
+	a {
+		font-size: 0.85rem;
+	}
 }

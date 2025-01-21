@@ -70,7 +70,7 @@
 }
 
 .create-discussions-btn {
-	color: var(--button-text-color);
+	color: var(--text-color);
 	background: var(--book-genre);
 	border: none;
 	border-radius: 20px;
@@ -81,7 +81,7 @@
 }
 
 .create-discussions-btn:hover {
-	background: var(--button-bg-hover);
+	background: var(--bg-color-container);
 	transform: translateY(-2px);
 }
 

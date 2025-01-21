@@ -78,6 +78,7 @@ h2 {
 .post-book-talk-button:hover {
 	transform: translateY(-3px);
 	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+	background: var(--bg-color-container);
 }
 
 .feed {

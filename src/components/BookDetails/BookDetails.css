@@ -60,6 +60,7 @@
 	flex-wrap: wrap;
 	gap: 0.625em;
 	margin: 0;
+	
 }
 
 .book-genre span {
@@ -70,13 +71,14 @@
 	transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 	background: var(--book-genre);
-	color: var(--form-button-bg);
+	color:var(--text-color);
 }
 
 .book-genre span:hover {
 	transform: scale(1.1);
 	cursor: pointer;
-	background: var(--button-bg-hover);
+	 background: var(--bg-color-container);
+
 }
 
 .book-publish-date {

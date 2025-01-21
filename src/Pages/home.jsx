@@ -1,11 +1,17 @@
+import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { Navigation, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import BookCard from "../components/BookCard/BookCard.jsx";
 import Loader from "../components/Loader/Loader";
-import PropTypes from "prop-types"; 
 import "./Home.css";
+
 function Home({ booksData }) {
 	const [randomBook, setRandomBook] = useState(null);
-
 	const navigate = useNavigate();
 
 	const handleScrollToTop = (e) => {
@@ -35,56 +41,36 @@ function Home({ booksData }) {
 
 	return (
 		<div className="home">
-			<main className="d-flex flex-column flex-md-row justify-content-between align-items-center">
-				<section className="welcome order-md-0 order-1">
-					<h1 className="mb-4">Welcome to BookTalk</h1>
-					<h4 className="mb-3 fst-italic fw-bolder">
-						Dive Into a World of Books and Conversations!
-					</h4>
-					<p>
-						Our platform brings together book lovers from around the
-						world, giving you the perfect space to share your
-						passion for reading. Whether you're looking to discuss
-						your latest read or discover new books through others'
-						perspectives, we offer a unique experience where you can
-						create or join engaging book discussions.
-					</p>
-					<p>
-						<strong className="fst-italic">
-							Create your own discussions
-						</strong>{" "}
-						and invite fellow readers to dive deep into the themes,
-						characters, and plots that intrigue you most.
-					</p>
-					<p>
-						<strong className="fst-italic">
-							Join ongoing conversations
-						</strong>{" "}
-						to share your thoughts, ask questions, and connect with
-						like-minded individuals who share your love for
-						literature.
-					</p>
-					<p>
-						Whether you're a fan of fiction, non-fiction, fantasy,
-						or mystery, there's a place for you here.
-					</p>
-					<p>
-						<strong className="fst-italic">
-							Connect with new friends
-						</strong>
-						, exchange recommendations, and explore books in ways
-						you never have before.
-					</p>
-					<h4 className="mt-4 fst-italic fw-bolder">
-						Start talking, start reading, start connecting — all in
-						one place.
-					</h4>
+			<main className="row mx-auto">
+				<section className="col-lg-5 col-md-12 text-center text-lg-start welcome">
+					<h1>Welcome to</h1>
+					<h1 className="book-talk">BookTalk</h1>
+					<h5 className="fst-italic">
+						Find like-minded people to discuss what you&apos;ve read
+						recently
+					</h5>
+					<div className="home-buttons-container">
+						<button
+							className="btn home-find-book-button"
+							onClick={() => navigate("./find-book")}
+						>
+							Explore Books
+						</button>
+						<button
+							className="btn home-find-book-button"
+							onClick={() => navigate("./find-discussion")}
+						>
+							Discussions
+						</button>
+					</div>
 				</section>
-				<section className="book-of-the-month order-md-1 order-0">
-					<h4 className="fst-italic fw-bolder">
+
+				<section className="book-of-the-month col-lg-7 col-md-12 text-center mt-3">
+					<h2>Book of the Month</h2>
+					<h4 className="fst-italic fw-bold">
 						What&apos;s Behind the Pages?
 					</h4>
-					<h4 className="mb-4 fst-italic fw-bolder">
+					<h4 className="mb-4 fst-italic fw-bold">
 						Let&apos;s Discuss!
 					</h4>
 					<Link
@@ -109,6 +95,77 @@ function Home({ booksData }) {
 					</Link>
 				</section>
 			</main>
+
+			<section className="paragraph px-3 px-lg-5">
+				<h4 className="mb-3 fst-italic fw-bold text-center">
+					Dive Into a World of Books and Conversations!
+				</h4>
+				<p>
+					Our platform brings together book lovers from around the
+					world, giving you the perfect space to share your passion
+					for reading. Whether you&apos;re looking to discuss your
+					latest read or discover new books through others&apos;
+					perspectives, we offer a unique experience where you can
+					create or join engaging book discussions.
+				</p>
+				<p>
+					<strong className="fst-italic">
+						Create your own discussions
+					</strong>{" "}
+					and invite fellow readers to dive deep into the themes,
+					characters, and plots that intrigue you most.
+				</p>
+				<p>
+					<strong className="fst-italic">
+						Join ongoing conversations
+					</strong>{" "}
+					to share your thoughts, ask questions, and connect with
+					like-minded individuals who share your love for literature.
+				</p>
+				<p>
+					Whether you&apos;re a fan of fiction, non-fiction, fantasy,
+					or mystery, there&apos;s a place for you here.
+				</p>
+				<p>
+					<strong className="fst-italic">
+						Connect with new friends
+					</strong>
+					, exchange recommendations, and explore books in ways you
+					never have before.
+				</p>
+				<h4 className="mt-4 fst-italic fw-bold text-center">
+					Start talking, start reading, start connecting — all in one
+					place.
+				</h4>
+			</section>
+
+			<section className="book-slider">
+				<h2 className="mb-4">Explore Popular Books</h2>
+				<Swiper
+					modules={[Navigation, Pagination]}
+					navigation
+					pagination={{ clickable: true }}
+					spaceBetween={20}
+					slidesPerView={3}
+					breakpoints={{
+						640: { slidesPerView: 1 },
+						768: { slidesPerView: 2 },
+						1024: { slidesPerView: 3 },
+					}}
+				>
+					{booksData.slice(0, 7).map((book) => (
+						<SwiperSlide key={book.id || book._id}>
+							<BookCard
+								imageLinks={book.imageLinks}
+								authors={book.authors}
+								title={book.title}
+								publishedDate={book.publishedDate}
+							/>
+						</SwiperSlide>
+					))}
+				</Swiper>
+			</section>
+
 			<section className="links d-flex flex-wrap justify-content-center gap-4 my-5">
 				<Link
 					className="btn btn-outline-light book-btn d-flex flex-column align-items-center p-4 shadow"
@@ -124,7 +181,6 @@ function Home({ booksData }) {
 						width="100%"
 					/>
 				</Link>
-
 				<Link
 					className="btn btn-outline-light book-btn d-flex flex-column align-items-center p-4 shadow"
 					to="/find-book"
@@ -154,6 +210,7 @@ function Home({ booksData }) {
 					/>
 				</Link>
 			</section>
+
 			<div className="text-center">
 				<a
 					href="/"

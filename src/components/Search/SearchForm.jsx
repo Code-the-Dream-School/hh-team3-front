@@ -1,8 +1,8 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import PropTypes from "prop-types";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
-import PropTypes from "prop-types";
 
 function SearchForm({
 	onSearch,
