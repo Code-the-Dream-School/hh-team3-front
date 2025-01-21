@@ -17,10 +17,7 @@ function Home({ booksData }) {
 	const handleScrollToTop = (e) => {
 		e.preventDefault();
 		navigate("/");
-		window.scrollTo({
-			top: 0,
-			behavior: "smooth",
-		});
+		window.scrollTo({ top: 0, behavior: "smooth" });
 	};
 
 	useEffect(() => {
@@ -40,43 +37,35 @@ function Home({ booksData }) {
 		);
 
 	return (
-		<div className="home">
-			<main className="row mx-auto">
-				<section className="col-lg-5 col-md-12 text-center text-lg-start welcome">
+		<div className="home container-fluid">
+			<main className="d-flex flex-row text-center row mt-4 mb-4">
+				<section className="welcome mb-4 col-6">
 					<h1>Welcome to</h1>
 					<h1 className="book-talk">BookTalk</h1>
-					<h5 className="fst-italic">
-						Find like-minded people to discuss what you&apos;ve read
+					<h5>
+						Find like-minded people to discuss what you've read
 						recently
 					</h5>
 					<div className="home-buttons-container">
 						<button
-							className="btn home-find-book-button"
-							onClick={() => navigate("./find-book")}
+							className="home-button"
+							onClick={() => navigate("/find-book")}
 						>
 							Explore Books
 						</button>
 						<button
-							className="btn home-find-book-button"
-							onClick={() => navigate("./find-discussion")}
+							className="home-button"
+							onClick={() => navigate("/find-discussion")}
 						>
 							Discussions
 						</button>
 					</div>
 				</section>
-
-				<section className="book-of-the-month col-lg-7 col-md-12 text-center mt-3">
-					<h2>Book of the Month</h2>
-					<h4 className="fst-italic fw-bold">
-						What&apos;s Behind the Pages?
-					</h4>
-					<h4 className="mb-4 fst-italic fw-bold">
-						Let&apos;s Discuss!
-					</h4>
+				<section className="book-of-the-month col-5">
+					<h2>Book of the month</h2>
 					<Link
-						className="book-of-the-month-card"
-						style={{ textDecoration: "none" }}
 						to={`/books/${randomBook.id || randomBook._id}`}
+						className="book-of-the-month-card"
 					>
 						<img
 							src={randomBook.imageLinks?.thumbnail}
@@ -95,8 +84,7 @@ function Home({ booksData }) {
 					</Link>
 				</section>
 			</main>
-
-			<section className="paragraph px-3 px-lg-5">
+			<section className="paragraph">
 				<h4 className="mb-3 fst-italic fw-bold text-center">
 					Dive Into a World of Books and Conversations!
 				</h4>
@@ -138,9 +126,8 @@ function Home({ booksData }) {
 					place.
 				</h4>
 			</section>
-
-			<section className="book-slider">
-				<h2 className="mb-4">Explore Popular Books</h2>
+			<section className="book-slider ">
+				<h2>Explore Popular Books</h2>
 				<Swiper
 					modules={[Navigation, Pagination]}
 					navigation
@@ -155,12 +142,7 @@ function Home({ booksData }) {
 				>
 					{booksData.slice(0, 7).map((book) => (
 						<SwiperSlide key={book.id || book._id}>
-							<BookCard
-								imageLinks={book.imageLinks}
-								authors={book.authors}
-								title={book.title}
-								publishedDate={book.publishedDate}
-							/>
+							<BookCard {...book} />
 						</SwiperSlide>
 					))}
 				</Swiper>
@@ -210,7 +192,6 @@ function Home({ booksData }) {
 					/>
 				</Link>
 			</section>
-
 			<div className="text-center">
 				<a
 					href="/"

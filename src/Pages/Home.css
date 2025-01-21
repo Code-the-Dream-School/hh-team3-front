@@ -22,7 +22,7 @@ h1 {
 	justify-content: center;
 }
 
-.home-find-book-button {
+.home-button {
 	background: var(--post-book-talk-button-bg);
 	color: var(--slider-bg);
 	padding: 0.75em 1.563em;
@@ -36,7 +36,7 @@ h1 {
 		box-shadow 0.3s ease;
 }
 
-.home-find-book-button:hover {
+.home-button:hover {
 	background: var(--button-bg-color);
 	transform: translateY(-3px);
 	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
@@ -48,12 +48,10 @@ h4 {
 
 main {
 	max-width: 1400px;
-	display: flex;
-	flex-wrap: wrap;
 	gap: 20px;
+	padding: 80px;
 	align-items: center;
 	justify-content: center;
-	padding: 50px;
 }
 
 .book-of-the-month {
@@ -74,6 +72,7 @@ main {
 	flex-direction: column;
 	align-items: center;
 	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	text-decoration: none;
 }
 
 .book-of-the-month-card:hover {
@@ -245,7 +244,9 @@ main {
 		padding: 30px;
 		width: 350px;
 	}
-
+	main {
+		padding: 0;
+	}
 	.links .book-btn {
 		width: 100%;
 		max-width: 300px;
@@ -278,7 +279,9 @@ main {
 		text-align: center;
 		margin: 0;
 	}
-
+	main {
+		padding: 0;
+	}
 	.slider {
 		overflow-x: scroll;
 		display: flex;
